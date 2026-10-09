@@ -3,24 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Oficina Aberta · Escola Oficina Criar e Brincar</title>
-<meta name="description" content="Oficina Aberta, comemoração do Mês das Crianças. Sábado, 24/10, das 9h às 12h. Confirme a presença da sua família.">
+<title>Oficina Aberta · Dia das Crianças e das Infâncias</title>
+<meta name="description" content="Oficina Aberta: Dia das Crianças e das Infâncias na Escola Oficina Criar e Brincar. Sábado, 24/10, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas.">
 <meta name="theme-color" content="#8512DF">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Oficina Aberta · Mês das Crianças">
-<meta property="og:description" content="Sábado, 24/10, das 9h às 12h. Venha conhecer nossa nova escola com sua família. Confirme sua presença.">
+<meta property="og:title" content="Oficina Aberta · Dia das Crianças e das Infâncias">
+<meta property="og:description" content="Sábado, 24/10, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas. Garanta sua vaga.">
 <meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/selo.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/selo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Patrick+Hand&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
   :root{
     --roxo:#8512DF; --roxo-esc:#6A0EB3; --amarelo:#FCC218; --amarelo-esc:#E9AE00; --verde:#78B645; --verde-esc:#3F8A1F; --uva:#351B64;
-    --lavanda:#F3EBFC; --lavanda-2:#E7D8FA; --sol:#FFF4D1; --linha:#E4D8F3; --cinza:#6B5E80; --erro:#C42E2E;
+    --floresta:#2F6227; --lilas:#E9D3F7; --lavanda:#F3EBFC; --lavanda-2:#E7D8FA; --sol:#FFF4D1; --linha:#E4D8F3; --cinza:#6B5E80; --erro:#C42E2E;
     --f-titulo:"Fredoka","Trebuchet MS",system-ui,sans-serif;
     --f-texto:"Nunito","Segoe UI",system-ui,sans-serif;
+    --f-mao:"Patrick Hand","Comic Sans MS","Segoe Print",cursive;
     color-scheme:light;
   }
   *{box-sizing:border-box}
@@ -37,7 +38,7 @@
   .prog-barra{height:10px;background:#fff;border-radius:999px;overflow:hidden}
   .prog-barra i{display:block;height:100%;width:0;background:var(--roxo);border-radius:999px;transition:width .4s ease}
   .prog small{font:500 13px var(--f-titulo);color:var(--cinza);letter-spacing:.04em}
-  .topo[data-oculto]{visibility:hidden}
+  .topo[data-oculto]{display:none}
 
   /* palco */
   main{flex:1;display:flex;padding:8px 20px calc(28px + env(safe-area-inset-bottom,0px))}
@@ -120,6 +121,8 @@
 
   /* boas-vindas */
   .capa{display:grid;gap:22px}
+  .capa .logo-capa{justify-self:start;background:#fff;border-radius:20px;padding:14px 18px}
+  .capa .logo-capa img{display:block;width:min(100%,240px);height:auto}
   .capa .selo-evento{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--uva);font:600 14px var(--f-titulo);letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
   .capa h1{font-size:clamp(44px,10vw,72px);color:var(--roxo)}
   .capa h1 span{display:block;font-size:.4em;color:var(--uva);font-weight:500;margin-top:8px}
@@ -152,6 +155,32 @@
   .botoes-fim a:hover{border-color:var(--roxo)}
   .botoes-fim svg{width:26px;height:26px;color:var(--roxo)}
 
+
+  /* capa no estilo do flyer */
+  .titulo-evento{display:grid;gap:2px}
+  .titulo-evento h1{font-size:clamp(48px,11vw,76px);color:var(--uva);line-height:1}
+  .risco{width:min(100%,330px);height:16px;margin-top:-2px}
+  .risco path{fill:none;stroke:var(--amarelo);stroke-width:7;stroke-linecap:round}
+  .titulo-evento .sub{font:600 clamp(24px,5.4vw,32px)/1.15 var(--f-titulo);color:var(--floresta);margin:6px 0 0}
+  .mao{font-family:var(--f-mao);font-weight:400}
+  .balao{justify-self:start;background:var(--lilas);color:var(--uva);font-size:23px;line-height:1.25;padding:12px 18px;border-radius:6px 18px 8px 16px;transform:rotate(-1deg);max-width:30ch;margin:0}
+  .destaque{font-family:var(--f-titulo);font-weight:600;color:var(--roxo);font-size:1.15em}
+  .ativ h2{font-size:28px;color:var(--uva);margin:0 0 12px}
+  .ativ ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+  .etq{transform:rotate(var(--r,0deg));padding:9px 14px;border-radius:4px 14px 6px 12px;display:grid;line-height:1.15}
+  .etq b{font:400 22px var(--f-mao)}
+  .etq span{font-size:14px;font-weight:700;opacity:.85}
+  .etq-verde{background:#CFEBB4;color:var(--floresta)}
+  .etq-lilas{background:var(--lilas);color:var(--uva)}
+  .etq-sol{background:#FFE58A;color:var(--uva)}
+  .ativ-mais{margin:14px 0 0;font-weight:700;color:var(--cinza)}
+  .gratis{background:var(--uva);color:#fff;border-radius:20px;padding:16px 20px;display:grid;gap:4px}
+  .gratis b{font:600 24px var(--f-titulo);color:var(--amarelo)}
+  .gratis span{font-size:16px;color:#E6D8FA}
+  .cta-capa{position:sticky;bottom:0;z-index:4;margin:0 -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lavanda) 70%,rgba(243,235,252,0))}
+  .assinatura{font-size:26px;color:var(--roxo);margin:0;transform:rotate(-2deg);justify-self:start}
+  .rodape-frase{background:var(--floresta);color:#fff;text-align:center;font:400 22px/1.25 var(--f-mao);padding:14px 20px}
+  .rodape-frase[hidden]{display:none}
   .rodape-faixa{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:10px}
   .rodape-faixa i:nth-child(1){background:var(--roxo)}.rodape-faixa i:nth-child(2){background:var(--amarelo)}.rodape-faixa i:nth-child(3){background:var(--verde)}.rodape-faixa i:nth-child(4){background:var(--uva)}
 
@@ -177,11 +206,12 @@
     </div>
   </header>
   <main id="palco" aria-live="polite"></main>
+  <p class="rodape-frase" id="rodapeFrase">Mais do que uma escola, uma construção de vida!</p>
   <div class="rodape-faixa" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </div>
 
 <noscript>
-  <p style="padding:20px;max-width:640px;margin:auto">Para confirmar sua presença, use o <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzCDqOI5LcUu63Rtbd2C6qhsXiLFNviWShBS-2B4JatCYeAg/viewform">formulário do Google</a>.</p>
+  <p style="padding:20px;max-width:640px;margin:auto">Para fazer sua inscrição, use o <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzCDqOI5LcUu63Rtbd2C6qhsXiLFNviWShBS-2B4JatCYeAg/viewform">formulário do Google</a>.</p>
 </noscript>
 
 <script>
@@ -198,11 +228,11 @@
   };
   var EVENTO = {
     data:"Sábado, 24 de outubro", hora:"Das 9h às 12h",
-    endereco:"Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba (SP)",
-    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Oficina Criar e Brincar") +
-      "&dates=20261024T120000Z/20261024T150000Z&location=" + encodeURIComponent("Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba - SP") +
-      "&details=" + encodeURIComponent("Comemoração do Mês das Crianças na nova escola. Manhã com acolhimento, brincadeiras, conversas e café."),
-    mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba - SP")
+    endereco:"Rua Professora Ermelinda Teixeira, 36, Jardim Benoá, Santana de Parnaíba (SP)",
+    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Dia das Crianças e das Infâncias") +
+      "&dates=20261024T120000Z/20261024T150000Z&location=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP") +
+      "&details=" + encodeURIComponent("Escola Oficina Criar e Brincar. Jardinagem e horta, ateliê (argila, pintura e grafismo), Quintal das Construções, tanque de areia e culinária."),
+    mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36, Jardim Benoá, Santana de Parnaíba - SP")
   };
   var BUSCA_OPCOES = [
     "Conhecer a escola nova",
@@ -210,7 +240,7 @@
     "Brincadeiras para as crianças",
     "Conhecer a proposta pedagógica",
     "Conversar com as educadoras",
-    "Informações sobre matrícula 2027"
+    "Conhecer a proposta 2027"
   ];
   var CHAVE = "oficina-aberta-2026";
 
@@ -341,6 +371,7 @@
   function atualizarProgresso(){
     var lista = passosVisiveis(), p = lista[atual].id;
     var q = perguntas();
+    document.getElementById("rodapeFrase").hidden = !(p === "capa" || p === "fim");
     if(p === "capa" || p === "fim"){ topo.setAttribute("data-oculto",""); return; }
     topo.removeAttribute("data-oculto");
     var idx = 0; for(var i=0;i<q.length;i++) if(q[i].id === p) idx = i;
@@ -360,19 +391,34 @@
       retomar = '<div class="retomar"><span>Olá de novo, ' + esc(primeiroNome()) + '! Suas respostas estão salvas.</span>' +
         '<button type="button" class="link" data-acao="retomar">Continuar de onde parei</button></div>';
     }
-    var jaEnviado = estado.enviado ? '<div class="retomar"><span>Você já confirmou presença neste aparelho.</span><button type="button" class="link" data-acao="verfim">Ver confirmação</button></div>' : "";
+    var jaEnviado = estado.enviado ? '<div class="retomar"><span>Você já fez a inscrição neste aparelho.</span><button type="button" class="link" data-acao="verfim">Ver inscrição</button></div>' : "";
+    var ativ = [
+      ["verde","Jardinagem e horta","Plantio"],
+      ["lilas","Ateliê","Argila, pintura e grafismo"],
+      ["sol","Quintal das Construções",""],
+      ["sol","Tanque de areia",""],
+      ["lilas","Culinária","Bolo de cacau saudável"]
+    ].map(function(a, i){
+      return '<li class="etq etq-' + a[0] + '" style="--r:' + [-2,1.5,-1,2,-1.5][i] + 'deg"><b>' + esc(a[1]) + '</b>' + (a[2] ? '<span>' + esc(a[2]) + '</span>' : '') + '</li>';
+    }).join("");
     return '<div class="capa">' +
-      '<span class="selo-evento">' + I.casa.replace('<svg','<svg width="16" height="16"') + 'Mês das Crianças</span>' +
-      '<h1>Oficina Aberta<span>A Oficina Criar e Brincar está de endereço novo!</span></h1>' +
-      '<p class="texto">Queremos que você e sua família sejam nossos convidados. Venha conhecer a nova escola numa manhã cheia de acolhimento, brincadeiras, conversas e um café delicioso.</p>' +
+      '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
+      '<div class="titulo-evento"><h1>Oficina Aberta</h1>' +
+      '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
+      '<p class="sub">Dia das Crianças e das Infâncias</p></div>' +
+      '<p class="mao balao">Uma manhã para brincar, explorar, conhecer e se encantar com a nossa escola!</p>' +
+      '<p class="texto">Para crianças de <b class="destaque">0 a 6 anos</b> e suas famílias. Venham conhecer nossa proposta 2027, nossa cultura, nossos espaços e nossa equipe.</p>' +
+      '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul>' + ativ + '</ul>' +
+      '<p class="ativ-mais">E muitas experiências, encontros e brincadeiras!</p></div>' +
       '<div class="infos">' +
-        info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, "Comemoração do Mês das Crianças") +
-        info(I.relogio, "var(--sol)", "var(--uva)", EVENTO.hora, "Uma manhã inteira de brincadeiras") +
-        info(I.pino, "#E8F4DD", "var(--verde-esc)", "Jardim Benoa, Santana de Parnaíba", "Rua Professora Ermiliana Teixeira, pertinho do Centro Histórico") +
-        info(I.familia, "var(--lavanda)", "var(--roxo)", "Para famílias com crianças até 6 anos", "Traga quem você quiser da família") +
-      '</div>' + retomar + jaEnviado +
-      '<div class="acoes" style="margin-top:4px"><button type="button" class="btn roxo" data-acao="comecar">Confirmar presença ' + I.seta + '</button>' +
+        info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, EVENTO.hora) +
+        info(I.pino, "#E8F4DD", "var(--verde-esc)", "Rua Professora Ermelinda Teixeira, 36", "Jardim Benoá, Santana de Parnaíba (SP)") +
+      '</div>' +
+      '<div class="gratis"><b>Entrada gratuita</b><span>As vagas são limitadas. Garanta a participação da sua família preenchendo a inscrição.</span></div>' +
+      retomar + jaEnviado +
+      '<div class="acoes cta-capa"><button type="button" class="btn roxo" data-acao="comecar">Garantir nossa vaga ' + I.seta + '</button>' +
       '<span class="dica-enter">Leva cerca de 1 minuto</span></div>' +
+      '<p class="mao assinatura">Esperamos vocês!</p>' +
       '</div>';
   };
   function info(ic, bg, cor, t, s){
@@ -457,7 +503,7 @@
       '<div class="campo" style="margin-top:22px"><label for="f-busca" class="sr" style="position:absolute;left:-9999px">Outro motivo</label>' +
       '<textarea id="f-busca" rows="2" placeholder="Outro motivo ou recado para a escola (opcional)">' + esc(estado.buscaTxt) + '</textarea></div>' +
       erroHtml() +
-      '<div class="acoes"><button type="button" class="btn roxo" data-acao="enviar">Confirmar presença ' + I.ok + '</button></div>' +
+      '<div class="acoes"><button type="button" class="btn roxo" data-acao="enviar">Fazer inscrição ' + I.ok + '</button></div>' +
       '<div class="acoes" style="margin-top:14px"><button type="button" class="link" data-acao="voltar">Voltar</button></div>';
   };
   R.fim = function(){
@@ -468,18 +514,18 @@
       ["Total de pessoas", String(estado.acomp + 1)]
     ].map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join("");
     var url = location.origin + location.pathname;
-    var convite = "Vamos juntos na Oficina Aberta da Escola Oficina Criar e Brincar? Sábado, 24/10, das 9h às 12h, no Jardim Benoa. Confirme aqui: " + url;
+    var convite = "Vamos juntos na Oficina Aberta, o Dia das Crianças e das Infâncias da Escola Oficina Criar e Brincar? Sábado, 24/10, das 9h às 12h, no Jardim Benoá. Para crianças de 0 a 6 anos. Entrada gratuita, vagas limitadas. Inscreva-se aqui: " + url;
     return '<div class="fim">' +
       '<svg class="casa" viewBox="0 0 120 100" aria-hidden="true"><path class="t" d="M10 50 L60 10 L110 50 M22 41 V92 H98 V68"/><path class="p" d="M44 84 V56 H62 V84"/><path class="f" d="M72 88 C72 72 80 62 94 58 C96 74 88 86 72 88 Z"/></svg>' +
-      '<h2>Presença confirmada, ' + esc(primeiroNome()) + '!</h2>' +
-      '<p>Que alegria! Esperamos vocês no <b>sábado, 24 de outubro, às 9h</b>. A equipe da escola pode entrar em contato pelo WhatsApp.</p>' +
+      '<h2>Inscrição feita, ' + esc(primeiroNome()) + '!</h2>' +
+      '<p>Que alegria! Esperamos vocês no <b>sábado, 24 de outubro, das 9h às 12h</b>, na Rua Professora Ermelinda Teixeira, 36. A equipe da escola pode entrar em contato pelo WhatsApp.</p>' +
       '<dl class="resumo">' + linhas + '</dl>' +
       '<div class="botoes-fim">' +
         '<a href="' + EVENTO.gcal + '" target="_blank" rel="noopener">' + I.cal + 'Salvar na agenda</a>' +
         '<a href="' + EVENTO.mapa + '" target="_blank" rel="noopener">' + I.pino + 'Ver no mapa</a>' +
         '<a href="https://wa.me/?text=' + encodeURIComponent(convite) + '" target="_blank" rel="noopener">' + I.zap + 'Convidar outra família</a>' +
       '</div>' +
-      '<div class="acoes" style="margin-top:0"><button type="button" class="link" data-acao="nova">Confirmar outra família neste aparelho</button></div>' +
+      '<div class="acoes" style="margin-top:0"><button type="button" class="link" data-acao="nova">Inscrever outra família neste aparelho</button></div>' +
       '</div>';
   };
 
@@ -627,7 +673,9 @@
     dados.append(ENTRY.busca, busca);
     dados.append(ENTRY.whats, estado.whats);
     dados.append(ENTRY.acomp, String(estado.acomp));
-    fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados})
+    // No computador (localhost) o envio é só simulado, para não criar respostas de teste na planilha
+    var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    (local ? new Promise(function(r){ console.log("Envio simulado:", dados.toString()); setTimeout(r, 600); }) : fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados}))
       .then(function(){
         estado.enviado = true; salvar(); enviando = false; irPara("fim");
       })
