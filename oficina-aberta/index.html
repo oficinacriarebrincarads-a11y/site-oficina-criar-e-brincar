@@ -120,7 +120,7 @@
   .contador-legenda{font-weight:700;color:var(--cinza);margin-top:8px}
 
   /* boas-vindas */
-  .capa{display:grid;gap:22px}
+  .capa{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
   .capa .logo-capa{justify-self:center;background:#fff;border-radius:20px;padding:14px 18px}
   .capa .logo-capa{display:grid;place-items:center}
   .capa .logo-capa img{display:block;width:min(100%,240px);height:auto}
@@ -164,42 +164,74 @@
   .risco path{fill:none;stroke:var(--amarelo);stroke-width:7;stroke-linecap:round}
   .titulo-evento .sub{font:600 clamp(24px,5.4vw,32px)/1.15 var(--f-titulo);color:var(--floresta);margin:6px 0 0}
   .mao{font-family:var(--f-mao);font-weight:400}
-  .balao{justify-self:start;background:var(--lilas);color:var(--uva);font-size:23px;line-height:1.25;padding:12px 18px;border-radius:6px 18px 8px 16px;transform:rotate(-1deg);max-width:30ch;margin:0}
+  .balao{justify-self:start;background:var(--lilas);color:var(--uva);font-size:23px;line-height:1.25;padding:12px 18px;border-radius:6px 18px 8px 16px;max-width:30ch;margin:0}
   .destaque{font-family:var(--f-titulo);font-weight:600;color:var(--roxo);font-size:1.15em}
   .ativ h2{font-size:28px;color:var(--uva);margin:0 0 12px}
-  .ativ ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-  .etq{transform:rotate(var(--r,0deg));padding:9px 14px;border-radius:4px 14px 6px 12px;display:grid;line-height:1.15}
-  .etq b{font:400 22px var(--f-mao)}
-  .etq span{font-size:14px;font-weight:700;opacity:.85}
-  .etq-verde{background:#CFEBB4;color:var(--floresta)}
-  .etq-lilas{background:var(--lilas);color:var(--uva)}
-  .etq-sol{background:#FFE58A;color:var(--uva)}
+  /* cards das atividades: no celular, faixa que rola para o lado */
+  .cards-ativ{list-style:none;margin:0 -20px;padding:2px 20px 8px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,44%);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;scrollbar-width:none}
+  .cards-ativ::-webkit-scrollbar{display:none}
+  .card-ativ{scroll-snap-align:start;background:#fff;border-radius:16px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+  .card-ativ img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--lavanda-2)}
+  .card-ativ div{padding:10px 12px 12px;display:grid;gap:2px;align-content:start}
+  .card-ativ b{font:400 20px/1.1 var(--f-mao);color:var(--uva)}
+  .card-ativ span{font-size:13px;font-weight:700;color:var(--cinza);line-height:1.3}
+  .pontos{display:flex;justify-content:center;gap:8px;margin-top:6px}
+  .pontos i{width:8px;height:8px;border-radius:999px;background:var(--lavanda-2);transition:width .2s,background .2s}
+  .pontos i.on{width:22px;background:var(--roxo)}
+  .card-ativ:nth-child(1) b{color:var(--floresta)}
+  .card-ativ:nth-child(2) b,.card-ativ:nth-child(5) b{color:var(--roxo)}
   .ativ-mais{margin:14px 0 0;font-weight:700;color:var(--cinza)}
   .gratis{background:var(--uva);color:#fff;border-radius:20px;padding:16px 20px;display:grid;gap:4px}
   .gratis b{font:600 24px var(--f-titulo);color:var(--amarelo)}
   .gratis span{font-size:16px;color:#E6D8FA}
   .cta-capa{position:sticky;bottom:0;z-index:4;margin:0 -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lavanda) 70%,rgba(243,235,252,0))}
-  .assinatura{font-size:26px;color:var(--roxo);margin:0;transform:rotate(-2deg);justify-self:start}
+  .assinatura{font-size:26px;color:var(--roxo);margin:0;justify-self:start}
 
+  .rodape-frase{background:var(--floresta);color:#fff;text-align:center;font:400 22px/1.25 var(--f-mao);padding:14px 20px;margin:0}
   /* capa: no celular as colunas somem (display:contents) para o botão fixo funcionar na página toda */
   .col-a,.col-b{display:contents}
+  .capa .logo-capa{order:-1}
   @media (min-width:980px){
-    .passo[data-passo="capa"]{max-width:1120px}
-    .capa{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);grid-template-areas:"logo logo" "a b" "assin b";column-gap:56px;row-gap:22px;align-items:start}
-    .capa .logo-capa{grid-area:logo;margin-bottom:12px}
-    .capa .logo-capa img{width:280px}
-    .col-a{grid-area:a;display:grid;gap:22px;align-content:start}
-    .col-b{grid-area:b;display:grid;gap:16px;position:sticky;top:24px;background:#fff;border-radius:24px;padding:24px;box-shadow:0 2px 0 var(--lavanda-2)}
+    /* desktop: a capa cabe na altura da tela; tamanhos acompanham a altura (vh) */
+    main:has(.passo[data-passo="capa"]){padding-block:clamp(10px,2vh,24px) clamp(10px,2vh,24px)}
+    .passo[data-passo="capa"]{max-width:1120px;margin:auto}
+    .capa{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);grid-template-areas:"a b";column-gap:56px;align-items:stretch}
+    .col-b .logo-capa{order:0;padding:0 0 clamp(12px,2vh,20px);border-radius:0;border-bottom:2px solid var(--lavanda)}
+    .col-b .logo-capa img{width:auto;height:clamp(76px,15vh,140px)}
+    .col-a{grid-area:a;display:grid;gap:clamp(10px,2vh,22px);align-content:start}
+    .col-b{grid-area:b;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(10px,1.8vh,16px);background:#fff;border-radius:24px;padding:clamp(16px,2.6vh,24px);box-shadow:0 2px 0 var(--lavanda-2)}
     .col-b .infos{padding:0;border-radius:0;background:none}
-    .col-b .info b{font-size:20px}
-    .col-b .cta-capa{position:static;margin:4px 0 0;padding:0;background:none;display:grid;gap:10px;justify-items:stretch}
+    .col-b .infos{gap:clamp(10px,2vh,18px)}
+    .col-b .info b{font-size:clamp(17px,2.4vh,21px)}
+    .col-b .gratis{padding:clamp(12px,2vh,16px) 20px}
+    .col-b .gratis b{font-size:clamp(20px,2.8vh,24px)}
+    .col-b .cta-capa{position:static;margin:0;padding:0;background:none;display:grid;gap:8px;justify-items:stretch}
     .col-b .cta-capa .btn{justify-content:center}
     .col-b .cta-capa .dica-enter{text-align:center;display:block}
-    .assinatura{grid-area:assin}
-    .titulo-evento h1{font-size:84px}
-    .ativ .etq b{font-size:24px}
+    .assinatura{display:none}
+    .titulo-evento h1{font-size:clamp(50px,10vh,88px)}
+    .risco{height:clamp(10px,1.6vh,16px)}
+    .titulo-evento .sub{font-size:clamp(20px,3.3vh,30px);margin-top:2px}
+    .balao{font-size:clamp(18px,3vh,25px);padding:clamp(8px,1.3vh,12px) 18px;max-width:none}
+    .capa .texto{font-size:clamp(16px,2.4vh,19px);margin:0}
+    .ativ h2{font-size:clamp(22px,3.5vh,30px);margin-bottom:clamp(6px,1.2vh,12px)}
+    /* 3 cards em cima e 2 embaixo, centralizados (grade de 6 colunas, cada card ocupa 2) */
+    .cards-ativ{margin:0;padding:0;grid-auto-flow:row;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-columns:auto;gap:12px;overflow:visible}
+    .card-ativ{grid-column:span 2}
+    .card-ativ:nth-child(4){grid-column:2 / span 2}
+    .card-ativ img{aspect-ratio:auto;height:clamp(66px,12.5vh,140px)}
+    .card-ativ div{padding:6px 12px 8px}
+    .card-ativ b{font-size:clamp(17px,2.5vh,21px)}
+    .card-ativ span{font-size:12.5px}
+    .pontos{display:none}
+    .ativ-mais{display:none}
+    .ativ-mais{margin-top:clamp(6px,1.2vh,14px);font-size:15px}
+    .rodape-frase{font-size:19px;padding:8px 20px}
   }
-  .rodape-frase{background:var(--floresta);color:#fff;text-align:center;font:400 22px/1.25 var(--f-mao);padding:14px 20px}
+  @media (min-width:980px) and (max-height:700px){
+    .ativ-mais{display:none}
+    .capa .texto{font-size:15px}
+  }
   .rodape-frase[hidden]{display:none}
   .rodape-faixa{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:10px}
   .rodape-faixa i:nth-child(1){background:var(--roxo)}.rodape-faixa i:nth-child(2){background:var(--amarelo)}.rodape-faixa i:nth-child(3){background:var(--verde)}.rodape-faixa i:nth-child(4){background:var(--uva)}
@@ -413,26 +445,27 @@
     }
     var jaEnviado = estado.enviado ? '<div class="retomar"><span>Você já fez a inscrição neste aparelho.</span><button type="button" class="link" data-acao="verfim">Ver inscrição</button></div>' : "";
     var ativ = [
-      ["verde","Jardinagem e horta","Plantio"],
-      ["lilas","Ateliê","Argila, pintura e grafismo"],
-      ["sol","Quintal das Construções",""],
-      ["sol","Tanque de areia",""],
-      ["lilas","Culinária","Bolo de cacau saudável"]
-    ].map(function(a, i){
-      return '<li class="etq etq-' + a[0] + '" style="--r:' + [-2,1.5,-1,2,-1.5][i] + 'deg"><b>' + esc(a[1]) + '</b>' + (a[2] ? '<span>' + esc(a[2]) + '</span>' : '') + '</li>';
+      ["jardinagem","Jardinagem e horta","Plantio"],
+      ["atelie","Ateliê","Argila, pintura e grafismo"],
+      ["construcoes","Quintal das Construções","Construir e inventar"],
+      ["areia","Tanque de areia","Cavar, moldar, brincar"],
+      ["culinaria","Culinária","Bolo de cacau saudável"]
+    ].map(function(a){
+      return '<li class="card-ativ"><img src="/assets/atividades/' + a[0] + '.jpg" alt="" loading="lazy"><div><b>' + esc(a[1]) + '</b><span>' + esc(a[2]) + '</span></div></li>';
     }).join("");
     return '<div class="capa">' +
-      '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
       '<div class="col-a">' +
       '<div class="titulo-evento"><h1>Oficina Aberta</h1>' +
       '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
       '<p class="sub">Dia das Crianças e das Infâncias</p></div>' +
       '<p class="mao balao">Uma manhã para brincar, explorar, conhecer e se encantar com a nossa escola!</p>' +
       '<p class="texto">Para crianças de <b class="destaque">0 a 6 anos</b> e suas famílias. Venham conhecer nossa proposta 2027, nossa cultura, nossos espaços e nossa equipe.</p>' +
-      '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul>' + ativ + '</ul>' +
+      '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul class="cards-ativ" id="cardsAtiv">' + ativ + '</ul>' +
+      '<div class="pontos" id="pontos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>' +
       '<p class="ativ-mais">E muitas experiências, encontros e brincadeiras!</p></div>' +
       '</div>' +
       '<aside class="col-b">' +
+      '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
       '<div class="infos">' +
         info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, EVENTO.hora) +
         info(I.pino, "#E8F4DD", "var(--verde-esc)", "Rua Professora Ermelinda Teixeira, 36", "Jardim Benoá, Santana de Parnaíba (SP)") +
@@ -582,7 +615,18 @@
   }
 
   /* comportamento por passo */
+  function ligarCarrossel(){
+    var lista = document.getElementById("cardsAtiv"), pts = document.querySelectorAll("#pontos i");
+    if(!lista || !pts.length) return;
+    lista.addEventListener("scroll", function(){
+      var cards = lista.children, perto = 0, menor = Infinity;
+      for(var i=0;i<cards.length;i++){ var d = Math.abs(cards[i].offsetLeft - lista.offsetLeft - 20 - lista.scrollLeft); if(d < menor){ menor = d; perto = i; } }
+      if(lista.scrollLeft + lista.clientWidth >= lista.scrollWidth - 4) perto = cards.length - 1;
+      pts.forEach(function(p, i){ p.classList.toggle("on", i === perto); });
+    }, {passive:true});
+  }
   function ligar(p){
+    if(p === "capa") ligarCarrossel();
     var foco = palco.querySelector("input,textarea");
     if(foco && window.matchMedia("(hover:hover)").matches) foco.focus();
     else if(foco && p !== "criancas") setTimeout(function(){ try{ foco.focus({preventScroll:true}); }catch(e){} }, 60);
