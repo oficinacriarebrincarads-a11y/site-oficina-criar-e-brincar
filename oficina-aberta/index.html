@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oficina Aberta · Escola Oficina Criar e Brincar</title>
+<meta name="description" content="Oficina Aberta, comemoração do Mês das Crianças. Sábado, 24/10, das 9h às 12h. Confirme a presença da sua família.">
+<meta name="theme-color" content="#8512DF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oficina Aberta · Mês das Crianças">
+<meta property="og:description" content="Sábado, 24/10, das 9h às 12h. Venha conhecer nossa nova escola com sua família. Confirme sua presença.">
+<meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/selo.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  :root{
+    --roxo:#8512DF; --roxo-esc:#6A0EB3; --amarelo:#FCC218; --amarelo-esc:#E9AE00; --verde:#78B645; --verde-esc:#3F8A1F; --uva:#351B64;
+    --lavanda:#F3EBFC; --lavanda-2:#E7D8FA; --sol:#FFF4D1; --linha:#E4D8F3; --cinza:#6B5E80; --erro:#C42E2E;
+    --f-titulo:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+    --f-texto:"Nunito","Segoe UI",system-ui,sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--lavanda);color:var(--uva);font-family:var(--f-texto);font-size:18px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+  button,input,textarea{font:inherit;color:inherit}
+  .app{min-height:100%;display:flex;flex-direction:column}
+
+  /* topo */
+  .topo{position:sticky;top:0;z-index:5;background:var(--lavanda);padding:calc(12px + env(safe-area-inset-top,0px)) 20px 10px}
+  .topo-in{max-width:640px;margin-inline:auto;display:flex;align-items:center;gap:14px}
+  .topo img{height:44px;width:44px;flex:none}
+  .prog{flex:1;display:grid;gap:6px}
+  .prog-barra{height:10px;background:#fff;border-radius:999px;overflow:hidden}
+  .prog-barra i{display:block;height:100%;width:0;background:var(--roxo);border-radius:999px;transition:width .4s ease}
+  .prog small{font:500 13px var(--f-titulo);color:var(--cinza);letter-spacing:.04em}
+  .topo[data-oculto]{visibility:hidden}
+
+  /* palco */
+  main{flex:1;display:flex;padding:8px 20px calc(28px + env(safe-area-inset-bottom,0px))}
+  .passo{width:100%;max-width:640px;margin:12px auto 0;animation:entra .35s ease both}
+  .passo.volta{animation-name:entra-volta}
+  @keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes entra-volta{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.passo{animation:none}.prog-barra i{transition:none}}
+
+  .num{font:600 15px var(--f-titulo);color:var(--roxo);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .num svg{width:18px;height:18px}
+  h1,h2{font-family:var(--f-titulo);font-weight:600;line-height:1.12;margin:0;text-wrap:balance}
+  h2{font-size:clamp(26px,5.4vw,36px)}
+  .ajuda{color:var(--cinza);margin:10px 0 0;font-size:17px}
+  .campo{margin-top:26px}
+
+  input[type=text],input[type=tel],textarea{width:100%;background:transparent;border:0;border-bottom:3px solid var(--lavanda-2);padding:10px 2px;font-size:clamp(22px,4.6vw,28px);font-family:var(--f-titulo);font-weight:500;color:var(--uva);border-radius:0;outline:none;transition:border-color .2s}
+  textarea{font-size:20px;font-family:var(--f-texto);resize:none;min-height:96px;line-height:1.4}
+  input::placeholder,textarea::placeholder{color:#B9A9D3}
+  input:focus,textarea:focus{border-bottom-color:var(--roxo)}
+  .campo.invalido input,.campo.invalido textarea{border-bottom-color:var(--erro)}
+
+  .erro-msg{color:var(--erro);font-weight:700;font-size:16px;margin-top:10px;display:flex;align-items:center;gap:6px}
+  .erro-msg[hidden]{display:none}
+
+  /* ações */
+  .acoes{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:28px}
+  .btn{appearance:none;border:0;cursor:pointer;background:var(--amarelo);color:var(--uva);font:600 20px var(--f-titulo);padding:14px 26px;border-radius:999px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 0 var(--amarelo-esc);transition:transform .1s,box-shadow .1s}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--amarelo-esc)}
+  .btn.roxo{background:var(--roxo);color:#fff;box-shadow:0 4px 0 var(--roxo-esc)}
+  .btn.roxo:active{box-shadow:0 1px 0 var(--roxo-esc)}
+  .btn[disabled]{opacity:.6;cursor:progress}
+  .btn svg{width:20px;height:20px}
+  .dica-enter{font-size:14px;color:var(--cinza)}
+  .dica-enter b{font-weight:800}
+  @media (hover:none){.dica-enter{display:none}}
+  .link{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font:700 17px var(--f-texto);color:var(--roxo);text-decoration:underline;text-underline-offset:3px}
+  :focus-visible{outline:3px solid var(--amarelo);outline-offset:3px;border-radius:8px}
+
+  /* escolhas */
+  .opcoes{display:grid;gap:12px;margin-top:26px;max-width:460px}
+  .opcao{appearance:none;cursor:pointer;text-align:left;display:flex;align-items:center;gap:14px;background:#fff;border:2.5px solid var(--lavanda-2);border-radius:16px;padding:14px 16px;font:600 20px var(--f-titulo);color:var(--uva);transition:border-color .15s,background .15s,transform .1s}
+  .opcao:hover{border-color:var(--roxo)}
+  .opcao:active{transform:scale(.99)}
+  .opcao kbd{flex:none;width:30px;height:30px;display:grid;place-items:center;border:2px solid var(--lavanda-2);border-radius:8px;font:600 14px var(--f-titulo);color:var(--roxo);background:#fff}
+  .opcao[aria-pressed="true"],.opcao[aria-checked="true"]{border-color:var(--roxo);background:var(--lavanda)}
+  .opcao[aria-pressed="true"] kbd,.opcao[aria-checked="true"] kbd{background:var(--roxo);border-color:var(--roxo);color:#fff}
+  .opcao .tique{margin-left:auto;width:22px;height:22px;opacity:0;color:var(--roxo)}
+  .opcao[aria-pressed="true"] .tique,.opcao[aria-checked="true"] .tique{opacity:1}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{appearance:none;cursor:pointer;background:#fff;border:2.5px solid var(--lavanda-2);border-radius:999px;padding:10px 16px;font:600 17px var(--f-titulo);color:var(--uva);display:inline-flex;align-items:center;gap:8px;transition:border-color .15s,background .15s}
+  .chip:hover{border-color:var(--roxo)}
+  .chip[aria-checked="true"]{background:var(--roxo);border-color:var(--roxo);color:#fff}
+  .chip svg{width:16px;height:16px;display:none}
+  .chip[aria-checked="true"] svg{display:block}
+
+  /* crianças */
+  .criancas{display:grid;gap:14px;margin-top:24px}
+  .crianca{background:#fff;border-radius:18px;padding:16px 18px 18px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px 18px;position:relative}
+  .crianca label{font:600 14px var(--f-titulo);color:var(--cinza);letter-spacing:.03em;display:grid;gap:2px}
+  .crianca input{font-size:22px}
+  .crianca .idade{grid-column:1/-1;font-size:15px;font-weight:700;color:var(--verde-esc);min-height:22px}
+  .crianca .idade.aviso{color:var(--cinza)}
+  .crianca .tirar{position:absolute;top:8px;right:8px;appearance:none;border:0;background:none;cursor:pointer;color:var(--cinza);width:32px;height:32px;border-radius:50%;display:grid;place-items:center}
+  .crianca .tirar:hover{background:var(--lavanda)}
+  .crianca .tirar svg{width:18px;height:18px}
+  .crianca.com-tirar label:first-child{padding-right:30px}
+  .mais{justify-self:start;appearance:none;cursor:pointer;background:none;border:2.5px dashed var(--lavanda-2);border-radius:999px;padding:9px 16px;font:600 17px var(--f-titulo);color:var(--roxo);display:inline-flex;align-items:center;gap:8px}
+  .mais:hover{border-color:var(--roxo)}
+  .mais svg{width:18px;height:18px}
+
+  /* contador */
+  .contador{display:flex;align-items:center;gap:18px;margin-top:28px}
+  .contador button{appearance:none;cursor:pointer;width:60px;height:60px;border-radius:50%;border:2.5px solid var(--lavanda-2);background:#fff;color:var(--roxo);display:grid;place-items:center}
+  .contador button:hover{border-color:var(--roxo)}
+  .contador button[disabled]{opacity:.35;cursor:default}
+  .contador button svg{width:24px;height:24px}
+  .contador output{font:600 64px/1 var(--f-titulo);color:var(--roxo);min-width:72px;text-align:center;font-variant-numeric:tabular-nums}
+  .contador-legenda{font-weight:700;color:var(--cinza);margin-top:8px}
+
+  /* boas-vindas */
+  .capa{display:grid;gap:22px}
+  .capa .selo-evento{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--uva);font:600 14px var(--f-titulo);letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+  .capa h1{font-size:clamp(44px,10vw,72px);color:var(--roxo)}
+  .capa h1 span{display:block;font-size:.4em;color:var(--uva);font-weight:500;margin-top:8px}
+  .capa .texto{max-width:52ch}
+  .infos{display:grid;gap:10px;background:#fff;border-radius:20px;padding:18px 20px}
+  .info{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center}
+  .info .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+  .info .ic svg{width:19px;height:19px}
+  .info b{font-family:var(--f-titulo);font-weight:600;font-size:19px;display:block;line-height:1.2}
+  .info span{font-size:15px;color:var(--cinza)}
+  .retomar{background:var(--sol);border-radius:16px;padding:14px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-weight:700}
+
+  /* fim */
+  .fim{text-align:left;display:grid;gap:18px}
+  .fim .casa{width:120px;height:auto}
+  .fim .casa path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .fim .casa .t{stroke:var(--amarelo);stroke-width:8;stroke-dasharray:260;stroke-dashoffset:260;animation:desenha 1s .1s ease forwards}
+  .fim .casa .p{stroke:var(--roxo);stroke-width:8;stroke-dasharray:80;stroke-dashoffset:80;animation:desenha .5s .9s ease forwards}
+  .fim .casa .f{stroke:var(--verde);stroke-width:6;stroke-dasharray:90;stroke-dashoffset:90;animation:desenha .5s 1.2s ease forwards}
+  @keyframes desenha{to{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:reduce){.fim .casa path{animation:none;stroke-dashoffset:0}}
+  .fim h2{font-size:clamp(32px,7vw,46px);color:var(--roxo)}
+  .resumo{background:#fff;border-radius:20px;padding:6px 20px}
+  .resumo div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:12px;padding:12px 0;border-bottom:2px solid var(--lavanda)}
+  .resumo div:last-child{border-bottom:0}
+  .resumo dt{font:600 14px var(--f-titulo);color:var(--cinza);letter-spacing:.03em;margin:0}
+  .resumo dd{margin:0;font-weight:700;word-break:break-word}
+  .botoes-fim{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .botoes-fim a{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:#fff;border:2.5px solid var(--lavanda-2);border-radius:16px;padding:14px 8px;text-decoration:none;color:var(--uva);font:600 15px var(--f-titulo)}
+  .botoes-fim a:hover{border-color:var(--roxo)}
+  .botoes-fim svg{width:26px;height:26px;color:var(--roxo)}
+
+  .rodape-faixa{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:10px}
+  .rodape-faixa i:nth-child(1){background:var(--roxo)}.rodape-faixa i:nth-child(2){background:var(--amarelo)}.rodape-faixa i:nth-child(3){background:var(--verde)}.rodape-faixa i:nth-child(4){background:var(--uva)}
+
+  @media (max-width:520px){
+    body{font-size:17px}
+    .crianca{grid-template-columns:minmax(0,1fr)}
+    .btn{font-size:19px;padding:13px 22px}
+    .contador output{font-size:56px}
+    .botoes-fim{grid-template-columns:minmax(0,1fr)}
+    .botoes-fim a{flex-direction:row;justify-content:flex-start;padding:12px 16px;font-size:16px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topo" id="topo" data-oculto>
+    <div class="topo-in">
+      <img src="/favicon.svg" width="44" height="44" alt="Escola Oficina Criar e Brincar">
+      <div class="prog" aria-hidden="true">
+        <div class="prog-barra"><i id="progBarra"></i></div>
+        <small id="progTexto"></small>
+      </div>
+    </div>
+  </header>
+  <main id="palco" aria-live="polite"></main>
+  <div class="rodape-faixa" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+</div>
+
+<noscript>
+  <p style="padding:20px;max-width:640px;margin:auto">Para confirmar sua presença, use o <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzCDqOI5LcUu63Rtbd2C6qhsXiLFNviWShBS-2B4JatCYeAg/viewform">formulário do Google</a>.</p>
+</noscript>
+
+<script>
+(function(){
+  "use strict";
+
+  var FORM_ID = "1FAIpQLSfzCDqOI5LcUu63Rtbd2C6qhsXiLFNviWShBS-2B4JatCYeAg";
+  var FORM_URL = "https://docs.google.com/forms/d/e/" + FORM_ID + "/formResponse";
+  var FORM_VIEW = "https://docs.google.com/forms/d/e/" + FORM_ID + "/viewform";
+  var ENTRY = {
+    nome:"entry.1639904833", criancas:"entry.932332680", comunidade:"entry.1627190066",
+    escola:"entry.1956205042", matricula:"entry.1754062638", busca:"entry.291300251",
+    whats:"entry.1791549860", acomp:"entry.410155919"
+  };
+  var EVENTO = {
+    data:"Sábado, 24 de outubro", hora:"Das 9h às 12h",
+    endereco:"Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba (SP)",
+    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Oficina Criar e Brincar") +
+      "&dates=20261024T120000Z/20261024T150000Z&location=" + encodeURIComponent("Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba - SP") +
+      "&details=" + encodeURIComponent("Comemoração do Mês das Crianças na nova escola. Manhã com acolhimento, brincadeiras, conversas e café."),
+    mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermiliana Teixeira, Jardim Benoa, Santana de Parnaíba - SP")
+  };
+  var BUSCA_OPCOES = [
+    "Conhecer a escola nova",
+    "Um momento especial em família",
+    "Brincadeiras para as crianças",
+    "Conhecer a proposta pedagógica",
+    "Conversar com as educadoras",
+    "Informações sobre matrícula 2027"
+  ];
+  var CHAVE = "oficina-aberta-2026";
+
+  var I = {
+    seta:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    voltar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
+    casa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 4l9 8M6 10v10h12v-5"/></svg>',
+    mais:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+    menos:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M5 12h14"/></svg>',
+    x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+    relogio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
+    pino:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+    familia:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6.5" r="2.5"/><circle cx="16.5" cy="9.5" r="2"/><path d="M3.5 20v-3.5A4.5 4.5 0 0 1 8 12a4.5 4.5 0 0 1 4.5 4.5V20M13.5 20v-2.5a3 3 0 0 1 6 0V20"/></svg>',
+    zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8.5 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .9A4 4 0 0 1 10.6 11l.9-1-1-2z"/></svg>'
+  };
+
+  var estado = carregar() || novoEstado();
+  var atual = 0;          // índice em passosVisiveis()
+  var direcao = 1;
+  var palco = document.getElementById("palco");
+  var topo = document.getElementById("topo");
+
+  function novoEstado(){
+    return {nome:"", whats:"", criancas:[{nome:"", nasc:""}], comunidade:"", escola:"", semEscola:false,
+            matricula:"", acomp:1, acompTocado:false, busca:[], buscaTxt:"", passo:"", enviado:false};
+  }
+  function salvar(){ try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} }
+  function carregar(){ try{ var s = localStorage.getItem(CHAVE); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
+  function limpar(){ try{ localStorage.removeItem(CHAVE); }catch(e){} }
+
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function primeiroNome(){ return (estado.nome.trim().split(/\s+/)[0] || ""); }
+  function nomesCriancas(){
+    var n = estado.criancas.map(function(c){ return c.nome.trim().split(/\s+/)[0]; }).filter(Boolean);
+    if(!n.length) return "a criança";
+    if(n.length === 1) return n[0];
+    return n.slice(0,-1).join(", ") + " e " + n[n.length-1];
+  }
+  function plural(){ return estado.criancas.filter(function(c){ return c.nome.trim(); }).length > 1; }
+
+  /* datas */
+  function parseData(s){
+    var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s || "");
+    if(!m) return null;
+    var d = +m[1], mo = +m[2], a = +m[3];
+    var dt = new Date(a, mo-1, d);
+    if(dt.getFullYear() !== a || dt.getMonth() !== mo-1 || dt.getDate() !== d) return null;
+    return dt;
+  }
+  function idade(dt){
+    var ref = new Date(2026, 9, 24);
+    var meses = (ref.getFullYear() - dt.getFullYear())*12 + (ref.getMonth() - dt.getMonth()) - (ref.getDate() < dt.getDate() ? 1 : 0);
+    return meses;
+  }
+  function textoIdade(meses){
+    if(meses < 1) return "recém-nascido";
+    var a = Math.floor(meses/12), m = meses % 12;
+    if(a === 0) return m + (m === 1 ? " mês" : " meses");
+    var t = a + (a === 1 ? " ano" : " anos");
+    if(a < 3 && m) t += " e " + m + (m === 1 ? " mês" : " meses");
+    return t;
+  }
+  function mascaraData(v){
+    var d = v.replace(/\D/g, "").slice(0, 8);
+    if(d.length > 4) return d.slice(0,2) + "/" + d.slice(2,4) + "/" + d.slice(4);
+    if(d.length > 2) return d.slice(0,2) + "/" + d.slice(2);
+    return d;
+  }
+  function mascaraTel(v){
+    var d = v.replace(/\D/g, "").slice(0, 11);
+    if(d.length === 0) return "";
+    if(d.length <= 2) return "(" + d;
+    if(d.length <= 6) return "(" + d.slice(0,2) + ") " + d.slice(2);
+    if(d.length <= 10) return "(" + d.slice(0,2) + ") " + d.slice(2,6) + "-" + d.slice(6);
+    return "(" + d.slice(0,2) + ") " + d.slice(2,7) + "-" + d.slice(7);
+  }
+
+  /* passos */
+  var PASSOS = [
+    {id:"capa"},
+    {id:"nome"},
+    {id:"whats"},
+    {id:"criancas"},
+    {id:"comunidade"},
+    {id:"escola", se:function(){ return estado.comunidade !== "Sim"; }},
+    {id:"matricula"},
+    {id:"acomp"},
+    {id:"busca"},
+    {id:"fim"}
+  ];
+  function passosVisiveis(){ return PASSOS.filter(function(p){ return !p.se || p.se(); }); }
+  function perguntas(){ return passosVisiveis().filter(function(p){ return p.id !== "capa" && p.id !== "fim"; }); }
+
+  function ir(i, dir){
+    direcao = dir || 1;
+    var lista = passosVisiveis();
+    atual = Math.max(0, Math.min(i, lista.length-1));
+    estado.passo = lista[atual].id;
+    salvar();
+    render();
+  }
+  function avancar(){ ir(atual+1, 1); }
+  function voltar(){ ir(atual-1, -1); }
+  function irPara(id){ var l = passosVisiveis(); for(var i=0;i<l.length;i++) if(l[i].id === id){ ir(i, 1); return; } }
+
+  function cabecalho(id){
+    var q = perguntas(), n = 0;
+    for(var i=0;i<q.length;i++) if(q[i].id === id){ n = i+1; break; }
+    return '<div class="num">' + I.casa + 'Pergunta ' + n + ' de ' + q.length + '</div>';
+  }
+  function acoes(rotulo, extra){
+    return '<div class="acoes">' +
+      '<button type="button" class="btn" data-acao="ok">' + (rotulo || "Continuar") + ' ' + I.seta + '</button>' +
+      '<span class="dica-enter">ou aperte <b>Enter ↵</b></span>' + (extra || "") +
+      '</div>' +
+      '<div class="acoes" style="margin-top:14px"><button type="button" class="link" data-acao="voltar">' + 'Voltar' + '</button></div>';
+  }
+  function erroHtml(){ return '<p class="erro-msg" id="erro" role="alert" hidden></p>'; }
+  function mostrarErro(msg){
+    var e = document.getElementById("erro");
+    if(!e) return;
+    e.textContent = msg; e.hidden = false;
+    var c = palco.querySelector(".campo"); if(c) c.classList.add("invalido");
+  }
+
+  function atualizarProgresso(){
+    var lista = passosVisiveis(), p = lista[atual].id;
+    var q = perguntas();
+    if(p === "capa" || p === "fim"){ topo.setAttribute("data-oculto",""); return; }
+    topo.removeAttribute("data-oculto");
+    var idx = 0; for(var i=0;i<q.length;i++) if(q[i].id === p) idx = i;
+    var pct = Math.round((idx) / q.length * 100);
+    document.getElementById("progBarra").style.width = Math.max(4, pct) + "%";
+    var faltam = q.length - idx;
+    document.getElementById("progTexto").textContent = faltam === 1 ? "Última pergunta!" : (faltam <= 3 ? "Faltam só " + faltam + " perguntas" : pct + "% concluído");
+  }
+
+  /* render */
+  var R = {};
+
+  R.capa = function(){
+    var retomar = "";
+    var temProgresso = estado.nome && estado.passo && estado.passo !== "capa" && !estado.enviado;
+    if(temProgresso){
+      retomar = '<div class="retomar"><span>Olá de novo, ' + esc(primeiroNome()) + '! Suas respostas estão salvas.</span>' +
+        '<button type="button" class="link" data-acao="retomar">Continuar de onde parei</button></div>';
+    }
+    var jaEnviado = estado.enviado ? '<div class="retomar"><span>Você já confirmou presença neste aparelho.</span><button type="button" class="link" data-acao="verfim">Ver confirmação</button></div>' : "";
+    return '<div class="capa">' +
+      '<span class="selo-evento">' + I.casa.replace('<svg','<svg width="16" height="16"') + 'Mês das Crianças</span>' +
+      '<h1>Oficina Aberta<span>A Oficina Criar e Brincar está de endereço novo!</span></h1>' +
+      '<p class="texto">Queremos que você e sua família sejam nossos convidados. Venha conhecer a nova escola numa manhã cheia de acolhimento, brincadeiras, conversas e um café delicioso.</p>' +
+      '<div class="infos">' +
+        info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, "Comemoração do Mês das Crianças") +
+        info(I.relogio, "var(--sol)", "var(--uva)", EVENTO.hora, "Uma manhã inteira de brincadeiras") +
+        info(I.pino, "#E8F4DD", "var(--verde-esc)", "Jardim Benoa, Santana de Parnaíba", "Rua Professora Ermiliana Teixeira, pertinho do Centro Histórico") +
+        info(I.familia, "var(--lavanda)", "var(--roxo)", "Para famílias com crianças até 6 anos", "Traga quem você quiser da família") +
+      '</div>' + retomar + jaEnviado +
+      '<div class="acoes" style="margin-top:4px"><button type="button" class="btn roxo" data-acao="comecar">Confirmar presença ' + I.seta + '</button>' +
+      '<span class="dica-enter">Leva cerca de 1 minuto</span></div>' +
+      '</div>';
+  };
+  function info(ic, bg, cor, t, s){
+    return '<div class="info"><span class="ic" style="background:' + bg + ';color:' + cor + '">' + ic + '</span><div><b>' + esc(t) + '</b><span>' + esc(s) + '</span></div></div>';
+  }
+
+  R.nome = function(){
+    return cabecalho("nome") +
+      '<h2><label for="f-nome">Para começar, qual é o seu nome?</label></h2>' +
+      '<div class="campo"><input id="f-nome" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Seu nome e sobrenome" value="' + esc(estado.nome) + '"></div>' +
+      erroHtml() + acoes("OK");
+  };
+  R.whats = function(){
+    return cabecalho("whats") +
+      '<h2><label for="f-whats">Prazer, ' + esc(primeiroNome()) + '! Qual é o seu WhatsApp?</label></h2>' +
+      '<p class="ajuda">É por ele que a equipe da escola vai falar com você sobre o evento.</p>' +
+      '<div class="campo"><input id="f-whats" type="tel" inputmode="numeric" autocomplete="tel-national" enterkeyhint="next" placeholder="(11) 99999-9999" value="' + esc(estado.whats) + '"></div>' +
+      erroHtml() + acoes("OK");
+  };
+  R.criancas = function(){
+    var mult = estado.criancas.length > 1;
+    var itens = estado.criancas.map(function(c, i){
+      return '<div class="crianca' + (mult ? ' com-tirar' : '') + '" data-i="' + i + '">' +
+        '<label>Nome da criança<input type="text" data-campo="nome" autocapitalize="words" autocomplete="off" enterkeyhint="next" placeholder="Nome" value="' + esc(c.nome) + '"></label>' +
+        '<label>Nascimento<input type="text" data-campo="nasc" inputmode="numeric" autocomplete="off" enterkeyhint="next" placeholder="dd/mm/aaaa" maxlength="10" value="' + esc(c.nasc) + '"></label>' +
+        '<span class="idade" aria-live="polite"></span>' +
+        (mult ? '<button type="button" class="tirar" data-acao="tirar" data-i="' + i + '" aria-label="Remover criança">' + I.x + '</button>' : '') +
+      '</div>';
+    }).join("");
+    return cabecalho("criancas") +
+      '<h2>Quem são as crianças que vêm com você?</h2>' +
+      '<p class="ajuda">Nome e data de nascimento. Assim preparamos atividades para cada idade.</p>' +
+      '<div class="campo criancas">' + itens +
+      '<button type="button" class="mais" data-acao="addcrianca">' + I.mais + 'Adicionar outra criança</button></div>' +
+      erroHtml() + acoes("OK");
+  };
+  R.comunidade = function(){
+    return cabecalho("comunidade") +
+      '<h2>Vocês já fazem parte da comunidade da Oficina?</h2>' +
+      '<p class="ajuda">Ou seja, ' + (plural() ? 'alguma das crianças já estuda' : esc(nomesCriancas()) + ' já estuda') + ' na Oficina Criar e Brincar?</p>' +
+      escolhas("comunidade", [["Sim","Sim, já somos da Oficina"],["Não","Ainda não"]]) + erroHtml() + rodapeEscolha();
+  };
+  R.escola = function(){
+    return cabecalho("escola") +
+      '<h2><label for="f-escola">' + esc(nomesCriancas()) + (plural() ? ' já frequentam' : ' já frequenta') + ' alguma escola?</label></h2>' +
+      '<p class="ajuda">Se sim, conte qual. Se não, é só tocar em "Ainda não frequenta".</p>' +
+      '<div class="campo"><input id="f-escola" type="text" autocapitalize="words" enterkeyhint="next" placeholder="Nome da escola" value="' + esc(estado.escola) + '"></div>' +
+      erroHtml() + acoes("OK", '<button type="button" class="link" data-acao="semescola">Ainda não frequenta</button>');
+  };
+  R.matricula = function(){
+    var re = estado.comunidade === "Sim";
+    return cabecalho("matricula") +
+      '<h2>Você tem interesse em ' + (re ? 'rematrícula' : 'matrícula') + ' para 2027?</h2>' +
+      '<p class="ajuda">Sem compromisso. Só para a equipe se organizar.</p>' +
+      escolhas("matricula", [["Sim","Sim, tenho interesse"],["Talvez","Talvez, quero saber mais"],["Não","Não, por enquanto"]]) + erroHtml() + rodapeEscolha();
+  };
+  R.acomp = function(){
+    if(!estado.acompTocado){ estado.acomp = Math.max(1, estado.criancas.filter(function(c){ return c.nome.trim(); }).length); salvar(); }
+    var n = estado.acomp;
+    return cabecalho("acomp") +
+      '<h2>Quantas pessoas vão acompanhar você?</h2>' +
+      '<p class="ajuda">Conte adultos e crianças, sem contar você. Já incluímos as crianças que você informou.</p>' +
+      '<div class="contador"><button type="button" data-acao="menos" aria-label="Diminuir"' + (n <= 0 ? ' disabled' : '') + '>' + I.menos + '</button>' +
+      '<output id="f-acomp" aria-live="polite">' + n + '</output>' +
+      '<button type="button" data-acao="maisum" aria-label="Aumentar"' + (n >= 15 ? ' disabled' : '') + '>' + I.mais + '</button></div>' +
+      '<p class="contador-legenda" id="acompLeg">' + legendaAcomp(n) + '</p>' +
+      acoes("OK");
+  };
+  function legendaAcomp(n){
+    var total = n + 1;
+    return n === 0 ? "Só você" : "Vocês serão " + total + " pessoas no total";
+  }
+  R.busca = function(){
+    var chips = BUSCA_OPCOES.map(function(o){
+      var on = estado.busca.indexOf(o) > -1;
+      return '<button type="button" class="chip" role="checkbox" aria-checked="' + on + '" data-acao="chip" data-v="' + esc(o) + '">' + I.ok + esc(o) + '</button>';
+    }).join("");
+    return cabecalho("busca") +
+      '<h2>O que você espera da Oficina Aberta?</h2>' +
+      '<p class="ajuda">Escolha quantas quiser. Se preferir, escreva com suas palavras.</p>' +
+      '<div class="chips" role="group" aria-label="O que você busca">' + chips + '</div>' +
+      '<div class="campo" style="margin-top:22px"><label for="f-busca" class="sr" style="position:absolute;left:-9999px">Outro motivo</label>' +
+      '<textarea id="f-busca" rows="2" placeholder="Outro motivo ou recado para a escola (opcional)">' + esc(estado.buscaTxt) + '</textarea></div>' +
+      erroHtml() +
+      '<div class="acoes"><button type="button" class="btn roxo" data-acao="enviar">Confirmar presença ' + I.ok + '</button></div>' +
+      '<div class="acoes" style="margin-top:14px"><button type="button" class="link" data-acao="voltar">Voltar</button></div>';
+  };
+  R.fim = function(){
+    var linhas = [
+      ["Responsável", estado.nome],
+      ["WhatsApp", estado.whats],
+      [plural() ? "Crianças" : "Criança", textoCriancas()],
+      ["Total de pessoas", String(estado.acomp + 1)]
+    ].map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join("");
+    var url = location.origin + location.pathname;
+    var convite = "Vamos juntos na Oficina Aberta da Escola Oficina Criar e Brincar? Sábado, 24/10, das 9h às 12h, no Jardim Benoa. Confirme aqui: " + url;
+    return '<div class="fim">' +
+      '<svg class="casa" viewBox="0 0 120 100" aria-hidden="true"><path class="t" d="M10 50 L60 10 L110 50 M22 41 V92 H98 V68"/><path class="p" d="M44 84 V56 H62 V84"/><path class="f" d="M72 88 C72 72 80 62 94 58 C96 74 88 86 72 88 Z"/></svg>' +
+      '<h2>Presença confirmada, ' + esc(primeiroNome()) + '!</h2>' +
+      '<p>Que alegria! Esperamos vocês no <b>sábado, 24 de outubro, às 9h</b>. A equipe da escola pode entrar em contato pelo WhatsApp.</p>' +
+      '<dl class="resumo">' + linhas + '</dl>' +
+      '<div class="botoes-fim">' +
+        '<a href="' + EVENTO.gcal + '" target="_blank" rel="noopener">' + I.cal + 'Salvar na agenda</a>' +
+        '<a href="' + EVENTO.mapa + '" target="_blank" rel="noopener">' + I.pino + 'Ver no mapa</a>' +
+        '<a href="https://wa.me/?text=' + encodeURIComponent(convite) + '" target="_blank" rel="noopener">' + I.zap + 'Convidar outra família</a>' +
+      '</div>' +
+      '<div class="acoes" style="margin-top:0"><button type="button" class="link" data-acao="nova">Confirmar outra família neste aparelho</button></div>' +
+      '</div>';
+  };
+
+  function escolhas(campo, ops){
+    var letras = "ABCDE";
+    return '<div class="opcoes" role="radiogroup">' + ops.map(function(o, i){
+      var on = estado[campo] === o[0];
+      return '<button type="button" class="opcao" role="radio" aria-checked="' + on + '" data-acao="escolha" data-campo="' + campo + '" data-v="' + esc(o[0]) + '"><kbd>' + letras[i] + '</kbd>' + esc(o[1]) +
+        '<svg class="tique" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>';
+    }).join("") + '</div>';
+  }
+  function rodapeEscolha(){
+    return '<div class="acoes"><span class="dica-enter">Toque em uma opção ou use as letras do teclado</span></div>' +
+      '<div class="acoes" style="margin-top:14px"><button type="button" class="link" data-acao="voltar">Voltar</button></div>';
+  }
+
+  function textoCriancas(){
+    return estado.criancas.filter(function(c){ return c.nome.trim(); }).map(function(c){
+      var dt = parseData(c.nasc);
+      return c.nome.trim() + " (" + c.nasc + (dt ? ", " + textoIdade(idade(dt)) : "") + ")";
+    }).join("; ");
+  }
+
+  function render(){
+    var p = passosVisiveis()[atual].id;
+    palco.innerHTML = '<section class="passo' + (direcao < 0 ? ' volta' : '') + '" data-passo="' + p + '">' + R[p]() + '</section>';
+    atualizarProgresso();
+    ligar(p);
+    window.scrollTo(0, 0);
+  }
+
+  /* comportamento por passo */
+  function ligar(p){
+    var foco = palco.querySelector("input,textarea");
+    if(foco && window.matchMedia("(hover:hover)").matches) foco.focus();
+    else if(foco && p !== "criancas") setTimeout(function(){ try{ foco.focus({preventScroll:true}); }catch(e){} }, 60);
+
+    if(p === "whats"){
+      var w = document.getElementById("f-whats");
+      w.addEventListener("input", function(){ w.value = mascaraTel(w.value); estado.whats = w.value; salvar(); limparErro(); });
+    }
+    if(p === "nome"){
+      var n = document.getElementById("f-nome");
+      n.addEventListener("input", function(){ estado.nome = n.value; salvar(); limparErro(); });
+    }
+    if(p === "escola"){
+      var e = document.getElementById("f-escola");
+      e.addEventListener("input", function(){ estado.escola = e.value; estado.semEscola = false; salvar(); });
+    }
+    if(p === "busca"){
+      var t = document.getElementById("f-busca");
+      t.addEventListener("input", function(){ estado.buscaTxt = t.value; salvar(); limparErro(); });
+    }
+    if(p === "criancas"){
+      palco.querySelectorAll(".crianca").forEach(function(box){
+        var i = +box.getAttribute("data-i");
+        var nome = box.querySelector('[data-campo="nome"]'), nasc = box.querySelector('[data-campo="nasc"]');
+        nome.addEventListener("input", function(){ estado.criancas[i].nome = nome.value; salvar(); limparErro(); });
+        nasc.addEventListener("input", function(){
+          nasc.value = mascaraData(nasc.value); estado.criancas[i].nasc = nasc.value; salvar(); limparErro(); mostrarIdade(box, i);
+          if(nasc.value.length === 10 && parseData(nasc.value)){
+            var prox = palco.querySelector('.crianca[data-i="' + (i+1) + '"] [data-campo="nome"]');
+            if(prox && !prox.value) prox.focus();
+          }
+        });
+        nome.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ ev.preventDefault(); ev.stopPropagation(); nasc.focus(); } });
+        mostrarIdade(box, i);
+      });
+      var primeiro = palco.querySelector('[data-campo="nome"]');
+      if(primeiro && !primeiro.value && window.matchMedia("(hover:hover)").matches) primeiro.focus();
+    }
+  }
+  function mostrarIdade(box, i){
+    var el = box.querySelector(".idade"), dt = parseData(estado.criancas[i].nasc);
+    el.className = "idade"; el.textContent = "";
+    if(!dt) return;
+    var m = idade(dt);
+    if(m < 0){ el.className = "idade aviso"; el.textContent = "Confira a data: ela está no futuro."; return; }
+    if(m > 12*14){ el.className = "idade aviso"; el.textContent = "Confira o ano de nascimento."; return; }
+    el.textContent = "No dia do evento: " + textoIdade(m);
+    if(m >= 7*12){ el.className = "idade aviso"; el.textContent += ". O evento é pensado para crianças até 6 anos."; }
+  }
+  function limparErro(){
+    var e = document.getElementById("erro"); if(e) e.hidden = true;
+    var c = palco.querySelector(".campo.invalido"); if(c) c.classList.remove("invalido");
+  }
+
+  /* validação */
+  function validar(p){
+    if(p === "nome"){
+      if(estado.nome.trim().length < 2){ mostrarErro("Escreva seu nome para continuar."); return false; }
+    }
+    if(p === "whats"){
+      var d = estado.whats.replace(/\D/g, "");
+      if(d.length < 10){ mostrarErro("Digite o WhatsApp com DDD, por exemplo (11) 99999-9999."); return false; }
+    }
+    if(p === "criancas"){
+      var validas = 0;
+      for(var i=0;i<estado.criancas.length;i++){
+        var c = estado.criancas[i], temNome = c.nome.trim().length > 0, temData = c.nasc.length > 0;
+        if(!temNome && !temData) continue;
+        if(!temNome){ mostrarErro("Falta o nome de uma das crianças."); return false; }
+        var dt = parseData(c.nasc);
+        if(!dt){ mostrarErro("Confira a data de nascimento de " + c.nome.trim().split(/\s+/)[0] + " (dd/mm/aaaa)."); return false; }
+        var m = idade(dt);
+        if(m < 0 || m > 12*14){ mostrarErro("Confira a data de nascimento de " + c.nome.trim().split(/\s+/)[0] + "."); return false; }
+        validas++;
+      }
+      if(!validas){ mostrarErro("Conte pelo menos o nome e o nascimento de uma criança."); return false; }
+      estado.criancas = estado.criancas.filter(function(c){ return c.nome.trim() || c.nasc; });
+    }
+    if(p === "busca"){
+      if(!estado.busca.length && !estado.buscaTxt.trim()){ mostrarErro("Escolha pelo menos uma opção ou escreva com suas palavras."); return false; }
+    }
+    return true;
+  }
+
+  function okPasso(){
+    var p = passosVisiveis()[atual].id;
+    if(p === "capa"){ avancar(); return; }
+    if(p === "comunidade" || p === "matricula"){
+      if(!estado[p]){ mostrarErro("Escolha uma opção para continuar."); return; }
+      avancar(); return;
+    }
+    if(p === "busca"){ enviar(); return; }
+    if(!validar(p)) return;
+    avancar();
+  }
+
+  /* envio */
+  var enviando = false;
+  function enviar(){
+    if(enviando) return;
+    if(!validar("busca")) return;
+    var btn = palco.querySelector('[data-acao="enviar"]');
+    enviando = true; if(btn){ btn.disabled = true; btn.innerHTML = "Enviando..."; }
+    var busca = estado.busca.join("; ");
+    if(estado.buscaTxt.trim()) busca += (busca ? ". " : "") + estado.buscaTxt.trim();
+    var dados = new URLSearchParams();
+    dados.append(ENTRY.nome, estado.nome.trim());
+    dados.append(ENTRY.criancas, textoCriancas());
+    dados.append(ENTRY.comunidade, estado.comunidade);
+    dados.append(ENTRY.escola, estado.comunidade === "Sim" ? "" : (estado.semEscola ? "Ainda não frequenta escola" : estado.escola.trim()));
+    dados.append(ENTRY.matricula, estado.matricula);
+    dados.append(ENTRY.busca, busca);
+    dados.append(ENTRY.whats, estado.whats);
+    dados.append(ENTRY.acomp, String(estado.acomp));
+    fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados})
+      .then(function(){
+        estado.enviado = true; salvar(); enviando = false; irPara("fim");
+      })
+      .catch(function(){
+        enviando = false;
+        if(btn){ btn.disabled = false; btn.innerHTML = "Tentar de novo " + I.seta; }
+        var e = document.getElementById("erro");
+        e.innerHTML = 'Não conseguimos enviar. Confira sua internet e tente de novo. Se continuar, use o <a href="' + FORM_VIEW + '" target="_blank" rel="noopener">formulário do Google</a>.';
+        e.hidden = false;
+      });
+  }
+
+  /* eventos */
+  palco.addEventListener("click", function(ev){
+    var b = ev.target.closest("[data-acao]"); if(!b) return;
+    var a = b.getAttribute("data-acao");
+    if(a === "ok") okPasso();
+    else if(a === "voltar") voltar();
+    else if(a === "comecar"){ if(estado.enviado){ estado = novoEstado(); } avancar(); }
+    else if(a === "retomar") irPara(estado.passo);
+    else if(a === "verfim") irPara("fim");
+    else if(a === "escolha"){
+      var campo = b.getAttribute("data-campo");
+      estado[campo] = b.getAttribute("data-v"); salvar();
+      palco.querySelectorAll('.opcao[data-campo="' + campo + '"]').forEach(function(o){ o.setAttribute("aria-checked", o === b ? "true" : "false"); });
+      limparErro();
+      setTimeout(avancar, 320);
+    }
+    else if(a === "semescola"){ estado.escola = ""; estado.semEscola = true; salvar(); avancar(); }
+    else if(a === "addcrianca"){
+      estado.criancas.push({nome:"", nasc:""}); salvar(); render();
+      var ult = palco.querySelectorAll('[data-campo="nome"]'); ult[ult.length-1].focus();
+    }
+    else if(a === "tirar"){ estado.criancas.splice(+b.getAttribute("data-i"), 1); if(!estado.criancas.length) estado.criancas.push({nome:"",nasc:""}); salvar(); render(); }
+    else if(a === "menos" || a === "maisum"){
+      estado.acomp = Math.max(0, Math.min(15, estado.acomp + (a === "menos" ? -1 : 1))); estado.acompTocado = true; salvar();
+      document.getElementById("f-acomp").textContent = estado.acomp;
+      document.getElementById("acompLeg").textContent = legendaAcomp(estado.acomp);
+      palco.querySelector('[data-acao="menos"]').disabled = estado.acomp <= 0;
+      palco.querySelector('[data-acao="maisum"]').disabled = estado.acomp >= 15;
+    }
+    else if(a === "chip"){
+      var v = b.getAttribute("data-v"), k = estado.busca.indexOf(v);
+      if(k > -1) estado.busca.splice(k, 1); else estado.busca.push(v);
+      b.setAttribute("aria-checked", k > -1 ? "false" : "true"); salvar(); limparErro();
+    }
+    else if(a === "enviar") enviar();
+    else if(a === "nova"){ limpar(); estado = novoEstado(); ir(0, -1); }
+  });
+
+  document.addEventListener("keydown", function(ev){
+    var p = passosVisiveis()[atual].id;
+    if(ev.key === "Enter" && !ev.shiftKey){
+      if(ev.target.tagName === "TEXTAREA") return;
+      if(ev.target.tagName === "BUTTON" || ev.target.tagName === "A") return;
+      if(p === "fim") return;
+      ev.preventDefault(); okPasso(); return;
+    }
+    if((p === "comunidade" || p === "matricula") && !ev.metaKey && !ev.ctrlKey && /^[a-e]$/i.test(ev.key)){
+      var ops = palco.querySelectorAll(".opcao"), idx = ev.key.toUpperCase().charCodeAt(0) - 65;
+      if(ops[idx]) ops[idx].click();
+    }
+  });
+
+  /* início */
+  render();
+})();
+</script>
+</body>
+</html>
