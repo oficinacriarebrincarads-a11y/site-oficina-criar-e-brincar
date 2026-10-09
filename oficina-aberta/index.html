@@ -121,7 +121,8 @@
 
   /* boas-vindas */
   .capa{display:grid;gap:22px}
-  .capa .logo-capa{justify-self:start;background:#fff;border-radius:20px;padding:14px 18px}
+  .capa .logo-capa{justify-self:center;background:#fff;border-radius:20px;padding:14px 18px}
+  .capa .logo-capa{display:grid;place-items:center}
   .capa .logo-capa img{display:block;width:min(100%,240px);height:auto}
   .capa .selo-evento{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--uva);font:600 14px var(--f-titulo);letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
   .capa h1{font-size:clamp(44px,10vw,72px);color:var(--roxo)}
@@ -179,6 +180,25 @@
   .gratis span{font-size:16px;color:#E6D8FA}
   .cta-capa{position:sticky;bottom:0;z-index:4;margin:0 -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lavanda) 70%,rgba(243,235,252,0))}
   .assinatura{font-size:26px;color:var(--roxo);margin:0;transform:rotate(-2deg);justify-self:start}
+
+  /* capa: no celular as colunas somem (display:contents) para o botão fixo funcionar na página toda */
+  .col-a,.col-b{display:contents}
+  @media (min-width:980px){
+    .passo[data-passo="capa"]{max-width:1120px}
+    .capa{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);grid-template-areas:"logo logo" "a b" "assin b";column-gap:56px;row-gap:22px;align-items:start}
+    .capa .logo-capa{grid-area:logo;margin-bottom:12px}
+    .capa .logo-capa img{width:280px}
+    .col-a{grid-area:a;display:grid;gap:22px;align-content:start}
+    .col-b{grid-area:b;display:grid;gap:16px;position:sticky;top:24px;background:#fff;border-radius:24px;padding:24px;box-shadow:0 2px 0 var(--lavanda-2)}
+    .col-b .infos{padding:0;border-radius:0;background:none}
+    .col-b .info b{font-size:20px}
+    .col-b .cta-capa{position:static;margin:4px 0 0;padding:0;background:none;display:grid;gap:10px;justify-items:stretch}
+    .col-b .cta-capa .btn{justify-content:center}
+    .col-b .cta-capa .dica-enter{text-align:center;display:block}
+    .assinatura{grid-area:assin}
+    .titulo-evento h1{font-size:84px}
+    .ativ .etq b{font-size:24px}
+  }
   .rodape-frase{background:var(--floresta);color:#fff;text-align:center;font:400 22px/1.25 var(--f-mao);padding:14px 20px}
   .rodape-frase[hidden]{display:none}
   .rodape-faixa{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:10px}
@@ -403,6 +423,7 @@
     }).join("");
     return '<div class="capa">' +
       '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
+      '<div class="col-a">' +
       '<div class="titulo-evento"><h1>Oficina Aberta</h1>' +
       '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
       '<p class="sub">Dia das Crianças e das Infâncias</p></div>' +
@@ -410,6 +431,8 @@
       '<p class="texto">Para crianças de <b class="destaque">0 a 6 anos</b> e suas famílias. Venham conhecer nossa proposta 2027, nossa cultura, nossos espaços e nossa equipe.</p>' +
       '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul>' + ativ + '</ul>' +
       '<p class="ativ-mais">E muitas experiências, encontros e brincadeiras!</p></div>' +
+      '</div>' +
+      '<aside class="col-b">' +
       '<div class="infos">' +
         info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, EVENTO.hora) +
         info(I.pino, "#E8F4DD", "var(--verde-esc)", "Rua Professora Ermelinda Teixeira, 36", "Jardim Benoá, Santana de Parnaíba (SP)") +
@@ -418,6 +441,7 @@
       retomar + jaEnviado +
       '<div class="acoes cta-capa"><button type="button" class="btn roxo" data-acao="comecar">Garantir nossa vaga ' + I.seta + '</button>' +
       '<span class="dica-enter">Leva cerca de 1 minuto</span></div>' +
+      '</aside>' +
       '<p class="mao assinatura">Esperamos vocês!</p>' +
       '</div>';
   };
