@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escola Oficina Criar e Brincar</title>
+<meta name="description" content="Escola de educação infantil Oficina Criar e Brincar. Uma educação para a vida! Nosso novo site está em construção.">
+<meta name="theme-color" content="#8512DF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Escola Oficina Criar e Brincar">
+<meta property="og:description" content="Uma educação para a vida! Nosso novo site está em construção.">
+<meta property="og:url" content="https://oficinacriarebrincar.com.br/">
+<meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/selo.jpg">
+<link rel="canonical" href="https://oficinacriarebrincar.com.br/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap">
+<style>
+  :root{
+    --roxo:#8512DF; --amarelo:#FCC218; --verde:#78B645; --uva:#351B64; --lavanda:#F3EBFC;
+    --f-titulo:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+    --f-texto:"Nunito","Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:#fff;color:var(--uva);font-family:var(--f-texto);font-size:18px;line-height:1.6;display:flex;flex-direction:column}
+  main{flex:1;display:grid;place-items:center;padding:clamp(32px,6vw,72px) 20px}
+  .bloco{width:min(100%,1000px);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,6vw,80px);align-items:center}
+  .logo img{display:block;width:min(100%,320px);height:auto;margin-inline:auto}
+  .selo-obra{display:inline-flex;align-items:center;gap:10px;background:var(--amarelo);color:var(--uva);font:600 15px var(--f-titulo);letter-spacing:.06em;text-transform:uppercase;padding:6px 16px 6px 10px;border-radius:999px}
+  .selo-obra svg{width:22px;height:22px}
+  h1{font:600 clamp(36px,5.6vw,60px)/1.08 var(--f-titulo);color:var(--roxo);margin:20px 0 18px;text-wrap:balance}
+  p{margin:0;max-width:46ch}
+  p + p{margin-top:12px}
+  .slogan{font:600 clamp(20px,2.4vw,24px) var(--f-titulo);color:var(--verde);margin-top:28px}
+  .casa-obra{display:block;width:120px;height:auto;margin-top:28px}
+  .casa-obra path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .casa-obra .traco{stroke:var(--amarelo);stroke-width:7;stroke-dasharray:6 14;animation:anda 1.6s linear infinite}
+  @keyframes anda{to{stroke-dashoffset:-40}}
+  @media (prefers-reduced-motion:reduce){.casa-obra .traco{animation:none}}
+  footer{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:18px}
+  footer i:nth-child(1){background:var(--roxo)}footer i:nth-child(2){background:var(--amarelo)}footer i:nth-child(3){background:var(--verde)}footer i:nth-child(4){background:var(--uva)}
+  @media (max-width:720px){
+    .bloco{grid-template-columns:minmax(0,1fr);text-align:center}
+    .logo img{width:min(64%,240px)}
+    p{margin-inline:auto}
+    .casa-obra{margin-inline:auto}
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="bloco">
+    <div class="logo"><img src="/assets/logo-vertical.jpg" width="279" height="459" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>
+    <div>
+      <span class="selo-obra">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 L12 4 L21 12 M6 10 V20 H18 V15" fill="none" stroke="#351B64" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Site em construção
+      </span>
+      <h1>Estamos montando nossa casa nova na internet</h1>
+      <p>Assim como as crianças na oficina, estamos criando com calma e com carinho. Em breve, você vai encontrar aqui nossa proposta, nossas turmas e o dia a dia da escola.</p>
+      <p>Volte logo para ver como ficou!</p>
+      <svg class="casa-obra" viewBox="0 0 120 90" aria-hidden="true"><path class="traco" d="M10 46 L60 8 L110 46 M22 37 V82 H98 V62"/></svg>
+    </div>
+  </div>
+</main>
+<footer aria-hidden="true"><i></i><i></i><i></i><i></i></footer>
+</body>
+</html>
