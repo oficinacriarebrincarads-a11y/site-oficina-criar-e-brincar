@@ -295,6 +295,13 @@
     "Conhecer a proposta 2027"
   ];
   var CHAVE = "oficina-aberta-2026";
+  // Planilha de respostas em tempo real (Apps Script da conta da escola)
+  var SALVAR_URL = "https://script.google.com/macros/s/AKfycbwvwbzQbW3jnKN8D1ISUmR1yhbIYimpSXzAaDHZX08zw26_pgbWDn0jTKwoFdk_IyMw/exec";
+  var ETAPAS = {capa:"Abertura", nome:"1. Nome", whats:"2. WhatsApp", criancas:"3. Crianças", comunidade:"4. Comunidade",
+                escola:"5. Escola atual", matricula:"6. Matrícula", acomp:"7. Acompanhantes", busca:"8. O que busca", fim:"Concluído"};
+  // No computador (localhost) nada vai para as planilhas, a menos que a URL tenha ?planilha=1
+  var LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var ENVIAR_DE_VERDADE = !LOCAL || /[?&]planilha=1/.test(location.search);
 
   var I = {
     seta:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -312,16 +319,78 @@
   };
 
   var estado = carregar() || novoEstado();
+  if(!estado.id) estado.id = novoId();
+  if(!estado.origem) estado.origem = origemVisita();
+  if(!estado.campanha) estado.campanha = campanhaVisita();
   var atual = 0;          // índice em passosVisiveis()
   var direcao = 1;
   var palco = document.getElementById("palco");
   var topo = document.getElementById("topo");
 
+  function novoId(){
+    try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
+    return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+  }
+  function origemVisita(){
+    var q = new URLSearchParams(location.search), partes = [];
+    ["utm_source","utm_medium","utm_campaign"].forEach(function(k){ if(q.get(k)) partes.push(q.get(k)); });
+    if(partes.length) return partes.join(" / ");
+    try{ if(document.referrer){ var h = new URL(document.referrer).hostname.replace(/^www\./, ""); if(h !== location.hostname) return h; } }catch(e){}
+    return "direto";
+  }
+  // Parâmetros de campanha do primeiro acesso (first touch)
+  function campanhaVisita(){
+    var q = new URLSearchParams(location.search), c = {};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid","fbclid"].forEach(function(k){ c[k] = (q.get(k) || "").slice(0, 300); });
+    c.pagina_entrada = location.href.slice(0, 1500);
+    var ref = "";
+    try{ if(document.referrer){ var h = new URL(document.referrer).hostname.replace(/^www\./, ""); if(h !== location.hostname) ref = h; } }catch(e){}
+    c.referencia = ref;
+    return c;
+  }
   function novoEstado(){
-    return {nome:"", whats:"", criancas:[{nome:"", nasc:""}], comunidade:"", escola:"", semEscola:false,
+    return {id:novoId(), origem:origemVisita(), campanha:campanhaVisita(), nome:"", whats:"", criancas:[{nome:"", nasc:""}], comunidade:"", escola:"", semEscola:false,
             matricula:"", acomp:1, acompTocado:false, busca:[], buscaTxt:"", passo:"", enviado:false};
   }
-  function salvar(){ try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} }
+  function salvar(){ try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} agendarRemoto(); }
+
+  /* salvamento em tempo real na planilha: começa quando a pessoa digita o nome */
+  var timerRemoto = null, ultimoEnviado = "";
+  function dadosRemotos(status){
+    var p = estado.passo || "capa";
+    var chegouAcomp = estado.acompTocado || ["acomp","busca","fim"].indexOf(p) > -1;
+    var busca = estado.busca.join("; ");
+    if(estado.buscaTxt.trim()) busca += (busca ? ". " : "") + estado.buscaTxt.trim();
+    return {
+      id: estado.id, status: status || (estado.enviado ? "concluído" : "em andamento"),
+      ultima_etapa: status === "concluído" ? ETAPAS.fim : (ETAPAS[p] || p),
+      nome: estado.nome.trim(), whatsapp: estado.whats, criancas: textoCriancas(),
+      comunidade: estado.comunidade,
+      escola: estado.comunidade === "Sim" ? "" : (estado.semEscola ? "Ainda não frequenta escola" : estado.escola.trim()),
+      matricula: estado.matricula, acompanhantes: chegouAcomp ? String(estado.acomp) : "",
+      o_que_busca: busca, origem: estado.origem || "",
+      dispositivo: window.matchMedia("(pointer:coarse)").matches ? "celular" : "computador",
+      utm_source: estado.campanha.utm_source, utm_medium: estado.campanha.utm_medium, utm_campaign: estado.campanha.utm_campaign,
+      utm_content: estado.campanha.utm_content, utm_term: estado.campanha.utm_term,
+      gclid: estado.campanha.gclid, fbclid: estado.campanha.fbclid,
+      pagina_entrada: estado.campanha.pagina_entrada, referencia: estado.campanha.referencia
+    };
+  }
+  function enviarRemoto(status, beacon){
+    clearTimeout(timerRemoto);
+    if(!estado.nome || !estado.nome.trim()) return;
+    var corpo = JSON.stringify(dadosRemotos(status));
+    if(corpo === ultimoEnviado) return;
+    ultimoEnviado = corpo;
+    if(!ENVIAR_DE_VERDADE){ console.log("Planilha (simulado):", corpo); return; }
+    try{
+      if(beacon && navigator.sendBeacon && navigator.sendBeacon(SALVAR_URL, new Blob([corpo], {type:"text/plain;charset=utf-8"}))) return;
+      fetch(SALVAR_URL, {method:"POST", mode:"no-cors", keepalive:true, headers:{"Content-Type":"text/plain;charset=utf-8"}, body:corpo}).catch(function(){ ultimoEnviado = ""; });
+    }catch(e){ ultimoEnviado = ""; }
+  }
+  function agendarRemoto(){ clearTimeout(timerRemoto); timerRemoto = setTimeout(function(){ enviarRemoto(); }, 1200); }
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "hidden") enviarRemoto(null, true); });
+  window.addEventListener("pagehide", function(){ enviarRemoto(null, true); });
   function carregar(){ try{ var s = localStorage.getItem(CHAVE); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
   function limpar(){ try{ localStorage.removeItem(CHAVE); }catch(e){} }
 
@@ -485,6 +554,7 @@
   R.nome = function(){
     return cabecalho("nome") +
       '<h2><label for="f-nome">Para começar, qual é o seu nome?</label></h2>' +
+      '<p class="ajuda">Suas respostas são salvas enquanto você preenche, para a equipe da escola falar com você sobre o evento.</p>' +
       '<div class="campo"><input id="f-nome" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Seu nome e sobrenome" value="' + esc(estado.nome) + '"></div>' +
       erroHtml() + acoes("OK");
   };
@@ -742,10 +812,10 @@
     dados.append(ENTRY.whats, estado.whats);
     dados.append(ENTRY.acomp, String(estado.acomp));
     // No computador (localhost) o envio é só simulado, para não criar respostas de teste na planilha
-    var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-    (local ? new Promise(function(r){ console.log("Envio simulado:", dados.toString()); setTimeout(r, 600); }) : fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados}))
+    enviarRemoto("concluído");
+    (!ENVIAR_DE_VERDADE ? new Promise(function(r){ console.log("Envio simulado:", dados.toString()); setTimeout(r, 600); }) : fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados}))
       .then(function(){
-        estado.enviado = true; salvar(); enviando = false; irPara("fim");
+        estado.enviado = true; try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} enviando = false; irPara("fim");
       })
       .catch(function(){
         enviando = false;
