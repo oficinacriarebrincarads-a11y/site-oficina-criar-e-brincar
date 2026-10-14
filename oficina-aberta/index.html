@@ -2,6 +2,17 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJVG3PC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Testes no computador (localhost) não entram nos relatórios
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window['ga-disable-G-QKJVG3PC5E'] = true;
+  gtag('js', new Date());
+
+  gtag('config', 'G-QKJVG3PC5E');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Oficina Aberta · Dia das Crianças e das Infâncias</title>
 <meta name="description" content="Oficina Aberta: Dia das Crianças e das Infâncias na Escola Oficina Criar e Brincar. Sábado, 24/10, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas.">
@@ -468,6 +479,9 @@
   function passosVisiveis(){ return PASSOS.filter(function(p){ return !p.se || p.se(); }); }
   function perguntas(){ return passosVisiveis().filter(function(p){ return p.id !== "capa" && p.id !== "fim"; }); }
 
+  /* eventos do GA4 para o funil (só o nome da etapa, nunca dados pessoais) */
+  function ga(evento, params){ try{ if(typeof gtag === "function") gtag("event", evento, params || {}); }catch(e){} }
+  var etapasVistas = {};
   function ir(i, dir){
     direcao = dir || 1;
     var lista = passosVisiveis();
@@ -475,6 +489,8 @@
     estado.passo = lista[atual].id;
     salvar();
     render();
+    var p = estado.passo, q = perguntas().map(function(x){ return x.id; }).indexOf(p);
+    if(q > -1 && !etapasVistas[p]){ etapasVistas[p] = 1; ga("form_step", {step_name: ETAPAS[p] || p, step_number: q + 1}); }
   }
   function avancar(){ ir(atual+1, 1); }
   function voltar(){ ir(atual-1, -1); }
@@ -666,9 +682,9 @@
       '<button type="button" class="btn roxo btn-pdf" data-acao="pdf">' + I.doc + 'Salvar comprovante em PDF</button>' +
       '<p class="erro-msg" id="erroPdf" role="alert" hidden></p>' +
       '<div class="botoes-fim">' +
-        '<a href="' + EVENTO.gcal + '" target="_blank" rel="noopener">' + I.cal + 'Salvar na agenda</a>' +
-        '<a href="' + EVENTO.mapa + '" target="_blank" rel="noopener">' + I.pino + 'Ver no mapa</a>' +
-        '<a href="https://wa.me/?text=' + encodeURIComponent(convite) + '" target="_blank" rel="noopener">' + I.zap + 'Convidar outra família</a>' +
+        '<a href="' + EVENTO.gcal + '" target="_blank" rel="noopener" data-ga="salvar_agenda">' + I.cal + 'Salvar na agenda</a>' +
+        '<a href="' + EVENTO.mapa + '" target="_blank" rel="noopener" data-ga="ver_mapa">' + I.pino + 'Ver no mapa</a>' +
+        '<a href="https://wa.me/?text=' + encodeURIComponent(convite) + '" target="_blank" rel="noopener" data-ga="convidar_familia">' + I.zap + 'Convidar outra família</a>' +
       '</div>' +
       '<div class="acoes" style="margin-top:0"><button type="button" class="link" data-acao="nova">Inscrever outra família neste aparelho</button></div>' +
       '</div>';
@@ -865,6 +881,7 @@
       doc.setFont("helvetica","normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, cinza);
       doc.text("Escola Oficina Criar e Brincar · oficinacriarebrincar.com.br", M, 195);
       doc.setFillColor(252,194,24); doc.rect(0, 204, W * .5, 6, "F"); doc.setFillColor(120,182,69); doc.rect(W * .5, 204, W * .25, 6, "F"); doc.setFillColor(53,27,100); doc.rect(W * .75, 204, W * .25, 6, "F");
+      ga("comprovante_pdf", {form_name: "oficina_aberta"});
       var nomeArq = "inscricao-oficina-aberta-" + (primeiroNome() || "familia").toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, "") + ".pdf";
       var arquivo = null;
       try{ arquivo = new File([doc.output("blob")], nomeArq, {type:"application/pdf"}); }catch(e){}
@@ -902,6 +919,7 @@
     enviarRemoto("concluído");
     (!ENVIAR_DE_VERDADE ? new Promise(function(r){ console.log("Envio simulado:", dados.toString()); setTimeout(r, 600); }) : fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados}))
       .then(function(){
+        ga("generate_lead", {form_name: "oficina_aberta", acompanhantes: estado.acomp, matricula_2027: estado.matricula});
         estado.enviado = true; try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} enviando = false; irPara("fim");
       })
       .catch(function(){
@@ -915,11 +933,12 @@
 
   /* eventos */
   palco.addEventListener("click", function(ev){
+    var lk = ev.target.closest("[data-ga]"); if(lk) ga(lk.getAttribute("data-ga"), {form_name: "oficina_aberta"});
     var b = ev.target.closest("[data-acao]"); if(!b) return;
     var a = b.getAttribute("data-acao");
     if(a === "ok") okPasso();
     else if(a === "voltar") voltar();
-    else if(a === "comecar"){ if(estado.enviado){ estado = novoEstado(); } avancar(); }
+    else if(a === "comecar"){ if(estado.enviado){ estado = novoEstado(); } ga("form_start", {form_name: "oficina_aberta"}); avancar(); }
     else if(a === "retomar") irPara(estado.passo);
     else if(a === "verfim") irPara("fim");
     else if(a === "escolha"){
