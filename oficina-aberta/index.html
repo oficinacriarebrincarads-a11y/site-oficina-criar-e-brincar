@@ -151,6 +151,14 @@
   .resumo div:last-child{border-bottom:0}
   .resumo dt{font:600 14px var(--f-titulo);color:var(--cinza);letter-spacing:.03em;margin:0}
   .resumo dd{margin:0;font-weight:700;word-break:break-word}
+  .local-fim{display:grid;gap:12px;background:#fff;border-radius:20px;padding:16px 20px}
+  .local-fim div{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start}
+  .local-fim .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--lavanda);color:var(--roxo)}
+  .local-fim .ic svg{width:19px;height:19px}
+  .local-fim p{margin:0;display:grid}
+  .local-fim b{font:600 18px/1.25 var(--f-titulo)}
+  .local-fim span{font-size:15px;color:var(--cinza)}
+  .btn-pdf{justify-content:center;width:100%}
   .botoes-fim{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
   .botoes-fim a{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:#fff;border:2.5px solid var(--lavanda-2);border-radius:16px;padding:14px 8px;text-decoration:none;color:var(--uva);font:600 15px var(--f-titulo)}
   .botoes-fim a:hover{border-color:var(--roxo)}
@@ -280,11 +288,13 @@
   };
   var EVENTO = {
     data:"Sábado, 24 de outubro", hora:"Das 9h às 12h",
-    endereco:"Rua Professora Ermelinda Teixeira, 36, Jardim Benoá, Santana de Parnaíba (SP)",
+    endereco:"Rua Professora Ermelinda Teixeira, 36",
+    bairro:"Jardim Benoá, Santana de Parnaíba (SP)",
+    cep:"CEP 06502-055",
     gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Dia das Crianças e das Infâncias") +
-      "&dates=20261024T120000Z/20261024T150000Z&location=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP") +
+      "&dates=20261024T120000Z/20261024T150000Z&location=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP, 06502-055") +
       "&details=" + encodeURIComponent("Escola Oficina Criar e Brincar. Jardinagem e horta, ateliê (argila, pintura e grafismo), Quintal das Construções, tanque de areia e culinária."),
-    mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36, Jardim Benoá, Santana de Parnaíba - SP")
+    mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP, 06502-055")
   };
   var BUSCA_OPCOES = [
     "Conhecer a escola nova",
@@ -315,6 +325,7 @@
     relogio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
     pino:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     familia:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6.5" r="2.5"/><circle cx="16.5" cy="9.5" r="2"/><path d="M3.5 20v-3.5A4.5 4.5 0 0 1 8 12a4.5 4.5 0 0 1 4.5 4.5V20M13.5 20v-2.5a3 3 0 0 1 6 0V20"/></svg>',
+    doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3 3 3-3"/></svg>',
     zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8.5 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .9A4 4 0 0 1 10.6 11l.9-1-1-2z"/></svg>'
   };
 
@@ -537,7 +548,7 @@
       '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
       '<div class="infos">' +
         info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, EVENTO.hora) +
-        info(I.pino, "#E8F4DD", "var(--verde-esc)", "Rua Professora Ermelinda Teixeira, 36", "Jardim Benoá, Santana de Parnaíba (SP)") +
+        info(I.pino, "#E8F4DD", "var(--verde-esc)", EVENTO.endereco, EVENTO.bairro + " · " + EVENTO.cep) +
       '</div>' +
       '<div class="gratis"><b>Entrada gratuita</b><span>As vagas são limitadas. Garanta a participação da sua família preenchendo a inscrição.</span></div>' +
       retomar + jaEnviado +
@@ -640,13 +651,20 @@
       [plural() ? "Crianças" : "Criança", textoCriancas()],
       ["Total de pessoas", String(estado.acomp + 1)]
     ].map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join("");
+    var local = '<div class="local-fim">' +
+      '<div><span class="ic">' + I.cal + '</span><p><b>Sábado, 24 de outubro</b><span>Das 9h às 12h</span></p></div>' +
+      '<div><span class="ic">' + I.pino + '</span><p><b>' + esc(EVENTO.endereco) + '</b><span>' + esc(EVENTO.bairro) + '<br>' + esc(EVENTO.cep) + '</span></p></div>' +
+      '</div>';
     var url = location.origin + location.pathname;
     var convite = "Vamos juntos na Oficina Aberta, o Dia das Crianças e das Infâncias da Escola Oficina Criar e Brincar? Sábado, 24/10, das 9h às 12h, no Jardim Benoá. Para crianças de 0 a 6 anos. Entrada gratuita, vagas limitadas. Inscreva-se aqui: " + url;
     return '<div class="fim">' +
       '<svg class="casa" viewBox="0 0 120 100" aria-hidden="true"><path class="t" d="M10 50 L60 10 L110 50 M22 41 V92 H98 V68"/><path class="p" d="M44 84 V56 H62 V84"/><path class="f" d="M72 88 C72 72 80 62 94 58 C96 74 88 86 72 88 Z"/></svg>' +
       '<h2>Inscrição feita, ' + esc(primeiroNome()) + '!</h2>' +
-      '<p>Que alegria! Esperamos vocês no <b>sábado, 24 de outubro, das 9h às 12h</b>, na Rua Professora Ermelinda Teixeira, 36. A equipe da escola pode entrar em contato pelo WhatsApp.</p>' +
+      '<p>Que alegria! Esperamos vocês na Oficina Aberta. A equipe da escola pode entrar em contato pelo WhatsApp.</p>' +
+      local +
       '<dl class="resumo">' + linhas + '</dl>' +
+      '<button type="button" class="btn roxo btn-pdf" data-acao="pdf">' + I.doc + 'Salvar comprovante em PDF</button>' +
+      '<p class="erro-msg" id="erroPdf" role="alert" hidden></p>' +
       '<div class="botoes-fim">' +
         '<a href="' + EVENTO.gcal + '" target="_blank" rel="noopener">' + I.cal + 'Salvar na agenda</a>' +
         '<a href="' + EVENTO.mapa + '" target="_blank" rel="noopener">' + I.pino + 'Ver no mapa</a>' +
@@ -793,6 +811,75 @@
     avancar();
   }
 
+  /* comprovante em PDF (jsPDF carregado só quando a pessoa pede) */
+  function carregarJsPDF(){
+    if(window.jspdf) return Promise.resolve(window.jspdf.jsPDF);
+    return new Promise(function(ok, falha){
+      var sc = document.createElement("script");
+      sc.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+      sc.onload = function(){ ok(window.jspdf.jsPDF); };
+      sc.onerror = falha;
+      document.head.appendChild(sc);
+    });
+  }
+  function imagemDataUrl(src){
+    return fetch(src).then(function(r){ return r.blob(); }).then(function(b){
+      return new Promise(function(ok){ var fr = new FileReader(); fr.onload = function(){ ok(fr.result); }; fr.readAsDataURL(b); });
+    }).catch(function(){ return null; });
+  }
+  function gerarComprovante(){
+    var btn = palco.querySelector('[data-acao="pdf"]'), erro = document.getElementById("erroPdf");
+    var rotulo = btn.innerHTML; btn.disabled = true; btn.textContent = "Gerando comprovante..."; erro.hidden = true;
+    Promise.all([carregarJsPDF(), imagemDataUrl("/assets/logo-horizontal.jpg")]).then(function(r){
+      var JsPDF = r[0], logo = r[1];
+      var doc = new JsPDF({unit:"mm", format:"a5"}), W = 148, M = 14, y = 0;
+      var roxo = [133,18,223], uva = [53,27,100], cinza = [107,94,128], verde = [47,98,39];
+      doc.setFillColor(133,18,223); doc.rect(0, 0, W, 6, "F");
+      if(logo) doc.addImage(logo, "JPEG", M, 12, 46, 24.3);
+      doc.setTextColor.apply(doc, cinza); doc.setFont("helvetica","normal"); doc.setFontSize(8);
+      doc.text("Código da inscrição", W - M, 16, {align:"right"});
+      doc.setTextColor.apply(doc, uva); doc.setFont("helvetica","bold"); doc.setFontSize(11);
+      doc.text(String(estado.id).slice(0, 8).toUpperCase(), W - M, 22, {align:"right"});
+      y = 48;
+      doc.setTextColor.apply(doc, roxo); doc.setFontSize(22); doc.text("Inscrição confirmada", M, y);
+      y += 8; doc.setTextColor.apply(doc, verde); doc.setFontSize(12); doc.text("Oficina Aberta · Dia das Crianças e das Infâncias", M, y);
+      y += 9;
+      doc.setFillColor(243,235,252); doc.roundedRect(M, y, W - 2*M, 34, 3, 3, "F");
+      doc.setTextColor.apply(doc, uva); doc.setFont("helvetica","bold"); doc.setFontSize(11);
+      doc.text("Sábado, 24 de outubro de 2026 · das 9h às 12h", M + 5, y + 8);
+      doc.text(EVENTO.endereco, M + 5, y + 16);
+      doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor.apply(doc, cinza);
+      doc.text(EVENTO.bairro + " · " + EVENTO.cep, M + 5, y + 22);
+      doc.setTextColor.apply(doc, roxo); doc.textWithLink("Ver no mapa", M + 5, y + 29, {url: EVENTO.mapa});
+      y += 44;
+      var linhas = [["Responsável", estado.nome.trim()], ["WhatsApp", estado.whats], [plural() ? "Crianças" : "Criança", textoCriancas()], ["Total de pessoas", String(estado.acomp + 1)]];
+      linhas.forEach(function(l){
+        doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.setTextColor.apply(doc, cinza); doc.text(l[0].toUpperCase(), M, y);
+        doc.setFont("helvetica","bold"); doc.setFontSize(11); doc.setTextColor.apply(doc, uva);
+        var t = doc.splitTextToSize(l[1] || "-", W - 2*M); doc.text(t, M, y + 6);
+        y += 6 + t.length * 5 + 5;
+      });
+      doc.setDrawColor(231,216,250); doc.setLineWidth(0.6); doc.line(M, 182, W - M, 182);
+      doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor.apply(doc, roxo);
+      doc.text("Entrada gratuita · Esperamos vocês!", M, 189);
+      doc.setFont("helvetica","normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, cinza);
+      doc.text("Escola Oficina Criar e Brincar · oficinacriarebrincar.com.br", M, 195);
+      doc.setFillColor(252,194,24); doc.rect(0, 204, W * .5, 6, "F"); doc.setFillColor(120,182,69); doc.rect(W * .5, 204, W * .25, 6, "F"); doc.setFillColor(53,27,100); doc.rect(W * .75, 204, W * .25, 6, "F");
+      var nomeArq = "inscricao-oficina-aberta-" + (primeiroNome() || "familia").toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, "") + ".pdf";
+      var arquivo = null;
+      try{ arquivo = new File([doc.output("blob")], nomeArq, {type:"application/pdf"}); }catch(e){}
+      var podeCompartilhar = arquivo && navigator.canShare && navigator.canShare({files:[arquivo]}) && window.matchMedia("(pointer:coarse)").matches;
+      if(podeCompartilhar){
+        return navigator.share({files:[arquivo], title:"Inscrição Oficina Aberta", text:"Minha inscrição na Oficina Aberta, sábado 24/10, das 9h às 12h."})
+          .catch(function(e){ if(e && e.name !== "AbortError") doc.save(nomeArq); });
+      }
+      doc.save(nomeArq);
+    }).catch(function(){
+      erro.textContent = "Não conseguimos gerar o comprovante agora. Tire um print desta tela para guardar sua inscrição.";
+      erro.hidden = false;
+    }).then(function(){ btn.disabled = false; btn.innerHTML = rotulo; });
+  }
+
   /* envio */
   var enviando = false;
   function enviar(){
@@ -861,6 +948,7 @@
       b.setAttribute("aria-checked", k > -1 ? "false" : "true"); salvar(); limparErro();
     }
     else if(a === "enviar") enviar();
+    else if(a === "pdf") gerarComprovante();
     else if(a === "nova"){ limpar(); estado = novoEstado(); ir(0, -1); }
   });
 
