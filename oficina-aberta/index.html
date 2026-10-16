@@ -13,6 +13,21 @@
 
   gtag('config', 'G-QKJVG3PC5E');
 </script>
+<!-- Meta Pixel -->
+<script>
+  (function(){
+    var PIXEL_ID = '611972390791603';
+    // Testes no computador (localhost) não disparam o pixel
+    if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || !/^\d+$/.test(PIXEL_ID)) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Oficina Aberta · Dia das Crianças e das Infâncias</title>
 <meta name="description" content="Oficina Aberta: Dia das Crianças e das Infâncias na Escola Oficina Criar e Brincar. Sábado, 24/10, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas.">
@@ -480,7 +495,10 @@
   function perguntas(){ return passosVisiveis().filter(function(p){ return p.id !== "capa" && p.id !== "fim"; }); }
 
   /* eventos do GA4 para o funil (só o nome da etapa, nunca dados pessoais) */
-  function ga(evento, params){ try{ if(typeof gtag === "function") gtag("event", evento, params || {}); }catch(e){} }
+  function ga(evento, params){ try{ if(typeof gtag === "function") gtag("event", evento, params || {}); }catch(e){} meta(evento); }
+  /* mesmos marcos no Meta Pixel: início do formulário e inscrição concluída (Lead) */
+  var META_EVENTOS = {form_start: ["trackCustom", "InicioInscricao"], generate_lead: ["track", "Lead"]};
+  function meta(evento){ var m = META_EVENTOS[evento]; try{ if(m && typeof fbq === "function") fbq(m[0], m[1], {content_name: "Oficina Aberta"}); }catch(e){} }
   var etapasVistas = {};
   function ir(i, dir){
     direcao = dir || 1;
