@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJVG3PC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Testes no computador (localhost) não entram nos relatórios
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window['ga-disable-G-QKJVG3PC5E'] = true;
+  gtag('js', new Date());
+
+  gtag('config', 'G-QKJVG3PC5E');
+</script>
+<!-- Meta Pixel -->
+<script>
+  (function(){
+    var PIXEL_ID = '611972390791603';
+    // Testes no computador (localhost) não disparam o pixel
+    if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || !/^\d+$/.test(PIXEL_ID)) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name:'Guia Prático Sala Referência', content_ids:['3108291'], content_type:'product', value:67, currency:'BRL'});
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia Prático Sala Referência · Patrícia Souza</title>
+<meta name="description" content="Como planejar e organizar Zonas Circunscritas para criar territórios de investigação na educação infantil. Guia prático de 67 páginas de Patrícia Souza, da Oficina Criar e Brincar. Acesso imediato por R$ 67.">
+<meta name="theme-color" content="#8512DF">
+<meta property="og:type" content="product">
+<meta property="og:title" content="Guia Prático Sala Referência">
+<meta property="og:description" content="Um caminho prático para planejar, organizar e transformar sua sala de educação infantil a partir das pedagogias participativas.">
+<meta property="og:url" content="https://oficinacriarebrincar.com.br/guia-sala-referencia/">
+<meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/guia-sala-referencia/pagina-01.jpg">
+<link rel="canonical" href="https://oficinacriarebrincar.com.br/guia-sala-referencia/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  :root{
+    --roxo:#8512DF; --roxo-esc:#6A0EB3; --amarelo:#FCC218; --amarelo-esc:#E9AE00; --verde:#78B645; --verde-esc:#3F8A1F; --uva:#351B64;
+    --lilas:#E9D3F7; --lavanda:#F3EBFC; --lavanda-2:#E7D8FA; --sol:#FFF4D1; --linha:#E4D8F3; --cinza:#6B5E80;
+    --f-titulo:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+    --f-texto:"Nunito","Segoe UI",system-ui,sans-serif;
+    --largura:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:#fff;color:var(--uva);font-family:var(--f-texto);font-size:18px;line-height:1.6;-webkit-tap-highlight-color:transparent}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3{font-family:var(--f-titulo);font-weight:600;line-height:1.12;margin:0;text-wrap:balance}
+  h2{font-size:clamp(28px,4vw,42px);color:var(--uva)}
+  h2 em{font-style:normal;color:var(--roxo)}
+  h3{font-size:22px}
+  p{margin:0}
+  .faixa{padding:clamp(56px,8vw,96px) 20px}
+  .miolo{width:min(100%,var(--largura));margin-inline:auto}
+  .estreito{width:min(100%,760px);margin-inline:auto}
+  .centro{text-align:center}
+  .rotulo{display:inline-flex;align-items:center;gap:10px;font:600 14px var(--f-titulo);letter-spacing:.1em;text-transform:uppercase;color:var(--roxo);margin-bottom:14px}
+  .lead{font-size:clamp(18px,1.8vw,20px);margin-top:16px;max-width:58ch}
+  .centro .lead{margin-inline:auto}
+
+  /* Faixa superior */
+  .aviso{background:var(--uva);color:#fff;font:600 14px var(--f-titulo);letter-spacing:.06em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+  .aviso a{display:block;color:inherit;text-decoration:none;padding:10px 0}
+  .aviso .trilho{display:inline-flex;gap:28px;padding-left:28px;animation:corre 32s linear infinite}
+  .aviso span{display:inline-flex;align-items:center;gap:28px}
+  .aviso span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--amarelo)}
+  .aviso b{color:var(--amarelo);font-weight:600}
+  @keyframes corre{to{transform:translateX(-50%)}}
+
+  /* Foto com bloco de cor deslocado, como nas páginas do guia */
+  .foto{position:relative;isolation:isolate}
+  .foto::before{content:"";position:absolute;z-index:-1;inset:24px -18px -18px 24px;background:var(--roxo);border-radius:4px}
+  .foto.amarelo::before{background:var(--amarelo)}
+  .foto img{width:100%;border-radius:4px;object-fit:cover}
+
+  /* Botão e bloco de CTA */
+  .btn{appearance:none;border:0;cursor:pointer;text-decoration:none;background:var(--amarelo);color:var(--uva);font:600 21px var(--f-titulo);padding:17px 32px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 5px 0 var(--amarelo-esc);transition:transform .1s,box-shadow .1s,background .15s;text-align:center}
+  .btn:hover{background:#FFCD33}
+  .btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--amarelo-esc)}
+  .btn:focus-visible{outline:3px solid var(--uva);outline-offset:4px}
+  .btn svg{width:22px;height:22px;flex:none}
+  .cta{margin-top:36px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .centro .cta,.cta.centro{align-items:center}
+  .micro{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:15px;font-weight:700;color:var(--cinza)}
+  .micro span{display:inline-flex;align-items:center;gap:6px}
+  .micro svg{width:17px;height:17px;color:var(--verde-esc)}
+  .escuro .micro{color:#D9CFEA}
+  .escuro .micro svg{color:var(--amarelo)}
+
+  /* Topo */
+  .topo{padding:12px 20px;background:#fff;border-bottom:1px solid var(--linha)}
+  .topo .miolo{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .topo img{width:160px}
+  .topo a.mini{font:600 16px var(--f-titulo);color:var(--uva);text-decoration:none;background:var(--amarelo);padding:9px 18px;border-radius:999px;white-space:nowrap}
+
+  /* Capa */
+  .capa{background:var(--lavanda);padding:clamp(40px,6vw,72px) 20px clamp(64px,8vw,96px)}
+  .capa .miolo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(40px,7vw,96px);align-items:center}
+  .etiqueta{display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--uva);font:600 14px var(--f-titulo);letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+  .capa h1{font-size:clamp(34px,4.4vw,52px);margin:20px 0 0}
+  .capa h1 em{font-style:normal;color:var(--roxo)}
+  .prova{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;font-size:15px;font-weight:700;color:var(--cinza)}
+  .prova b{font:600 18px var(--f-titulo);color:var(--uva)}
+  .capa-livro{width:min(100%,380px);margin-inline:auto}
+  .capa-livro img{box-shadow:0 30px 60px -28px rgba(53,27,100,.45)}
+  .capa-livro .foto::before{inset:-18px -18px 26px 26px}
+
+  /* Identificação */
+  .ident .miolo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(40px,7vw,96px);align-items:center}
+  .talvez{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px}
+  .talvez li{display:flex;gap:12px;align-items:flex-start;background:var(--lavanda);border-left:5px solid var(--roxo);border-radius:8px;padding:12px 16px;font-weight:600}
+  .virada-frase{margin-top:24px;font:500 clamp(21px,2.2vw,24px)/1.3 var(--f-titulo)}
+  .virada-frase b{color:var(--roxo);font-weight:600}
+
+  /* Perguntas que mudam */
+  .perguntas-sec{background:var(--sol)}
+  .viradas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:36px}
+  .virar{text-align:left;background:#fff;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px;min-height:190px;box-shadow:0 2px 0 rgba(53,27,100,.08);transition:background .2s,color .2s}
+  .virar:focus-visible{outline:3px solid var(--roxo);outline-offset:3px}
+  .virar .quando{font:700 12.5px var(--f-texto);letter-spacing:.08em;text-transform:uppercase;color:var(--cinza)}
+  .virar .q{font:500 20px/1.3 var(--f-titulo)}
+  .virar .q.nova{display:none}
+  .virar .velha{color:var(--uva)}
+  .virar .acao{color:var(--cinza)}
+  .virar .acao{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font:600 14px var(--f-titulo);color:var(--roxo)}
+  .virar .acao svg{width:17px;height:17px}
+  .virar[aria-pressed=true]{background:var(--roxo);color:#fff}
+  .virar[aria-pressed=true] .quando{color:var(--amarelo)}
+  .virar[aria-pressed=true] .q.velha{display:none}
+  .virar[aria-pressed=true] .q.nova{display:block}
+  .virar[aria-pressed=true] .acao{color:#fff}
+
+  /* Comparativo */
+  .compara{background:var(--uva);color:#fff}
+  .compara h2{color:#fff}
+  .compara h2 em{color:var(--amarelo)}
+  .tabela{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .col{border-radius:20px;padding:24px}
+  .col h3{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:21px}
+  .col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .col li{display:flex;gap:10px;align-items:flex-start;font-size:17px}
+  .col li svg{flex:none;width:20px;height:20px;margin-top:4px}
+  .col.sem{background:rgba(255,255,255,.08);color:#D9CFEA}
+  .col.sem h3{color:#fff}
+  .col.com{background:#fff;color:var(--uva)}
+  .col.com h3{color:var(--roxo)}
+  .col.com li svg{color:var(--verde-esc)}
+
+  /* Por dentro */
+  .dentro .topo-sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
+  .partes{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .partes li{background:var(--lavanda);border-radius:999px;padding:7px 14px;font:500 15px var(--f-titulo)}
+  .galeria{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:40px}
+  .pag{margin:0}
+  .tranca{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--linha);box-shadow:0 18px 30px -20px rgba(53,27,100,.5);aspect-ratio:318/450;background:#fff}
+  .tranca img{width:100%;height:100%;object-fit:cover;filter:blur(2px);transform:scale(1.04)}
+  .tranca span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--uva);color:#fff;font:600 14px var(--f-titulo);padding:9px 14px;border-radius:999px}
+  .tranca span svg{width:16px;height:16px;color:var(--amarelo)}
+  .pag b{display:block;font:600 17px/1.25 var(--f-titulo);margin-top:12px}
+  .pag figcaption span{display:block;font-size:14.5px;color:var(--cinza);margin-top:2px;line-height:1.4}
+
+  /* Autora */
+  .autora{background:var(--lavanda)}
+  .autora .miolo{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(40px,7vw,96px);align-items:center}
+  .autora .foto{width:min(100%,340px);margin-inline:auto}
+  .autora .foto img{aspect-ratio:4/5}
+  .autora .cargo{font:600 18px var(--f-titulo);color:var(--verde-esc);margin-top:6px}
+  .autora p.txt{margin-top:14px}
+  .numeros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  .numeros div{background:#fff;border-radius:16px;padding:14px 16px}
+  .numeros b{display:block;font:600 28px/1 var(--f-titulo);color:var(--roxo)}
+  .numeros span{display:block;font-size:14px;line-height:1.35;margin-top:6px;color:var(--cinza);font-weight:700}
+  .bases{margin-top:18px;font-size:15px;color:var(--cinza)}
+  .bases b{color:var(--uva)}
+
+  /* Oferta */
+  .oferta{background:var(--roxo)}
+  .oferta > .miolo > h2{color:#fff;text-align:center}
+  .oferta > .miolo > h2 em{color:var(--amarelo)}
+  .caixa{width:min(100%,920px);margin:36px auto 0;background:#fff;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+  .lado-capa{background:var(--sol);padding:34px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+  .lado-capa img{width:min(100%,250px);box-shadow:0 20px 40px -20px rgba(53,27,100,.5);border-radius:4px}
+  .lado-capa p{font:600 14px var(--f-titulo);letter-spacing:.06em;text-transform:uppercase;color:var(--cinza);text-align:center}
+  .corpo{padding:32px clamp(22px,4vw,42px) 34px}
+  .corpo h3{font-size:24px}
+  .itens{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+  .itens li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.45}
+  .itens li svg{flex:none;width:20px;height:20px;color:var(--verde-esc);margin-top:2px}
+  .itens b{font-family:var(--f-titulo);font-weight:600}
+  .preco{display:flex;align-items:center;gap:18px;margin:22px 0 18px;padding-top:20px;border-top:1px solid var(--linha)}
+  .preco .valor{font:600 72px/0.9 var(--f-titulo);color:var(--roxo);font-variant-numeric:tabular-nums}
+  .preco .valor sup{font-size:.34em;vertical-align:top;position:relative;top:.45em;margin-right:4px}
+  .preco .obs{font-weight:700;color:var(--cinza);font-size:15px;line-height:1.4}
+  .preco .obs b{color:var(--verde-esc)}
+  .corpo .btn{width:100%}
+  .corpo .micro{justify-content:center;margin-top:12px}
+  .garantia{margin-top:20px;display:flex;gap:14px;align-items:center;background:var(--sol);border-radius:16px;padding:14px 16px;font-size:15px;line-height:1.45}
+  .garantia .selo-g{flex:none;width:58px;height:58px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;text-align:center;font:600 11px/1.05 var(--f-titulo)}
+  .garantia .selo-g b{font-size:21px;display:block}
+
+  /* FAQ */
+  .perguntas{margin-top:32px;display:grid;gap:10px}
+  details{background:var(--lavanda);border-radius:16px;padding:0 20px}
+  summary{cursor:pointer;list-style:none;padding:16px 0;font:600 18px/1.3 var(--f-titulo);display:flex;justify-content:space-between;gap:16px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:#fff;color:var(--roxo);display:grid;place-items:center;font-size:21px}
+  details[open] summary::after{content:"−"}
+  summary:focus-visible{outline:3px solid var(--roxo);outline-offset:4px;border-radius:8px}
+  details p{padding:0 0 18px}
+
+  /* Fechamento */
+  .fecha{background:var(--uva);color:#fff;text-align:center}
+  .fecha .antes{font:500 clamp(19px,2.2vw,23px) var(--f-titulo);color:#CFC3E4}
+  .fecha .antes s{text-decoration-color:var(--amarelo);text-decoration-thickness:3px}
+  .fecha h2{color:#fff;font-size:clamp(30px,4.6vw,50px);margin-top:12px}
+  .fecha h2 em{color:var(--amarelo)}
+
+  footer.rodape{background:#fff;padding:32px 20px 26px;text-align:center;font-size:14px;color:var(--cinza)}
+  footer.rodape img{width:150px;margin:0 auto 10px}
+  footer.rodape a{color:var(--roxo)}
+  .barras{display:grid;grid-template-columns:5fr 2fr 1.5fr 1.5fr;height:14px}
+  .barras i:nth-child(1){background:var(--roxo)}.barras i:nth-child(2){background:var(--amarelo)}.barras i:nth-child(3){background:var(--verde)}.barras i:nth-child(4){background:var(--uva)}
+
+  /* Barra fixa no celular */
+  .fixa{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--linha);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;align-items:center;gap:12px;transform:translateY(110%);transition:transform .25s}
+  .fixa.ver{transform:none}
+  .fixa .p{flex:none;line-height:1.1}
+  .fixa .p small{display:block;font-size:12px;font-weight:700;color:var(--cinza)}
+  .fixa .p b{font:600 22px var(--f-titulo);color:var(--roxo)}
+  .fixa .btn{flex:1;font-size:18px;padding:13px 16px;box-shadow:0 4px 0 var(--amarelo-esc)}
+
+  @media (max-width:960px){
+    .viradas,.galeria{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:760px){
+    body{font-size:17px}
+    .topo img{width:130px}
+    .capa .miolo,.ident .miolo,.autora .miolo,.caixa,.tabela,.dentro .topo-sec{grid-template-columns:minmax(0,1fr)}
+    .capa-livro{width:min(66%,240px)}
+    .btn{width:100%}
+    .cta{align-items:stretch}
+    .ident .foto{display:none}
+    .virar{min-height:150px;padding:16px}
+    .virar .q{font-size:18px}
+    .lado-capa{padding:26px 24px 4px;background:#fff}
+    .lado-capa img{width:140px}
+    .lado-capa p{display:none}
+    .preco .valor{font-size:62px}
+    .numeros{gap:8px}
+    .numeros div{padding:12px}
+    .numeros b{font-size:19px}
+    .fixa{display:flex}
+    footer.rodape{padding-bottom:96px}
+    .foto::before{inset:16px -10px -10px 16px}
+    .capa-livro .foto::before{inset:-10px -10px 16px 16px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-girar" viewBox="0 0 24 24"><path d="M20 12a8 8 0 01-13.7 5.6M4 12A8 8 0 0117.7 6.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M18 2.5v4h-4M6 21.5v-4h4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- Faixa superior -->
+<div class="aviso">
+  <a href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="faixa_topo" data-checkout aria-label="Guia Prático Sala Referência: acesso imediato por R$ 67, com 7 dias de garantia">
+    <div class="trilho" aria-hidden="true">
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span><b>R$ 67</b> pagamento único</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span><b>R$ 67</b> pagamento único</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span><b>R$ 67</b> pagamento único</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span><b>R$ 67</b> pagamento único</span><span>7 dias de garantia</span>
+    </div>
+  </a>
+</div>
+
+<header class="topo">
+  <div class="miolo">
+    <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
+    <a class="mini" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="topo" data-checkout>Quero o guia</a>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. Capa -->
+<section class="capa">
+  <div class="miolo">
+    <div>
+      <span class="etiqueta">Guia prático · Educação infantil</span>
+      <h1>Transforme a sala que você já tem em <em>território de investigação</em> para as crianças</h1>
+      <p class="lead">Um passo a passo para planejar Zonas Circunscritas com intencionalidade, a partir das pedagogias participativas. Sem comprar nada novo.</p>
+      <div class="cta">
+        <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="capa" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+      </div>
+      <div class="prova"><span><b>20 anos</b> de educação infantil</span><span><b>67</b> páginas</span><span><b>12</b> produções no seu dossiê</span></div>
+    </div>
+    <div class="capa-livro">
+      <div class="foto amarelo"><img src="/assets/guia-sala-referencia/pagina-01.jpg" width="794" height="1123" alt="Capa do Guia Prático Sala Referência, da Escola Oficina Criar e Brincar" fetchpriority="high"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Identificação -->
+<section class="ident faixa">
+  <div class="miolo">
+    <div>
+      <span class="rotulo">Talvez você se reconheça</span>
+      <h2>A sala está montada. <em>Mas ainda falta sentido.</em></h2>
+      <ul class="talvez">
+        <li>Você tem móveis e materiais, mas não sabe como fazer tudo conversar.</li>
+        <li>As crianças circulam pela sala sem se envolver de verdade.</li>
+        <li>A sala que você vê no Instagram parece impossível para a sua realidade.</li>
+        <li>O espaço entra no planejamento só como aquilo que precisa ser arrumado.</li>
+      </ul>
+      <p class="virada-frase">A organização da sala não começa na decoração. <b>Ela começa na intencionalidade.</b></p>
+      <div class="cta">
+        <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="identificacao" data-checkout>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span></div>
+      </div>
+    </div>
+    <div class="foto"><img src="/assets/guia-sala-referencia/sala-mesa.jpg" width="900" height="1598" alt="Sala da Oficina Criar e Brincar com mesa de madeira, cadeiras baixas e estantes com materiais" loading="lazy" style="aspect-ratio:4/5"></div>
+  </div>
+</section>
+
+<!-- 3. Perguntas que mudam -->
+<section class="perguntas-sec faixa">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo">Antes de organizar, mude o olhar</span>
+      <h2>Você ainda faz <em>essas perguntas</em> para a sua sala?</h2>
+      <p class="lead">São perguntas naturais, mas elas mantêm o foco no adulto. O guia mostra quais perguntas fazer no lugar de cada uma, e como elas mudam o seu planejamento.</p>
+    </div>
+    <div class="viradas">
+      <div class="virar"><span class="quando">Diante de um material</span><span class="q velha">“Para que ele serve?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><span class="quando">Ao planejar uma zona</span><span class="q velha">“O que eu quero que a criança faça?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><span class="quando">Quando algo não funciona</span><span class="q velha">“Por que as crianças não gostaram?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><span class="quando">Ao voltar para a sala</span><span class="q velha">“O que eu preciso arrumar?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+    </div>
+    <div class="cta centro">
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="perguntas" data-checkout>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Comparativo -->
+<section class="compara faixa escuro">
+  <div class="estreito">
+    <div class="centro">
+      <span class="rotulo" style="color:var(--amarelo)">A diferença</span>
+      <h2>Copiar uma sala <em>ou construir a sua?</em></h2>
+    </div>
+    <div class="tabela">
+      <div class="col sem">
+        <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-x"/></svg>A sala de Pinterest</h3>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Pede que você compre mais coisas</li>
+          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Funciona em outra realidade</li>
+          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Fica bonita na foto e parada no dia a dia</li>
+          <li><svg aria-hidden="true"><use href="#i-x"/></svg>É montada uma vez e esquecida</li>
+        </ul>
+      </div>
+      <div class="col com">
+        <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-check"/></svg>A sua Sala Referência</h3>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parte do que já existe na sua sala</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Nasce das suas crianças</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vira parte do planejamento pedagógico</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Muda junto com o que elas revelam</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta centro">
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="comparativo" data-checkout>Quero construir a minha <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>Se não fizer sentido, devolvemos o valor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Por dentro -->
+<section class="dentro faixa">
+  <div class="miolo">
+    <div class="topo-sec">
+      <div>
+        <span class="rotulo">Veja por dentro</span>
+        <h2>Um guia para fazer, <em>não só para ler</em></h2>
+        <p class="lead">Fichas, perguntas e roteiros que vão direto para o seu planejamento. Tudo liberado logo após a compra.</p>
+      </div>
+      <ul class="partes" aria-label="Partes do guia">
+        <li>Mude o olhar</li><li>Sala, zona e contexto</li><li>Inventário da sala</li><li>Mapa das linguagens</li><li>A estética como convite</li><li>Planejamento das zonas</li><li>Planta-baixa</li><li>O que observar</li><li>Documentação</li><li>O papel do adulto</li><li>Seu dossiê</li>
+      </ul>
+    </div>
+    <div class="galeria">
+      <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-38.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>5 perguntas norteadoras</b><span>Antes de organizar cada zona</span></figcaption></figure>
+      <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-40.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Ficha de planejamento</b><span>Para cada Zona Circunscrita</span></figcaption></figure>
+      <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-45.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Leitura da planta</b><span>Da sala atual para a sala planejada</span></figcaption></figure>
+      <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-26.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Olhar para os materiais</b><span>Critérios para escolher o que oferecer</span></figcaption></figure>
+    </div>
+    <div class="cta centro">
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="por_dentro" data-checkout>Quero todas as ferramentas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>PDF de 67 páginas, acesso imediato</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Autora -->
+<section class="autora faixa">
+  <div class="miolo">
+    <div class="foto amarelo"><img src="/assets/guia-sala-referencia/patricia.jpg" width="700" height="1047" alt="Patrícia Souza, autora do guia" loading="lazy"></div>
+    <div>
+      <span class="rotulo">Quem conduz o percurso</span>
+      <h2>Patrícia Souza</h2>
+      <p class="cargo">Fundadora, gestora e formadora da Oficina Criar e Brincar</p>
+      <p class="txt">Pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de centenas de educadores que acompanham suas formações. O guia foi escrito a partir das salas reais da escola.</p>
+      <div class="numeros">
+        <div><b>20 anos</b><span>de educação infantil</span></div>
+        <div><b>11 anos</b><span>de escola própria</span></div>
+        <div><b>Centenas</b><span>de educadores formados</span></div>
+      </div>
+      <p class="bases">Inspirado em <b>Reggio Emilia, Pikler e no brincar heurístico</b>, em diálogo com Horn, Goldschmied, Hoyuelos e Carla Rinaldi.</p>
+      <div class="cta">
+        <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="autora" data-checkout>Quero aprender com a Patrícia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Oferta -->
+<section class="oferta faixa" id="oferta">
+  <div class="miolo">
+    <h2>Tudo o que você precisa para <em>construir a sua Sala Referência</em></h2>
+    <div class="caixa">
+      <div class="lado-capa">
+        <img src="/assets/guia-sala-referencia/pagina-01.jpg" width="794" height="1123" alt="Capa do Guia Prático Sala Referência" loading="lazy">
+        <p>Guia digital em PDF<br>67 páginas</p>
+      </div>
+      <div class="corpo">
+        <h3>Guia Prático Sala Referência</h3>
+        <ul class="itens">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Percurso completo</b>, do olhar para a sala às próximas apostas</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Fichas de planejamento e de reflexão</b> para as Zonas Circunscritas</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>5 perguntas norteadoras</b> e critérios para olhar os materiais</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
+        </ul>
+        <div class="preco">
+          <div class="valor"><sup>R$</sup>67</div>
+          <div class="obs">Pagamento único<br><b>R$ 1 por página</b> de percurso prático</div>
+        </div>
+        <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
+        <div class="garantia">
+          <div class="selo-g"><div><b>7</b>dias</div></div>
+          <p><b>Risco zero.</b> Se o guia não fizer sentido para a sua prática, peça o reembolso em até 7 dias e você recebe todo o valor de volta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Dúvidas -->
+<section class="faq faixa">
+  <div class="estreito">
+    <div class="centro"><span class="rotulo">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+    <div class="perguntas">
+      <details><summary>Em que formato é o guia?</summary><p>É um PDF de 67 páginas. Você lê no celular ou no computador e pode imprimir as fichas para usar no planejamento. O acesso chega no seu e-mail logo após a confirmação do pagamento.</p></details>
+      <details><summary>Preciso comprar materiais novos?</summary><p>Não. O percurso começa pelo inventário do que já existe na sua sala e ajuda você a reconhecer as possibilidades de cada material.</p></details>
+      <details><summary>Serve para berçário?</summary><p>Sim. O guia trata da educação infantil como um todo e se apoia em referências sobre bebês e crianças bem pequenas, como Goldschmied, Jackson e a abordagem Pikler.</p></details>
+      <details><summary>Nunca trabalhei com Zonas Circunscritas. Consigo acompanhar?</summary><p>Consegue. O guia explica o conceito desde o início e propõe começar por uma única zona antes de planejar a sala inteira.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Basta pedir o reembolso pela Eduzz dentro desse prazo.</p></details>
+    </div>
+    <div class="cta centro">
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="faq" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Fechamento -->
+<section class="fecha faixa escuro">
+  <div class="estreito">
+    <p class="antes">Pare de perguntar <s>“O que eu preciso arrumar?”</s></p>
+    <h2>e descubra a pergunta que <em>transforma a sua sala</em></h2>
+    <div class="cta centro">
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="fechamento" data-checkout>Começar meu planejamento agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>R$ 67, pagamento único</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
+  <p>Oficina CB Pesquisa e Formação Ltda · Gestão, formações e consultorias</p>
+  <p><a href="https://www.instagram.com/oficinacriarebrincar/" target="_blank" rel="noopener">@oficinacriarebrincar</a></p>
+</footer>
+<div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<div class="fixa" id="fixa">
+  <div class="p"><small>Guia completo</small><b>R$ 67</b></div>
+  <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="barra_fixa" data-checkout>Quero o guia</a>
+</div>
+
+<script>
+(function(){
+  var CHECKOUT = 'https://chk.eduzz.com/39ZRQ6QEWE';
+
+  // Repassa UTMs e identificadores de anúncio para o checkout da Eduzz
+  var params = new URLSearchParams(location.search);
+  var repassa = new URLSearchParams();
+  params.forEach(function(v, k){ if(/^(utm_|fbclid|gclid)/.test(k)) repassa.set(k, v); });
+  var destino = CHECKOUT + (repassa.toString() ? '?' + repassa.toString() : '');
+  document.querySelectorAll('[data-checkout]').forEach(function(a){ a.href = destino; });
+
+  // Todo CTA leva ao checkout: begin_checkout / InitiateCheckout com a origem do clique
+  document.querySelectorAll('[data-checkout]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var origem = a.getAttribute('data-cta');
+      gtag('event', 'begin_checkout', {currency:'BRL', value:67, cta:origem, items:[{item_id:'3108291', item_name:'Guia Prático Sala Referência', price:67}]});
+      if(window.fbq) fbq('track', 'InitiateCheckout', {content_ids:['3108291'], value:67, currency:'BRL'});
+    });
+  });
+
+  // Barra fixa no celular: aparece depois da capa e some perto da oferta e do fechamento
+  var fixa = document.getElementById('fixa');
+  var capa = document.querySelector('.capa'), oferta = document.getElementById('oferta'), fecha = document.querySelector('.fecha');
+  var vis = new Map([[capa, true], [oferta, false], [fecha, false]]);
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ vis.set(e.target, e.isIntersecting); });
+    fixa.classList.toggle('ver', !vis.get(capa) && !vis.get(oferta) && !vis.get(fecha));
+  });
+  vis.forEach(function(_, el){ io.observe(el); });
+
+  // Profundidade de leitura (chegou na oferta)
+  var viuOferta = false;
+  new IntersectionObserver(function(es){
+    if(es[0].isIntersecting && !viuOferta){ viuOferta = true; gtag('event', 'viu_oferta'); }
+  }, {threshold:.4}).observe(oferta);
+})();
+</script>
+</body>
+</html>
