@@ -140,20 +140,40 @@
   .topo a.mini:hover{background:var(--uva);color:#fff}
 
   /* Capa */
-  .capa{background:var(--papel);padding:clamp(40px,5vw,64px) 20px clamp(56px,7vw,88px);border-bottom:1px solid var(--linha)}
-  .capa .miolo{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);grid-template-rows:auto 1fr;grid-template-areas:"topo livro" "resto livro";column-gap:clamp(40px,6vw,96px)}
+  .capa{position:relative;overflow:hidden;isolation:isolate;background:#FFFBF2;padding:clamp(32px,4vw,56px) 20px clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
+  .capa::before,.capa::after{content:"";position:absolute;z-index:-1}
+  .capa::before{left:-90px;top:-110px;width:320px;height:260px;background:var(--amarelo);border-radius:58% 42% 60% 40%/50% 60% 40% 50%}
+  .capa::after{right:-120px;bottom:-130px;width:420px;height:320px;background:var(--lilas);border-radius:45% 55% 40% 60%/60% 45% 55% 40%}
+  .capa .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);grid-template-rows:auto 1fr;grid-template-areas:"topo livro" "resto livro";column-gap:clamp(32px,4vw,64px)}
   .capa-topo{grid-area:topo}
   .capa-resto{grid-area:resto}
-  .etiqueta{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--linha);color:var(--uva);font:600 13px var(--f-texto);letter-spacing:.04em;padding:7px 14px 7px 10px;border-radius:999px}
-  .etiqueta::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--verde)}
-  .capa h1{font-size:clamp(34px,3.6vw,52px);margin:22px 0 0;text-wrap:pretty}
-  .prova{display:flex;flex-wrap:wrap;gap:0;margin-top:44px;padding-top:28px;border-top:1px solid var(--linha);font-size:14px;font-weight:500;color:var(--cinza)}
+  .etiqueta{display:inline-flex;align-items:center;background:var(--roxo);color:#fff;font:800 13px var(--f-texto);letter-spacing:.06em;padding:8px 16px;border-radius:999px}
+  .capa h1{font-size:clamp(34px,3.5vw,50px);margin:18px 0 0;text-wrap:pretty}
+  .capa .lead{margin-top:16px}
+  .capa-livro{grid-area:livro;align-self:start;margin:0}
+  .capa-livro img{width:100%;max-height:calc(100svh - 190px);object-fit:contain}
+  .beneficios{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+  .beneficios li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;line-height:1.3}
+  .beneficios i{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff}
+  .beneficios i svg{width:22px;height:22px}
+  .beneficios li:nth-child(1) i{background:var(--verde-esc)}
+  .beneficios li:nth-child(2) i{background:var(--amarelo);color:var(--uva)}
+  .beneficios li:nth-child(3) i{background:var(--roxo)}
+  .beneficios li:nth-child(4) i{background:var(--uva)}
+  .capa-resto .cta{margin-top:26px}
+  .prova{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;padding-top:20px;border-top:1px solid var(--linha);font-size:14px;font-weight:500;color:var(--cinza)}
   .prova span{display:flex;flex-direction:column;padding-right:28px;margin-right:28px;border-right:1px solid var(--linha);line-height:1.35}
   .prova span:last-child{border:0;margin:0;padding:0}
-  .prova b{font:800 32px/1.1 var(--f-titulo);letter-spacing:-.02em;color:var(--uva)}
-  .capa-livro{width:min(100%,380px,max(240px,calc((100svh - 230px)/1.414)));margin-inline:auto;align-self:start;grid-area:livro}
-  .capa-livro img{box-shadow:0 40px 70px -30px rgba(53,27,100,.5)}
-  .capa-livro .foto::before{inset:-18px -18px 26px 26px}
+  .prova b{font:800 28px/1.1 var(--f-titulo);letter-spacing:-.02em;color:var(--uva)}
+
+  /* Fotos dos ambientes */
+  .card-foto{display:block;width:calc(100% + 48px);max-width:none;margin:-24px -24px 0;aspect-ratio:4/3;object-fit:cover;border-radius:16px 16px 0 0}
+  .col-foto{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;margin-bottom:20px}
+  .ambientes{background:#FFFBF2}
+  .mural{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,220px);gap:14px;margin:44px 0 0;padding:0;list-style:none}
+  .mural li{border-radius:14px;overflow:hidden}
+  .mural li.grande{grid-column:span 2;grid-row:span 2}
+  .mural img{width:100%;height:100%;object-fit:cover}
 
   /* Identificação */
   .ident .miolo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(40px,7vw,112px);align-items:center}
@@ -233,7 +253,7 @@
   .oferta > .miolo > h2 em{color:var(--amarelo)}
   .caixa{width:min(100%,960px);margin:48px auto 0;background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
   .lado-capa{background:var(--papel);padding:40px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border-right:1px solid var(--linha)}
-  .lado-capa img{width:min(100%,250px);box-shadow:0 24px 44px -22px rgba(53,27,100,.55);border-radius:4px}
+  .lado-capa img{width:100%}
   .lado-capa p{font:600 12.5px var(--f-texto);letter-spacing:.12em;text-transform:uppercase;color:var(--cinza);text-align:center}
   .corpo{padding:40px clamp(24px,4vw,48px)}
   .corpo h3{font:800 26px/1.2 var(--f-titulo);letter-spacing:-.02em}
@@ -291,24 +311,32 @@
   @media (max-width:760px){
     body{font-size:17px}
     .topo img{width:120px}
-    .capa .miolo,.ident .miolo,.autora .miolo,.caixa,.tabela,.dentro .topo-sec{grid-template-columns:minmax(0,1fr)}
-    .capa h1{font-size:clamp(23px,6.6vw,36px);letter-spacing:-.03em}
-    .capa{padding-top:28px}
-    .capa .miolo{grid-template-rows:none;grid-template-areas:"topo" "livro" "resto";row-gap:28px}
-    .capa-livro{width:clamp(140px,calc((100svh - 550px)/1.414),220px)}
-    .capa-resto .cta{margin-top:0}
+    .ident .miolo,.autora .miolo,.caixa,.tabela,.dentro .topo-sec{grid-template-columns:minmax(0,1fr)}
+    .capa h1{font-size:clamp(25px,6.9vw,36px);letter-spacing:-.03em}
+    .capa{padding-top:24px}
+    .capa::before{width:190px;height:150px;left:-80px;top:-70px}
+    .capa .miolo{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"topo" "livro" "resto";row-gap:16px}
+    .capa-livro img{max-height:max(280px,calc(100svh - 500px));margin-inline:auto}
     .capa .btn{display:none}
+    .capa-resto .cta{margin-top:20px}
+    .beneficios{margin-top:0;gap:12px 10px}
+    .beneficios li{font-size:14px;gap:9px}
+    .beneficios i{width:36px;height:36px}
+    .beneficios i svg{width:19px;height:19px}
     .btn{width:100%}
     .cta{align-items:stretch}
-    .ident .foto{display:none}
-    .prova{margin-top:32px;padding-top:22px}
+    .ident .foto{order:-1}
+    .ident .foto img{aspect-ratio:4/3!important}
+    .card-foto{width:calc(100% + 36px);margin:-18px -18px 0}
+    .mural{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:42vw;gap:10px;margin-top:32px}
+    .prova{margin-top:22px;padding-top:18px}
     .prova{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));font-size:12.5px}
     .prova span{padding-right:12px;margin-right:12px}
     .prova b{font-size:22px;white-space:nowrap}
     .virar{min-height:170px;padding:18px}
     .virar .q{font-size:19px}
     .lado-capa{padding:28px 24px 4px;background:#fff;border:0}
-    .lado-capa img{width:140px}
+    .lado-capa img{width:min(100%,300px)}
     .lado-capa p{display:none}
     .preco .valor{font-size:64px}
     .numeros div{padding:16px 10px 16px 0}
@@ -318,7 +346,6 @@
     .fixa{display:flex}
     footer.rodape{padding-bottom:96px}
     .foto::before{inset:14px -10px -10px 14px}
-    .capa-livro .foto::before{inset:-10px -10px 16px 16px}
   }
 </style>
 </head>
@@ -327,6 +354,10 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="i-casa" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5.5v-6h-5v6H4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lampada" viewBox="0 0 24 24"><path d="M9 17.5c0-2-3-3.500-3-7.500a6 6 0 0112 0c0 4-3 5.500-3 7.500zM10 21h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM9.500 12h5M9.500 16h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pessoas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.500" fill="none" stroke="currentColor" stroke-width="2.200"/><path d="M3 20c0-3.500 2.500-6 6-6s6 2.500 6 6M16 5a3.500 3.500 0 010 6.500M18 14.500c2 .8 3 2.800 3 5.500" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></symbol>
   <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
   <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/></symbol>
@@ -360,14 +391,20 @@
 <section class="capa" data-secao="capa">
   <div class="miolo">
     <div class="capa-topo">
-      <span class="etiqueta">Guia prático · Educação infantil</span>
+      <span class="etiqueta">Guia prático · Sala Referência</span>
       <h1>Transforme a sala que você já tem em <em>território de investigação</em> para as crianças</h1>
       <p class="lead">Um passo a passo para planejar Zonas Circunscritas com intencionalidade, a partir das pedagogias participativas. Sem comprar nada novo.</p>
     </div>
     <div class="capa-livro">
-      <div class="foto"><img src="/assets/guia-sala-referencia/capa-guia.jpg" width="993" height="1404" alt="Capa do Guia Prático Sala Referência, da Escola Oficina Criar e Brincar" fetchpriority="high"></div>
+      <img src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Ilustração do Guia Prático Sala Referência, com a capa do livro e um exemplo de planta de sala" fetchpriority="high">
     </div>
     <div class="capa-resto">
+      <ul class="beneficios">
+        <li><i><svg aria-hidden="true"><use href="#i-casa"/></svg></i>Passo a passo claro e aplicável</li>
+        <li><i><svg aria-hidden="true"><use href="#i-lampada"/></svg></i>Exemplos reais da prática</li>
+        <li><i><svg aria-hidden="true"><use href="#i-doc"/></svg></i>Fichas e roteiros prontos</li>
+        <li><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i>Pensado para a sua realidade</li>
+      </ul>
       <div class="cta">
         <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="capa" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-cartao"/></svg>ou 12x de R$ 6,93</span><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
@@ -408,10 +445,10 @@
       <p class="lead">São perguntas naturais, mas elas mantêm o foco no adulto. O guia mostra quais perguntas fazer no lugar de cada uma, e como elas mudam o seu planejamento.</p>
     </div>
     <div class="viradas">
-      <div class="virar"><span class="quando">Diante de um material</span><span class="q velha">“Para que ele serve?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
-      <div class="virar"><span class="quando">Ao planejar uma zona</span><span class="q velha">“O que eu quero que a criança faça?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
-      <div class="virar"><span class="quando">Quando algo não funciona</span><span class="q velha">“Por que as crianças não gostaram?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
-      <div class="virar"><span class="quando">Ao voltar para a sala</span><span class="q velha">“O que eu preciso arrumar?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/tubos.jpg" alt="Tubos coloridos organizados sobre uma caixa de madeira" loading="lazy"><span class="quando">Diante de um material</span><span class="q velha">“Para que ele serve?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/zona-tapete.jpg" alt="Zona com tapete redondo, materiais naturais e estante baixa" loading="lazy"><span class="quando">Ao planejar uma zona</span><span class="q velha">“O que eu quero que a criança faça?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/instrumentos.jpg" alt="Instrumentos e objetos naturais sobre um tecido colorido" loading="lazy"><span class="quando">Quando algo não funciona</span><span class="q velha">“Por que as crianças não gostaram?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
+      <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="Sala com mesas de madeira, estantes e móbiles" loading="lazy"><span class="quando">Ao voltar para a sala</span><span class="q velha">“O que eu preciso arrumar?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
     </div>
     <div class="cta centro">
       <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="perguntas" data-checkout>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
@@ -438,6 +475,7 @@
         </ul>
       </div>
       <div class="col com">
+        <img class="col-foto" src="/assets/guia-sala-referencia/fotos/estante.jpg" alt="Sala com estante de madeira, materiais à altura das crianças e registros na parede" loading="lazy">
         <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-check"/></svg>A sua Sala Referência</h3>
         <ul>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parte do que já existe na sua sala</li>
@@ -451,6 +489,24 @@
       <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="comparativo" data-checkout>Quero construir a minha <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>Se não fizer sentido, devolvemos o valor</span></div>
     </div>
+  </div>
+</section>
+
+<!-- Ambientes -->
+<section class="ambientes faixa" data-secao="ambientes">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo">Salas de verdade</span>
+      <h2>Do planejamento <em>para a sala real</em></h2>
+      <p class="lead">Estas são algumas das imagens do guia: ambientes reais, com móveis simples e materiais que contam uma intenção.</p>
+    </div>
+    <ul class="mural">
+      <li class="grande"><img src="/assets/guia-sala-referencia/fotos/sala-ampla.jpg" alt="Sala ampla com mesas de madeira, cadeiras baixas e paredes verdes" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas, sementes e pratos preparados para investigação" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira coloridos ao lado de uma caixa" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"></li>
+    </ul>
   </div>
 </section>
 
@@ -508,7 +564,7 @@
     <h2>Tudo o que você precisa para <em>construir a sua Sala Referência</em></h2>
     <div class="caixa">
       <div class="lado-capa">
-        <img src="/assets/guia-sala-referencia/capa-guia.jpg" width="993" height="1404" alt="Capa do Guia Prático Sala Referência" loading="lazy">
+        <img src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Ilustração do Guia Prático Sala Referência" loading="lazy">
         <p>Guia digital em PDF<br>67 páginas</p>
       </div>
       <div class="corpo">
