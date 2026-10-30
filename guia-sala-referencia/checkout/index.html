@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJVG3PC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Testes no computador (localhost) não entram nos relatórios
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window['ga-disable-G-QKJVG3PC5E'] = true;
+  gtag('js', new Date());
+
+  gtag('config', 'G-QKJVG3PC5E');
+</script>
+<!-- Meta Pixel + API de Conversões (mesmo event_id nos dois, o Meta deduplica) -->
+<script>
+  (function(){
+    var PIXEL_ID = '611972390791603';
+    var teste = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    function cookie(n){ var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : ''; }
+    var fbclid = new URLSearchParams(location.search).get('fbclid');
+    var testCode = new URLSearchParams(location.search).get('test_event_code');
+    // Dispara o evento no Pixel e no servidor (/.netlify/functions/meta-capi)
+    window.metaEvento = function(nome, dados){
+      var id = nome + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+      if(teste) return id;
+      if(window.fbq) fbq('track', nome, dados || {}, {eventID: id});
+      var corpo = JSON.stringify({
+        event_name: nome, event_id: id, event_source_url: location.href, custom_data: dados || {},
+        fbp: cookie('_fbp'), fbc: cookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : ''),
+        test_event_code: testCode || undefined
+      });
+      try {
+        if(!(navigator.sendBeacon && navigator.sendBeacon('/.netlify/functions/meta-capi', corpo)))
+          fetch('/.netlify/functions/meta-capi', {method:'POST', body:corpo, keepalive:true});
+      } catch(e){}
+      return id;
+    };
+    if(teste) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+  })();
+  metaEvento('PageView');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+  (function(c,l,a,r,i,t,y){
+    // Testes no computador (localhost) não entram no Clarity
+    if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "z5fhrmur2j");
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout · Guia Prático Sala Referência</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#8512DF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  :root{--roxo:#8512DF;--uva:#351B64;--papel:#F3EBFC;--linha:#E7E0EE;--cinza:#6B5F7D}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--uva);font-family:"Nunito","Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  .topo{padding:12px 20px;background:#fff;border-bottom:1px solid var(--linha)}
+  .topo img{width:130px;margin-inline:auto}
+  main{width:min(100%,800px);margin-inline:auto;padding:clamp(16px,3vw,32px) clamp(8px,2vw,20px)}
+  .caixa{background:#fff;border-radius:16px;overflow:hidden;min-height:600px;padding:clamp(4px,1.5vw,16px)}
+  .alt{margin:20px 0 8px;text-align:center;font-size:14.5px;color:var(--cinza)}
+  .alt a{color:var(--roxo);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
+</header>
+
+<main>
+  <div class="caixa">
+    <div id="elements"></div>
+  </div>
+  <p class="alt">O formulário não carregou? <a id="checkout-link" href="https://chk.eduzz.com/39ZRQ6QEWE" target="_blank" rel="noopener">Abra o checkout em outra aba</a></p>
+</main>
+
+<!-- Checkout da Eduzz (as UTMs da URL são repassadas pelo próprio script) -->
+<script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+<script>
+  (function () {
+    const load = function () {
+      window.Eduzz.Checkout.init({
+        contentId: "39ZRQ6QEWE",
+        target: "elements",
+        errorCover: false
+      });
+    }
+    if (document.readyState === 'complete') {
+      load();
+      return;
+    }
+    window.addEventListener('load', load);
+  })();
+
+  document.getElementById('checkout-link').href += location.search;
+</script>
+</body>
+</html>
