@@ -224,6 +224,8 @@
   .pontos i.on{width:22px;background:var(--roxo)}
   .card-ativ:nth-child(1) b{color:var(--floresta)}
   .card-ativ:nth-child(2) b,.card-ativ:nth-child(5) b{color:var(--roxo)}
+  .card-ativ{position:relative}
+  .card-ativ .cred{position:absolute;top:4px;right:4px;padding:1px 5px;border-radius:4px;background:rgba(0,0,0,.55);color:#fff;font-size:9px;line-height:1.4;text-decoration:none}
   .ativ-mais{margin:14px 0 0;font-weight:700;color:var(--cinza)}
   .gratis{background:var(--uva);color:#fff;border-radius:20px;padding:16px 20px;display:grid;gap:4px}
   .gratis b{font:600 24px var(--f-titulo);color:var(--amarelo)}
@@ -573,9 +575,9 @@
       ["atelie","Ateliê","Argila, pintura e grafismo"],
       ["construcoes","Quintal das Construções","Construir e inventar"],
       ["areia","Tanque de areia","Cavar, moldar, brincar"],
-      ["culinaria","Culinária","Pão de ervas"]
+      ["pao-ervas","Culinária","Pão de ervas","<a class=\"cred\" href=\"https://commons.wikimedia.org/wiki/File:Rosemary_Focaccia.jpg\" target=\"_blank\" rel=\"noopener\">Foto: Parkerman &amp; Christie, CC BY 2.0</a>"]
     ].map(function(a){
-      return '<li class="card-ativ"><img src="/assets/atividades/' + a[0] + '.jpg" alt="" loading="lazy"><div><b>' + esc(a[1]) + '</b><span>' + esc(a[2]) + '</span></div></li>';
+      return '<li class="card-ativ"><img src="/assets/atividades/' + a[0] + '.jpg" alt="" loading="lazy">' + (a[3] || '') + '<div><b>' + esc(a[1]) + '</b><span>' + esc(a[2]) + '</span></div></li>';
     }).join("");
     return '<div class="capa">' +
       '<div class="col-a">' +
