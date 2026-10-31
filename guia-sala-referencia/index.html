@@ -60,7 +60,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guia Prático Sala Referência · Patrícia Souza</title>
-<meta name="description" content="Como planejar e organizar Zonas Circunscritas para criar territórios de investigação na educação infantil. Guia prático de 67 páginas de Patrícia Souza, da Oficina Criar e Brincar. Acesso imediato por R$ 67.">
+<meta name="description" content="Como planejar e organizar Zonas Circunscritas para criar territórios de investigação na educação infantil. Guia prático de 67 páginas de Patrícia Souza, da Oficina Criar e Brincar. Acesso imediato.">
 <meta name="theme-color" content="#8512DF">
 <meta property="og:type" content="product">
 <meta property="og:title" content="Guia Prático Sala Referência">
@@ -249,6 +249,16 @@
   .itens b{font-weight:700;color:var(--uva)}
   .itens .bonus{align-items:center;margin-top:4px;padding:12px 14px;border-radius:12px;background:var(--sol)}
   .tag-bonus{flex:none;padding:3px 10px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:800 12px var(--f-texto);letter-spacing:.06em;text-transform:uppercase}
+  .urgencia{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-top:24px;padding:14px 16px;border-radius:12px;background:var(--uva);color:#fff}
+  .urgencia[hidden],.de[hidden]{display:none}
+  .urgencia p{font-size:16px;font-weight:700;line-height:1.3}
+  .urgencia p b{color:var(--amarelo);font-weight:900}
+  .timer{display:flex;gap:8px}
+  .timer span{min-width:50px;padding:5px 6px;border-radius:8px;background:rgba(255,255,255,.12);text-align:center;font-size:10.5px;font-weight:700;line-height:1.2;color:#E4DCF0}
+  .timer b{display:block;font:900 21px/1.1 var(--f-titulo);color:#fff;font-variant-numeric:tabular-nums}
+  .de{margin-top:22px;font-size:17px;font-weight:700;color:var(--cinza)}
+  .de s{text-decoration-color:#D33;text-decoration-thickness:2px}
+  .de + .preco{margin-top:6px;padding-top:0;border-top:0}
   .preco{display:flex;align-items:center;gap:20px;margin:28px 0 22px;padding-top:24px;border-top:1px solid var(--linha)}
   .preco .valor{font:900 76px/0.9 var(--f-titulo);letter-spacing:-.04em;color:var(--roxo);font-variant-numeric:lining-nums tabular-nums}
   .preco .valor sup{font:600 .26em var(--f-texto);letter-spacing:0;vertical-align:top;position:relative;top:.55em;margin-right:6px;color:var(--cinza)}
@@ -423,12 +433,12 @@
 
 <!-- Faixa superior -->
 <div class="aviso">
-  <a href="/guia-sala-referencia/checkout/" data-cta="faixa_topo" data-checkout aria-label="Guia Prático Sala Referência: acesso imediato por R$ 67, com 7 dias de garantia">
+  <a href="/guia-sala-referencia/checkout/" data-cta="faixa_topo" data-checkout aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
     <div class="trilho" aria-hidden="true">
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>12x de R$ 6,93 ou R$ 67 à vista</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>12x de R$ 6,93 ou R$ 67 à vista</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>12x de R$ 6,93 ou R$ 67 à vista</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>12x de R$ 6,93 ou R$ 67 à vista</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
     </div>
   </a>
 </div>
@@ -470,8 +480,8 @@
     <div class="capa-resto">
       <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
-        <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="capa" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-        <div class="micro"><span><svg aria-hidden="true"><use href="#i-cartao"/></svg>ou 12x de R$ 6,93</span><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+        <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="capa" data-checkout>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
   </div>
@@ -660,6 +670,11 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
           <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
         </ul>
+        <div class="urgencia" id="urgencia" hidden>
+          <p>Condição válida <b>somente hoje</b></p>
+          <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b id="t-h">00</b>horas</span><span><b id="t-m">00</b>min</span><span><b id="t-s">00</b>seg</span></div>
+        </div>
+        <p class="de" id="preco-de" hidden>De <s>R$ 97</s> por:</p>
         <div class="preco">
           <div class="valor"><sup>R$</sup>67</div>
           <div class="obs">à vista, ou <b>12x de R$ 6,93</b><br>R$ 1 por página de percurso prático</div>
@@ -702,7 +717,7 @@
       <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Basta pedir o reembolso pela Eduzz dentro desse prazo.</p></details>
     </div>
     <div class="cta centro">
-      <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="faq" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="faq" data-checkout>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 </section>
@@ -714,7 +729,7 @@
     <h2>e descubra a pergunta que <em>transforma a sua sala</em></h2>
     <div class="cta centro">
       <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="fechamento" data-checkout>Começar meu planejamento agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span><span><svg aria-hidden="true"><use href="#i-cartao"/></svg>12x de R$ 6,93 ou R$ 67 à vista</span></div>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
     </div>
   </div>
 </section>
@@ -729,7 +744,6 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <div class="p"><b>R$ 67</b><small>ou 12x de R$ 6,93</small></div>
   <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="barra_fixa" data-checkout>Quero o guia</a>
 </div>
 
@@ -796,6 +810,22 @@
       if(d.open){ var q = d.querySelector('summary').textContent; ga('faq_aberta', {pergunta:q}); clarityEvento('faq_aberta'); }
     });
   });
+
+  // Oferta com prazo real: passado o horário, somem o aviso, o timer e o "De R$ 97"
+  var FIM_OFERTA = new Date('2026-10-31T23:59:59-03:00').getTime();
+  var urgencia = document.getElementById('urgencia'), precoDe = document.getElementById('preco-de');
+  function doisDigitos(n){ return (n < 10 ? '0' : '') + n; }
+  function contagem(){
+    var resta = FIM_OFERTA - Date.now(), ativa = resta > 0;
+    urgencia.hidden = precoDe.hidden = !ativa;
+    if(!ativa){ clearInterval(timerOferta); return; }
+    var s = Math.floor(resta / 1000);
+    document.getElementById('t-h').textContent = doisDigitos(Math.floor(s / 3600));
+    document.getElementById('t-m').textContent = doisDigitos(Math.floor(s / 60) % 60);
+    document.getElementById('t-s').textContent = doisDigitos(s % 60);
+  }
+  var timerOferta = setInterval(contagem, 1000);
+  contagem();
 
   // Barra fixa no celular: ativa desde a primeira dobra e some perto da oferta e do fechamento
   var fixa = document.getElementById('fixa');
