@@ -237,6 +237,7 @@
   .oferta{background:var(--roxo);background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.07) 1px,transparent 0);background-size:22px 22px}
   .oferta > .miolo > h2{color:#fff;text-align:center}
   .oferta > .miolo > h2 em{color:var(--amarelo)}
+  #comprar{scroll-margin-top:12px}
   .caixa{width:min(100%,960px);margin:48px auto 0;background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
   .lado-capa{background:var(--papel);padding:40px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border-right:1px solid var(--linha)}
   .lado-capa img{width:100%}
@@ -393,6 +394,15 @@
   }
   @media (max-width:760px){
     .capa{padding-bottom:64px}
+    /* Oferta: preço e botão primeiro, para aparecerem sem rolagem ao chegar pelos botões */
+    .caixa{margin-top:32px}
+    .corpo{order:-1;display:flex;flex-direction:column;padding:20px 20px 28px}
+    .corpo h3{font-size:22px}
+    .urgencia{margin-top:14px;padding:12px 14px}
+    .urgencia p{font-size:15px}
+    .de{margin-top:14px}
+    .preco{margin:6px 0 16px;padding-top:0;border-top:0}
+    .itens{order:1;margin-top:24px;padding-top:20px;border-top:1px solid var(--linha)}
     .marca-nome{font-size:21px}
     .marca-com{font-size:16px}
     .marca small{font-size:12px}
@@ -433,7 +443,7 @@
 
 <!-- Faixa superior -->
 <div class="aviso">
-  <a href="#oferta" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
+  <a href="#comprar" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
     <div class="trilho" aria-hidden="true">
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
@@ -446,7 +456,7 @@
 <header class="topo">
   <div class="miolo">
     <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
-    <a class="mini" href="#oferta" data-cta="topo" data-ir-oferta>Quero o guia</a>
+    <a class="mini" href="#comprar" data-cta="topo" data-ir-oferta>Quero o guia</a>
   </div>
 </header>
 
@@ -480,7 +490,7 @@
     <div class="capa-resto">
       <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
-        <a class="btn" href="#oferta" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
@@ -502,7 +512,7 @@
       </ul>
       <p class="virada-frase">A organização da sala não começa na decoração. <b>Ela começa na intencionalidade.</b></p>
       <div class="cta">
-        <a class="btn" href="#oferta" data-cta="identificacao" data-ir-oferta>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="identificacao" data-ir-oferta>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span></div>
       </div>
     </div>
@@ -543,7 +553,7 @@
       <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="Sala com mesas de madeira, estantes e móbiles" loading="lazy"><span class="quando">Ao voltar para a sala</span><span class="q velha">“O que eu preciso arrumar?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#oferta" data-cta="perguntas" data-ir-oferta>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="perguntas" data-ir-oferta>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
     </div>
   </div>
@@ -578,7 +588,7 @@
       </div>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#oferta" data-cta="comparativo" data-ir-oferta>Quero construir a minha <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="comparativo" data-ir-oferta>Quero construir a minha <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>Se não fizer sentido, devolvemos o valor</span></div>
     </div>
   </div>
@@ -622,7 +632,7 @@
       <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-26.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Olhar para os materiais</b><span>Critérios para escolher o que oferecer</span></figcaption></figure>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#oferta" data-cta="por_dentro" data-ir-oferta>Quero todas as ferramentas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="por_dentro" data-ir-oferta>Quero todas as ferramentas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>PDF de 67 páginas, acesso imediato</span></div>
     </div>
   </div>
@@ -632,7 +642,7 @@
 <section class="oferta faixa" id="oferta" data-secao="oferta">
   <div class="miolo">
     <h2>Tudo o que você precisa para <em>construir a sua Sala Referência</em></h2>
-    <div class="caixa">
+    <div class="caixa" id="comprar">
       <div class="lado-capa">
         <img src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Ilustração do Guia Prático Sala Referência" loading="lazy">
         <p>Guia digital em PDF<br>67 páginas</p>
@@ -699,7 +709,7 @@
       </div>
       <p class="bases">Inspirado em <b>Reggio Emilia, Pikler e no brincar heurístico</b>, em diálogo com Horn, Goldschmied, Hoyuelos e Carla Rinaldi.</p>
       <div class="cta">
-        <a class="btn" href="#oferta" data-cta="autora" data-ir-oferta>Quero aprender com a Patrícia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="autora" data-ir-oferta>Quero aprender com a Patrícia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       </div>
     </div>
   </div>
@@ -717,7 +727,7 @@
       <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Basta pedir o reembolso pela Eduzz dentro desse prazo.</p></details>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#oferta" data-cta="faq" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="faq" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 </section>
@@ -728,7 +738,7 @@
     <p class="antes">Pare de perguntar <s>“O que eu preciso arrumar?”</s></p>
     <h2>e descubra a pergunta que <em>transforma a sua sala</em></h2>
     <div class="cta centro">
-      <a class="btn" href="#oferta" data-cta="fechamento" data-ir-oferta>Começar meu planejamento agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="fechamento" data-ir-oferta>Começar meu planejamento agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
     </div>
   </div>
@@ -744,7 +754,7 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn" href="#oferta" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
+  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
 </div>
 
 <script>
