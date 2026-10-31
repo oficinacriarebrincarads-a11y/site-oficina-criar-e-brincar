@@ -247,6 +247,8 @@
   .itens li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:var(--cinza)}
   .itens li svg{flex:none;width:18px;height:18px;color:var(--verde-esc);margin-top:3px}
   .itens b{font-weight:700;color:var(--uva)}
+  .itens .bonus{align-items:center;margin-top:4px;padding:12px 14px;border-radius:12px;background:var(--sol)}
+  .tag-bonus{flex:none;padding:3px 10px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:800 12px var(--f-texto);letter-spacing:.06em;text-transform:uppercase}
   .preco{display:flex;align-items:center;gap:20px;margin:28px 0 22px;padding-top:24px;border-top:1px solid var(--linha)}
   .preco .valor{font:900 76px/0.9 var(--f-titulo);letter-spacing:-.04em;color:var(--roxo);font-variant-numeric:lining-nums tabular-nums}
   .preco .valor sup{font:600 .26em var(--f-texto);letter-spacing:0;vertical-align:top;position:relative;top:.55em;margin-right:6px;color:var(--cinza)}
@@ -656,6 +658,7 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
+          <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
         </ul>
         <div class="preco">
           <div class="valor"><sup>R$</sup>67</div>
