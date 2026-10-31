@@ -151,20 +151,6 @@
   .capa h1{font-size:clamp(34px,3.5vw,50px);margin:18px 0 0;text-wrap:pretty}
   .capa .lead{margin-top:16px}
   .capa-livro{grid-area:livro;align-self:start;margin:0}
-  .capa-livro img{width:100%;max-height:calc(100svh - 190px);object-fit:contain}
-  .beneficios{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
-  .beneficios li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;line-height:1.3}
-  .beneficios i{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff}
-  .beneficios i svg{width:22px;height:22px}
-  .beneficios li:nth-child(1) i{background:var(--verde-esc)}
-  .beneficios li:nth-child(2) i{background:var(--amarelo);color:var(--uva)}
-  .beneficios li:nth-child(3) i{background:var(--roxo)}
-  .beneficios li:nth-child(4) i{background:var(--uva)}
-  .capa-resto .cta{margin-top:26px}
-  .prova{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;padding-top:20px;border-top:1px solid var(--linha);font-size:14px;font-weight:500;color:var(--cinza)}
-  .prova span{display:flex;flex-direction:column;padding-right:28px;margin-right:28px;border-right:1px solid var(--linha);line-height:1.35}
-  .prova span:last-child{border:0;margin:0;padding:0}
-  .prova b{font:800 28px/1.1 var(--f-titulo);letter-spacing:-.02em;color:var(--uva)}
 
   /* Fotos dos ambientes */
   .card-foto{display:block;width:calc(100% + 48px);max-width:none;margin:-24px -24px 0;aspect-ratio:4/3;object-fit:cover;border-radius:16px 16px 0 0}
@@ -268,10 +254,6 @@
   .preco .obs b{color:var(--verde-esc);font-weight:700}
   .corpo .btn{width:100%}
   .corpo .micro{justify-content:center;margin-top:14px}
-  .garantia{margin-top:24px;display:flex;gap:16px;align-items:center;border:1px solid var(--linha);border-radius:14px;padding:16px 18px;font-size:14.5px;line-height:1.5;color:var(--cinza)}
-  .garantia b{color:var(--uva)}
-  .garantia .selo-g{flex:none;width:56px;height:56px;border-radius:50%;border:1.5px solid var(--verde-esc);color:var(--verde-esc);display:grid;place-items:center;text-align:center;font:600 10.5px/1.05 var(--f-texto);letter-spacing:.04em;text-transform:uppercase}
-  .garantia .selo-g b{font:900 22px/1 var(--f-titulo);display:block;color:var(--verde-esc);text-transform:none}
 
   /* FAQ */
   .perguntas{margin-top:40px;border-top:1px solid var(--linha)}
@@ -316,23 +298,13 @@
     .capa{padding-top:24px}
     .capa::before{width:190px;height:150px;left:-80px;top:-70px}
     .capa .miolo{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"topo" "livro" "resto";row-gap:16px}
-    .capa-livro img{max-height:max(280px,calc(100svh - 500px));margin-inline:auto}
     .capa .btn{display:none}
-    .capa-resto .cta{margin-top:20px}
-    .beneficios{margin-top:0;gap:12px 10px}
-    .beneficios li{font-size:14px;gap:9px}
-    .beneficios i{width:36px;height:36px}
-    .beneficios i svg{width:19px;height:19px}
     .btn{width:100%}
     .cta{align-items:stretch}
     .ident .foto{order:-1}
     .ident .foto img{aspect-ratio:4/3!important}
     .card-foto{width:calc(100% + 36px);margin:-18px -18px 0}
     .mural{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:42vw;gap:10px;margin-top:32px}
-    .prova{margin-top:22px;padding-top:18px}
-    .prova{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));font-size:12.5px}
-    .prova span{padding-right:12px;margin-right:12px}
-    .prova b{font-size:22px;white-space:nowrap}
     .virar{min-height:170px;padding:18px}
     .virar .q{font-size:19px}
     .lado-capa{padding:28px 24px 4px;background:#fff;border:0}
@@ -346,6 +318,87 @@
     .fixa{display:flex}
     footer.rodape{padding-bottom:96px}
     .foto::before{inset:14px -10px -10px 14px}
+  }
+  /* Capa escura, com a autora e onda de transição */
+  .capa{background:linear-gradient(135deg,var(--uva),var(--roxo-esc));color:#fff;border:0;padding-bottom:clamp(72px,8vw,104px)}
+  .capa::before{background:rgba(255,255,255,.05)}
+  .capa::after{background:rgba(252,194,24,.14)}
+  .capa h1{color:#fff}
+  .capa h1 em{color:var(--amarelo)}
+  .capa .lead{color:#E4DCF0}
+  .capa .etiqueta{background:var(--amarelo);color:var(--uva)}
+  .capa .micro{color:#E4DCF0}
+  .capa .micro svg{color:var(--amarelo)}
+  .capa-resto .cta{margin-top:22px}
+  .enfeites svg{position:absolute;z-index:-1;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.28;animation:flutua 7s ease-in-out infinite}
+  .e1{width:64px;left:47%;top:8%}
+  .e2{width:60px;left:46%;top:40%;stroke:var(--verde)!important;opacity:.6!important;animation-delay:-2s!important}
+  .e3{width:70px;right:3%;bottom:10%;stroke:var(--amarelo)!important;opacity:.55!important;animation-delay:-4s!important}
+  .e4{width:62px;left:42%;bottom:12%;animation-delay:-1s!important}
+  .e5{width:66px;right:38%;top:44%;animation-delay:-5s!important}
+  .e6{width:70px;left:36%;top:5%;stroke:var(--amarelo)!important;opacity:.5!important;animation:gira 30s linear infinite!important}
+  @keyframes flutua{50%{transform:translateY(-14px) rotate(5deg)}}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  .marca{display:flex;align-items:center;gap:16px;line-height:1.05}
+  .marca small{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:#E4DCF0;margin-bottom:3px}
+  .marca-nome{font-weight:900;font-size:25px;letter-spacing:-.02em;color:var(--amarelo)}
+  .marca-com{padding-left:16px;border-left:2px solid rgba(255,255,255,.35);font-weight:800;font-size:19px;color:#fff}
+  .indicado{display:inline-block;margin-top:20px;padding:9px 18px;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(255,255,255,.1);font-size:14.5px;font-weight:700;line-height:1.35;color:#fff}
+  .palco{position:relative;width:min(100%,600px);aspect-ratio:1/.98;margin-inline:auto}
+  .palco-foto{position:absolute;right:15%;top:2%;width:60%;aspect-ratio:688/848;object-fit:cover;border-radius:28px;box-shadow:0 0 0 6px var(--amarelo),0 30px 60px -25px rgba(0,0,0,.7)}
+  .flut{position:absolute;right:0;width:27%;aspect-ratio:1;object-fit:cover;border:4px solid #fff;border-radius:18px;box-shadow:0 18px 30px -14px rgba(0,0,0,.6);animation:flutua 6s ease-in-out infinite}
+  .f1{top:0}
+  .f2{top:32%;animation-delay:-3s}
+  .palco-livro{position:absolute;left:0;bottom:0;width:66%;transform:rotate(-3deg);filter:drop-shadow(0 22px 22px rgba(0,0,0,.45));animation:flutua-livro 8s ease-in-out infinite}
+  @keyframes flutua-livro{50%{transform:rotate(-3deg) translateY(-8px)}}
+  .palco-selo{position:absolute;right:0;bottom:7%;max-width:38%;padding:9px 16px;border-radius:16px;background:#fff;color:var(--uva);font-size:14px;font-weight:800;line-height:1.25;box-shadow:0 14px 26px -12px rgba(0,0,0,.6)}
+  .onda{display:block;width:100%;height:clamp(28px,5vw,64px);margin-top:calc(-1 * clamp(28px,5vw,64px));position:relative}
+
+  /* O que muda: fotos com mancha de cor e ícone */
+  .muda{padding-top:clamp(48px,7vw,88px)}
+  .mudancas{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 40px}
+  .mudancas li{text-align:center;font-size:17px;line-height:1.45}
+  .mudancas b{color:var(--roxo)}
+  .quadro{position:relative;isolation:isolate;width:min(100%,280px);margin:0 auto 22px}
+  .quadro::before{content:"";position:absolute;z-index:-1;left:-22px;top:-14px;width:58%;height:78%;background:var(--amarelo);border-radius:58% 42% 60% 40%/50% 60% 40% 50%}
+  .mudancas li:nth-child(even) .quadro::before{background:var(--roxo)}
+  .quadro img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px}
+  .quadro i{position:absolute;right:-10px;bottom:-14px;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--roxo);color:#fff;box-shadow:0 0 0 4px #fff}
+  .mudancas li:nth-child(even) .quadro i{background:var(--amarelo);color:var(--uva)}
+  .quadro i svg{width:28px;height:28px}
+
+  /* Garantia em destaque */
+  .garante{background:var(--uva);color:#fff;padding:clamp(56px,7vw,88px) 20px}
+  .garante .miolo{width:min(100%,960px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+  .selo{width:clamp(150px,20vw,210px)}
+  .garante h2{color:#fff;font-size:clamp(28px,3.6vw,42px)}
+  .garante h2 em{color:var(--amarelo)}
+  .garante p{margin-top:14px;color:#E4DCF0}
+  .garante p b{color:#fff}
+
+  @media (max-width:960px){
+    .mudancas{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
+  }
+  @media (max-width:760px){
+    .capa{padding-bottom:64px}
+    .marca-nome{font-size:21px}
+    .marca-com{font-size:16px}
+    .marca small{font-size:12px}
+    .capa h1{margin-top:16px}
+    .capa .lead{margin-top:10px;font-size:16px;line-height:1.45}
+    .palco{width:min(100%,380px)}
+    .enfeites svg{width:42px!important}
+    .e1,.e4,.e5{display:none}
+    .e2{left:7%;top:53%}
+    .e6{left:8%;top:40%}
+    .indicado{display:block;text-align:center;font-size:14px}
+    .capa-resto .cta{margin-top:20px}
+    .mudancas{margin-top:40px;font-size:16px}
+    .quadro{width:calc(100% - 16px)}
+    .quadro::before{left:-12px;top:-10px}
+    .quadro i{width:46px;height:46px;right:-6px;bottom:-12px}
+    .quadro i svg{width:23px;height:23px}
+    .garante .miolo{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
   }
 </style>
 </head>
@@ -389,30 +442,39 @@
 
 <!-- 1. Capa -->
 <section class="capa" data-secao="capa">
+  <div class="enfeites" aria-hidden="true">
+    <svg class="e1" viewBox="0 0 64 64"><path d="M10 30 32 10l22 20M16 25v29h32V25M27 54V38h10v16"/></svg>
+    <svg class="e2" viewBox="0 0 64 64"><path d="M12 52C12 26 28 12 54 10c0 26-14 42-42 42zM12 52 36 28"/></svg>
+    <svg class="e3" viewBox="0 0 64 64"><path d="M32 32c0-4 6-4 6 1 0 7-12 8-13-1-1-11 18-14 22 0 4 16-22 25-32 8"/></svg>
+    <svg class="e4" viewBox="0 0 64 64"><path d="M8 40h18v16H8zM28 40h18v16H28zM18 24h18v16H18zM36 10l10 14H26z"/></svg>
+    <svg class="e5" viewBox="0 0 64 64"><path d="M6 30 58 8 42 56 30 38zM30 38 58 8"/></svg>
+    <svg class="e6" viewBox="0 0 64 64"><circle cx="32" cy="32" r="11"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6"/></svg>
+  </div>
   <div class="miolo">
     <div class="capa-topo">
-      <span class="etiqueta">Guia prático · Sala Referência</span>
-      <h1>Transforme a sala que você já tem em <em>território de investigação</em> para as crianças</h1>
+      <div class="marca"><span class="marca-nome"><small>Guia Prático</small>Sala Referência</span><span class="marca-com"><small>com</small>Patrícia Souza</span></div>
+      <h1>Transforme a sala que você já tem em <em>território de investigação</em> com Patrícia Souza</h1>
       <p class="lead">Um passo a passo para planejar Zonas Circunscritas com intencionalidade, a partir das pedagogias participativas. Sem comprar nada novo.</p>
     </div>
     <div class="capa-livro">
-      <img src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Ilustração do Guia Prático Sala Referência, com a capa do livro e um exemplo de planta de sala" fetchpriority="high">
+      <div class="palco">
+        <img class="palco-foto" src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" fetchpriority="high">
+        <img class="flut f1" src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas e sementes preparada para investigação">
+        <img class="flut f2" src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira ao lado de uma caixa">
+        <img class="palco-livro" src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Guia Prático Sala Referência, com a capa do livro e um exemplo de planta de sala">
+        <span class="palco-selo">Centenas de educadores formados</span>
+      </div>
     </div>
     <div class="capa-resto">
-      <ul class="beneficios">
-        <li><i><svg aria-hidden="true"><use href="#i-casa"/></svg></i>Passo a passo claro e aplicável</li>
-        <li><i><svg aria-hidden="true"><use href="#i-lampada"/></svg></i>Exemplos reais da prática</li>
-        <li><i><svg aria-hidden="true"><use href="#i-doc"/></svg></i>Fichas e roteiros prontos</li>
-        <li><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i>Pensado para a sua realidade</li>
-      </ul>
+      <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
         <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="capa" data-checkout>Quero o guia por R$ 67 <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-cartao"/></svg>ou 12x de R$ 6,93</span><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
-      <div class="prova"><span><b>20 anos</b> de educação infantil</span><span><b>67</b> páginas</span><span><b>12</b> produções no seu dossiê</span></div>
     </div>
   </div>
 </section>
+<svg class="onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 48C240 8 480 8 720 40s480 40 720 0v40H0z"/></svg>
 
 <!-- 2. Identificação -->
 <section class="ident faixa" data-secao="identificacao">
@@ -433,6 +495,24 @@
       </div>
     </div>
     <div class="foto"><img src="/assets/guia-sala-referencia/sala-mesa.jpg" width="900" height="1598" alt="Sala da Oficina Criar e Brincar com mesa de madeira, cadeiras baixas e estantes com materiais" loading="lazy" style="aspect-ratio:4/5"></div>
+  </div>
+</section>
+
+<!-- O que muda na prática -->
+<section class="muda faixa" data-secao="o_que_muda">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo">O que muda na sua prática</span>
+      <h2>Com o guia, você vai <em>planejar a sala com intenção</em></h2>
+    </div>
+    <ul class="mudancas">
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira coloridos ao lado de uma caixa" loading="lazy"><i><svg aria-hidden="true"><use href="#i-casa"/></svg></i></div><b>Partir do que já existe</b> na sua sala, sem comprar nada novo</li>
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"><i><svg aria-hidden="true"><use href="#i-lampada"/></svg></i></div><b>Começar por uma única zona</b> antes de planejar a sala inteira</li>
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas, sementes e pratos preparados para investigação" loading="lazy"><i><svg aria-hidden="true"><use href="#i-girar"/></svg></i></div><b>Olhar para os materiais</b> com critérios para escolher o que oferecer</li>
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/sala-ampla.jpg" alt="Sala ampla com mesas de madeira e paredes verdes" loading="lazy"><i><svg aria-hidden="true"><use href="#i-doc"/></svg></i></div><b>Desenhar a planta-baixa</b> da sala atual e da sala planejada</li>
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/instrumentos.jpg" alt="Instrumentos e objetos naturais sobre um tecido colorido" loading="lazy"><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i></div><b>Observar e documentar</b> o que as crianças revelam no espaço</li>
+      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"><i><svg aria-hidden="true"><use href="#i-check"/></svg></i></div><b>Reunir 12 produções</b> no seu dossiê para o Processo Documental</li>
+    </ul>
   </div>
 </section>
 
@@ -583,11 +663,26 @@
         </div>
         <a class="btn" href="/guia-sala-referencia/checkout/" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
-        <div class="garantia">
-          <div class="selo-g"><div><b>7</b>dias</div></div>
-          <p><b>Risco zero.</b> Se o guia não fizer sentido para a sua prática, peça o reembolso em até 7 dias e você recebe todo o valor de volta.</p>
-        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Garantia -->
+<section class="garante" data-secao="garantia">
+  <div class="miolo">
+    <svg class="selo" viewBox="0 0 200 200" role="img" aria-label="Selo de 7 dias de garantia">
+      <path fill="#E9D3F7" stroke="#E9D3F7" stroke-width="3" stroke-linejoin="round" d="M100.0 4.0L113.8 13.1L129.7 8.7L140.0 21.6L156.4 22.3L162.2 37.8L177.7 43.6L178.4 60.0L191.3 70.3L186.9 86.2L196.0 100.0L186.9 113.8L191.3 129.7L178.4 140.0L177.7 156.4L162.2 162.2L156.4 177.7L140.0 178.4L129.7 191.3L113.8 186.9L100.0 196.0L86.2 186.9L70.3 191.3L60.0 178.4L43.6 177.7L37.8 162.2L22.3 156.4L21.6 140.0L8.7 129.7L13.1 113.8L4.0 100.0L13.1 86.2L8.7 70.3L21.6 60.0L22.3 43.6L37.8 37.8L43.6 22.3L60.0 21.6L70.3 8.7L86.2 13.1z"/>
+      <circle cx="100" cy="100" r="80" fill="#fff"/>
+      <circle cx="100" cy="100" r="50" fill="#351B64"/>
+      <path id="arco-g" fill="none" d="M42 100a58 58 0 01116 0"/>
+      <text font-family="Nunito,sans-serif" font-weight="900" font-size="13" letter-spacing="1.200" fill="#351B64"><textPath href="#arco-g" startOffset="50%" text-anchor="middle">DINHEIRO DE VOLTA</textPath></text>
+      <text x="100" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="54" fill="#FCC218">7</text>
+      <text x="100" y="131" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="17" fill="#fff" letter-spacing="2">DIAS</text>
+    </svg>
+    <div>
+      <h2>Garantia de <em>7 dias</em></h2>
+      <p><b>Risco zero.</b> Se o guia não fizer sentido para a sua prática, peça o reembolso em até 7 dias e você recebe todo o valor de volta.</p>
     </div>
   </div>
 </section>
