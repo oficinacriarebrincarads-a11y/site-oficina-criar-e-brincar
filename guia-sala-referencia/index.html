@@ -237,7 +237,22 @@
   .oferta{background:var(--roxo);background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.07) 1px,transparent 0);background-size:22px 22px}
   .oferta > .miolo > h2{color:#fff;text-align:center}
   .oferta > .miolo > h2 em{color:var(--amarelo)}
-  #comprar{scroll-margin-top:12px}
+  #comprar,#rapida{scroll-margin-top:12px}
+  .rapida{padding:0 20px clamp(64px,8vw,96px)}
+  .rapida-caixa{width:min(100%,880px);margin-inline:auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(20px,3vw,36px);border-radius:24px;background:var(--lavanda);border:2px solid var(--lavanda-2)}
+  .rapida-titulo{font:900 clamp(24px,2.6vw,30px)/1.15 var(--f-titulo);letter-spacing:-.02em;color:var(--uva)}
+  .rapida-sub{margin-top:6px;font-size:15px;font-weight:600;color:var(--cinza)}
+  .rapida-preco{display:flex;align-items:center;gap:14px;margin:16px 0 12px}
+  .rapida .urgencia{margin-top:14px}
+  .rapida .de{margin-top:14px}
+  .rapida .de + .rapida-preco{margin-top:4px}
+  .rapida-preco .v{font:900 58px/.9 var(--f-titulo);letter-spacing:-.04em;color:var(--roxo)}
+  .rapida-preco sup{font:600 .3em var(--f-texto);vertical-align:top;position:relative;top:.5em;margin-right:4px;color:var(--cinza)}
+  .rapida-preco .o{font-size:14.5px;line-height:1.4;color:var(--cinza)}
+  .rapida-preco .o b{color:var(--verde-esc)}
+  .rapida-bonus{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:15px;font-weight:700}
+  .rapida .btn{width:100%}
+  .rapida .micro{justify-content:center;margin-top:12px}
   .caixa{width:min(100%,960px);margin:48px auto 0;background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
   .lado-capa{background:var(--papel);padding:40px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border-right:1px solid var(--linha)}
   .lado-capa img{width:100%}
@@ -250,13 +265,15 @@
   .itens b{font-weight:700;color:var(--uva)}
   .itens .bonus{align-items:center;margin-top:4px;padding:12px 14px;border-radius:12px;background:var(--sol)}
   .tag-bonus{flex:none;padding:3px 10px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:800 12px var(--f-texto);letter-spacing:.06em;text-transform:uppercase}
-  .urgencia{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-top:24px;padding:14px 16px;border-radius:12px;background:var(--uva);color:#fff}
+  .urgencia{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:24px;padding:16px 16px 18px;border-radius:16px;background:var(--uva);border:3px solid var(--amarelo);color:#fff;text-align:center;box-shadow:0 14px 30px -14px rgba(53,27,100,.7)}
   .urgencia[hidden],.de[hidden]{display:none}
-  .urgencia p{font-size:16px;font-weight:700;line-height:1.3}
-  .urgencia p b{color:var(--amarelo);font-weight:900}
-  .timer{display:flex;gap:8px}
-  .timer span{min-width:50px;padding:5px 6px;border-radius:8px;background:rgba(255,255,255,.12);text-align:center;font-size:10.5px;font-weight:700;line-height:1.2;color:#E4DCF0}
-  .timer b{display:block;font:900 21px/1.1 var(--f-titulo);color:#fff;font-variant-numeric:tabular-nums}
+  .urgencia p{font:800 17px/1.3 var(--f-titulo);text-transform:uppercase;letter-spacing:.04em}
+  .urgencia p::before{content:"";display:inline-block;vertical-align:2px;margin-right:8px;width:10px;height:10px;border-radius:50%;background:#FF5A4E;box-shadow:0 0 0 0 rgba(255,90,78,.7);animation:pisca 1.6s infinite}
+  @keyframes pisca{70%{box-shadow:0 0 0 10px rgba(255,90,78,0)}100%{box-shadow:0 0 0 0 rgba(255,90,78,0)}}
+  .urgencia p b{color:var(--amarelo);font-weight:900;white-space:nowrap}
+  .timer{display:flex;gap:10px}
+  .timer span{min-width:72px;padding:8px 8px 6px;border-radius:12px;background:var(--amarelo);text-align:center;font-size:11.5px;font-weight:800;line-height:1.2;color:var(--uva);text-transform:uppercase;letter-spacing:.06em}
+  .timer b{display:block;font:900 36px/1 var(--f-titulo);color:var(--uva);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
   .de{margin-top:22px;font-size:17px;font-weight:700;color:var(--cinza)}
   .de s{text-decoration-color:#D33;text-decoration-thickness:2px}
   .de + .preco{margin-top:6px;padding-top:0;border-top:0}
@@ -394,6 +411,10 @@
   }
   @media (max-width:760px){
     .capa{padding-bottom:64px}
+    .rapida{padding-bottom:56px}
+    .rapida-caixa{grid-template-columns:minmax(0,1fr);gap:4px;padding:18px 18px 22px}
+    .rapida-livro{width:min(100%,170px);margin:0 auto}
+    .rapida-preco .v{font-size:52px}
     /* Oferta: preço e botão primeiro, para aparecerem sem rolagem ao chegar pelos botões */
     .caixa{margin-top:32px}
     .corpo{order:-1;display:flex;flex-direction:column;padding:20px 20px 28px}
@@ -443,7 +464,7 @@
 
 <!-- Faixa superior -->
 <div class="aviso">
-  <a href="#comprar" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
+  <a href="#rapida" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
     <div class="trilho" aria-hidden="true">
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
@@ -456,7 +477,7 @@
 <header class="topo">
   <div class="miolo">
     <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
-    <a class="mini" href="#comprar" data-cta="topo" data-ir-oferta>Quero o guia</a>
+    <a class="mini" href="#rapida" data-cta="topo" data-ir-oferta>Quero o guia</a>
   </div>
 </header>
 
@@ -490,7 +511,7 @@
     <div class="capa-resto">
       <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
-        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#rapida" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
@@ -535,6 +556,26 @@
       <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/instrumentos.jpg" alt="Instrumentos e objetos naturais sobre um tecido colorido" loading="lazy"><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i></div><b>Observar e documentar</b> o que as crianças revelam no espaço</li>
       <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"><i><svg aria-hidden="true"><use href="#i-check"/></svg></i></div><b>Reunir 12 produções</b> no seu dossiê para o Processo Documental</li>
     </ul>
+  </div>
+</section>
+
+<!-- Oferta rápida: preço cedo para quem não lê a página inteira -->
+<section class="rapida" id="rapida" data-secao="oferta_rapida">
+  <div class="rapida-caixa">
+    <img class="rapida-livro" src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Guia Prático Sala Referência" loading="lazy">
+    <div class="rapida-corpo">
+      <p class="rapida-titulo">Comece hoje a planejar a sua sala</p>
+      <p class="rapida-sub">Guia Prático Sala Referência · PDF de 67 páginas</p>
+      <div class="urgencia js-urg" hidden>
+        <p>Condição válida <b>somente hoje</b></p>
+        <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
+      </div>
+      <p class="de js-de" hidden>De <s>R$ 97</s> por:</p>
+      <div class="rapida-preco"><span class="v"><sup>R$</sup>67</span><span class="o">à vista, ou<br><b>12x de R$ 6,93</b></span></div>
+      <p class="rapida-bonus"><span class="tag-bonus">Bônus</span>Workshop Sala Referência</p>
+      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta_rapida" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+    </div>
   </div>
 </section>
 
@@ -658,11 +699,11 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
           <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
         </ul>
-        <div class="urgencia" id="urgencia" hidden>
+        <div class="urgencia js-urg" id="urgencia" hidden>
           <p>Condição válida <b>somente hoje</b></p>
-          <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b id="t-h">00</b>horas</span><span><b id="t-m">00</b>min</span><span><b id="t-s">00</b>seg</span></div>
+          <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
         </div>
-        <p class="de" id="preco-de" hidden>De <s>R$ 97</s> por:</p>
+        <p class="de js-de" id="preco-de" hidden>De <s>R$ 97</s> por:</p>
         <div class="preco">
           <div class="valor"><sup>R$</sup>67</div>
           <div class="obs">à vista, ou <b>12x de R$ 6,93</b><br>R$ 1 por página de percurso prático</div>
@@ -754,7 +795,7 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
+  <a class="btn" href="#rapida" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
 </div>
 
 <script>
@@ -833,16 +874,17 @@
 
   // Oferta com prazo real: passado o horário, somem o aviso, o timer e o "De R$ 97"
   var FIM_OFERTA = new Date('2026-11-02T23:59:59-03:00').getTime();
-  var urgencia = document.getElementById('urgencia'), precoDe = document.getElementById('preco-de');
+  var avisos = document.querySelectorAll('.js-urg, .js-de');
+  function preenche(campo, valor){ document.querySelectorAll('[data-t="' + campo + '"]').forEach(function(b){ b.textContent = valor; }); }
   function doisDigitos(n){ return (n < 10 ? '0' : '') + n; }
   function contagem(){
     var resta = FIM_OFERTA - Date.now(), ativa = resta > 0;
-    urgencia.hidden = precoDe.hidden = !ativa;
+    avisos.forEach(function(el){ el.hidden = !ativa; });
     if(!ativa){ clearInterval(timerOferta); return; }
     var s = Math.floor(resta / 1000);
-    document.getElementById('t-h').textContent = doisDigitos(Math.floor(s / 3600));
-    document.getElementById('t-m').textContent = doisDigitos(Math.floor(s / 60) % 60);
-    document.getElementById('t-s').textContent = doisDigitos(s % 60);
+    preenche('h', doisDigitos(Math.floor(s / 3600)));
+    preenche('m', doisDigitos(Math.floor(s / 60) % 60));
+    preenche('s', doisDigitos(s % 60));
   }
   var timerOferta = setInterval(contagem, 1000);
   contagem();
@@ -850,10 +892,10 @@
   // Barra fixa no celular: ativa desde a primeira dobra e some perto da oferta e do fechamento
   var fixa = document.getElementById('fixa');
   var oferta = document.getElementById('oferta'), fecha = document.querySelector('.fecha');
-  var vis = new Map([[oferta, false], [fecha, false]]);
+  var vis = new Map([[oferta, false], [fecha, false], [document.getElementById('rapida'), false]]);
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ vis.set(e.target, e.isIntersecting); });
-    fixa.classList.toggle('ver', !vis.get(oferta) && !vis.get(fecha));
+    fixa.classList.toggle('ver', Array.from(vis.values()).every(function(v){ return !v; }));
   });
   vis.forEach(function(_, el){ io.observe(el); });
 
