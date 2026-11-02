@@ -274,6 +274,7 @@
   .timer b{display:block;font:900 21px/1.1 var(--f-titulo);color:#fff;font-variant-numeric:tabular-nums}
   .de{margin-top:22px;font-size:17px;font-weight:700;color:var(--cinza)}
   .de s{text-decoration-color:#D33;text-decoration-thickness:2px}
+  .off{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:6px;background:#111;color:var(--amarelo);font:900 14px/1.4 var(--f-titulo);letter-spacing:.02em;vertical-align:1px}
   .de + .preco{margin-top:6px;padding-top:0;border-top:0}
   .preco{display:flex;align-items:center;gap:20px;margin:28px 0 22px;padding-top:24px;border-top:1px solid var(--linha)}
   .preco .valor{font:900 76px/0.9 var(--f-titulo);letter-spacing:-.04em;color:var(--roxo);font-variant-numeric:lining-nums tabular-nums}
@@ -568,7 +569,7 @@
         <p>Condição válida <b>somente hoje</b></p>
         <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
       </div>
-      <p class="de js-de" hidden>De <s>R$ 97</s> por:</p>
+      <p class="de js-de" hidden>De <s>R$ 97</s> por: <span class="off">30% OFF</span></p>
       <div class="rapida-preco"><span class="v"><sup>R$</sup>67</span><span class="o">à vista, ou<br><b>12x de R$ 6,93</b></span></div>
       <p class="rapida-bonus"><span class="tag-bonus">Bônus</span>Workshop Sala Referência</p>
       <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta_rapida" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
@@ -701,7 +702,7 @@
           <p>Condição válida <b>somente hoje</b></p>
           <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
         </div>
-        <p class="de js-de" id="preco-de" hidden>De <s>R$ 97</s> por:</p>
+        <p class="de js-de" id="preco-de" hidden>De <s>R$ 97</s> por: <span class="off">30% OFF</span></p>
         <div class="preco">
           <div class="valor"><sup>R$</sup>67</div>
           <div class="obs">à vista, ou <b>12x de R$ 6,93</b><br>R$ 1 por página de percurso prático</div>
