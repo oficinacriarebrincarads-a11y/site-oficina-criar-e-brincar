@@ -103,12 +103,14 @@
   .centro .lead{margin-inline:auto}
 
   /* Faixa superior */
-  .aviso{background:var(--uva);color:#E4DCF0;font:600 12.5px var(--f-texto);letter-spacing:.12em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+  .aviso{position:sticky;top:0;z-index:30;background:var(--uva);color:#E4DCF0;font:600 12.5px var(--f-texto);letter-spacing:.12em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
   .aviso a{display:block;color:inherit;text-decoration:none;padding:10px 0}
   .aviso .trilho{display:inline-flex;gap:32px;padding-left:32px;animation:corre 40s linear infinite}
   .aviso span{display:inline-flex;align-items:center;gap:32px}
   .aviso span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--amarelo)}
   .aviso b{color:#fff;font-weight:700}
+  .aviso span[hidden]{display:none}
+  .aviso .aviso-off{color:#111;background:var(--amarelo);padding:2px 7px;border-radius:4px;font-weight:900}
   @keyframes corre{to{transform:translateX(-50%)}}
 
   /* Foto com bloco de cor deslocado, como nas páginas do guia */
@@ -237,7 +239,7 @@
   .oferta{background:var(--roxo);background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.07) 1px,transparent 0);background-size:22px 22px}
   .oferta > .miolo > h2{color:#fff;text-align:center}
   .oferta > .miolo > h2 em{color:var(--amarelo)}
-  #comprar,#rapida{scroll-margin-top:12px}
+  #comprar,#rapida{scroll-margin-top:52px}
   .rapida{padding:0 20px clamp(64px,8vw,96px)}
   .rapida-caixa{width:min(100%,880px);margin-inline:auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(20px,3vw,36px);border-radius:24px;background:var(--lavanda);border:2px solid var(--lavanda-2)}
   .rapida-titulo{font:900 clamp(24px,2.6vw,30px)/1.15 var(--f-titulo);letter-spacing:-.02em;color:var(--uva)}
@@ -465,10 +467,10 @@
 <div class="aviso">
   <a href="#rapida" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
     <div class="trilho" aria-hidden="true">
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span class="js-de" hidden><b class="aviso-off">30% OFF</b> somente hoje</span><span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span class="js-de" hidden><b class="aviso-off">30% OFF</b> somente hoje</span><span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span class="js-de" hidden><b class="aviso-off">30% OFF</b> somente hoje</span><span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
+      <span class="js-de" hidden><b class="aviso-off">30% OFF</b> somente hoje</span><span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
     </div>
   </a>
 </div>
