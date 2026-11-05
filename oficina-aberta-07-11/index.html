@@ -39,12 +39,12 @@
   })(window, document, "clarity", "script", "z5fhrmur2j");
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Oficina Aberta · Dia das Crianças e das Infâncias</title>
-<meta name="description" content="Oficina Aberta: Dia das Crianças e das Infâncias na Escola Oficina Criar e Brincar. Sábado, 07/11, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas.">
+<title>Oficina Aberta · Escola particular de Educação Infantil</title>
+<meta name="description" content="Oficina Aberta na Escola Oficina Criar e Brincar, escola particular de Educação Infantil em Santana de Parnaíba. Conheça a escola e a proposta pedagógica 2027. Sábado, 07/11, das 9h às 12h. Para famílias com crianças de 0 a 6 anos. Vagas limitadas.">
 <meta name="theme-color" content="#8512DF">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Oficina Aberta · Dia das Crianças e das Infâncias">
-<meta property="og:description" content="Sábado, 07/11, das 9h às 12h. Para crianças de 0 a 6 anos e suas famílias. Entrada gratuita, vagas limitadas. Garanta sua vaga.">
+<meta property="og:title" content="Oficina Aberta · Conheça a escola e a proposta pedagógica 2027">
+<meta property="og:description" content="Escola particular de Educação Infantil em Santana de Parnaíba. Sábado, 07/11, das 9h às 12h. Para famílias com crianças de 0 a 6 anos. Vagas limitadas, garanta a sua.">
 <meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/selo.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/selo.jpg">
@@ -206,6 +206,7 @@
   .titulo-evento h1{font-size:clamp(48px,11vw,76px);color:var(--uva);line-height:1}
   .risco{width:min(100%,330px);height:16px;margin-top:-2px}
   .risco path{fill:none;stroke:var(--amarelo);stroke-width:7;stroke-linecap:round}
+  .selo-escola{justify-self:start;font:600 14px/1.2 var(--f-titulo);letter-spacing:.06em;text-transform:uppercase;color:var(--roxo);background:#fff;border:2px solid var(--lavanda-2);border-radius:999px;padding:6px 14px;margin:0 0 8px}
   .titulo-evento .sub{font:600 clamp(24px,5.4vw,32px)/1.15 var(--f-titulo);color:var(--floresta);margin:6px 0 0}
   .mao{font-family:var(--f-mao);font-weight:400}
   .balao{justify-self:start;background:var(--lilas);color:var(--uva);font-size:23px;line-height:1.25;padding:12px 18px;border-radius:6px 18px 8px 16px;max-width:30ch;margin:0}
@@ -579,11 +580,11 @@
     }).join("");
     return '<div class="capa">' +
       '<div class="col-a">' +
-      '<div class="titulo-evento"><h1>Oficina Aberta</h1>' +
+      '<div class="titulo-evento"><p class="selo-escola">Escola particular de Educação Infantil</p><h1>Oficina Aberta</h1>' +
       '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
-      '<p class="sub">Dia das Crianças e das Infâncias</p></div>' +
-      '<p class="mao balao">Uma manhã para brincar, explorar, conhecer e se encantar com a nossa escola!</p>' +
-      '<p class="texto">Para crianças de <b class="destaque">0 a 6 anos</b> e suas famílias. Venham conhecer nossa proposta 2027, nossa cultura, nossos espaços e nossa equipe.</p>' +
+      '<p class="sub">Conheça a escola e a proposta pedagógica 2027</p></div>' +
+      '<p class="mao balao">Edição Dia das Crianças e das Infâncias: uma manhã para brincar, explorar e se encantar com a nossa escola!</p>' +
+      '<p class="texto">Para famílias com crianças de <b class="destaque">0 a 6 anos</b> que estão escolhendo a escola para 2027. Venham conhecer nossa proposta pedagógica, nossa cultura, nossos espaços e nossa equipe.</p>' +
       '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul class="cards-ativ" id="cardsAtiv">' + ativ + '</ul>' +
       '<div class="pontos" id="pontos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>' +
       '<p class="ativ-mais">E muitas experiências, encontros e brincadeiras!</p></div>' +
@@ -594,7 +595,7 @@
         info(I.cal, "var(--lavanda)", "var(--roxo)", EVENTO.data, EVENTO.hora) +
         info(I.pino, "#E8F4DD", "var(--verde-esc)", EVENTO.endereco, EVENTO.bairro + " · " + EVENTO.cep) +
       '</div>' +
-      '<div class="gratis"><b>Entrada gratuita</b><span>As vagas são limitadas. Garanta a participação da sua família preenchendo a inscrição.</span></div>' +
+      '<div class="gratis"><b>Vagas limitadas</b><span>Participação somente com inscrição. Garanta a vaga da sua família preenchendo o formulário.</span></div>' +
       retomar + jaEnviado +
       '<div class="acoes cta-capa"><button type="button" class="btn roxo" data-acao="comecar">Garantir nossa vaga ' + I.seta + '</button>' +
       '<span class="dica-enter">Leva cerca de 1 minuto</span></div>' +
@@ -700,7 +701,7 @@
       '<div><span class="ic">' + I.pino + '</span><p><b>' + esc(EVENTO.endereco) + '</b><span>' + esc(EVENTO.bairro) + '<br>' + esc(EVENTO.cep) + '</span></p></div>' +
       '</div>';
     var url = location.origin + location.pathname;
-    var convite = "Vamos juntos na Oficina Aberta, o Dia das Crianças e das Infâncias da Escola Oficina Criar e Brincar? Sábado, 07/11, das 9h às 12h, no Jardim Benoá. Para crianças de 0 a 6 anos. Entrada gratuita, vagas limitadas. Inscreva-se aqui: " + url;
+    var convite = "Vamos juntos na Oficina Aberta da Escola Oficina Criar e Brincar, escola particular de Educação Infantil? Uma manhã para conhecer a escola e a proposta pedagógica 2027. Sábado, 07/11, das 9h às 12h, no Jardim Benoá. Para crianças de 0 a 6 anos. Vagas limitadas. Inscreva-se aqui: " + url;
     return '<div class="fim">' +
       '<svg class="casa" viewBox="0 0 120 100" aria-hidden="true"><path class="t" d="M10 50 L60 10 L110 50 M22 41 V92 H98 V68"/><path class="p" d="M44 84 V56 H62 V84"/><path class="f" d="M72 88 C72 72 80 62 94 58 C96 74 88 86 72 88 Z"/></svg>' +
       '<h2>Inscrição feita, ' + esc(primeiroNome()) + '!</h2>' +
@@ -905,7 +906,7 @@
       });
       doc.setDrawColor(231,216,250); doc.setLineWidth(0.6); doc.line(M, 182, W - M, 182);
       doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor.apply(doc, roxo);
-      doc.text("Entrada gratuita · Esperamos vocês!", M, 189);
+      doc.text("Vagas limitadas · Esperamos vocês!", M, 189);
       doc.setFont("helvetica","normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, cinza);
       doc.text("Escola Oficina Criar e Brincar · oficinacriarebrincar.com.br", M, 195);
       doc.setFillColor(252,194,24); doc.rect(0, 204, W * .5, 6, "F"); doc.setFillColor(120,182,69); doc.rect(W * .5, 204, W * .25, 6, "F"); doc.setFillColor(53,27,100); doc.rect(W * .75, 204, W * .25, 6, "F");
