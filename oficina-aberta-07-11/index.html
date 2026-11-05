@@ -229,7 +229,7 @@
   .gratis{background:var(--uva);color:#fff;border-radius:20px;padding:16px 20px;display:grid;gap:4px}
   .gratis b{font:600 24px var(--f-titulo);color:var(--amarelo)}
   .gratis span{font-size:16px;color:#E6D8FA}
-  .cta-capa{position:sticky;bottom:0;z-index:4;margin:0 -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lavanda) 70%,rgba(243,235,252,0))}
+  .cta-capa{position:sticky;justify-content:center;bottom:0;z-index:4;margin:0 -20px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lavanda) 70%,rgba(243,235,252,0))}
   .assinatura{font-size:26px;color:var(--roxo);margin:0;justify-self:start}
 
   .rodape-frase{background:var(--floresta);color:#fff;text-align:center;font:400 22px/1.25 var(--f-mao);padding:14px 20px;margin:0}
@@ -328,7 +328,7 @@
     endereco:"Rua Professora Ermelinda Teixeira, 36",
     bairro:"Jardim Benoá, Santana de Parnaíba (SP)",
     cep:"CEP 06502-055",
-    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Dia das Crianças e das Infâncias") +
+    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Oficina Aberta · Escola Oficina Criar e Brincar") +
       "&dates=20261107T120000Z/20261107T150000Z&location=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP, 06502-055") +
       "&details=" + encodeURIComponent("Escola Oficina Criar e Brincar. Jardinagem e horta, ateliê (argila, pintura e grafismo), Quintal das Construções, tanque de areia e culinária."),
     mapa:"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Professora Ermelinda Teixeira, 36 - Jardim Benoá, Santana de Parnaíba - SP, 06502-055")
@@ -583,7 +583,7 @@
       '<div class="titulo-evento"><p class="selo-escola">Escola particular de Educação Infantil</p><h1>Oficina Aberta</h1>' +
       '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
       '<p class="sub">Conheça a escola e a proposta pedagógica 2027</p></div>' +
-      '<p class="mao balao">Edição Dia das Crianças e das Infâncias: uma manhã para brincar, explorar e se encantar com a nossa escola!</p>' +
+      '<p class="mao balao">Uma manhã para brincar, explorar e se encantar com a nossa escola!</p>' +
       '<p class="texto">Para famílias com crianças de <b class="destaque">0 a 6 anos</b> que estão escolhendo a escola para 2027. Venham conhecer nossa proposta pedagógica, nossa cultura, nossos espaços e nossa equipe.</p>' +
       '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul class="cards-ativ" id="cardsAtiv">' + ativ + '</ul>' +
       '<div class="pontos" id="pontos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>' +
@@ -887,7 +887,7 @@
       doc.text(String(estado.id).slice(0, 8).toUpperCase(), W - M, 22, {align:"right"});
       y = 48;
       doc.setTextColor.apply(doc, roxo); doc.setFontSize(22); doc.text("Inscrição confirmada", M, y);
-      y += 8; doc.setTextColor.apply(doc, verde); doc.setFontSize(12); doc.text("Oficina Aberta · Dia das Crianças e das Infâncias", M, y);
+      y += 8; doc.setTextColor.apply(doc, verde); doc.setFontSize(12); doc.text("Oficina Aberta · Escola Oficina Criar e Brincar", M, y);
       y += 9;
       doc.setFillColor(243,235,252); doc.roundedRect(M, y, W - 2*M, 34, 3, 3, "F");
       doc.setTextColor.apply(doc, uva); doc.setFont("helvetica","bold"); doc.setFontSize(11);
