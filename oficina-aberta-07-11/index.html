@@ -244,6 +244,7 @@
     .col-b .logo-capa{order:0;padding:0 0 clamp(12px,2vh,20px);border-radius:0;border-bottom:2px solid var(--lavanda)}
     .col-b .logo-capa img{width:auto;height:clamp(76px,15vh,140px)}
     .col-a{grid-area:a;display:grid;gap:clamp(10px,2vh,22px);align-content:start}
+    .col-a .ativ{order:1}
     .col-b{grid-area:b;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(10px,1.8vh,16px);background:#fff;border-radius:24px;padding:clamp(16px,2.6vh,24px);box-shadow:0 2px 0 var(--lavanda-2)}
     .col-b .infos{padding:0;border-radius:0;background:none}
     .col-b .infos{gap:clamp(10px,2vh,18px)}
@@ -282,6 +283,7 @@
   .rodape-faixa i:nth-child(1){background:var(--roxo)}.rodape-faixa i:nth-child(2){background:var(--amarelo)}.rodape-faixa i:nth-child(3){background:var(--verde)}.rodape-faixa i:nth-child(4){background:var(--uva)}
 
   @media (max-width:520px){
+    .selo-escola{white-space:nowrap;font-size:clamp(10px,3.3vw,14px);letter-spacing:.03em;padding:6px 12px}
     body{font-size:17px}
     .crianca{grid-template-columns:minmax(0,1fr)}
     .btn{font-size:19px;padding:13px 22px}
@@ -584,10 +586,10 @@
       '<svg class="risco" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 C70 4 150 3 296 7"/></svg>' +
       '<p class="sub">Conheça a escola e a proposta pedagógica 2027</p></div>' +
       '<p class="mao balao">Uma manhã para brincar, explorar e se encantar com a nossa escola!</p>' +
-      '<p class="texto">Para famílias com crianças de <b class="destaque">0 a 6 anos</b> que estão escolhendo a escola para 2027. Venham conhecer nossa proposta pedagógica, nossa cultura, nossos espaços e nossa equipe.</p>' +
       '<div class="ativ"><h2 class="mao">O que teremos por aqui?</h2><ul class="cards-ativ" id="cardsAtiv">' + ativ + '</ul>' +
       '<div class="pontos" id="pontos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>' +
       '<p class="ativ-mais">E muitas experiências, encontros e brincadeiras!</p></div>' +
+      '<p class="texto">Para famílias com crianças de <b class="destaque">0 a 6 anos</b> que estão escolhendo a escola para 2027. Venham conhecer nossa proposta pedagógica, nossa cultura, nossos espaços e nossa equipe.</p>' +
       '</div>' +
       '<aside class="col-b">' +
       '<div class="logo-capa"><img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar. Uma educação para a vida!"></div>' +
