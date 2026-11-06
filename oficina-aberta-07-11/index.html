@@ -236,6 +236,14 @@
   /* capa: no celular as colunas somem (display:contents) para o botão fixo funcionar na página toda */
   .col-a,.col-b{display:contents}
   .capa .logo-capa{order:-1}
+  /* celular: data, local e gratuito logo na primeira tela */
+  @media (max-width:979px){
+    .capa .logo-capa{order:-3;padding:10px 14px}
+    .capa .logo-capa img{width:min(100%,170px)}
+    .titulo-evento{order:-2}
+    .capa .infos{order:-1}
+  }
+  .cta-capa .dica-enter{display:block;flex-basis:100%;text-align:center;margin-top:-6px}
   @media (min-width:980px){
     /* desktop: a capa cabe na altura da tela; tamanhos acompanham a altura (vh) */
     main:has(.passo[data-passo="capa"]){padding-block:clamp(10px,2vh,24px) clamp(10px,2vh,24px)}
@@ -600,7 +608,7 @@
       '<div class="gratis"><b>Inscrição gratuita</b><span>Vagas limitadas. Participação somente com inscrição: garanta a vaga da sua família preenchendo o formulário.</span></div>' +
       retomar + jaEnviado +
       '<div class="acoes cta-capa"><button type="button" class="btn roxo" data-acao="comecar">Garantir nossa vaga ' + I.seta + '</button>' +
-      '<span class="dica-enter">Gratuito · leva cerca de 1 minuto</span></div>' +
+      '<span class="dica-enter"><b>Inscrição gratuita</b> · leva cerca de 1 minuto</span></div>' +
       '</aside>' +
       '<p class="mao assinatura">Esperamos vocês!</p>' +
       '</div>';
