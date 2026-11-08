@@ -378,8 +378,10 @@
     try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
     return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
   }
+  // URL de chegada, guardada antes de a tela final trocar o endereço
+  var ENTRADA = {search: location.search, href: location.href};
   function origemVisita(){
-    var q = new URLSearchParams(location.search), partes = [];
+    var q = new URLSearchParams(ENTRADA.search), partes = [];
     ["utm_source","utm_medium","utm_campaign"].forEach(function(k){ if(q.get(k)) partes.push(q.get(k)); });
     if(partes.length) return partes.join(" / ");
     try{ if(document.referrer){ var h = new URL(document.referrer).hostname.replace(/^www\./, ""); if(h !== location.hostname) return h; } }catch(e){}
@@ -387,9 +389,9 @@
   }
   // Parâmetros de campanha do primeiro acesso (first touch)
   function campanhaVisita(){
-    var q = new URLSearchParams(location.search), c = {};
+    var q = new URLSearchParams(ENTRADA.search), c = {};
     ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid","fbclid"].forEach(function(k){ c[k] = (q.get(k) || "").slice(0, 300); });
-    c.pagina_entrada = location.href.slice(0, 1500);
+    c.pagina_entrada = ENTRADA.href.slice(0, 1500);
     var ref = "";
     try{ if(document.referrer){ var h = new URL(document.referrer).hostname.replace(/^www\./, ""); if(h !== location.hostname) ref = h; } }catch(e){}
     c.referencia = ref;
@@ -501,6 +503,13 @@
     {id:"busca"},
     {id:"fim"}
   ];
+  /* a tela final tem endereço próprio (a Netlify serve esta mesma página nele, ver /_redirects) */
+  var URL_FORM = "/oficina-aberta/", URL_FIM = "/oficina-aberta/inscricao-concluida";
+  function naUrlFim(){ return /\/inscricao-concluida\/?$/.test(location.pathname); }
+  function urlFim(fim){
+    if(fim === naUrlFim()) return;
+    try{ if(fim) history.pushState(null, "", URL_FIM); else history.replaceState(null, "", URL_FORM + ENTRADA.search); }catch(e){}
+  }
   function passosVisiveis(){ return PASSOS.filter(function(p){ return !p.se || p.se(); }); }
   function perguntas(){ return passosVisiveis().filter(function(p){ return p.id !== "capa" && p.id !== "fim"; }); }
 
@@ -515,6 +524,7 @@
     var lista = passosVisiveis();
     atual = Math.max(0, Math.min(i, lista.length-1));
     estado.passo = lista[atual].id;
+    if(estado.passo !== "fim") urlFim(false);
     salvar();
     render();
     var p = estado.passo, q = perguntas().map(function(x){ return x.id; }).indexOf(p);
@@ -699,7 +709,7 @@
       '<div><span class="ic">' + I.cal + '</span><p><b>Sábado, 24 de outubro</b><span>Das 9h às 12h</span></p></div>' +
       '<div><span class="ic">' + I.pino + '</span><p><b>' + esc(EVENTO.endereco) + '</b><span>' + esc(EVENTO.bairro) + '<br>' + esc(EVENTO.cep) + '</span></p></div>' +
       '</div>';
-    var url = location.origin + location.pathname;
+    var url = location.origin + URL_FORM;
     var convite = "Vamos juntos na Oficina Aberta, o Dia das Crianças e das Infâncias da Escola Oficina Criar e Brincar? Sábado, 24/10, das 9h às 12h, no Jardim Benoá. Para crianças de 0 a 6 anos. Entrada gratuita, vagas limitadas. Inscreva-se aqui: " + url;
     return '<div class="fim">' +
       '<svg class="casa" viewBox="0 0 120 100" aria-hidden="true"><path class="t" d="M10 50 L60 10 L110 50 M22 41 V92 H98 V68"/><path class="p" d="M44 84 V56 H62 V84"/><path class="f" d="M72 88 C72 72 80 62 94 58 C96 74 88 86 72 88 Z"/></svg>' +
@@ -947,6 +957,7 @@
     enviarRemoto("concluído");
     (!ENVIAR_DE_VERDADE ? new Promise(function(r){ console.log("Envio simulado:", dados.toString()); setTimeout(r, 600); }) : fetch(FORM_URL, {method:"POST", mode:"no-cors", body:dados}))
       .then(function(){
+        urlFim(true); // antes do evento, para o Lead/generate_lead já levarem a URL de inscrição concluída
         ga("generate_lead", {form_name: "oficina_aberta", acompanhantes: estado.acomp, matricula_2027: estado.matricula});
         estado.enviado = true; try{ localStorage.setItem(CHAVE, JSON.stringify(estado)); }catch(e){} enviando = false; irPara("fim");
       })
@@ -1014,6 +1025,12 @@
   });
 
   /* início */
+  if(naUrlFim()){ if(estado.enviado) atual = passosVisiveis().length - 1; else urlFim(false); }
+  window.addEventListener("popstate", function(){
+    var p = passosVisiveis()[atual].id;
+    if(naUrlFim()){ if(estado.enviado){ if(p !== "fim") irPara("fim"); } else urlFim(false); }
+    else if(p === "fim"){ direcao = -1; atual = 0; render(); }
+  });
   render();
 })();
 </script>
