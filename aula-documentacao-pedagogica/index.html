@@ -74,7 +74,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap">
-<link rel="preload" as="image" href="/assets/guia-sala-referencia/patricia-hero.jpg">
+<link rel="preload" as="image" href="/assets/guia-sala-referencia/patricia.jpg">
 <style>
   :root{
     --roxo:#8512DF; --roxo-claro:#B26BF0; --amarelo:#FCC218; --amarelo-esc:#E9AE00; --verde:#78B645; --verde-esc:#3F8A1F; --uva:#351B64; --uva-esc:#22104A;
@@ -310,6 +310,32 @@
   .flutua.ver{transform:none}
   .flutua .btn{box-shadow:0 14px 30px -10px rgba(0,0,0,.45)}
 
+  /* Computador: botão à esquerda, foto à direita, formulário em popup */
+  .cta-capa,.fechar,.fundo-modal{display:none}
+  @media (min-width:961px){
+    .capa{padding-bottom:0}
+    .capa .miolo{grid-template-areas:"texto pati";grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:end}
+    .capa-texto{align-self:center;padding-bottom:clamp(48px,6vw,80px)}
+    .com{display:none}
+    .cta-capa{display:block;margin-top:30px}
+    .cta-capa .btn{width:auto;padding:20px 34px;font-size:18px}
+    .micro-capa{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:14.5px;font-weight:700;color:#CFC3E6}
+    .pati{display:block;grid-area:pati;margin:0 auto;max-width:520px;align-self:end}
+    .pati::before{content:"";position:absolute;z-index:-1;left:8%;right:8%;top:14%;bottom:0;border-radius:50% 50% 0 0;background:radial-gradient(closest-side,rgba(252,194,24,.28),rgba(133,18,223,.28) 55%,transparent 100%);filter:blur(10px)}
+    .pati figcaption{left:auto;right:-8px;top:40%;bottom:auto;text-align:left;max-width:190px}
+    .pati figcaption b{font-size:17px;letter-spacing:.02em;text-transform:uppercase}
+    .pati figcaption span{font-size:13px;line-height:1.35}
+
+    .fundo-modal{display:block;position:fixed;inset:0;z-index:100;background:rgba(7,4,13,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+    .form-card{position:fixed;left:50%;top:50%;z-index:101;width:min(480px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;transform:translate(-50%,-46%);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+    body.modal{overflow:hidden}
+    body.modal .fundo-modal{opacity:1;visibility:visible}
+    body.modal .form-card{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+    .fechar{display:grid;place-items:center;position:absolute;top:12px;right:12px;width:38px;height:38px;border:0;border-radius:50%;background:var(--lavanda);color:var(--uva);cursor:pointer;transition:background .15s}
+    .fechar:hover{background:var(--lilas)}
+    .fechar svg{width:18px;height:18px}
+    .form-card h2{padding-right:40px}
+  }
   @media (max-width:960px){
     .capa .miolo,.dor .miolo,.conduz .miolo{grid-template-columns:1fr}
     .capa .miolo{grid-template-areas:none}
@@ -427,14 +453,22 @@
         </div>
       </div>
 
+      <div class="cta-capa">
+        <button class="btn" type="button" data-ir-form>Quero garantir minha vaga gratuita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="micro-capa"><span>✓ 100% gratuita</span><span>✓ Ao vivo pelo Google Meet</span><span>✓ Aula exclusiva de membros</span></p>
+      </div>
+
       <div class="com">
         <img src="/assets/guia-sala-referencia/patricia.jpg" alt="" width="64" height="64">
         <p><small>Aula com</small><b>Patrícia Souza</b>Diretora e formadora da Oficina Criar e Brincar</p>
       </div>
     </div>
 
-    <div class="form-card" id="inscricao">
-      <h2>Garanta sua vaga gratuita</h2>
+    <div class="form-card" id="inscricao" role="dialog" aria-labelledby="titulo-form">
+      <button class="fechar" type="button" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <h2 id="titulo-form">Garanta sua vaga gratuita</h2>
       <p class="apoio">Preencha abaixo e receba o link da aula no nosso grupo do WhatsApp.</p>
       <form id="form" novalidate>
         <div class="campos">
@@ -637,6 +671,8 @@
   <p>© 2026 Oficina Criar e Brincar</p>
 </footer>
 
+<div class="fundo-modal" id="fundo-modal"></div>
+
 <div class="flutua" id="flutua">
   <a class="btn" href="#inscricao" data-ir-form>Garantir minha vaga gratuita</a>
 </div>
@@ -781,13 +817,41 @@
   window.addEventListener("pageshow", function(){ btn.disabled = false; btn.classList.remove("enviando"); });
 
   /* ===== Botões que levam ao formulário ===== */
+  // No computador (a partir de 961px) abrem o formulário em popup; no celular rolam até ele
+  var computador = window.matchMedia("(min-width:961px)");
+  var ultimoFoco = null;
+  // O popup precisa ficar direto no <body> (fora da capa) para aparecer acima do fundo escuro
+  var cartao = document.getElementById("inscricao");
+  var lugarOriginal = document.createComment("lugar do formulário");
+  cartao.parentNode.insertBefore(lugarOriginal, cartao);
+  function posicionarFormulario(){
+    if(computador.matches){ if(cartao.parentNode !== document.body) document.body.appendChild(cartao); }
+    else if(cartao.previousSibling !== lugarOriginal){ lugarOriginal.parentNode.insertBefore(cartao, lugarOriginal.nextSibling); }
+  }
+  posicionarFormulario();
+  function abrirPopup(origem){
+    ultimoFoco = origem || null;
+    document.body.classList.add("modal");
+    try{ gtag("event", "form_open", {form_name:"aula_documentacao"}); }catch(e){}
+    setTimeout(function(){ fNome.focus({preventScroll:true}); }, 80);
+  }
+  function fecharPopup(){
+    if(!document.body.classList.contains("modal")) return;
+    document.body.classList.remove("modal");
+    if(ultimoFoco) try{ ultimoFoco.focus({preventScroll:true}); }catch(e){}
+  }
   [].slice.call(document.querySelectorAll("[data-ir-form]")).forEach(function(a){
     a.addEventListener("click", function(e){
       e.preventDefault();
+      if(computador.matches){ abrirPopup(a); return; }
       document.getElementById("inscricao").scrollIntoView({behavior:"smooth", block:"center"});
       setTimeout(function(){ fNome.focus({preventScroll:true}); }, 500);
     });
   });
+  document.getElementById("fundo-modal").addEventListener("click", fecharPopup);
+  document.querySelector(".fechar").addEventListener("click", fecharPopup);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") fecharPopup(); });
+  (computador.addEventListener ? computador.addEventListener("change", function(){ if(!computador.matches) fecharPopup(); posicionarFormulario(); }) : 0);
 
   /* ===== Botão flutuante (celular): aparece quando o formulário sai da tela ===== */
   var flutua = document.getElementById("flutua");
