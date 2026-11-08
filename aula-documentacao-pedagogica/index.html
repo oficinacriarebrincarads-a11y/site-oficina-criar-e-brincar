@@ -154,10 +154,11 @@
   .evento .hora{color:var(--amarelo);font-size:17px}
   .evento .vivo::before{content:"";width:7px;height:7px;border-radius:50%;background:#FF4D6D}
 
-  .com{display:flex;align-items:center;gap:14px;margin-top:28px}
-  .com img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:2px solid var(--amarelo)}
-  .com p{font-size:15px;color:#D9CCF0;line-height:1.4}
-  .com b{display:block;color:#fff;font-size:17px}
+  .com{display:flex;align-items:center;gap:16px;margin-top:22px;padding:12px 22px 12px 12px;width:max-content;max-width:100%;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+  .com img{width:64px;height:64px;flex:none;border-radius:50%;object-fit:cover;object-position:50% 14%;border:2px solid var(--amarelo);box-shadow:0 0 0 4px rgba(252,194,24,.15)}
+  .com p{font-size:14.5px;color:#CFC3E6;line-height:1.4}
+  .com small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amarelo)}
+  .com b{display:block;color:#fff;font-size:19px;font-weight:900;letter-spacing:-.01em}
 
   /* Formulário */
   .form-card{background:#fff;color:var(--uva);border-radius:22px;padding:clamp(22px,3vw,34px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6),0 0 0 6px rgba(255,255,255,.08)}
@@ -334,7 +335,7 @@
     .evento .hora{font-size:15px}
     .evento .dia b{font-size:21px}
     .evento .dia span{font-size:11.5px}
-    .com{margin-top:20px}
+    .com{display:none}
     .form-card{border-radius:18px}
     .form-card .btn{font-size:16px;letter-spacing:.02em;padding:18px 16px}
     .ciclo,.cards4,.quem-lista{grid-template-columns:1fr}
@@ -417,7 +418,6 @@
       <span class="etiqueta">Aula aberta e gratuita</span>
       <h1><span class="l1">Documentação pedagógica</span> <em>sem desespero</em></h1>
       <p class="sub">Aprenda sobre o Processo Documental da Oficina Criar e Brincar: planejamento, observação, reflexão e documentação.</p>
-      <p class="sub2">Como tornar visíveis as aprendizagens das crianças e transformar o cotidiano em relatórios, portfólios, mini-histórias e livretos. <b>Sem precisar chegar ao fim do ano tentando recuperar tudo.</b></p>
 
       <div class="evento" aria-label="Quarta-feira, 11 de novembro, às 19h11, ao vivo pelo Google Meet">
         <div>
@@ -427,6 +427,10 @@
         </div>
       </div>
 
+      <div class="com">
+        <img src="/assets/guia-sala-referencia/patricia.jpg" alt="" width="64" height="64">
+        <p><small>Aula com</small><b>Patrícia Souza</b>Diretora e formadora da Oficina Criar e Brincar</p>
+      </div>
     </div>
 
     <div class="form-card" id="inscricao">
