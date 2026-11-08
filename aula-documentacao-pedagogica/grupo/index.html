@@ -94,6 +94,8 @@
   h1 em{font-style:normal;color:var(--roxo)}
   .explica{font-size:clamp(17px,1.7vw,19px);color:var(--cinza);margin-top:14px;max-width:58ch}
   .explica b{color:var(--uva)}
+  .explica.aviso{margin-top:10px}
+  .btn-zap{white-space:nowrap}
 
   .grade{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,44px);margin-top:30px;align-items:stretch}
 
@@ -137,7 +139,9 @@
     body{padding-top:14px}
     .grade{grid-template-columns:1fr;margin-top:22px}
     .qr{display:none}
-    .btn-zap{font-size:16.5px;padding:19px 16px}
+    .btn-zap{font-size:clamp(12.5px,3.75vw,15px);letter-spacing:0;padding:18px 10px;gap:8px}
+    .btn-zap svg{width:22px;height:22px}
+    .grade>div{min-width:0}
     .evento a{margin-left:0}
   }
   @media (hover:none) and (pointer:coarse){ .so-pc{display:none} }
@@ -154,7 +158,8 @@
   <div class="corpo">
     <span class="alerta">Atenção: falta 1 passo</span>
     <h1 id="titulo">Entre no grupo do WhatsApp para <em>confirmar sua inscrição</em></h1>
-    <p class="explica">É <b>só pelo grupo</b> que vamos enviar o link do Google Meet da aula ao vivo no dia 11/11, os lembretes e os materiais. <b>Sem entrar no grupo, você não recebe o acesso.</b></p>
+    <p class="explica">É <b>só pelo grupo</b> que vamos enviar o link do Google Meet da aula ao vivo no dia 11/11, os lembretes e os materiais.</p>
+    <p class="explica aviso"><b>Sem entrar no grupo, você não recebe o acesso.</b></p>
 
     <div class="grade">
       <div>
@@ -177,7 +182,7 @@
           </button>
           <button class="acao" type="button" id="compartilhar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-            <span>Convidar uma colega</span>
+            <span>Convidar um colega</span>
           </button>
         </div>
       </div>
