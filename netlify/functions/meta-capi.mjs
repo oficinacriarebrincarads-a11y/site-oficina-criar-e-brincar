@@ -3,7 +3,7 @@
 // nunca no código. O mesmo event_id é enviado pelo Pixel, então o Meta não conta em dobro.
 
 const PIXEL_ID = '611972390791603';
-const EVENTOS = ['PageView', 'ViewContent', 'InitiateCheckout'];
+const EVENTOS = ['PageView', 'ViewContent', 'InitiateCheckout', 'Lead', 'CompleteRegistration'];
 const ORIGEM = 'https://oficinacriarebrincar.com.br';
 
 export default async (req) => {
@@ -15,7 +15,7 @@ export default async (req) => {
   let corpo;
   try { corpo = JSON.parse(await req.text()); } catch { return new Response(null, { status: 400 }); }
 
-  const { event_name, event_id, event_source_url, custom_data, fbp, fbc, test_event_code } = corpo || {};
+  const { event_name, event_id, event_source_url, custom_data, fbp, fbc, test_event_code, em, ph, fn } = corpo || {};
   if (!EVENTOS.includes(event_name) || typeof event_id !== 'string' || typeof event_source_url !== 'string' || !event_source_url.startsWith(ORIGEM)) {
     return new Response(null, { status: 400 });
   }
@@ -25,6 +25,11 @@ export default async (req) => {
   if (ip) user_data.client_ip_address = ip;
   if (typeof fbp === 'string' && fbp) user_data.fbp = fbp;
   if (typeof fbc === 'string' && fbc) user_data.fbc = fbc;
+  // E-mail, telefone e nome já chegam criptografados (SHA-256) do navegador
+  const hash = (v) => typeof v === 'string' && /^[a-f0-9]{64}$/.test(v);
+  if (hash(em)) user_data.em = [em];
+  if (hash(ph)) user_data.ph = [ph];
+  if (hash(fn)) user_data.fn = [fn];
 
   const payload = {
     data: [{

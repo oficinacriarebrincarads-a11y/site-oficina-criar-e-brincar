@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJVG3PC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Testes no computador (localhost) não entram nos relatórios
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window['ga-disable-G-QKJVG3PC5E'] = true;
+  gtag('js', new Date());
+  gtag('config', 'G-QKJVG3PC5E');
+</script>
+<!-- Meta Pixel + API de Conversões (mesmo event_id nos dois, o Meta deduplica) -->
+<script>
+  (function(){
+    var PIXEL_ID = '611972390791603';
+    var teste = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    function cookie(n){ var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : ''; }
+    var fbclid = new URLSearchParams(location.search).get('fbclid');
+    var testCode = new URLSearchParams(location.search).get('test_event_code');
+    // Dispara o evento no Pixel e no servidor (/.netlify/functions/meta-capi)
+    // extra: {em, ph, fn} já criptografados em SHA-256, só para o servidor
+    window.metaEvento = function(nome, dados, extra){
+      var id = nome + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+      if(teste){ console.log('Meta (simulado):', nome, dados || {}); return id; }
+      if(window.fbq) fbq('track', nome, dados || {}, {eventID: id});
+      var corpo = {
+        event_name: nome, event_id: id, event_source_url: location.href, custom_data: dados || {},
+        fbp: cookie('_fbp'), fbc: cookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : ''),
+        test_event_code: testCode || undefined
+      };
+      if(extra) for(var k in extra) corpo[k] = extra[k];
+      corpo = JSON.stringify(corpo);
+      try {
+        if(!(navigator.sendBeacon && navigator.sendBeacon('/.netlify/functions/meta-capi', corpo)))
+          fetch('/.netlify/functions/meta-capi', {method:'POST', body:corpo, keepalive:true});
+      } catch(e){}
+      return id;
+    };
+    if(teste) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+  })();
+  metaEvento('PageView');
+  metaEvento('ViewContent', {content_name:'Aula Documentação Pedagógica 11/11'});
+</script>
+<!-- Microsoft Clarity -->
+<script>
+  (function(c,l,a,r,i,t,y){
+    if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "z5fhrmur2j");
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Documentação Pedagógica sem Desespero · Aula gratuita 11/11</title>
+<meta name="description" content="Aula on-line e gratuita com Patrícia Souza, 11 de novembro às 19h11. Como transformar o cotidiano das crianças em relatórios, portfólios, mini-histórias e livretos com sentido pedagógico.">
+<meta name="theme-color" content="#07040D">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Documentação Pedagógica sem Desespero · Aula gratuita 11/11">
+<meta property="og:description" content="Como tornar visíveis as aprendizagens das crianças. Aula ao vivo com Patrícia Souza, 11/11 às 19h11.">
+<meta property="og:url" content="https://oficinacriarebrincar.com.br/aula-documentacao-pedagogica/">
+<meta property="og:image" content="https://oficinacriarebrincar.com.br/assets/guia-sala-referencia/patricia-hero.jpg">
+<link rel="canonical" href="https://oficinacriarebrincar.com.br/aula-documentacao-pedagogica/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap">
+<link rel="preload" as="image" href="/assets/guia-sala-referencia/patricia-hero.jpg">
+<style>
+  :root{
+    --roxo:#8512DF; --roxo-claro:#B26BF0; --amarelo:#FCC218; --amarelo-esc:#E9AE00; --verde:#78B645; --verde-esc:#3F8A1F; --uva:#351B64; --uva-esc:#22104A;
+    --preto:#07040D; --preto-2:#110A1F; --ouro:linear-gradient(100deg,#E9AE00 0%,#FCC218 28%,#FFEDB0 50%,#FCC218 72%,#E9AE00 100%); --lilas:#E9D3F7; --lavanda:#F3EBFC; --creme:#FFFBF2; --linha:#E7E0EE; --cinza:#6B5F7D; --zap:#1FAF55;
+    --f:"Nunito","Segoe UI",system-ui,sans-serif;
+    --largura:1160px;
+    --sombra:0 1px 2px rgba(53,27,100,.06),0 12px 32px -16px rgba(53,27,100,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:#fff;color:var(--uva);font-family:var(--f);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+  h2{font-size:clamp(30px,4.2vw,48px);font-weight:900}
+  h2 em{font-style:normal;color:var(--roxo)}
+  h3{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+  p{margin:0}
+  .faixa{padding:clamp(64px,9vw,112px) 16px}
+  .miolo{width:min(100%,var(--largura));margin-inline:auto}
+  .estreito{width:min(100%,800px);margin-inline:auto}
+  .centro{text-align:center}
+  .rotulo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo);margin-bottom:16px}
+  .rotulo::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amarelo)}
+  .lead{font-size:clamp(18px,1.6vw,20px);color:var(--cinza);margin-top:18px;max-width:58ch}
+  .centro .lead{margin-inline:auto}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* Barra do contador (fixa no topo) */
+  .contador{position:sticky;top:0;z-index:40;background:var(--preto);color:#fff;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .contador .miolo{display:flex;align-items:center;justify-content:center;gap:10px 22px;flex-wrap:wrap}
+  .contador .txt{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D9CCF0;display:inline-flex;align-items:center;gap:10px}
+  .contador .txt b{color:#fff}
+  .contador .mob{display:none}
+  .contador .txt::before{content:"";width:8px;height:8px;border-radius:50%;background:#FF4D6D;box-shadow:0 0 0 0 rgba(255,77,109,.6);animation:pulso 1.8s infinite}
+  @keyframes pulso{70%{box-shadow:0 0 0 8px rgba(255,77,109,0)}100%{box-shadow:0 0 0 0 rgba(255,77,109,0)}}
+  .relogio{display:flex;align-items:flex-start;gap:6px}
+  .relogio div{min-width:44px;text-align:center}
+  .relogio b{display:block;font-size:22px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+  .relogio small{display:block;font-size:10.5px;font-weight:600;color:#B9A9D6;margin-top:3px}
+  .relogio b{background:var(--ouro);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .relogio i{font-style:normal;color:var(--amarelo);font-weight:900;font-size:18px;line-height:1.1}
+
+  /* Capa */
+  .capa{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(900px 520px at 88% 0%,rgba(133,18,223,.55),transparent 62%),radial-gradient(700px 460px at -5% 105%,rgba(133,18,223,.4),transparent 60%),radial-gradient(500px 300px at 50% 120%,rgba(252,194,24,.12),transparent 70%),var(--preto);color:#fff;padding:clamp(28px,4vw,56px) 16px clamp(48px,6vw,80px)}
+  .capa::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 75%)}
+  .capa::before{content:"";position:absolute;z-index:-1;right:-140px;bottom:-160px;width:420px;height:340px;background:var(--amarelo);opacity:.08;filter:blur(30px);border-radius:45% 55% 40% 60%/60% 45% 55% 40%}
+  .capa .miolo{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-areas:"texto form" "texto pati";column-gap:clamp(32px,5vw,72px);align-items:start}
+  .capa-texto{grid-area:texto;align-self:center}
+  .form-card{grid-area:form;position:relative;z-index:2}
+  .pati{grid-area:pati;position:relative;margin:-36px auto 0;z-index:1;width:100%;max-width:460px}
+  .pati img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 12%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 52%,transparent 96%),linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 52%,transparent 96%),linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%);mask-composite:intersect}
+  .pati figcaption{position:absolute;left:0;right:0;bottom:6%;text-align:center;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+  .pati figcaption b{display:block;font-size:22px;font-weight:900;color:#fff}
+  .pati figcaption span{display:inline-block;margin-top:4px;font-size:14px;font-weight:700;color:var(--amarelo)}
+  .marca{display:inline-flex;align-items:center;gap:14px;margin-bottom:22px;color:inherit}
+  .marca .nome{position:relative;font-weight:900;font-size:30px;letter-spacing:-.035em;line-height:1;color:#fff;padding-bottom:6px;white-space:nowrap}
+  .marca .nome::after{content:"";position:absolute;left:2px;right:4px;bottom:0;height:5px;background:var(--amarelo);border-radius:0 0 60% 60%/0 0 100% 100%;transform:rotate(-1.5deg)}
+  .marca .desc{font-size:12px;font-weight:600;line-height:1.3;color:#CFC3E6;border-left:1px solid rgba(255,255,255,.25);padding-left:14px;text-align:left}
+  .marca + .etiqueta{display:flex;width:max-content}
+  .etiqueta{display:inline-flex;align-items:center;gap:8px;background:rgba(252,194,24,.14);border:1px solid rgba(252,194,24,.45);color:var(--amarelo);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+  .capa h1{font-size:clamp(38px,5.2vw,64px);font-weight:900;line-height:1.02;margin:18px 0 0}
+  .capa h1 em{font-style:normal;display:block;background:var(--ouro);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:reflexo 4.5s ease-in-out infinite}
+  @keyframes reflexo{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+  .capa .sub{font-size:clamp(19px,1.8vw,22px);font-weight:700;color:#fff;margin-top:18px;max-width:40ch;line-height:1.4}
+  .capa .sub2{font-size:17px;color:#D9CCF0;margin-top:12px;max-width:50ch}
+  .capa .sub2 b{color:#fff}
+
+  .evento{display:inline-flex;align-items:stretch;margin-top:26px;border-radius:14px;padding:2px;background:linear-gradient(90deg,var(--amarelo),#FF9F43,var(--roxo-claro),var(--amarelo));background-size:300% 100%;animation:borda 6s linear infinite;box-shadow:0 0 28px -8px rgba(252,194,24,.45)}
+  @keyframes borda{to{background-position:300% 0}}
+  .evento>div{display:flex;align-items:center;gap:0;background:var(--preto-2);border-radius:12px;padding:5px 14px 5px 5px;flex-wrap:wrap}
+  .evento .dia{display:flex;align-items:baseline;gap:6px;background:linear-gradient(90deg,var(--amarelo),#FFB547);color:var(--uva-esc);border-radius:9px;padding:6px 12px}
+  .evento .dia b{font-size:24px;font-weight:900;line-height:1}
+  .evento .dia span{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+  .evento .item{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:4px 12px;border-left:1px solid rgba(255,255,255,.2)}
+  .evento .dia + .item{border-left:0;margin-left:6px}
+  .evento .hora{color:var(--amarelo);font-size:17px}
+  .evento .vivo::before{content:"";width:7px;height:7px;border-radius:50%;background:#FF4D6D}
+
+  .com{display:flex;align-items:center;gap:14px;margin-top:28px}
+  .com img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:2px solid var(--amarelo)}
+  .com p{font-size:15px;color:#D9CCF0;line-height:1.4}
+  .com b{display:block;color:#fff;font-size:17px}
+
+  /* Formulário */
+  .form-card{background:#fff;color:var(--uva);border-radius:22px;padding:clamp(22px,3vw,34px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6),0 0 0 6px rgba(255,255,255,.08)}
+  .form-card h2{font-size:clamp(22px,2.2vw,27px);line-height:1.15}
+  .form-card .apoio{font-size:15.5px;color:var(--cinza);margin-top:8px}
+  .campos{display:grid;gap:12px;margin-top:20px}
+  .campo{position:relative}
+  .campo input{width:100%;font:600 17px var(--f);color:var(--uva);background:#FAF7FD;border:1.5px solid #DCD2EA;border-radius:12px;padding:13px 16px;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
+  .campo input::placeholder{color:#9A8FAE;font-weight:500}
+  .campo input:focus{border-color:var(--roxo);background:#fff;box-shadow:0 0 0 4px rgba(133,18,223,.12)}
+  .campo.erro input{border-color:#D6334C;box-shadow:0 0 0 4px rgba(214,51,76,.1)}
+  .campo .msg{display:none;font-size:13.5px;font-weight:700;color:#C1273F;margin:6px 2px 0}
+  .campo.erro .msg{display:block}
+  .campo.tel input{padding-left:86px}
+  .campo.tel .ddi{position:absolute;left:14px;top:13px;display:flex;align-items:center;gap:6px;font-weight:700;font-size:16px;color:var(--cinza);pointer-events:none}
+  .campo.tel .ddi::after{content:"";width:1px;height:22px;background:#DCD2EA;margin-left:6px}
+  .bandeira{width:22px;height:15px;border-radius:2px;background:#229E45;position:relative;overflow:hidden;flex:none}
+  .bandeira::before{content:"";position:absolute;inset:2px 3px;background:#F8E509;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .bandeira::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#2B49A3;left:8px;top:4.5px}
+
+  .btn{appearance:none;border:0;cursor:pointer;text-decoration:none;width:100%;background:linear-gradient(90deg,var(--amarelo),#FFB13B);color:var(--uva-esc);font:900 17px var(--f);letter-spacing:.04em;text-transform:uppercase;padding:19px 24px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 26px -12px rgba(233,174,0,.95);transition:transform .15s,box-shadow .15s,filter .15s}
+  .btn{position:relative;overflow:hidden;isolation:isolate}
+  .btn::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:brilho 3.2s ease-in-out infinite}
+  @keyframes brilho{0%,55%{left:-60%}100%{left:130%}}
+  .btn:hover{filter:brightness(1.04);transform:translateY(-1px)}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:3px solid var(--roxo);outline-offset:3px}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn[disabled]{opacity:.75;cursor:wait}
+  .btn .gira{display:none;width:20px;height:20px;border:3px solid rgba(34,16,74,.25);border-top-color:var(--uva-esc);border-radius:50%;animation:gira .8s linear infinite}
+  .btn.enviando .gira{display:block}.btn.enviando svg{display:none}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  .garantias{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:14px;font-size:13.5px;font-weight:700;color:var(--cinza)}
+  .garantias span{display:inline-flex;align-items:center;gap:6px}
+  .garantias svg{width:15px;height:15px;color:var(--verde-esc)}
+  .aviso-zap{display:flex;gap:10px;align-items:flex-start;margin-top:16px;background:#EAF8EF;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.45;color:#1E5B33}
+  .aviso-zap svg{width:20px;height:20px;flex:none;color:var(--zap);margin-top:1px}
+  .exclusiva{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:10px 12px;border-radius:10px;background:#FFF6D6;color:#5C4300;font-size:14px;font-weight:700;line-height:1.35;text-align:left}
+  .exclusiva svg{width:18px;height:18px;flex:none;color:var(--amarelo-esc)}
+  .exclusiva b{color:var(--uva)}
+  .privacidade{font-size:12px;color:#9A8FAE;text-align:center;margin-top:12px}
+
+  /* Segunda dobra: o que você leva */
+  .leva{padding-top:clamp(56px,7vw,88px);padding-bottom:clamp(56px,7vw,88px)}
+  .tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+  .tres article{background:#fff;border:1px solid var(--linha);border-radius:20px;padding:28px 24px;text-align:center;box-shadow:var(--sombra);transition:transform .2s}
+  .tres article:hover{transform:translateY(-3px)}
+  .tres .ico{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px}
+  .tres .ico svg{width:34px;height:34px}
+  .tres .i1{background:#E8DBFA;color:var(--uva)}
+  .tres .i2{background:#FFEBA6;color:var(--uva)}
+  .tres .i3{background:#D8EFC5;color:#2C5E14}
+  .tres h3{font-size:21px}
+  .tres p{font-size:16px;color:var(--cinza);margin-top:10px;line-height:1.5}
+  .leva .cta{margin-top:36px;text-align:center}
+  .leva .cta .btn{width:auto;padding-inline:34px}
+
+  /* Dor / identificação */
+  .dor{background:var(--creme)}
+  .dor .miolo{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(36px,6vw,96px);align-items:center}
+  .lista-dor{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .lista-dor li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--linha);border-radius:14px;padding:16px 18px;font-weight:600;font-size:17px;line-height:1.45}
+  .lista-dor li svg{flex:none;width:22px;height:22px;color:#D6334C;margin-top:1px}
+  .virada{margin-top:28px;font-size:clamp(22px,2.4vw,28px);font-weight:800;line-height:1.3;letter-spacing:-.015em}
+  .virada b{color:var(--roxo);font-weight:900}
+
+  /* Ciclo do processo documental */
+  .ciclo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:48px;position:relative}
+  .passo{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;background:#fff;border:1.5px solid var(--linha);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px;position:relative;transition:border-color .2s,box-shadow .2s,transform .2s,background .2s}
+  .passo:hover{transform:translateY(-2px);box-shadow:var(--sombra)}
+  .passo:focus-visible{outline:2px solid var(--roxo);outline-offset:3px}
+  .passo .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--lavanda);color:var(--roxo);font-weight:900;font-size:18px}
+  .passo .t{font-size:20px;font-weight:900;letter-spacing:-.01em}
+  .passo .d{font-size:15.5px;color:var(--cinza);line-height:1.5}
+  .passo:not(:last-child)::after{content:"";position:absolute;right:-13px;top:44px;width:10px;height:10px;border-top:2.5px solid var(--roxo-claro);border-right:2.5px solid var(--roxo-claro);transform:rotate(45deg);z-index:2}
+  .passo[aria-pressed=true]{background:var(--roxo);border-color:var(--roxo);color:#fff}
+  .passo[aria-pressed=true] .n{background:var(--amarelo);color:var(--uva-esc)}
+  .passo[aria-pressed=true] .d{color:#EBDDFB}
+  .coord{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--lavanda);border:1.5px dashed var(--roxo-claro);border-radius:16px;padding:14px 18px;font-weight:700;font-size:16px;text-align:center}
+  .coord svg{width:22px;height:22px;flex:none;color:var(--roxo)}
+
+  /* Entregas */
+  .entregas{background:radial-gradient(800px 400px at 50% 0%,rgba(133,18,223,.35),transparent 70%),var(--preto);color:#fff}
+  .entregas h2{color:#fff}
+  .entregas h2 em{color:var(--amarelo)}
+  .entregas .lead{color:#D9CCF0}
+  .cards4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:44px}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px}
+  .card .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--amarelo);color:var(--uva-esc);margin-bottom:16px}
+  .card .ico svg{width:24px;height:24px}
+  .card p{font-size:15.5px;color:#D9CCF0;margin-top:8px;line-height:1.5}
+  .frase{margin-top:44px;text-align:center;font-size:clamp(20px,2.2vw,26px);font-weight:800;line-height:1.35}
+  .frase b{color:var(--amarelo)}
+
+  /* Para quem */
+  .quem-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:40px}
+  .quem-lista li{list-style:none;display:flex;gap:14px;align-items:flex-start;border:1px solid var(--linha);border-radius:16px;padding:18px 20px;font-size:16.5px;line-height:1.45}
+  .quem-lista ul{margin:0;padding:0;display:contents}
+  .quem-lista li svg{flex:none;width:24px;height:24px;color:var(--verde-esc);margin-top:1px}
+  .quem-lista b{display:block;font-size:17.5px}
+
+  /* Quem conduz */
+  .conduz{background:var(--creme)}
+  .conduz .miolo{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,6vw,96px);align-items:center}
+  .foto{position:relative;isolation:isolate;max-width:420px;margin-inline:auto;width:100%}
+  .foto::before{content:"";position:absolute;z-index:-1;inset:20px -16px -16px 20px;background:var(--amarelo);border-radius:8px}
+  .foto img{width:100%;border-radius:8px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
+  .conduz .cargo{font-weight:800;color:var(--roxo);margin-top:8px}
+  .conduz .bio{margin-top:18px;color:var(--cinza);font-size:17.5px}
+  .numeros{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+  .numeros div{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:14px 18px;min-width:140px}
+  .numeros b{display:block;font-size:30px;font-weight:900;color:var(--roxo);line-height:1}
+  .numeros span{font-size:14px;font-weight:700;color:var(--cinza)}
+
+  /* Ao vivo / Black */
+  .aovivo{background:radial-gradient(500px 300px at 90% 0%,rgba(133,18,223,.6),transparent 70%),var(--preto);color:#fff;border-radius:24px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px 32px;align-items:center;position:relative;overflow:hidden}
+  .aovivo::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--amarelo);opacity:.14}
+  .aovivo .selo{width:92px;height:92px;border-radius:50%;background:var(--amarelo);color:var(--uva-esc);display:grid;place-items:center;text-align:center;font-weight:900;font-size:13px;line-height:1.05;letter-spacing:.04em;text-transform:uppercase;transform:rotate(-8deg)}
+  .aovivo h2{color:#fff;font-size:clamp(24px,3vw,34px)}
+  .aovivo h2 em{font-style:normal;background:var(--ouro);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .aovivo p{color:#D9CCF0;margin-top:10px;font-size:17px}
+
+  /* Perguntas */
+  .faq{margin-top:36px;border-top:1px solid var(--linha)}
+  .faq details{border-bottom:1px solid var(--linha)}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 2px;font-weight:800;font-size:18px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:26px;font-weight:600;color:var(--roxo);line-height:1;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{padding:0 2px 20px;color:var(--cinza);font-size:17px}
+
+  /* Chamada final */
+  .final{background:radial-gradient(800px 420px at 50% 100%,rgba(133,18,223,.45),transparent 70%),var(--preto);color:#fff;text-align:center}
+  .final h2{color:#fff}
+  .final h2 em{color:var(--amarelo)}
+  .final .lead{color:#D9CCF0}
+  .final .relogio{justify-content:center;margin:28px auto 0}
+  .final .relogio div{min-width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 6px}
+  .final .relogio b{font-size:34px}
+  .final .relogio small{font-size:12px}
+  .final .relogio i{display:none}
+  .final .btn{width:auto;margin-top:32px;padding-inline:36px}
+
+  footer{background:var(--preto);color:#B9A9D6;text-align:center;font-size:14px;padding:28px 16px calc(28px + env(safe-area-inset-bottom))}
+  footer .marca{margin-bottom:14px}
+
+  /* Botão flutuante no celular */
+  .flutua{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;transform:translateY(140%);transition:transform .25s;display:none}
+  .flutua.ver{transform:none}
+  .flutua .btn{box-shadow:0 14px 30px -10px rgba(0,0,0,.45)}
+
+  @media (max-width:960px){
+    .capa .miolo,.dor .miolo,.conduz .miolo{grid-template-columns:1fr}
+    .capa .miolo{grid-template-areas:none}
+    .capa-texto,.form-card,.pati{grid-area:auto}
+    .ciclo,.cards4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .passo:not(:last-child)::after{display:none}
+  }
+  @media (max-width:720px){
+    body{font-size:17px}
+    .contador{padding:8px 12px}
+    .contador .miolo{gap:4px 14px}
+    .contador .txt{font-size:11px;letter-spacing:.1em}
+    .relogio div{min-width:36px}
+    .relogio b{font-size:19px}
+    .capa{padding-top:22px}
+    .capa .miolo{gap:26px}
+    .capa h1{font-size:clamp(34px,10vw,44px)}
+    .capa .sub{font-size:19px}
+    .capa .sub2{display:none}
+    .evento{display:flex;margin-top:20px}
+    .evento>div{flex:1;justify-content:center;padding:5px 8px 5px 5px}
+    .evento .item{font-size:12px;padding:4px 8px}
+    .evento .hora{font-size:15px}
+    .evento .dia b{font-size:21px}
+    .evento .dia span{font-size:11.5px}
+    .com{margin-top:20px}
+    .form-card{border-radius:18px}
+    .form-card .btn{font-size:16px;letter-spacing:.02em;padding:18px 16px}
+    .ciclo,.cards4,.quem-lista{grid-template-columns:1fr}
+    .aovivo{grid-template-columns:1fr;text-align:center;justify-items:center}
+    .final .relogio div{min-width:64px}
+    .flutua{display:block}
+    footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  }
+  /* Celular: formulário inteiro (com botão) visível na primeira tela, sem rolar */
+  @media (max-width:720px){
+    .contador{padding:6px 16px}
+    .contador .miolo{flex-wrap:nowrap;justify-content:space-between;gap:10px}
+    .contador .pc{display:none}
+    .contador .mob{display:inline;color:#fff}
+    .relogio{gap:4px}
+    .relogio div{min-width:30px}
+    .relogio b{font-size:17px}
+    .relogio small{font-size:9px;margin-top:1px}
+    .relogio i{font-size:15px}
+    .capa{padding:18px 16px 36px}
+    .capa .miolo{gap:0}
+    .capa-texto{display:contents}
+    .etiqueta{display:none}
+    .capa h1{font-size:min(6.5vw,30px);margin:0;text-align:center;line-height:1.08}
+    .capa h1 .l1{display:block;white-space:nowrap}
+    .marca{align-self:center;justify-self:center}
+    .capa .sub{text-align:center}
+    .capa .sub{font-size:16px;line-height:1.4;font-weight:600;color:#E6DCF6;margin-top:10px}
+    .evento{margin-top:14px}
+    .form-card{order:1;margin-top:16px;padding:18px 16px 16px}
+    .form-card h2{font-size:21px}
+    .form-card .apoio{display:none}
+    .campos{gap:8px;margin-top:12px}
+    .campo input{font-size:16px;padding:11px 14px}
+    .campo.tel .ddi{top:11px}
+    .campo.tel input{padding-left:84px}
+    .form-card .btn{padding:15px 14px}
+    .garantias{margin-top:12px}
+    .pati{order:2;margin-top:-20px;max-width:340px}
+    .pati figcaption b{font-size:20px}
+    .pati figcaption span{font-size:13px}
+    .marca + .etiqueta{display:none}
+    .btn{font-size:16px;letter-spacing:.02em;white-space:nowrap;padding-inline:14px}
+    .leva .cta .btn,.final .btn{width:100%;padding-inline:14px}
+    .marca{margin-bottom:14px;gap:10px}
+    .marca .nome{font-size:22px;padding-bottom:5px}
+    .marca .nome::after{height:4px}
+    .marca .desc{font-size:10.5px;padding-left:10px}
+    .capa .sub{font-size:16px;font-weight:700;color:#fff;line-height:1.38}
+    .tres{grid-template-columns:1fr;gap:14px;margin-top:28px}
+    .tres article{display:grid;grid-template-columns:60px 1fr;gap:4px 16px;text-align:left;padding:20px}
+    .tres .ico{width:60px;height:60px;margin:0;grid-row:span 2}
+    .tres .ico svg{width:28px;height:28px}
+    .tres h3{font-size:18px;align-self:end}
+    .tres p{font-size:15px;margin-top:2px}
+  }
+  @media (max-width:380px){
+    .evento .vivo{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="contador" role="timer" aria-live="off">
+  <div class="miolo">
+    <span class="txt"><span class="pc">A aula <b>ao vivo</b> começa em</span><span class="mob">Ao vivo em</span></span>
+    <div class="relogio" data-relogio>
+      <div><b data-d>00</b><small>dias</small></div><i>:</i>
+      <div><b data-h>00</b><small>horas</small></div><i>:</i>
+      <div><b data-m>00</b><small>min</small></div><i>:</i>
+      <div><b data-s>00</b><small>seg</small></div>
+    </div>
+  </div>
+</div>
+
+<header class="capa">
+  <div class="miolo">
+    <div class="capa-texto">
+      <div class="marca" aria-label="Oficina C.B. · Centro de Pesquisa e Formação para Educadores"><span class="nome">Oficina C.B.</span><span class="desc">Centro de Pesquisa e<br>Formação para Educadores</span></div>
+      <span class="etiqueta">Aula aberta e gratuita</span>
+      <h1><span class="l1">Documentação pedagógica</span> <em>sem desespero</em></h1>
+      <p class="sub">Aprenda sobre o Processo Documental da Oficina Criar e Brincar: planejamento, observação, reflexão e documentação.</p>
+      <p class="sub2">Como tornar visíveis as aprendizagens das crianças e transformar o cotidiano em relatórios, portfólios, mini-histórias e livretos. <b>Sem precisar chegar ao fim do ano tentando recuperar tudo.</b></p>
+
+      <div class="evento" aria-label="Quarta-feira, 11 de novembro, às 19h11, ao vivo pelo Google Meet">
+        <div>
+          <span class="dia"><b>11</b><span>de novembro</span></span>
+          <span class="item hora">19h11</span>
+          <span class="item vivo">Google Meet</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-card" id="inscricao">
+      <h2>Garanta sua vaga gratuita</h2>
+      <p class="apoio">Preencha abaixo e receba o link da aula no nosso grupo do WhatsApp.</p>
+      <form id="form" novalidate>
+        <div class="campos">
+          <div class="campo">
+            <label class="sr" for="f-nome">Nome completo</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome completo" required>
+            <p class="msg">Digite seu nome.</p>
+          </div>
+          <div class="campo">
+            <label class="sr" for="f-email">E-mail</label>
+            <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Seu melhor e-mail" required>
+            <p class="msg">Digite um e-mail válido.</p>
+          </div>
+          <div class="campo tel">
+            <label class="sr" for="f-whats">WhatsApp com DDD</label>
+            <span class="ddi" aria-hidden="true"><span class="bandeira"></span>+55</span>
+            <input id="f-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="WhatsApp com DDD" required>
+            <p class="msg">Digite o WhatsApp com DDD, ex.: (11) 99999-9999.</p>
+          </div>
+          <button class="btn" type="submit" id="enviar">
+            <span class="txt-btn">Quero participar da aula</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="gira" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+      <div class="garantias">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>100% gratuita</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ao vivo pelo Google Meet</span>
+      </div>
+      <p class="exclusiva"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z"/></svg><span>Acesso gratuito a uma aula exclusiva de membros da <b>Oficina C.B.</b></span></p>
+      <p class="privacidade">Seus dados ficam só com a Oficina Criar e Brincar. Nada de spam.</p>
+    </div>
+
+    <figure class="pati">
+      <img src="/assets/guia-sala-referencia/patricia.jpg" alt="Patrícia Souza" width="700" height="1047">
+      <figcaption><b>Patrícia Souza</b><span>Pedagoga, psicopedagoga e pesquisadora das Infâncias</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="faixa leva">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo">O que você leva desta aula</span>
+      <h2>Em uma noite, você sai com <em>clareza para documentar</em></h2>
+    </div>
+    <div class="tres">
+      <article>
+        <span class="ico i1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h1"/></svg></span>
+        <h3>Conceitos de forma clara e prática</h3>
+        <p>O que é documentação pedagógica, para que serve e como ela se conecta ao planejamento e à observação.</p>
+      </article>
+      <article>
+        <span class="ico i2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg></span>
+        <h3>Exemplos reais do cotidiano da Educação Infantil</h3>
+        <p>Uma semana do Processo Documental da Oficina Criar e Brincar, mostrada por dentro.</p>
+      </article>
+      <article>
+        <span class="ico i3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="10" r="2.5"/><path d="M2.5 20v-1.5A5 5 0 0 1 7.5 13.5h3a5 5 0 0 1 5 5V20M15.5 14.5h2a4 4 0 0 1 4 4V20"/></svg></span>
+        <h3>Estratégias para organizar, registrar e compartilhar</h3>
+        <p>Como transformar registros em relatórios, portfólios, mini-histórias e livretos para as famílias.</p>
+      </article>
+    </div>
+    <div class="cta"><a class="btn" href="#inscricao" data-ir-form>Quero minha vaga gratuita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="faixa dor">
+  <div class="miolo">
+    <div>
+      <span class="rotulo">Talvez você se reconheça</span>
+      <h2>Documentar não deveria ser <em>mais uma tarefa</em> no fim do ano</h2>
+      <p class="virada">Você não precisa chegar a dezembro tentando recuperar tudo o que aconteceu. <b>A documentação pode nascer do cotidiano.</b></p>
+    </div>
+    <ul class="lista-dor">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>Chega a época dos relatórios e você tenta lembrar, às pressas, o que cada criança viveu.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>Tem centenas de fotos no celular, mas não sabe como transformá-las em algo com sentido pedagógico.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>Os textos acabam parecidos para todas as crianças e não mostram o percurso de cada uma.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>Planejamento, observação e registro parecem coisas separadas, que nunca conversam.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo">O que você vai ver na aula</span>
+      <h2>Uma semana do <em>Processo Documental</em>, por dentro</h2>
+      <p class="lead">Patrícia vai mostrar como planejamento, observação, reflexão e documentação se conectam em um movimento contínuo, com o acompanhamento da coordenação pedagógica.</p>
+    </div>
+    <div class="ciclo" role="group" aria-label="Etapas do processo documental">
+      <button class="passo" type="button" aria-pressed="true"><span class="n">1</span><span class="t">Planejamento</span><span class="d">As escolhas pedagógicas que abrem espaço para as crianças investigarem.</span></button>
+      <button class="passo" type="button" aria-pressed="false"><span class="n">2</span><span class="t">Observação</span><span class="d">O que olhar, o que registrar e como não se perder em fotos e anotações.</span></button>
+      <button class="passo" type="button" aria-pressed="false"><span class="n">3</span><span class="t">Reflexão</span><span class="d">Transformar o que foi registrado em leitura dos percursos de cada criança.</span></button>
+      <button class="passo" type="button" aria-pressed="false"><span class="n">4</span><span class="t">Documentação</span><span class="d">Dar forma ao que aconteceu e tornar visíveis as aprendizagens.</span></button>
+    </div>
+    <p class="coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg>Um movimento contínuo, acompanhado pela coordenação pedagógica</p>
+  </div>
+</section>
+
+<section class="faixa entregas">
+  <div class="miolo">
+    <div class="centro">
+      <span class="rotulo" style="color:var(--amarelo)">Do cotidiano para o papel</span>
+      <h2>Documentações que <em>nascem dos percursos</em> das crianças</h2>
+      <p class="lead">Você vai entender como cada formato pode surgir do que já acontece na sua sala, sem correria no fim do ano.</p>
+    </div>
+    <div class="cards4">
+      <div class="card"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><h3>Relatórios</h3><p>Que contam o percurso real de cada criança, e não um texto genérico.</p></div>
+      <div class="card"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6M8 11h6"/></svg></span><h3>Portfólios</h3><p>Que reúnem registros com intenção e mostram o que foi aprendido.</p></div>
+      <div class="card"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg></span><h3>Mini-histórias</h3><p>Pequenos episódios do dia a dia que revelam como as crianças pensam.</p></div>
+      <div class="card"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg></span><h3>Livretos</h3><p>Que compartilham com as famílias o que a turma viveu e descobriu.</p></div>
+    </div>
+    <p class="frase">Documentar é <b>tornar visíveis as aprendizagens</b> das crianças.</p>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="estreito">
+    <div class="centro">
+      <span class="rotulo">Para quem é</span>
+      <h2>Esta aula é para <em>você</em> que…</h2>
+    </div>
+    <div class="quem-lista">
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>É professora de educação infantil</b>e quer que a documentação faça parte da rotina, não do desespero.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>É coordenadora pedagógica</b>e quer acompanhar o processo documental da equipe ao longo do ano.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>É gestora ou dona de escola</b>e quer documentações que mostrem às famílias a qualidade do trabalho.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>Estuda pedagogia</b>e quer ver como a documentação acontece na prática de uma escola real.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="faixa conduz">
+  <div class="miolo">
+    <div class="foto"><img src="/assets/guia-sala-referencia/patricia.jpg" alt="Patrícia Souza, diretora e formadora da Oficina Criar e Brincar" width="700" height="1047" loading="lazy"></div>
+    <div>
+      <span class="rotulo">Quem conduz a aula</span>
+      <h2>Patrícia Souza</h2>
+      <p class="cargo">Fundadora, diretora e formadora da Oficina Criar e Brincar</p>
+      <p class="bio">Pedagoga, psicopedagoga, especialista em Neurociência Aplicada à Educação e pesquisadora das Infâncias. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de centenas de educadores que acompanham suas formações. Nesta aula, ela abre o processo documental real da escola.</p>
+      <div class="numeros">
+        <div><b>20 anos</b><span>de educação infantil</span></div>
+        <div><b>11 anos</b><span>de escola própria</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa" style="padding-bottom:0">
+  <div class="miolo">
+    <div class="aovivo">
+      <span class="selo" aria-hidden="true">Só<br>ao<br>vivo</span>
+      <div>
+        <h2>Fique até o fim: tem uma <em>surpresa de Black Friday</em></h2>
+        <p>Quem estiver com a gente ao vivo no dia 11/11 vai receber uma condição especial, que não será divulgada em nenhum outro lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="estreito">
+    <div class="centro">
+      <span class="rotulo">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq">
+      <details><summary>A aula é mesmo gratuita?</summary><p>Sim. A inscrição e a aula são 100% gratuitas.</p></details>
+      <details><summary>Quando e onde vai acontecer?</summary><p>Quarta-feira, 11 de novembro, às 19h11 (horário de Brasília), ao vivo pelo Google Meet. Você pode assistir pelo celular ou pelo computador.</p></details>
+      <details><summary>Como recebo o link da aula?</summary><p>Depois de se inscrever, você entra no nosso grupo do WhatsApp. É por lá que enviamos o link do Google Meet, os lembretes e os materiais da aula.</p></details>
+      <details><summary>Por que preciso entrar no grupo do WhatsApp?</summary><p>O grupo é o nosso canal oficial da aula. Sem ele, você corre o risco de não receber o link na hora. É silencioso: só a equipe da Oficina envia mensagens.</p></details>
+      <details><summary>Preciso instalar alguma coisa?</summary><p>No computador, o Google Meet abre direto no navegador. No celular, vale baixar o app Google Meet antes da aula.</p></details>
+      <details><summary>Preciso ter experiência com documentação?</summary><p>Não. A aula é para quem está começando e também para quem já documenta e quer um processo mais leve e contínuo.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="faixa final">
+  <div class="estreito">
+    <span class="rotulo" style="color:var(--amarelo)">11/11 · 19h11 · Ao vivo</span>
+    <h2>Venha conhecer o processo por trás da <em>Documentação Pedagógica</em></h2>
+    <p class="lead">Faltam poucos dias. Garanta sua vaga e entre no grupo para receber o link.</p>
+    <div class="relogio" data-relogio>
+      <div><b data-d>00</b><small>dias</small></div><i>:</i>
+      <div><b data-h>00</b><small>horas</small></div><i>:</i>
+      <div><b data-m>00</b><small>min</small></div><i>:</i>
+      <div><b data-s>00</b><small>seg</small></div>
+    </div>
+    <a class="btn" href="#inscricao" data-ir-form>Quero minha vaga gratuita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="marca"><span class="nome">Oficina C.B.</span><span class="desc">Centro de Pesquisa e<br>Formação para Educadores</span></div>
+  <p>© 2026 Oficina Criar e Brincar</p>
+</footer>
+
+<div class="flutua" id="flutua">
+  <a class="btn" href="#inscricao" data-ir-form>Garantir minha vaga gratuita</a>
+</div>
+
+<script>
+(function(){
+  /* ===== Configuração ===== */
+  // URL do App da Web do Apps Script (Integracoes/salvar-inscricoes-aula-documentacao.gs)
+  var SALVAR_URL = "https://script.google.com/macros/s/AKfycbyLaWYJyGWsszAhsKKzG1hcKkNibHlibYrAaE_Fp0USdHIKBM2ZMvwzNGsYS9SHwasYPA/exec";
+  var AULA = new Date("2026-11-11T19:11:00-03:00").getTime();
+  var PROXIMA = "/aula-documentacao-pedagogica/grupo/";
+  var CHAVE = "aula-documentacao-2026-11-11";
+  var LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var ENVIAR_DE_VERDADE = !LOCAL || /[?&]planilha=1/.test(location.search);
+
+  /* ===== Contador ===== */
+  var relogios = [].slice.call(document.querySelectorAll("[data-relogio]"));
+  function dois(n){ return (n < 10 ? "0" : "") + n; }
+  function tick(){
+    var r = Math.max(0, AULA - Date.now());
+    var d = Math.floor(r / 864e5), h = Math.floor(r % 864e5 / 36e5), m = Math.floor(r % 36e5 / 6e4), s = Math.floor(r % 6e4 / 1e3);
+    relogios.forEach(function(el){
+      el.querySelector("[data-d]").textContent = dois(d);
+      el.querySelector("[data-h]").textContent = dois(h);
+      el.querySelector("[data-m]").textContent = dois(m);
+      el.querySelector("[data-s]").textContent = dois(s);
+    });
+    if(r === 0){
+      var t = document.querySelector(".contador .txt");
+      if(t) t.innerHTML = "A aula <b>está acontecendo agora</b>";
+      return;
+    }
+    setTimeout(tick, 1000 - Date.now() % 1000);
+  }
+  tick();
+
+  /* ===== Ciclo interativo ===== */
+  var passos = [].slice.call(document.querySelectorAll(".passo"));
+  passos.forEach(function(b){ b.addEventListener("click", function(){ passos.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); }); });
+
+  /* ===== Campanha (first touch) ===== */
+  function campanha(){
+    var salvo = null;
+    try{ salvo = JSON.parse(localStorage.getItem(CHAVE + "-utm") || "null"); }catch(e){}
+    var q = new URLSearchParams(location.search);
+    var temUtm = ["utm_source","utm_campaign","gclid","fbclid"].some(function(k){ return q.get(k); });
+    if(salvo && !temUtm) return salvo;
+    var c = {};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid","fbclid"].forEach(function(k){ c[k] = (q.get(k) || "").slice(0, 300); });
+    c.pagina_entrada = location.href.slice(0, 1500);
+    c.referencia = "";
+    try{ if(document.referrer){ var h = new URL(document.referrer).hostname.replace(/^www\./, ""); if(h !== location.hostname) c.referencia = h; } }catch(e){}
+    try{ localStorage.setItem(CHAVE + "-utm", JSON.stringify(c)); }catch(e){}
+    return c;
+  }
+  var utm = campanha();
+  function novoId(){
+    try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
+    return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+  }
+
+  /* ===== Formulário ===== */
+  var form = document.getElementById("form");
+  var fNome = document.getElementById("f-nome"), fEmail = document.getElementById("f-email"), fWhats = document.getElementById("f-whats");
+  var btn = document.getElementById("enviar");
+  var comecou = false;
+
+  function mascara(v){
+    var d = v.replace(/\D/g, "");
+    if(d.length > 11 && d.indexOf("55") === 0) d = d.slice(2);
+    d = d.slice(0, 11);
+    if(d.length <= 2) return d.length ? "(" + d : "";
+    if(d.length <= 6) return "(" + d.slice(0,2) + ") " + d.slice(2);
+    if(d.length <= 10) return "(" + d.slice(0,2) + ") " + d.slice(2,6) + "-" + d.slice(6);
+    return "(" + d.slice(0,2) + ") " + d.slice(2,7) + "-" + d.slice(7);
+  }
+  fWhats.addEventListener("input", function(){ fWhats.value = mascara(fWhats.value); });
+  [fNome, fEmail, fWhats].forEach(function(i){
+    i.addEventListener("input", function(){ i.parentNode.classList.remove("erro"); });
+    i.addEventListener("focus", function(){ if(!comecou){ comecou = true; try{ gtag("event", "form_start", {form_name:"aula_documentacao"}); }catch(e){} } });
+  });
+
+  function valido(){
+    var ok = true, primeiro = null;
+    function marca(campo, cond){ campo.parentNode.classList.toggle("erro", !cond); if(!cond){ ok = false; primeiro = primeiro || campo; } }
+    marca(fNome, fNome.value.trim().length >= 2);
+    marca(fEmail, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(fEmail.value.trim()));
+    var d = fWhats.value.replace(/\D/g, "");
+    marca(fWhats, d.length === 10 || d.length === 11);
+    if(primeiro) primeiro.focus();
+    return ok;
+  }
+
+  async function sha256(t){
+    try{
+      var b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
+      return Array.from(new Uint8Array(b)).map(function(x){ return x.toString(16).padStart(2, "0"); }).join("");
+    }catch(e){ return ""; }
+  }
+
+  form.addEventListener("submit", async function(ev){
+    ev.preventDefault();
+    if(btn.disabled || !valido()) return;
+    btn.disabled = true; btn.classList.add("enviando");
+
+    var nome = fNome.value.trim().replace(/\s+/g, " ");
+    var email = fEmail.value.trim().toLowerCase();
+    var digitos = fWhats.value.replace(/\D/g, "");
+    var id = novoId();
+    var dados = {
+      id: id, nome: nome, email: email, whatsapp: "+55 " + fWhats.value,
+      dispositivo: window.matchMedia("(pointer:coarse)").matches ? "celular" : "computador",
+      utm_source: utm.utm_source, utm_medium: utm.utm_medium, utm_campaign: utm.utm_campaign,
+      utm_content: utm.utm_content, utm_term: utm.utm_term, gclid: utm.gclid, fbclid: utm.fbclid,
+      pagina_entrada: utm.pagina_entrada, referencia: utm.referencia
+    };
+    try{ localStorage.setItem(CHAVE, JSON.stringify({id: id, nome: nome, email: email})); }catch(e){}
+
+    // Eventos de conversão
+    try{ gtag("event", "generate_lead", {form_name:"aula_documentacao"}); }catch(e){}
+    try{
+      var hashes = await Promise.all([sha256(email), sha256("55" + digitos), sha256(nome.split(" ")[0].toLowerCase())]);
+      metaEvento("Lead", {content_name:"Aula Documentação Pedagógica 11/11"}, {em: hashes[0], ph: hashes[1], fn: hashes[2]});
+    }catch(e){}
+
+    // Planilha
+    var corpo = JSON.stringify(dados);
+    var envio;
+    if(!ENVIAR_DE_VERDADE || !SALVAR_URL){
+      console.log("Planilha (simulado" + (SALVAR_URL ? "" : ", falta SALVAR_URL") + "):", dados);
+      envio = new Promise(function(r){ setTimeout(r, 500); });
+    } else {
+      envio = fetch(SALVAR_URL, {method:"POST", mode:"no-cors", keepalive:true, headers:{"Content-Type":"text/plain;charset=utf-8"}, body:corpo})
+        .catch(function(){ try{ navigator.sendBeacon(SALVAR_URL, new Blob([corpo], {type:"text/plain;charset=utf-8"})); }catch(e){} });
+    }
+    // Segue para a próxima tela mesmo se a rede demorar
+    await Promise.race([envio, new Promise(function(r){ setTimeout(r, 3000); })]);
+    location.href = PROXIMA + "?n=" + encodeURIComponent(nome.split(" ")[0]);
+  });
+
+  // Se a pessoa voltar pelo navegador, libera o botão de novo
+  window.addEventListener("pageshow", function(){ btn.disabled = false; btn.classList.remove("enviando"); });
+
+  /* ===== Botões que levam ao formulário ===== */
+  [].slice.call(document.querySelectorAll("[data-ir-form]")).forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      document.getElementById("inscricao").scrollIntoView({behavior:"smooth", block:"center"});
+      setTimeout(function(){ fNome.focus({preventScroll:true}); }, 500);
+    });
+  });
+
+  /* ===== Botão flutuante (celular): aparece quando o formulário sai da tela ===== */
+  var flutua = document.getElementById("flutua");
+  var cardForm = document.getElementById("inscricao");
+  var finalSec = document.querySelector(".final");
+  if("IntersectionObserver" in window){
+    var visiveis = new Set();
+    var obs = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target); });
+      var passou = cardForm.getBoundingClientRect().bottom < 0;
+      flutua.classList.toggle("ver", passou && !visiveis.size);
+    });
+    obs.observe(cardForm); obs.observe(finalSec);
+    window.addEventListener("scroll", function(){
+      var passou = cardForm.getBoundingClientRect().bottom < 0;
+      flutua.classList.toggle("ver", passou && !visiveis.size);
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>

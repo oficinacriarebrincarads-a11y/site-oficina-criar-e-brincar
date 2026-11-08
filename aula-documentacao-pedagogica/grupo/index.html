@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKJVG3PC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window['ga-disable-G-QKJVG3PC5E'] = true;
+  gtag('js', new Date());
+  gtag('config', 'G-QKJVG3PC5E');
+</script>
+<!-- Meta Pixel + API de Conversões -->
+<script>
+  (function(){
+    var PIXEL_ID = '611972390791603';
+    var teste = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    function cookie(n){ var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : ''; }
+    var testCode = new URLSearchParams(location.search).get('test_event_code');
+    window.metaEvento = function(nome, dados){
+      var id = nome + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+      if(teste){ console.log('Meta (simulado):', nome, dados || {}); return id; }
+      if(window.fbq) fbq('track', nome, dados || {}, {eventID: id});
+      var corpo = JSON.stringify({
+        event_name: nome, event_id: id, event_source_url: location.href, custom_data: dados || {},
+        fbp: cookie('_fbp'), fbc: cookie('_fbc'), test_event_code: testCode || undefined
+      });
+      try {
+        if(!(navigator.sendBeacon && navigator.sendBeacon('/.netlify/functions/meta-capi', corpo)))
+          fetch('/.netlify/functions/meta-capi', {method:'POST', body:corpo, keepalive:true});
+      } catch(e){}
+      return id;
+    };
+    if(teste) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+  })();
+  metaEvento('PageView');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+  (function(c,l,a,r,i,t,y){
+    if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "z5fhrmur2j");
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Falta 1 passo · Confirme sua inscrição</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07040D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/selo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<style>
+  :root{
+    --roxo:#8512DF; --roxo-claro:#B26BF0; --amarelo:#FCC218; --uva:#351B64; --uva-esc:#22104A;
+    --lavanda:#F3EBFC; --linha:#E7E0EE; --cinza:#6B5F7D; --zap:#1FAF55; --zap-esc:#128C45;
+    --f:"Nunito","Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  body{margin:0;min-height:100vh;background:radial-gradient(900px 500px at 85% 0%,rgba(133,18,223,.5),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(133,18,223,.3),transparent 60%),#07040D;color:var(--uva);font-family:var(--f);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding:32px 16px calc(32px + env(safe-area-inset-bottom))}
+  img{display:block;max-width:100%;height:auto}
+  h1,h2{margin:0;letter-spacing:-.025em;line-height:1.1;text-wrap:balance}
+  p{margin:0}
+
+
+  .cartao{width:min(100%,980px);margin-inline:auto;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+
+  /* Barra de progresso */
+  .progresso{background:#07040D;color:#fff;padding:16px clamp(20px,4vw,40px)}
+  .progresso .linha1{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+  .progresso .linha1 b{color:var(--amarelo);font-size:16px}
+  .barra{height:12px;background:rgba(255,255,255,.14);border-radius:99px;margin-top:10px;overflow:hidden}
+  .barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amarelo),#FF9F43);border-radius:99px;animation:enche 1.2s .2s cubic-bezier(.2,.8,.2,1) forwards;position:relative}
+  .barra i::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.25) 0 8px,transparent 8px 16px);animation:listras 1s linear infinite}
+  @keyframes enche{to{width:90%}}
+  @keyframes listras{to{background-position:22px 0}}
+
+  .corpo{padding:clamp(24px,4vw,44px) clamp(20px,4vw,44px) clamp(28px,4vw,44px)}
+  .alerta{display:inline-flex;align-items:center;gap:8px;background:#FFF1D0;color:#8A5A00;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+  .alerta::before{content:"";width:8px;height:8px;border-radius:50%;background:#F39C12;animation:pisca 1.2s infinite}
+  @keyframes pisca{50%{opacity:.25}}
+  h1{font-size:clamp(30px,4.6vw,46px);font-weight:900;margin-top:16px}
+  h1 em{font-style:normal;color:var(--roxo)}
+  .explica{font-size:clamp(17px,1.7vw,19px);color:var(--cinza);margin-top:14px;max-width:58ch}
+  .explica b{color:var(--uva)}
+
+  .grade{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,44px);margin-top:30px;align-items:stretch}
+
+  .btn-zap{display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;background:var(--zap);color:#fff;font:900 18px var(--f);letter-spacing:.03em;text-transform:uppercase;padding:20px 22px;border-radius:14px;box-shadow:0 14px 30px -12px rgba(31,175,85,.9);transition:transform .15s,background .15s;animation:chama 2.4s ease-in-out infinite}
+  .btn-zap:hover{background:var(--zap-esc);transform:translateY(-1px)}
+  .btn-zap:focus-visible{outline:3px solid var(--roxo);outline-offset:3px}
+  .btn-zap svg{width:28px;height:28px;flex:none}
+  @keyframes chama{0%,100%{box-shadow:0 14px 30px -12px rgba(31,175,85,.9),0 0 0 0 rgba(31,175,85,.45)}50%{box-shadow:0 14px 30px -12px rgba(31,175,85,.9),0 0 0 10px rgba(31,175,85,0)}}
+  .sob-btn{text-align:center;font-size:14px;font-weight:700;color:var(--cinza);margin-top:10px}
+
+  .passos{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px;counter-reset:p}
+  .passos li{counter-increment:p;display:flex;gap:12px;align-items:center;font-weight:600;font-size:16px}
+  .passos li::before{content:counter(p);flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--lavanda);color:var(--roxo);font-weight:900;font-size:14px}
+  .passos li.feito::before{content:"✓";background:var(--zap);color:#fff}
+  .passos li.feito{color:var(--cinza);text-decoration:line-through;text-decoration-color:rgba(107,95,125,.5)}
+
+  .acoes{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .acao{appearance:none;cursor:pointer;flex:1 1 200px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--uva);border:1.5px solid var(--linha);border-radius:12px;padding:13px 16px;font:800 15px var(--f);text-decoration:none;transition:border-color .15s,background .15s}
+  .acao:hover{border-color:var(--roxo-claro);background:var(--lavanda)}
+  .acao:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
+  .acao svg{width:18px;height:18px;flex:none;color:var(--roxo)}
+  .acao.ok{border-color:var(--zap);color:var(--zap-esc)}
+  .acao.ok svg{color:var(--zap)}
+
+  .qr{background:var(--lavanda);border-radius:18px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px}
+  .qr h2{font-size:18px;font-weight:900}
+  .qr p{font-size:14.5px;color:var(--cinza);line-height:1.45}
+  .qr img{width:200px;height:200px;background:#fff;border-radius:14px;padding:10px;box-shadow:0 10px 24px -14px rgba(53,27,100,.4)}
+
+  .evento{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;border-top:1px dashed var(--linha);padding-top:22px;font-weight:700;font-size:15.5px}
+  .evento span{display:inline-flex;align-items:center;gap:8px}
+  .evento svg{width:20px;height:20px;color:var(--roxo);flex:none}
+  .evento a{margin-left:auto;color:var(--roxo);font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .evento a:hover{text-decoration:underline}
+
+  .aviso-fim{width:min(100%,980px);margin:18px auto 0;color:#D9CCF0;text-align:center;font-size:14.5px}
+  .aviso-fim b{color:#fff}
+
+  /* Celular: QR some (a pessoa já está no aparelho com WhatsApp) */
+  @media (max-width:760px){
+    body{padding-top:14px}
+    .grade{grid-template-columns:1fr;margin-top:22px}
+    .qr{display:none}
+    .btn-zap{font-size:16.5px;padding:19px 16px}
+    .evento a{margin-left:0}
+  }
+  @media (hover:none) and (pointer:coarse){ .so-pc{display:none} }
+</style>
+</head>
+<body>
+
+<main class="cartao">
+  <div class="progresso">
+    <div class="linha1"><span>Sua inscrição está quase concluída</span><b>90%</b></div>
+    <div class="barra" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Inscrição 90% concluída"><i></i></div>
+  </div>
+
+  <div class="corpo">
+    <span class="alerta">Atenção: falta 1 passo</span>
+    <h1 id="titulo">Entre no grupo do WhatsApp para <em>confirmar sua inscrição</em></h1>
+    <p class="explica">É <b>só pelo grupo</b> que vamos enviar o link do Google Meet da aula ao vivo no dia 11/11, os lembretes e os materiais. <b>Sem entrar no grupo, você não recebe o acesso.</b></p>
+
+    <div class="grade">
+      <div>
+        <a class="btn-zap" id="btn-grupo" href="https://chat.whatsapp.com/B7Hq0nC7oqNCIhpXoU57tc" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.31-1.96 1.36-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34l.51.01c.16.01.38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.13.29-.27.45l-.4.47c-.13.14-.27.28-.12.55.16.27.7 1.15 1.49 1.86 1.03.92 1.9 1.2 2.17 1.34.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.6-.14.25.09 1.57.74 1.84.88.27.13.45.2.52.31.07.11.07.65-.17 1.32z"/></svg>
+          Entrar no grupo e confirmar
+        </a>
+        <p class="sob-btn">Gratuito · Só a equipe da Oficina envia mensagens</p>
+
+        <ol class="passos" aria-label="Etapas da inscrição">
+          <li class="feito">Preencher seus dados</li>
+          <li id="passo-grupo">Entrar no grupo do WhatsApp</li>
+          <li>Assistir à aula ao vivo dia 11/11, às 19h11</li>
+        </ol>
+
+        <div class="acoes">
+          <button class="acao" type="button" id="copiar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span>Copiar link do grupo</span>
+          </button>
+          <button class="acao" type="button" id="compartilhar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+            <span>Convidar uma colega</span>
+          </button>
+        </div>
+      </div>
+
+      <aside class="qr" aria-label="QR code do grupo">
+        <h2>Prefere pelo celular?</h2>
+        <img src="/assets/qr-grupo-aula-documentacao.svg" alt="QR code para entrar no grupo do WhatsApp" width="200" height="200">
+        <p>Abra a câmera do celular e aponte para o código para entrar no grupo.</p>
+      </aside>
+    </div>
+
+    <div class="evento">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Quarta, 11 de novembro</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>19h11 (Brasília)</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="13" height="14" rx="2"/><path d="M15.5 10l6-3.5v11l-6-3.5"/></svg>Ao vivo no Google Meet</span>
+      <a id="agenda" target="_blank" rel="noopener" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Salvar na agenda
+      </a>
+    </div>
+  </div>
+</main>
+
+<p class="aviso-fim"><b>Importante:</b> não feche esta página antes de entrar no grupo.</p>
+
+<script>
+(function(){
+  var GRUPO = "https://chat.whatsapp.com/B7Hq0nC7oqNCIhpXoU57tc";
+  var PAGINA = "https://oficinacriarebrincar.com.br/aula-documentacao-pedagogica/";
+  // Mesma URL do Apps Script usada na página de inscrição (marca "Clicou no grupo?" = sim)
+  var SALVAR_URL = "https://script.google.com/macros/s/AKfycbyLaWYJyGWsszAhsKKzG1hcKkNibHlibYrAaE_Fp0USdHIKBM2ZMvwzNGsYS9SHwasYPA/exec";
+  var CHAVE = "aula-documentacao-2026-11-11";
+  var LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var ENVIAR_DE_VERDADE = !LOCAL || /[?&]planilha=1/.test(location.search);
+
+  var inscrito = null;
+  try{ inscrito = JSON.parse(localStorage.getItem(CHAVE) || "null"); }catch(e){}
+  var nome = new URLSearchParams(location.search).get("n") || (inscrito && inscrito.nome ? inscrito.nome.split(" ")[0] : "");
+  nome = nome.replace(/[^\p{L}\s'-]/gu, "").trim().slice(0, 30);
+  if(nome){
+    document.getElementById("titulo").innerHTML = "Falta 1 passo, " + nome.replace(/[&<>]/g, "") + "! Entre no grupo para <em>confirmar sua inscrição</em>";
+  }
+
+  // Google Agenda
+  var detalhes = "Aula on-line e gratuita com Patrícia Souza (Oficina Criar e Brincar).\nAo vivo pelo Google Meet. O link de acesso será enviado no grupo do WhatsApp: " + GRUPO;
+  document.getElementById("agenda").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
+    encodeURIComponent("Aula: Documentação Pedagógica sem Desespero") + "&dates=20261111T221100Z/20261111T233000Z&details=" + encodeURIComponent(detalhes);
+
+  // Clique no grupo
+  var btn = document.getElementById("btn-grupo");
+  btn.addEventListener("click", function(){
+    document.getElementById("passo-grupo").classList.add("feito");
+    try{ gtag("event", "join_group", {group_id:"whatsapp_aula_documentacao"}); }catch(e){}
+    metaEvento("CompleteRegistration", {content_name:"Aula Documentação Pedagógica 11/11"});
+    if(inscrito && inscrito.id){
+      var corpo = JSON.stringify({id: inscrito.id, email: inscrito.email, clicou_grupo: "sim"});
+      if(!ENVIAR_DE_VERDADE || !SALVAR_URL){ console.log("Planilha (simulado):", corpo); return; }
+      try{ navigator.sendBeacon(SALVAR_URL, new Blob([corpo], {type:"text/plain;charset=utf-8"})); }catch(e){}
+    }
+  });
+
+  // Copiar link do grupo
+  var copiar = document.getElementById("copiar");
+  copiar.addEventListener("click", function(){
+    function ok(){
+      copiar.classList.add("ok");
+      copiar.querySelector("span").textContent = "Link copiado!";
+      setTimeout(function(){ copiar.classList.remove("ok"); copiar.querySelector("span").textContent = "Copiar link do grupo"; }, 2500);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(GRUPO).then(ok, function(){ prompt("Copie o link do grupo:", GRUPO); }); }
+    else prompt("Copie o link do grupo:", GRUPO);
+    try{ gtag("event", "share", {method:"copiar_link_grupo"}); }catch(e){}
+  });
+
+  // Convidar uma colega (leva para a página de inscrição, para ela também entrar na planilha)
+  var texto = "Vou participar de uma aula gratuita sobre Documentação Pedagógica com a Patrícia Souza, da Oficina Criar e Brincar, dia 11/11 às 19h11. Inscreva-se também: " + PAGINA + "?utm_source=indicacao&utm_medium=whatsapp";
+  document.getElementById("compartilhar").addEventListener("click", function(){
+    try{ gtag("event", "share", {method:"convidar_colega"}); }catch(e){}
+    if(navigator.share && matchMedia("(pointer:coarse)").matches){
+      navigator.share({title:"Aula gratuita · Documentação Pedagógica", text:texto}).catch(function(){});
+    } else {
+      window.open("https://wa.me/?text=" + encodeURIComponent(texto), "_blank", "noopener");
+    }
+  });
+})();
+</script>
+</body>
+</html>
