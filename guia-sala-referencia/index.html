@@ -579,12 +579,12 @@
       <p class="rapida-bonus"><span class="tag-bonus">Bônus</span>Workshop Sala Referência</p>
     </div>
     <div class="urgencia js-urg" hidden>
-      <p>Condição válida <b>somente hoje</b></p>
+      <p>Sua condição especial termina em</p>
       <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
     </div>
     <div class="r-preco">
-      <p class="de js-de" hidden>De <s>R$ 97</s> por: <span class="off">30% OFF</span></p>
-      <div class="rapida-preco"><span class="v"><sup>R$</sup>67</span><span class="o">à vista, ou<br><b>12x de R$ 6,93</b></span></div>
+      <p class="de js-de" hidden>De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
+      <div class="rapida-preco"><span class="v"><sup>R$</sup><span class="js-valor">67</span></span><span class="o">à vista, ou<br><b class="js-parc">12x de R$ 6,93</b></span></div>
     </div>
     <div class="r-cta">
       <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta_rapida" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
@@ -714,13 +714,13 @@
           <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
         </ul>
         <div class="urgencia js-urg" id="urgencia" hidden>
-          <p>Condição válida <b>somente hoje</b></p>
+          <p>Sua condição especial termina em</p>
           <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
         </div>
-        <p class="de js-de" id="preco-de" hidden>De <s>R$ 97</s> por: <span class="off">30% OFF</span></p>
+        <p class="de js-de" id="preco-de" hidden>De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
         <div class="preco">
-          <div class="valor"><sup>R$</sup>67</div>
-          <div class="obs">à vista, ou <b>12x de R$ 6,93</b><br>R$ 1 por página de percurso prático</div>
+          <div class="valor"><sup>R$</sup><span class="js-valor">67</span></div>
+          <div class="obs">à vista, ou <b class="js-parc">12x de R$ 6,93</b><span class="js-pag"><br>R$ 1 por página de percurso prático</span></div>
         </div>
         <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
@@ -815,14 +815,31 @@
 <script>
 (function(){
   // Checkout direto da Eduzz (o embutido perdia gente no navegador do Instagram)
-  var CHECKOUT = 'https://chk.eduzz.com/39ZRQ6QEWE';
+  var CHECKOUT_OFERTA = 'https://chk.eduzz.com/39ZRQ6QEWE';   // R$ 67, durante as 3 horas
+  var CHECKOUT_CHEIO  = '';                                    // R$ 147, depois das 3 horas (colar aqui o link Eduzz de R$ 147 quando existir)
+  var TEM_CHEIO = /^https:/.test(CHECKOUT_CHEIO);              // sem link de 147, o preço segue R$ 67 após as 3h (só somem o timer e o "De")
+
+  // Oferta de 3 horas por visitante: conta a partir da primeira visita, salva no navegador
+  var DURACAO = 3 * 60 * 60 * 1000, CHAVE_OFERTA = 'guia_oferta_inicio';
+  var inicioOferta = Date.now();
+  try {
+    var salvo = parseInt(localStorage.getItem(CHAVE_OFERTA), 10);
+    if(salvo && salvo <= Date.now()) inicioOferta = salvo; else localStorage.setItem(CHAVE_OFERTA, String(inicioOferta));
+  } catch(e){}
+  var FIM_OFERTA = inicioOferta + DURACAO;
+  function ofertaAtiva(){ return Date.now() < FIM_OFERTA; }
+  function precoAtual(){ return (ofertaAtiva() || !TEM_CHEIO) ? 67 : 147; }
 
   // Repassa UTMs e identificadores de anúncio para o checkout da Eduzz
   var params = new URLSearchParams(location.search);
   var repassa = new URLSearchParams();
   params.forEach(function(v, k){ if(/^(utm_|fbclid|gclid)/.test(k)) repassa.set(k, v); });
-  var destino = CHECKOUT + (repassa.toString() ? '?' + repassa.toString() : '');
-  document.querySelectorAll('[data-checkout]').forEach(function(a){ a.href = destino; });
+  function aplicaCheckout(){
+    var base = (ofertaAtiva() || !TEM_CHEIO) ? CHECKOUT_OFERTA : CHECKOUT_CHEIO;
+    var destino = base + (repassa.toString() ? '?' + repassa.toString() : '');
+    document.querySelectorAll('[data-checkout]').forEach(function(a){ a.href = destino; });
+  }
+  aplicaCheckout();
 
   function ga(nome, dados){ if(window.gtag) gtag('event', nome, dados || {}); }
   function clarityEvento(nome){ if(window.clarity) clarity('event', nome); }
@@ -832,8 +849,9 @@
   document.querySelectorAll('[data-checkout]').forEach(function(a){
     a.addEventListener('click', function(){
       var origem = a.getAttribute('data-cta');
-      ga('begin_checkout', {currency:'BRL', value:67, cta:origem, secao:secaoDe(a), items:[{item_id:'3108291', item_name:'Guia Prático Sala Referência', price:67}]});
-      metaEvento('InitiateCheckout', {content_ids:['3108291'], content_type:'product', value:67, currency:'BRL', num_items:1});
+      var v = precoAtual();
+      ga('begin_checkout', {currency:'BRL', value:v, cta:origem, secao:secaoDe(a), items:[{item_id:'3108291', item_name:'Guia Prático Sala Referência', price:v}]});
+      metaEvento('InitiateCheckout', {content_ids:['3108291'], content_type:'product', value:v, currency:'BRL', num_items:1});
       if(window.clarity){ clarity('set', 'cta', origem); clarityEvento('clique_checkout'); }
     });
   });
@@ -886,15 +904,21 @@
     });
   });
 
-  // Oferta com prazo real: passado o horário, somem o aviso, o timer e o "De R$ 97"
-  var FIM_OFERTA = new Date('2026-11-02T23:59:59-03:00').getTime();
+  // Oferta de 3 horas: passado o prazo, somem o aviso, o timer e o "De R$ 147", o preço volta a R$ 147 e o botão vai para o checkout cheio
   var avisos = document.querySelectorAll('.js-urg, .js-de');
+  function precoCheio(){
+    if(!TEM_CHEIO) return;
+    document.querySelectorAll('.js-valor').forEach(function(el){ el.textContent = '147'; });
+    document.querySelectorAll('.js-parc').forEach(function(el){ el.textContent = 'em até 12x no cartão'; });
+    document.querySelectorAll('.js-pag').forEach(function(el){ el.hidden = true; });
+    aplicaCheckout();
+  }
   function preenche(campo, valor){ document.querySelectorAll('[data-t="' + campo + '"]').forEach(function(b){ b.textContent = valor; }); }
   function doisDigitos(n){ return (n < 10 ? '0' : '') + n; }
   function contagem(){
     var resta = FIM_OFERTA - Date.now(), ativa = resta > 0;
     avisos.forEach(function(el){ el.hidden = !ativa; });
-    if(!ativa){ clearInterval(timerOferta); return; }
+    if(!ativa){ clearInterval(timerOferta); precoCheio(); return; }
     var s = Math.floor(resta / 1000);
     preenche('h', doisDigitos(Math.floor(s / 3600)));
     preenche('m', doisDigitos(Math.floor(s / 60) % 60));
