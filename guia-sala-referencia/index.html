@@ -237,7 +237,7 @@
   .oferta{background:var(--roxo);background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.07) 1px,transparent 0);background-size:22px 22px}
   .oferta > .miolo > h2{color:#fff;text-align:center}
   .oferta > .miolo > h2 em{color:var(--amarelo)}
-  #comprar,#rapida{scroll-margin-top:12px}
+  #comprar{scroll-margin-top:12px}
   .rapida{padding:0 20px clamp(64px,8vw,96px)}
   .rapida-caixa{width:min(100%,var(--largura));margin-inline:auto;display:flex;align-items:center;gap:22px;padding:18px 24px;border-radius:24px;background:var(--lavanda);border:2px solid var(--lavanda-2)}
   .rapida-livro{flex:none;width:110px}
@@ -474,7 +474,7 @@
 
 <!-- Faixa superior -->
 <div class="aviso">
-  <a href="#rapida" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
+  <a href="#comprar" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
     <div class="trilho" aria-hidden="true">
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
       <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
@@ -487,7 +487,7 @@
 <header class="topo">
   <div class="miolo">
     <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
-    <a class="mini" href="#rapida" data-cta="topo" data-ir-oferta>Quero o guia</a>
+    <a class="mini" href="#comprar" data-cta="topo" data-ir-oferta>Quero o guia</a>
   </div>
 </header>
 
@@ -521,7 +521,7 @@
     <div class="capa-resto">
       <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
-        <a class="btn" href="#rapida" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
@@ -566,30 +566,6 @@
       <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/instrumentos.jpg" alt="Instrumentos e objetos naturais sobre um tecido colorido" loading="lazy"><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i></div><b>Observar e documentar</b> o que as crianças revelam no espaço</li>
       <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"><i><svg aria-hidden="true"><use href="#i-check"/></svg></i></div><b>Reunir 12 produções</b> no seu dossiê para o Processo Documental</li>
     </ul>
-  </div>
-</section>
-
-<!-- Oferta rápida: preço cedo para quem não lê a página inteira -->
-<section class="rapida" id="rapida" data-secao="oferta_rapida">
-  <div class="rapida-caixa">
-    <img class="rapida-livro" src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Guia Prático Sala Referência" loading="lazy">
-    <div class="r-info">
-      <p class="rapida-titulo">Comece hoje a planejar a sua sala</p>
-      <p class="rapida-sub">Guia Prático Sala Referência · PDF de 67 páginas</p>
-      <p class="rapida-bonus"><span class="tag-bonus">Bônus</span>Workshop Sala Referência</p>
-    </div>
-    <div class="urgencia js-urg" hidden>
-      <p>Sua condição especial termina em</p>
-      <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
-    </div>
-    <div class="r-preco">
-      <p class="de js-de" hidden>De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
-      <div class="rapida-preco"><span class="v"><sup>R$</sup><span class="js-valor">67</span></span><span class="o">à vista, ou<br><b class="js-parc">12x de R$ 6,93</b></span></div>
-    </div>
-    <div class="r-cta">
-      <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta_rapida" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
-    </div>
   </div>
 </section>
 
@@ -809,7 +785,7 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn" href="#rapida" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
+  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia</a>
 </div>
 
 <script>
@@ -930,7 +906,7 @@
   // Barra fixa no celular: ativa desde a primeira dobra e some perto da oferta e do fechamento
   var fixa = document.getElementById('fixa');
   var oferta = document.getElementById('oferta'), fecha = document.querySelector('.fecha');
-  var vis = new Map([[oferta, false], [fecha, false], [document.getElementById('rapida'), false]]);
+  var vis = new Map([[oferta, false], [fecha, false]]);
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ vis.set(e.target, e.isIntersecting); });
     fixa.classList.toggle('ver', Array.from(vis.values()).every(function(v){ return !v; }));
