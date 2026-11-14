@@ -693,7 +693,7 @@
           <p>Sua condição especial termina em</p>
           <div class="timer" role="timer" aria-label="Tempo restante da oferta"><span><b data-t="h">00</b>horas</span><span><b data-t="m">00</b>min</span><span><b data-t="s">00</b>seg</span></div>
         </div>
-        <p class="de js-de" id="preco-de" hidden>De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
+        <p class="de js-de" id="preco-de">De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
         <div class="preco">
           <div class="valor"><sup>R$</sup><span class="js-valor">67</span></div>
           <div class="obs">à vista, ou <b class="js-parc">12x de R$ 6,93</b><span class="js-pag"><br>R$ 1 por página de percurso prático</span></div>
@@ -881,9 +881,10 @@
   });
 
   // Oferta de 3 horas: passado o prazo, somem o aviso, o timer e o "De R$ 147", o preço volta a R$ 147 e o botão vai para o checkout cheio
-  var avisos = document.querySelectorAll('.js-urg, .js-de');
+  var avisos = document.querySelectorAll('.js-urg');   // o "De R$ 147 por R$ 67" fica sempre visível; só o contador some após as 3h
   function precoCheio(){
     if(!TEM_CHEIO) return;
+    document.querySelectorAll('.js-de').forEach(function(el){ el.hidden = true; });
     document.querySelectorAll('.js-valor').forEach(function(el){ el.textContent = '147'; });
     document.querySelectorAll('.js-parc').forEach(function(el){ el.textContent = 'em até 12x no cartão'; });
     document.querySelectorAll('.js-pag').forEach(function(el){ el.hidden = true; });
