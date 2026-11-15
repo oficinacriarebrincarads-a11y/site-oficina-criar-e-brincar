@@ -896,9 +896,17 @@
   });
 
   // Oferta de 3 horas: passado o prazo, somem o aviso, o timer e o "De R$ 147", o preço volta a R$ 147 e o botão vai para o checkout cheio
-  // Bônus extra só em 14/11: depois das 23h59 (horário de Brasília) a tarja some sozinha
-  if(Date.now() > new Date('2026-11-14T23:59:59-03:00').getTime())
-    document.querySelectorAll('.js-bonus-hoje').forEach(function(el){ el.hidden = true; });
+  // Bônus extra do e-book: vale em 14/11 e 15/11. A tarja mostra a data do dia (horário de Brasília) e some depois de 15/11 às 23h59
+  (function(){
+    var DIAS_BONUS = ['2026-11-14', '2026-11-15'];
+    var hojeBR = new Date(Date.now() - 3 * 3600 * 1000).toISOString().slice(0, 10);
+    var ativo = DIAS_BONUS.indexOf(hojeBR) !== -1;
+    document.querySelectorAll('.js-bonus-hoje').forEach(function(el){
+      el.hidden = !ativo;
+      var tag = el.querySelector('.tag-hoje');
+      if(ativo && tag) tag.textContent = 'Só hoje · ' + hojeBR.slice(8, 10) + '/' + hojeBR.slice(5, 7);
+    });
+  })();
 
   var avisos = document.querySelectorAll('.js-urg');   // o "De R$ 147 por R$ 67" fica sempre visível; só o contador some após as 3h
   function precoCheio(){
