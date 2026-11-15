@@ -140,11 +140,11 @@
   .topo a.mini:hover{background:var(--uva);color:#fff}
 
   /* Capa */
-  .capa{position:relative;overflow:hidden;isolation:isolate;background:#FFFBF2;padding:clamp(32px,4vw,56px) 20px clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
+  .capa{position:relative;overflow:hidden;isolation:isolate;background:#FFFBF2;padding:clamp(28px,3vw,44px) 20px clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
   .capa::before,.capa::after{content:"";position:absolute;z-index:-1}
   .capa::before{left:-90px;top:-110px;width:320px;height:260px;background:var(--amarelo);border-radius:58% 42% 60% 40%/50% 60% 40% 50%}
   .capa::after{right:-120px;bottom:-130px;width:420px;height:320px;background:var(--lilas);border-radius:45% 55% 40% 60%/60% 45% 55% 40%}
-  .capa .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);grid-template-rows:auto 1fr;grid-template-areas:"topo livro" "resto livro";column-gap:clamp(32px,4vw,64px)}
+  .capa .miolo{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.9fr);grid-template-rows:auto 1fr;grid-template-areas:"topo livro" "resto livro";column-gap:clamp(32px,4vw,64px)}
   .capa-topo{grid-area:topo}
   .capa-resto{grid-area:resto}
   .etiqueta{display:inline-flex;align-items:center;background:var(--roxo);color:#fff;font:800 13px var(--f-texto);letter-spacing:.06em;padding:8px 16px;border-radius:999px}
@@ -387,6 +387,14 @@
   .marca small{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:#E4DCF0;margin-bottom:3px}
   .marca-nome{font-weight:900;font-size:25px;letter-spacing:-.02em;color:var(--amarelo)}
   .marca-com{padding-left:16px;border-left:2px solid rgba(255,255,255,.35);font-weight:800;font-size:19px;color:#fff}
+  /* com a coluna de texto mais larga, estes enfeites cairiam em cima do texto no computador */
+  @media (min-width:761px){.capa .e1,.capa .e2,.capa .e6{display:none}}
+  .tres{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px}
+  .tres li{display:flex;align-items:center;gap:14px}
+  .tres span{flex:none;width:38px;height:38px;border-radius:50%;background:var(--amarelo);color:var(--uva);display:grid;place-items:center;font:900 18px var(--f-titulo)}
+  .tres p{font-size:16px;line-height:1.35;color:#E4DCF0}
+  .tres b{color:#fff;font-weight:800}
+  .capa .indicado{display:none}
   .indicado{display:inline-block;margin-top:20px;padding:9px 18px;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(255,255,255,.1);font-size:14.5px;font-weight:700;line-height:1.35;color:#fff}
   .palco{position:relative;width:min(100%,600px);aspect-ratio:1/.98;margin-inline:auto}
   .palco-foto{position:absolute;right:15%;top:2%;width:60%;aspect-ratio:688/848;object-fit:cover;border-radius:28px;box-shadow:0 0 0 6px var(--amarelo),0 30px 60px -25px rgba(0,0,0,.7)}
@@ -453,6 +461,10 @@
     .e2{left:7%;top:53%}
     .e6{left:8%;top:40%}
     .indicado{display:block;text-align:center;font-size:14px}
+    .tres{margin-top:4px;gap:10px}
+    .capa .indicado{display:block}
+    .tres span{width:32px;height:32px;font-size:16px}
+    .tres p{font-size:15.5px}
     .capa-resto .cta{margin-top:20px}
     .mudancas{margin-top:40px;font-size:16px}
     .quadro{width:calc(100% - 16px)}
@@ -514,22 +526,27 @@
   <div class="miolo">
     <div class="capa-topo">
       <div class="marca"><span class="marca-nome"><small>Guia Prático</small>Sala Referência</span><span class="marca-com"><small>com</small>Patrícia Souza</span></div>
-      <h1>Transforme a sala que você já tem em <em>território de investigação</em> com Patrícia Souza</h1>
-      <p class="lead">Um passo a passo para planejar Zonas Circunscritas com intencionalidade, a partir das pedagogias participativas. Sem comprar nada novo.</p>
+      <h1>Monte uma sala referência <em>de verdade</em>, com o que você já tem</h1>
+      <p class="lead">O passo a passo de Patrícia Souza, há 20 anos no chão da sala da educação infantil, para planejar uma sala que faça sentido para as suas crianças.</p>
     </div>
     <div class="capa-livro">
       <div class="palco">
         <img class="palco-foto" src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" fetchpriority="high">
         <img class="flut f1" src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas e sementes preparada para investigação">
-        <img class="flut f2" src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira ao lado de uma caixa">
+        <img class="flut f2" src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="Sala real e estreita, com mesas e cadeiras simples de madeira">
         <img class="palco-livro" src="/assets/guia-sala-referencia/livro-guia.webp" width="1366" height="1141" alt="Guia Prático Sala Referência, com a capa do livro e um exemplo de planta de sala">
-        <span class="palco-selo">Centenas de educadores formados</span>
+        <span class="palco-selo">+1000 educadores formados</span>
       </div>
     </div>
     <div class="capa-resto">
+      <ol class="tres">
+        <li><span>1</span><p><b>Desenhe a sua sala como ela é hoje,</b> antes de mudar qualquer móvel</p></li>
+        <li><span>2</span><p><b>Escolha os materiais pelo que eles podem virar</b> nas mãos das crianças</p></li>
+        <li><span>3</span><p><b>Comece por um único canto,</b> sem precisar transformar tudo de uma vez</p></li>
+      </ol>
       <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
       <div class="cta">
-        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero planejar a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
@@ -747,11 +764,11 @@
       <span class="rotulo">Quem conduz o percurso</span>
       <h2>Patrícia Souza</h2>
       <p class="cargo">Fundadora, gestora e formadora da Oficina Criar e Brincar</p>
-      <p class="txt">Pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de centenas de educadores que acompanham suas formações. O guia foi escrito a partir das salas reais da escola.</p>
+      <p class="txt">Pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de mais de 1000 educadores que acompanham suas formações. O guia foi escrito a partir das salas reais da escola.</p>
       <div class="numeros">
         <div><b>20 anos</b><span>de educação infantil</span></div>
         <div><b>11 anos</b><span>de escola própria</span></div>
-        <div><b>Centenas</b><span>de educadores formados</span></div>
+        <div><b>+1000</b><span>educadores formados</span></div>
       </div>
       <p class="bases">Inspirado em <b>Reggio Emilia, Pikler e no brincar heurístico</b>, em diálogo com Horn, Goldschmied, Hoyuelos e Carla Rinaldi.</p>
       <div class="cta">
