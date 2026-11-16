@@ -124,6 +124,13 @@
   .btn:focus-visible{outline:2px solid var(--uva);outline-offset:4px}
   .btn svg{width:20px;height:20px;flex:none;transition:transform .15s}
   .btn:hover svg{transform:translateX(3px)}
+  /* Botões de compra em verde: destacam-se dos amarelos, que só levam até a oferta */
+  .btn-verde{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#4FA22E,#3A7F1C);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.18);box-shadow:0 4px 0 #2C6514,0 14px 26px -12px rgba(58,127,28,.9)}
+  .btn-verde:hover{background:linear-gradient(180deg,#58B034,#3F8A1F);box-shadow:0 4px 0 #2C6514,0 18px 30px -12px rgba(58,127,28,1)}
+  .btn-verde:active{transform:translateY(3px);box-shadow:0 1px 0 #2C6514}
+  .btn-verde::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:brilho 3.5s ease-in-out infinite}
+  @keyframes brilho{0%,60%{left:-60%}100%{left:130%}}
+  .btn-verde:focus-visible{outline-color:#2C6514}
   .cta{margin-top:40px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
   .centro .cta,.cta.centro{align-items:center}
   .micro{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:14px;font-weight:600;color:var(--cinza)}
@@ -718,7 +725,7 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
-          <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
+          <li class="bonus" id="bonus-oferta"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
           <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 14/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
         </ul>
         <div class="urgencia js-urg" id="urgencia" hidden>
@@ -730,7 +737,7 @@
           <div class="valor"><sup>R$</sup><span class="js-valor">67</span></div>
           <div class="obs">à vista, ou <b class="js-parc">12x de R$ 6,93</b><span class="js-pag"><br>R$ 1 por página de percurso prático</span></div>
         </div>
-        <a class="btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn btn-verde" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
       </div>
     </div>
@@ -861,6 +868,21 @@
       ga('begin_checkout', {currency:'BRL', value:v, cta:origem, secao:secaoDe(a), items:[{item_id:'3108291', item_name:'Guia Prático Sala Referência', price:v}]});
       metaEvento('InitiateCheckout', {content_ids:['3108291'], content_type:'product', value:v, currency:'BRL', num_items:1});
       if(window.clarity){ clarity('set', 'cta', origem); clarityEvento('clique_checkout'); }
+    });
+  });
+
+  // No celular, os botões que levam à oferta param a rolagem de modo que fiquem visíveis
+  // do bônus (Workshop) até o fim do card: bônus, preço e botão de compra
+  document.querySelectorAll('a[href="#comprar"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      if(!window.matchMedia('(max-width:760px)').matches) return;
+      var bonus = document.getElementById('bonus-oferta'), caixa = document.getElementById('comprar');
+      if(!bonus || !caixa) return;
+      ev.preventDefault();
+      var topoBonus = bonus.getBoundingClientRect().top + scrollY - 12;
+      var fimCard = caixa.getBoundingClientRect().bottom + scrollY + 16 - innerHeight;
+      // Ideal: o fim do card encostado no rodapé da tela. Se não couber tudo, prioriza o bônus no topo.
+      scrollTo({top: fimCard > topoBonus ? topoBonus : Math.max(fimCard, 0), behavior: 'smooth'});
     });
   });
 
