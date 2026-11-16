@@ -131,6 +131,13 @@
   .btn-verde::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:brilho 3.5s ease-in-out infinite}
   @keyframes brilho{0%,60%{left:-60%}100%{left:130%}}
   .btn-verde:focus-visible{outline-color:#2C6514}
+  /* Pulso discreto: respira a cada 2s com um anel verde que se expande */
+  .btn-verde{animation:pulso 2s ease-in-out infinite}
+  .btn-verde:hover,.btn-verde:active{animation:none}
+  @keyframes pulso{
+    0%,100%{transform:scale(1);box-shadow:0 4px 0 #2C6514,0 14px 26px -12px rgba(58,127,28,.9),0 0 0 0 rgba(79,162,46,.55)}
+    50%{transform:scale(1.03);box-shadow:0 4px 0 #2C6514,0 14px 26px -12px rgba(58,127,28,.9),0 0 0 12px rgba(79,162,46,0)}
+  }
   .cta{margin-top:40px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
   .centro .cta,.cta.centro{align-items:center}
   .micro{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:14px;font-weight:600;color:var(--cinza)}
