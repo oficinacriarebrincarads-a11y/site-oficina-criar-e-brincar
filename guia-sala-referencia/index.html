@@ -728,7 +728,7 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
           <li class="bonus" id="bonus-oferta"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
-          <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 14/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
+          <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 16/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
         </ul>
         <p class="de js-de" id="preco-de">De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
         <div class="preco">
@@ -935,7 +935,7 @@
   // Oferta de 3 horas: passado o prazo, somem o aviso, o timer e o "De R$ 147", o preço volta a R$ 147 e o botão vai para o checkout cheio
   // Bônus extra do e-book: vale em 14/11 e 15/11. A tarja mostra a data do dia (horário de Brasília) e some depois de 15/11 às 23h59
   (function(){
-    var DIAS_BONUS = ['2026-11-14', '2026-11-15'];
+    var DIAS_BONUS = ['2026-11-16'];
     var hojeBR = new Date(Date.now() - 3 * 3600 * 1000).toISOString().slice(0, 10);
     var ativo = DIAS_BONUS.indexOf(hojeBR) !== -1;
     document.querySelectorAll('.js-bonus-hoje').forEach(function(el){
