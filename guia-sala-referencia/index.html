@@ -596,6 +596,14 @@
   .qz-btn{width:100%;margin-top:18px}
   .qz-btn svg{transform:rotate(90deg)}
   .qz-refaz{display:block;margin:12px auto 0;border:0;background:none;color:#7A6A93;font:700 13.5px var(--f-texto);text-decoration:underline;cursor:pointer}
+  .qz-res-lista li.trava{background:#F1E6FD;color:var(--roxo)}
+  .qz-res-lista li.trava::before{content:"🔒";background:none;font-size:14px}
+  .qz-res-lista li.trava small{display:block;font-size:12px;font-weight:700;color:#7A6A93}
+  .qz-res-txt b{color:var(--uva)}
+  .qz-btn{animation:qz-pulso 2s ease-in-out infinite}
+  .qz-btn:hover,.qz-btn:active{animation:none}
+  .qz-btn svg{transform:none}
+  @keyframes qz-pulso{0%,100%{transform:scale(1);box-shadow:0 10px 24px -12px rgba(233,174,0,.9),0 0 0 0 rgba(252,194,24,.6)}50%{transform:scale(1.03);box-shadow:0 10px 24px -12px rgba(233,174,0,.9),0 0 0 12px rgba(252,194,24,0)}}
 </style>
 </head>
 <body>
@@ -675,7 +683,7 @@
 
   <div class="miolo cs-decisoes" id="planejada" data-secao="tres_decisoes">
     <div class="quiz" id="quiz">
-      <h2>E a sua sala? <em>Descubra em 3 toques.</em></h2>
+      <h2>Sua sala foi bem planejada? <em>Descubra em 3 toques.</em></h2>
       <div class="qz-card">
         <div class="qz-topo"><span class="qz-passo">Pergunta <b>1</b> de 3</span><span class="qz-barra"><i></i></span></div>
         <div class="qz-p" data-q="1">
@@ -699,9 +707,10 @@
             <li data-r="1">Materiais na altura das crianças</li>
             <li data-r="2">Uma proposta já posta ao chegar</li>
             <li data-r="3">Um canto para desacelerar</li>
+            <li class="trava">A pergunta que transforma a sua sala <small>está no guia</small></li>
           </ul>
           <p class="qz-res-txt"></p>
-          <a class="btn qz-btn" href="#decisoes">Ver por onde começar <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+          <a class="btn qz-btn" href="#comprar" data-cta="diagnostico" data-ir-oferta><span class="qz-btn-txt">Desbloquear o que falta na minha sala</span> <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
           <button type="button" class="qz-refaz">Refazer</button>
         </div>
       </div>
@@ -1103,14 +1112,17 @@
     function resultado(){
       var faltam = 0; [1,2,3].forEach(function(k){ faltam += resp[k]; });
       ps.forEach(function(p){ p.hidden = true; }); topo.hidden = true; res.hidden = false;
-      q.querySelectorAll('.qz-res-lista li').forEach(function(li){ var f = resp[li.getAttribute('data-r')]; li.className = f ? 'falta' : 'tem'; });
+      q.querySelectorAll('.qz-res-lista li[data-r]').forEach(function(li){ var f = resp[li.getAttribute('data-r')]; li.className = f ? 'falta' : 'tem'; });
+      var btxt = res.querySelector('.qz-btn-txt');
       var tit = res.querySelector('.qz-res-tit'), txt = res.querySelector('.qz-res-txt');
       if(faltam === 0){
         tit.innerHTML = 'Sua sala já tem <em>a base</em> de uma sala referência.';
-        txt.textContent = 'O próximo passo é dar intenção a cada canto e observar o que as crianças revelam. O guia mostra como.';
+        txt.innerHTML = 'Mas ter os cantos não basta. O que faz uma sala referência é a intenção por trás de cada um. <b>No guia, você descobre a pergunta que transforma esses cantos</b> e o que observar nas crianças a partir dela.';
+        btxt.textContent = 'Desbloquear o próximo passo da minha sala';
       } else {
         tit.innerHTML = 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' decisão' : ' decisões') + '</em> de virar uma sala referência.';
-        txt.textContent = 'E a boa notícia: ' + (faltam === 1 ? 'ela não exige' : 'nenhuma delas exige') + ' comprar nada. O guia mostra por onde começar, com o que você já tem.';
+        txt.innerHTML = 'A boa notícia: ' + (faltam === 1 ? 'ela não exige' : 'nenhuma delas exige') + ' comprar nada. <b>No guia, você descobre a pergunta que transforma a sua sala</b> e o passo a passo para chegar lá, com o que você já tem.';
+        btxt.textContent = 'Desbloquear o que falta na minha sala';
       }
       ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
     }
@@ -1123,7 +1135,7 @@
       });
     });
     q.querySelector('.qz-refaz').addEventListener('click', function(){ resp = {}; vai(1); });
-    q.querySelector('.qz-btn').addEventListener('click', function(){ ga('clique_diagnostico_decisoes'); });
+    q.querySelector('.qz-btn').addEventListener('click', function(){ ga('clique_diagnostico_oferta', {faltam: String(Object.keys(resp).reduce(function(t,k){ return t + resp[k]; }, 0))}); clarityEvento('clique_diagnostico_oferta'); });
   })();
   function secaoDe(el){ var sec = el.closest('[data-secao]'); return sec ? sec.getAttribute('data-secao') : (el.closest('.fixa') ? 'barra_fixa' : 'topo'); }
 
