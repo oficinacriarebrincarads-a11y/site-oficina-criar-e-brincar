@@ -516,8 +516,10 @@
   .cs-autora span{color:var(--amarelo);font-weight:700}
   .cs-btn{margin-top:22px}
   .cs-btn svg{transform:rotate(90deg)}
-  .cs-decisoes{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start;margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,.15);scroll-margin-top:12px}
-  .cs-decisoes .quiz{margin-bottom:0}
+  .cs-decisoes{display:block!important;margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,.15);scroll-margin-top:12px}
+  .cs-decisoes .quiz{margin-bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:center}
+  .cs-decisoes .quiz h2{font-size:clamp(30px,3.4vw,44px)}
+  .cs-decisoes .qz-card{margin-top:0}
   .cs-decisoes .qz-card{max-width:none}
   .cs-dec-col .cs-dec-tit{padding-top:0;border-top:0}
   .cs-decisoes h2{color:#fff;font-size:clamp(26px,3vw,36px)}
@@ -538,7 +540,8 @@
     .cs-resto .cs-autora{order:2;margin-top:18px}
     .cs-legenda{font-size:14px;padding:10px 12px}
     .cs-decisoes{display:block!important;margin-top:44px;padding-top:32px}
-    .cs-decisoes .quiz{margin-bottom:44px}
+    .cs-decisoes .quiz{margin-bottom:0;display:block}
+    .cs-decisoes .qz-card{margin-top:18px}
     .cs-dec-col .cs-dec-tit{padding-top:36px;border-top:1px solid rgba(255,255,255,.15)}
     .cs-decisoes .tres span{width:32px;height:32px;font-size:16px}
     .cs-decisoes .tres p{font-size:15.5px}
@@ -678,7 +681,7 @@
       <p class="lead">Não é o tamanho nem o material. <b>É como o espaço foi planejado.</b> E dá para fazer o mesmo na sua sala, com o que você já tem.</p>
       <div class="cs-autora">
         <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="" loading="lazy">
-        <p><b>Patrícia Souza</b> · há 20 anos na educação infantil<br><span>+1000 educadores formados</span></p>
+        <p><b>Patrícia Souza</b> · há 20 anos na educação infantil<br><span>+4000 educadores formados</span></p>
       </div>
       <a class="btn cs-btn" href="#planejada" data-cta="capa_ver">Comparar com a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
@@ -686,7 +689,7 @@
 
   <div class="miolo cs-decisoes" id="planejada" data-secao="tres_decisoes">
     <div class="quiz" id="quiz">
-      <h2>Sua sala foi bem planejada? <em>Descubra em 3 toques.</em></h2>
+      <h2>Sua sala foi bem planejada? <em>Descubra agora.</em></h2>
       <div class="qz-card">
         <div class="qz-topo"><span class="qz-passo">Pergunta <b>1</b> de 3</span><span class="qz-barra"><i></i></span></div>
         <div class="qz-p" data-q="1">
@@ -718,19 +721,6 @@
         </div>
       </div>
     </div>
-    <div class="cs-dec-col">
-    <h2 class="cs-dec-tit" id="decisoes">Por trás de cada canto, <em>3 decisões</em> que o guia ensina</h2>
-    <ol class="tres">
-      <li><span>1</span><p><b>Desenhe a sua sala como ela é hoje,</b> antes de mudar qualquer móvel</p></li>
-      <li><span>2</span><p><b>Escolha os materiais pelo que eles podem virar</b> nas mãos das crianças</p></li>
-      <li><span>3</span><p><b>Comece por um único canto,</b> sem precisar transformar tudo de uma vez</p></li>
-    </ol>
-    <p class="cs-ponte">No <b>Guia Prático Sala Referência</b>, a Patrícia mostra cada decisão passo a passo, com fichas, perguntas e fotos de salas reais.</p>
-    <div class="cta">
-      <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero planejar a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
-    </div>
-    </div>
   </div>
 </section>
 <svg class="onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 48C240 8 480 8 720 40s480 40 720 0v40H0z"/></svg>
@@ -750,7 +740,7 @@
       <p class="virada-frase">A organização da sala não começa na decoração. <b>Ela começa na intencionalidade.</b></p>
       <div class="cta">
         <a class="btn" href="#comprar" data-cta="identificacao" data-ir-oferta>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span></div>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
     <div class="foto"><img src="/assets/guia-sala-referencia/sala-mesa.jpg" width="900" height="1598" alt="Sala da Oficina Criar e Brincar com mesa de madeira, cadeiras baixas e estantes com materiais" loading="lazy" style="aspect-ratio:4/5"></div>
@@ -936,11 +926,11 @@
       <span class="rotulo">Quem conduz o percurso</span>
       <h2>Patrícia Souza</h2>
       <p class="cargo">Fundadora, gestora e formadora da Oficina Criar e Brincar</p>
-      <p class="txt">Pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de mais de 1000 educadores que acompanham suas formações. O guia foi escrito a partir das salas reais da escola.</p>
+      <p class="txt">Pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação. A Oficina nasceu em 2015 e, ao longo de 11 anos, vem transformando a própria prática e a de mais de 4000 educadores que acompanham suas formações. O guia foi escrito a partir das salas reais da escola.</p>
       <div class="numeros">
         <div><b>20 anos</b><span>de educação infantil</span></div>
         <div><b>11 anos</b><span>de escola própria</span></div>
-        <div><b>+1000</b><span>educadores formados</span></div>
+        <div><b>+4000</b><span>educadores formados</span></div>
       </div>
       <p class="bases">Inspirado em <b>Reggio Emilia, Pikler e no brincar heurístico</b>, em diálogo com Horn, Goldschmied, Hoyuelos e Carla Rinaldi.</p>
       <div class="cta">
