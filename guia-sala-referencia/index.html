@@ -154,7 +154,7 @@
   .topo a.mini:hover{background:var(--uva);color:#fff}
 
   /* Capa */
-  .capa{position:relative;overflow:hidden;isolation:isolate;background:#FFFBF2;padding:clamp(28px,3vw,44px) 20px clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
+  .capa{position:relative;overflow:hidden;overflow:clip;isolation:isolate;background:#FFFBF2;padding:clamp(28px,3vw,44px) 20px clamp(48px,6vw,72px);border-bottom:1px solid var(--linha)}
   .capa::before,.capa::after{content:"";position:absolute;z-index:-1}
   .capa::before{left:-90px;top:-110px;width:320px;height:260px;background:var(--amarelo);border-radius:58% 42% 60% 40%/50% 60% 40% 50%}
   .capa::after{right:-120px;bottom:-130px;width:420px;height:320px;background:var(--lilas);border-radius:45% 55% 40% 60%/60% 45% 55% 40%}
@@ -1012,6 +1012,16 @@
   function ga(nome, dados){ if(window.gtag) gtag('event', nome, dados || {}); }
   function clarityEvento(nome){ if(window.clarity) clarity('event', nome); }
 
+  // Rolagem interna da capa: rola a janela (nunca o conteúdo da seção) até o alvo
+  function rolaPara(id){
+    var alvo = document.getElementById(id); if(!alvo) return;
+    document.querySelectorAll('.capa').forEach(function(c){ c.scrollTop = 0; c.scrollLeft = 0; });
+    var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top: alvo.getBoundingClientRect().top + window.scrollY - 12, behavior: reduz ? 'auto' : 'smooth'});
+  }
+  document.querySelectorAll('a[href="#planejada"], a[href="#decisoes"]').forEach(function(a){
+    a.addEventListener('click', function(ev){ ev.preventDefault(); rolaPara(a.getAttribute('href').slice(1)); });
+  });
   // Capa: pontos tocáveis com zoom guiado em cada canto
   (function(){
     var foto = document.getElementById('cs-foto'); if(!foto) return;
@@ -1072,9 +1082,8 @@
     prox.addEventListener('click', function(){
       if(atual && atual < 3) return abre(atual + 1);
       if(atual === 3) return volta();
-      var alvo = document.getElementById('planejada');
       ga('clique_ver_planejada', {origem:'foto'}); clarityEvento('clique_ver_planejada');
-      if(alvo) alvo.scrollIntoView({behavior:'smooth', block:'start'});
+      rolaPara('planejada');
     });
     window.addEventListener('resize', function(){ if(atual) abre(atual); });
     var ver = document.querySelector('.cs-btn');
