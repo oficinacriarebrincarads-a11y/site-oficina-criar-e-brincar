@@ -487,6 +487,115 @@
     .quadro i svg{width:23px;height:23px}
     .garante .miolo{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
   }
+
+  /* ===== Capa nova: a sala do anúncio + pergunta + pontos tocáveis ===== */
+  .capa-sala{padding:22px 16px 56px}
+  .capa-sala .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);grid-template-areas:"texto foto" "resto foto";grid-template-rows:auto 1fr;column-gap:clamp(32px,4vw,64px);align-items:start}
+  .cs-texto{grid-area:texto;align-self:end}
+  .cs-foto{grid-area:foto}
+  .cs-resto{grid-area:resto}
+  .cs-olho{display:inline-block;margin:0;padding:7px 14px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:800 13px var(--f-texto);letter-spacing:.01em}
+  .capa-sala h1{font-size:clamp(30px,3.6vw,52px);line-height:1.08;margin:14px 0 0;text-wrap:balance}
+  .capa-sala .lead{margin-top:18px;color:#E4DCF0}
+  .capa-sala .lead b{color:#fff}
+  .cs-foto{position:relative;margin:0;border-radius:22px;overflow:hidden;box-shadow:0 0 0 5px var(--amarelo),0 30px 60px -25px rgba(0,0,0,.7);aspect-ratio:4/4.6;background:#ddd}
+  .cs-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block}
+  .ponto{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--roxo);color:#fff;font:900 17px var(--f-titulo);cursor:pointer;padding:0;box-shadow:0 6px 14px -4px rgba(0,0,0,.6);animation:ponto-pulso 1.8s ease-out infinite;-webkit-tap-highlight-color:transparent}
+  .ponto:nth-of-type(2){animation-delay:.3s}
+  .ponto:nth-of-type(3){animation-delay:.6s}
+  .ponto.ativo{background:var(--amarelo);color:var(--uva);animation:none;transform:translate(-50%,-50%) scale(1.15)}
+  .ponto.visto:not(.ativo){background:#fff;color:var(--uva);animation:none}
+  @keyframes ponto-pulso{0%{box-shadow:0 6px 14px -4px rgba(0,0,0,.6),0 0 0 0 rgba(252,194,24,.85)}70%,100%{box-shadow:0 6px 14px -4px rgba(0,0,0,.6),0 0 0 16px rgba(252,194,24,0)}}
+  .cs-legenda{position:absolute;left:10px;right:10px;bottom:10px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.96);color:var(--uva);font-size:15px;line-height:1.35;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+  .cs-dica{font-weight:800}
+  .cs-txt b{font-weight:900}
+  .cs-autora{display:flex;align-items:center;gap:12px;margin-top:18px}
+  .cs-autora img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--amarelo);flex:none}
+  .cs-autora p{font-size:14.5px;line-height:1.35;color:#E4DCF0}
+  .cs-autora b{color:#fff}
+  .cs-autora span{color:var(--amarelo);font-weight:700}
+  .cs-btn{margin-top:22px}
+  .cs-btn svg{transform:rotate(90deg)}
+  .cs-decisoes{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:start;margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,.15);scroll-margin-top:12px}
+  .cs-decisoes .quiz{margin-bottom:0}
+  .cs-decisoes .qz-card{max-width:none}
+  .cs-dec-col .cs-dec-tit{padding-top:0;border-top:0}
+  .cs-decisoes h2{color:#fff;font-size:clamp(26px,3vw,36px)}
+  .cs-decisoes h2 em{color:var(--amarelo)}
+  .cs-decisoes .tres{margin-top:22px;gap:14px}
+  .cs-ponte{margin-top:22px;color:#E4DCF0;font-size:16px}
+  .cs-ponte b{color:#fff}
+  .cs-decisoes .cta{margin-top:24px}
+  @media (max-width:760px){
+    .capa-sala{padding:16px 16px 52px}
+    .capa-sala .miolo{grid-template-columns:minmax(0,1fr);grid-template-areas:"texto" "foto" "resto";grid-template-rows:none;row-gap:14px}
+    .cs-olho{font-size:12px;padding:6px 12px}
+    .capa-sala h1{font-size:clamp(26px,7.4vw,34px);margin-top:10px}
+    .capa-sala .lead{margin-top:0;font-size:16px;line-height:1.45}
+    .capa-sala .btn{display:flex;width:100%}
+    .cs-legenda{font-size:14px;padding:10px 12px}
+    .cs-decisoes{display:block!important;margin-top:44px;padding-top:32px}
+    .cs-decisoes .quiz{margin-bottom:44px}
+    .cs-dec-col .cs-dec-tit{padding-top:36px;border-top:1px solid rgba(255,255,255,.15)}
+    .cs-decisoes .tres span{width:32px;height:32px;font-size:16px}
+    .cs-decisoes .tres p{font-size:15.5px}
+  }
+
+  /* Capa: zoom guiado + mãozinha */
+  .cs-cena{position:absolute;inset:0;transform-origin:0 0;transition:transform .75s cubic-bezier(.65,0,.25,1);will-change:transform}
+  .cs-cena img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block}
+  .cs-foto .ponto{transition:left .75s cubic-bezier(.65,0,.25,1),top .75s cubic-bezier(.65,0,.25,1),opacity .3s,background .2s}
+  .cs-foto.zoom .ponto:not(.ativo){opacity:0;pointer-events:none}
+  .cs-foto.zoom .ponto.ativo{box-shadow:0 0 0 6px rgba(252,194,24,.45),0 0 0 999px rgba(53,27,100,.0)}
+  .cs-mao{position:absolute;left:32%;top:calc(48% + 22px);z-index:3;pointer-events:none;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);opacity:0;animation:mao-entra .4s 1.2s forwards}
+  .cs-dedo{font-size:34px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.5));animation:mao-toca 1.4s 1.6s ease-in-out infinite;order:-1}
+  .cs-bolha{margin-top:4px;padding:5px 10px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:900 13px var(--f-texto);white-space:nowrap;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
+  .cs-foto.usado .cs-mao{display:none}
+  @keyframes mao-entra{to{opacity:1}}
+  @keyframes mao-toca{0%,100%{transform:translateY(0)}35%{transform:translateY(-12px)}50%{transform:translateY(-12px) scale(.9)}}
+  .cs-fechar{position:absolute;top:10px;right:10px;z-index:3;border:0;border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.95);color:var(--uva);font:800 13px var(--f-texto);cursor:pointer;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
+  .cs-legenda p{margin:0}
+  .cs-txt,.cs-fim{animation:leg-entra .35s ease-out}
+  @keyframes leg-entra{from{opacity:0;transform:translateY(6px)}}
+  .cs-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+  .cs-prog{display:inline-flex;align-items:center;gap:5px}
+  .cs-prog i{width:9px;height:9px;border-radius:50%;background:#E3DAF0;transition:background .3s}
+  .cs-prog i.ok{background:var(--roxo)}
+  .cs-prog small{margin-left:4px;font:700 12px var(--f-texto);color:#7A6A93}
+  .cs-prox{border:0;border-radius:10px;padding:8px 12px;background:var(--roxo);color:#fff;font:800 13.5px var(--f-texto);cursor:pointer;white-space:nowrap}
+
+  .cs-legenda{z-index:3}
+  .cs-legenda{z-index:3}
+
+  /* Mini diagnóstico: E a sua sala? */
+  .quiz{margin-bottom:44px}
+  .quiz h2{color:#fff;font-size:clamp(26px,3vw,36px)}
+  .quiz h2 em{color:var(--amarelo)}
+  .qz-card{margin-top:18px;max-width:520px;background:#fff;border-radius:20px;padding:20px 18px 22px;color:var(--uva);box-shadow:0 0 0 5px var(--amarelo),0 30px 60px -25px rgba(0,0,0,.7)}
+  .qz-topo{display:flex;align-items:center;gap:12px;font:700 13px var(--f-texto);color:#7A6A93}
+  .qz-topo b{color:var(--roxo)}
+  .qz-topo[hidden]{display:none}
+  .qz-barra{flex:1;height:6px;border-radius:99px;background:#EEE6F8;overflow:hidden}
+  .qz-barra i{display:block;height:100%;width:33.33%;background:var(--roxo);border-radius:99px;transition:width .4s ease}
+  .qz-p,.qz-res{animation:qz-entra .35s ease-out}
+  @keyframes qz-entra{from{opacity:0;transform:translateX(16px)}}
+  .qz-perg{margin:16px 0 14px;font:800 21px/1.25 var(--f-titulo);color:var(--uva)}
+  .qz-op{display:block;width:100%;margin-top:10px;padding:15px 16px;border:2px solid #E3DAF0;border-radius:14px;background:#FBF8FF;color:var(--uva);font:700 16px var(--f-texto);text-align:left;cursor:pointer;transition:border-color .15s,background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+  .qz-op:hover{border-color:var(--roxo)}
+  .qz-op:active,.qz-op.esc{transform:scale(.98);border-color:var(--roxo);background:#F1E6FD}
+  .qz-res-tit{margin:14px 0 0;font:800 23px/1.2 var(--f-titulo);color:var(--uva)}
+  .qz-res-tit em{font-style:normal;color:var(--roxo)}
+  .qz-res-lista{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+  .qz-res-lista li{position:relative;padding:10px 12px 10px 40px;border-radius:12px;font-weight:700;font-size:15px}
+  .qz-res-lista li::before{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:900 12px var(--f-texto)}
+  .qz-res-lista li.tem{background:#EEF7E6;color:#2C6514}
+  .qz-res-lista li.tem::before{content:"✓";background:#4FA22E;color:#fff}
+  .qz-res-lista li.falta{background:#FFF6D9;color:var(--uva)}
+  .qz-res-lista li.falta::before{content:"→";background:var(--amarelo);color:var(--uva)}
+  .qz-res-txt{margin-top:14px;font-size:15.5px;line-height:1.45;color:#4A3A66}
+  .qz-btn{width:100%;margin-top:18px}
+  .qz-btn svg{transform:rotate(90deg)}
+  .qz-refaz{display:block;margin:12px auto 0;border:0;background:none;color:#7A6A93;font:700 13.5px var(--f-texto);text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -527,42 +636,88 @@
 
 <main>
 
-<!-- 1. Capa -->
-<section class="capa" data-secao="capa">
-  <div class="enfeites" aria-hidden="true">
-    <svg class="e1" viewBox="0 0 64 64"><path d="M10 30 32 10l22 20M16 25v29h32V25M27 54V38h10v16"/></svg>
-    <svg class="e2" viewBox="0 0 64 64"><path d="M12 52C12 26 28 12 54 10c0 26-14 42-42 42zM12 52 36 28"/></svg>
-    <svg class="e3" viewBox="0 0 64 64"><path d="M32 32c0-4 6-4 6 1 0 7-12 8-13-1-1-11 18-14 22 0 4 16-22 25-32 8"/></svg>
-    <svg class="e4" viewBox="0 0 64 64"><path d="M8 40h18v16H8zM28 40h18v16H28zM18 24h18v16H18zM36 10l10 14H26z"/></svg>
-    <svg class="e5" viewBox="0 0 64 64"><path d="M6 30 58 8 42 56 30 38zM30 38 58 8"/></svg>
-    <svg class="e6" viewBox="0 0 64 64"><circle cx="32" cy="32" r="11"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6"/></svg>
-  </div>
+<!-- 1. Capa: a sala do anúncio + pergunta + pontos tocáveis -->
+<section class="capa capa-sala" data-secao="capa">
   <div class="miolo">
-    <div class="capa-topo">
-      <div class="marca"><span class="marca-nome"><small>Guia Prático</small>Sala Referência</span><span class="marca-com"><small>com</small>Patrícia Souza</span></div>
-      <h1>Monte uma sala referência <em>de verdade</em>, com o que você já tem</h1>
-      <p class="lead">O passo a passo de Patrícia Souza, há 20 anos no chão da sala da educação infantil, para planejar uma sala que faça sentido para as suas crianças.</p>
+    <div class="cs-texto">
+      <h1>Por que as crianças se envolvem tanto <em>nessa sala?</em></h1>
     </div>
-    <div class="capa-livro">
-      <div class="palco">
-        <img class="palco-foto" src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" fetchpriority="high">
-        <img class="flut f1" src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas e sementes preparada para investigação">
-        <img class="flut f2" src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="Sala real e estreita, com mesas e cadeiras simples de madeira">
-        <img class="palco-livro" src="/assets/guia-sala-referencia/livro-guia-v2.webp" width="1200" height="989" alt="Guia Prático Sala Referência, com a capa do livro e um exemplo de planta de sala">
-        <span class="palco-selo">+1000 educadores formados</span>
+
+    <figure class="cs-foto" id="cs-foto">
+      <div class="cs-cena"><img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" width="750" height="1000" alt="Sala real e estreita de educação infantil, com mesas e cadeiras simples de madeira, estante baixa e um tapete laranja ao fundo" fetchpriority="high"></div>
+      <button type="button" class="ponto" style="--x:12%;--y:43%" data-ponto="1" aria-label="Ver de perto o canto 1: estante baixa">1</button>
+      <button type="button" class="ponto" style="--x:32%;--y:48%" data-ponto="2" aria-label="Ver de perto o canto 2: tapete e poltrona">2</button>
+      <button type="button" class="ponto" style="--x:60%;--y:61%" data-ponto="3" aria-label="Ver de perto o canto 3: mesa da frente">3</button>
+      <div class="cs-mao" aria-hidden="true"><span class="cs-bolha">toque aqui</span><span class="cs-dedo">👆</span></div>
+      <button type="button" class="cs-fechar" hidden>✕ sala inteira</button>
+      <figcaption class="cs-legenda" aria-live="polite">
+        <p class="cs-dica"><b>Toque nos números</b> e veja cada canto de perto</p>
+        <p class="cs-txt" data-txt="1" hidden><b>Materiais na altura das crianças.</b> Elas escolhem sozinhas, sem precisar pedir.</p>
+        <p class="cs-txt" data-txt="2" hidden><b>Um canto para desacelerar.</b> Tapete e poltrona acolhem, mesmo numa sala estreita.</p>
+        <p class="cs-txt" data-txt="3" hidden><b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.</p>
+        <p class="cs-fim" hidden><b>Você viu os 3 cantos.</b> E a sua sala, já tem esses três?</p>
+        <div class="cs-nav">
+          <span class="cs-prog" aria-label="Cantos vistos"><i></i><i></i><i></i><small>0 de 3</small></span>
+          <button type="button" class="cs-prox" hidden>Próximo canto →</button>
+        </div>
+      </figcaption>
+    </figure>
+
+    <div class="cs-resto">
+      <p class="lead">Não é o tamanho nem o material. <b>É como o espaço foi planejado.</b> E dá para fazer o mesmo na sua sala, com o que você já tem.</p>
+      <div class="cs-autora">
+        <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="" loading="lazy">
+        <p><b>Patrícia Souza</b> · há 20 anos na educação infantil<br><span>+1000 educadores formados</span></p>
+      </div>
+      <a class="btn cs-btn" href="#planejada" data-cta="capa_ver">Comparar com a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+    </div>
+  </div>
+
+  <div class="miolo cs-decisoes" id="planejada" data-secao="tres_decisoes">
+    <div class="quiz" id="quiz">
+      <h2>E a sua sala? <em>Descubra em 3 toques.</em></h2>
+      <div class="qz-card">
+        <div class="qz-topo"><span class="qz-passo">Pergunta <b>1</b> de 3</span><span class="qz-barra"><i></i></span></div>
+        <div class="qz-p" data-q="1">
+          <p class="qz-perg">Onde ficam os materiais na sua sala?</p>
+          <button type="button" class="qz-op" data-falta="1">No alto ou guardados</button>
+          <button type="button" class="qz-op" data-falta="0">Na altura das crianças</button>
+        </div>
+        <div class="qz-p" data-q="2" hidden>
+          <p class="qz-perg">Quando as crianças chegam, o que encontram?</p>
+          <button type="button" class="qz-op" data-falta="1">Esperam a atividade do dia</button>
+          <button type="button" class="qz-op" data-falta="0">Uma proposta já posta</button>
+        </div>
+        <div class="qz-p" data-q="3" hidden>
+          <p class="qz-perg">Sua sala tem um canto para desacelerar?</p>
+          <button type="button" class="qz-op" data-falta="1">Ainda não</button>
+          <button type="button" class="qz-op" data-falta="0">Tem sim</button>
+        </div>
+        <div class="qz-res" hidden aria-live="polite">
+          <p class="qz-res-tit"></p>
+          <ul class="qz-res-lista">
+            <li data-r="1">Materiais na altura das crianças</li>
+            <li data-r="2">Uma proposta já posta ao chegar</li>
+            <li data-r="3">Um canto para desacelerar</li>
+          </ul>
+          <p class="qz-res-txt"></p>
+          <a class="btn qz-btn" href="#decisoes">Ver por onde começar <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+          <button type="button" class="qz-refaz">Refazer</button>
+        </div>
       </div>
     </div>
-    <div class="capa-resto">
-      <ol class="tres">
-        <li><span>1</span><p><b>Desenhe a sua sala como ela é hoje,</b> antes de mudar qualquer móvel</p></li>
-        <li><span>2</span><p><b>Escolha os materiais pelo que eles podem virar</b> nas mãos das crianças</p></li>
-        <li><span>3</span><p><b>Comece por um único canto,</b> sem precisar transformar tudo de uma vez</p></li>
-      </ol>
-      <p class="indicado">Indicado para educadores e coordenadores da educação infantil</p>
-      <div class="cta">
-        <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero planejar a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-        <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
-      </div>
+    <div class="cs-dec-col">
+    <h2 class="cs-dec-tit" id="decisoes">Por trás de cada canto, <em>3 decisões</em> que o guia ensina</h2>
+    <ol class="tres">
+      <li><span>1</span><p><b>Desenhe a sua sala como ela é hoje,</b> antes de mudar qualquer móvel</p></li>
+      <li><span>2</span><p><b>Escolha os materiais pelo que eles podem virar</b> nas mãos das crianças</p></li>
+      <li><span>3</span><p><b>Comece por um único canto,</b> sem precisar transformar tudo de uma vez</p></li>
+    </ol>
+    <p class="cs-ponte">No <b>Guia Prático Sala Referência</b>, a Patrícia mostra cada decisão passo a passo, com fichas, perguntas e fotos de salas reais.</p>
+    <div class="cta">
+      <a class="btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero planejar a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+    </div>
     </div>
   </div>
 </section>
@@ -728,7 +883,7 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
           <li class="bonus" id="bonus-oferta"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
-          <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 16/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
+          <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 17/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
         </ul>
         <p class="de js-de" id="preco-de">De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
         <div class="preco">
@@ -856,6 +1011,111 @@
 
   function ga(nome, dados){ if(window.gtag) gtag('event', nome, dados || {}); }
   function clarityEvento(nome){ if(window.clarity) clarity('event', nome); }
+
+  // Capa: pontos tocáveis com zoom guiado em cada canto
+  (function(){
+    var foto = document.getElementById('cs-foto'); if(!foto) return;
+    var cena = foto.querySelector('.cs-cena'), pontos = foto.querySelectorAll('.ponto');
+    var dica = foto.querySelector('.cs-dica'), fim = foto.querySelector('.cs-fim'), txts = foto.querySelectorAll('.cs-txt');
+    var prox = foto.querySelector('.cs-prox'), fechar = foto.querySelector('.cs-fechar');
+    var bolinhas = foto.querySelectorAll('.cs-prog i'), contador = foto.querySelector('.cs-prog small');
+    var POS = {1:[12,43], 2:[32,48], 3:[60,61]}, ZOOM = 2.1, vistos = {}, atual = 0, todos = false;
+    function total(){ return Object.keys(vistos).length; }
+    function mostra(el){ [dica, fim].concat([].slice.call(txts)).forEach(function(e){ e.hidden = e !== el; }); }
+    function marcaProgresso(){
+      bolinhas.forEach(function(i, k){ i.classList.toggle('ok', !!vistos[k+1]); });
+      contador.textContent = total() + ' de 3';
+    }
+    function abre(n){
+      atual = n;
+      foto.classList.add('usado');
+      var W = foto.clientWidth, H = foto.clientHeight, px = POS[n][0]/100*W, py = POS[n][1]/100*H;
+      var tx = Math.min(0, Math.max(W - W*ZOOM, W*.5 - px*ZOOM));
+      var ty = Math.min(0, Math.max(H - H*ZOOM, H*.38 - py*ZOOM));
+      cena.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + ZOOM + ')';
+      foto.classList.add('zoom', 'usado');
+      pontos.forEach(function(b){
+        var eu = b.getAttribute('data-ponto') == n;
+        b.classList.toggle('ativo', eu);
+        b.style.left = eu ? (tx + px*ZOOM) + 'px' : '';
+        b.style.top  = eu ? (ty + py*ZOOM) + 'px' : '';
+      });
+      fechar.hidden = false;
+      depois(n);
+    }
+    function depois(n){
+      mostra(foto.querySelector('.cs-txt[data-txt="' + n + '"]'));
+      if(!vistos[n]){ vistos[n] = true; ga('tocou_ponto', {ponto: String(n)}); clarityEvento('tocou_ponto'); }
+      foto.querySelector('.ponto[data-ponto="' + n + '"]').classList.add('visto');
+      marcaProgresso();
+      prox.hidden = false;
+      prox.textContent = n < 3 ? 'Próximo canto →' : 'Ver a sala inteira';
+    }
+    function volta(){
+      atual = 0;
+      cena.style.transform = '';
+      foto.classList.remove('zoom');
+      pontos.forEach(function(b){ b.classList.remove('ativo'); b.style.left = ''; b.style.top = ''; });
+      fechar.hidden = true;
+      if(total() === 3){
+        mostra(fim); prox.hidden = false; prox.textContent = 'Comparar com a minha sala ↓';
+        if(!todos){ todos = true; ga('viu_3_cantos'); clarityEvento('viu_3_cantos'); }
+      } else { mostra(dica); prox.hidden = true; }
+    }
+    pontos.forEach(function(b){
+      b.addEventListener('click', function(){
+        var n = +b.getAttribute('data-ponto');
+        if(atual === n) volta(); else abre(n);
+      });
+    });
+    fechar.addEventListener('click', volta);
+    prox.addEventListener('click', function(){
+      if(atual && atual < 3) return abre(atual + 1);
+      if(atual === 3) return volta();
+      var alvo = document.getElementById('planejada');
+      ga('clique_ver_planejada', {origem:'foto'}); clarityEvento('clique_ver_planejada');
+      if(alvo) alvo.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    window.addEventListener('resize', function(){ if(atual) abre(atual); });
+    var ver = document.querySelector('.cs-btn');
+    if(ver) ver.addEventListener('click', function(){ ga('clique_ver_planejada', {origem:'botao'}); clarityEvento('clique_ver_planejada'); });
+  })();
+
+  // Mini diagnóstico: E a sua sala?
+  (function(){
+    var q = document.getElementById('quiz'); if(!q) return;
+    var ps = q.querySelectorAll('.qz-p'), res = q.querySelector('.qz-res'), barra = q.querySelector('.qz-barra i'), passo = q.querySelector('.qz-passo b'), topo = q.querySelector('.qz-topo');
+    var resp = {}, comecou = false;
+    function vai(n){
+      ps.forEach(function(p){ p.hidden = +p.getAttribute('data-q') !== n; });
+      res.hidden = true; topo.hidden = false;
+      passo.textContent = n; barra.style.width = (n/3*100) + '%';
+    }
+    function resultado(){
+      var faltam = 0; [1,2,3].forEach(function(k){ faltam += resp[k]; });
+      ps.forEach(function(p){ p.hidden = true; }); topo.hidden = true; res.hidden = false;
+      q.querySelectorAll('.qz-res-lista li').forEach(function(li){ var f = resp[li.getAttribute('data-r')]; li.className = f ? 'falta' : 'tem'; });
+      var tit = res.querySelector('.qz-res-tit'), txt = res.querySelector('.qz-res-txt');
+      if(faltam === 0){
+        tit.innerHTML = 'Sua sala já tem <em>a base</em> de uma sala referência.';
+        txt.textContent = 'O próximo passo é dar intenção a cada canto e observar o que as crianças revelam. O guia mostra como.';
+      } else {
+        tit.innerHTML = 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' decisão' : ' decisões') + '</em> de virar uma sala referência.';
+        txt.textContent = 'E a boa notícia: ' + (faltam === 1 ? 'ela não exige' : 'nenhuma delas exige') + ' comprar nada. O guia mostra por onde começar, com o que você já tem.';
+      }
+      ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
+    }
+    q.querySelectorAll('.qz-op').forEach(function(b){
+      b.addEventListener('click', function(){
+        var p = b.closest('.qz-p'), n = +p.getAttribute('data-q');
+        resp[n] = +b.getAttribute('data-falta'); b.classList.add('esc');
+        if(!comecou){ comecou = true; ga('respondeu_diagnostico'); clarityEvento('respondeu_diagnostico'); }
+        setTimeout(function(){ b.classList.remove('esc'); if(n < 3) vai(n + 1); else resultado(); }, 220);
+      });
+    });
+    q.querySelector('.qz-refaz').addEventListener('click', function(){ resp = {}; vai(1); });
+    q.querySelector('.qz-btn').addEventListener('click', function(){ ga('clique_diagnostico_decisoes'); });
+  })();
   function secaoDe(el){ var sec = el.closest('[data-secao]'); return sec ? sec.getAttribute('data-secao') : (el.closest('.fixa') ? 'barra_fixa' : 'topo'); }
 
   // Botão da oferta, o único que leva ao checkout: begin_checkout (GA4) + InitiateCheckout (Pixel e API de Conversões)
@@ -935,7 +1195,7 @@
   // Oferta de 3 horas: passado o prazo, somem o aviso, o timer e o "De R$ 147", o preço volta a R$ 147 e o botão vai para o checkout cheio
   // Bônus extra do e-book: vale em 14/11 e 15/11. A tarja mostra a data do dia (horário de Brasília) e some depois de 15/11 às 23h59
   (function(){
-    var DIAS_BONUS = ['2026-11-16'];
+    var DIAS_BONUS = ['2026-11-17'];
     var hojeBR = new Date(Date.now() - 3 * 3600 * 1000).toISOString().slice(0, 10);
     var ativo = DIAS_BONUS.indexOf(hojeBR) !== -1;
     document.querySelectorAll('.js-bonus-hoje').forEach(function(el){
