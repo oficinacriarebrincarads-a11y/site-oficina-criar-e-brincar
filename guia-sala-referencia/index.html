@@ -610,6 +610,58 @@
   .qz-btn:hover,.qz-btn:active{animation:none}
   .qz-btn svg{transform:none}
   @keyframes qz-pulso{0%,100%{transform:scale(1);box-shadow:0 10px 24px -12px rgba(233,174,0,.9),0 0 0 0 rgba(252,194,24,.6)}50%{transform:scale(1.03);box-shadow:0 10px 24px -12px rgba(233,174,0,.9),0 0 0 12px rgba(252,194,24,0)}}
+
+  /* Bônus: análise da sua sala */
+  .qz-analise{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px;border-radius:14px;background:var(--sol);border:2px dashed var(--amarelo)}
+  .qz-an-ic{font-size:24px;line-height:1}
+  .qz-analise p{margin:0;font-size:15px;line-height:1.45;color:var(--uva)}
+  .analise{background:var(--sol)}
+  .analise .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,96px);align-items:center}
+  .analise h2 em{color:var(--roxo)}
+  .analise .lead b{color:var(--uva)}
+  .an-passos{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+  .an-passos li{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;background:#fff;box-shadow:0 8px 20px -14px rgba(53,27,100,.45)}
+  .an-passos span{flex:none;width:44px;height:44px;border-radius:50%;background:var(--lavanda);display:grid;place-items:center;font-size:22px}
+  .an-passos p{margin:0;font-size:15.5px;line-height:1.35;color:var(--cinza)}
+  .an-passos b{color:var(--uva)}
+  .analise .cta{margin-top:26px}
+  .an-nota{margin-top:16px;font-size:13px;line-height:1.45;color:var(--cinza);max-width:52ch}
+  .an-exemplo{position:relative;margin:0;padding:16px;border-radius:24px;background:#fff;box-shadow:0 30px 60px -30px rgba(53,27,100,.55);transform:rotate(1.5deg)}
+  .an-etq{position:absolute;top:-14px;left:20px;z-index:2;padding:6px 14px;border-radius:999px;background:var(--uva);color:#fff;font:800 12px var(--f-texto);letter-spacing:.08em;text-transform:uppercase}
+  .an-foto{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3.4}
+  .an-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 52%;display:block}
+  .an-foto i,.ba-foto i{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:50%;background:var(--roxo);color:#fff;font-style:normal;border:2px solid #fff;box-shadow:0 4px 10px -3px rgba(0,0,0,.6)}
+  .an-foto i{width:32px;height:32px;font:900 15px var(--f-titulo);box-shadow:0 0 0 4px rgba(252,194,24,.55),0 4px 10px -3px rgba(0,0,0,.6)}
+  .an-ajustes{margin:14px 0 0;padding:0 0 0 22px;display:grid;gap:8px;font-size:14.5px;line-height:1.45;color:var(--cinza)}
+  .an-ajustes li::marker{font-weight:900;color:var(--roxo)}
+  .an-ajustes b{color:var(--uva)}
+  .an-ajustes em{font-style:normal;font-weight:800;color:var(--roxo);background:var(--sol);padding:0 6px;border-radius:6px}
+  .an-trava{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--lavanda);color:var(--roxo);font-weight:800;font-size:14px}
+  .itens .bonus-analise{align-items:center;gap:14px;margin-top:4px;padding:12px 14px;border-radius:12px;background:var(--sol);border:2px solid var(--amarelo)}
+  .ba-foto{position:relative;flex:none;width:76px;height:76px;border-radius:10px;overflow:hidden;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+  .ba-foto img{width:100%;height:100%;object-fit:cover;object-position:40% 50%;display:block}
+  .ba-foto i{width:18px;height:18px;font:900 10px var(--f-titulo);border-width:1.5px}
+  .ba-txt{display:flex;flex-direction:column;align-items:flex-start;gap:6px;color:var(--cinza)}
+  .tag-excl{padding:3px 10px;border-radius:999px;background:var(--roxo);color:#fff;font:800 11.5px var(--f-texto);letter-spacing:.06em;text-transform:uppercase}
+  @media (max-width:760px){
+    .analise .miolo{grid-template-columns:minmax(0,1fr)}
+    .an-exemplo{transform:none;margin-top:8px}
+    .analise .btn{width:100%}
+    .fixa .btn{font-size:15px;padding:14px 10px}
+  }
+
+  /* Oferta: análise em destaque; e-book do dia com o mesmo peso do workshop */
+  .itens .bonus-analise{margin-top:8px;padding:16px;gap:16px;border:0;border-radius:16px;background:var(--roxo);color:#E9DDF8;box-shadow:0 0 0 3px var(--amarelo),0 18px 30px -16px rgba(133,18,223,.8)}
+  .itens .bonus-analise b{color:var(--amarelo)}
+  .bonus-analise .ba-foto{width:92px;height:92px;border:3px solid #fff;border-radius:12px}
+  .bonus-analise .ba-foto i{width:22px;height:22px;font-size:11px;background:var(--amarelo);color:var(--uva)}
+  .bonus-analise .ba-txt{color:#E9DDF8;gap:5px;line-height:1.4}
+  .bonus-analise .tag-excl{background:var(--amarelo);color:var(--uva)}
+  .ba-tit{font:900 19px/1.15 var(--f-titulo);color:#fff}
+  .itens .bonus-hoje{gap:12px;padding:12px 14px;margin-top:0;background:var(--sol);color:var(--cinza)}
+  .itens .bonus-hoje b{color:var(--uva)}
+  .itens .bonus-hoje .tag-hoje{background:var(--amarelo);color:var(--uva);padding:3px 8px;letter-spacing:.03em}
+  @media (max-width:760px){.itens .bonus-hoje{font-size:14.5px}}
 </style>
 </head>
 <body>
@@ -716,7 +768,8 @@
             <li class="trava">A pergunta que transforma a sua sala <small>está no guia</small></li>
           </ul>
           <p class="qz-res-txt"></p>
-          <a class="btn qz-btn" href="#comprar" data-cta="diagnostico" data-ir-oferta><span class="qz-btn-txt">Desbloquear o que falta na minha sala</span> <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+          <div class="qz-analise"><span class="qz-an-ic" aria-hidden="true">📸</span><p><b>Quer saber exatamente o que mudar na SUA sala?</b> Com o guia, você envia uma foto e recebe <b>3 ajustes personalizados</b>, revisados pela Patrícia, em até 48h.</p></div>
+          <a class="btn qz-btn" href="#comprar" data-cta="diagnostico" data-ir-oferta><span class="qz-btn-txt">Quero o guia + a análise da minha sala</span> <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
           <button type="button" class="qz-refaz">Refazer</button>
         </div>
       </div>
@@ -866,6 +919,43 @@
 </section>
 
 
+<!-- 6b. Análise da sua sala (bônus) -->
+<section class="analise faixa" data-secao="analise">
+  <div class="miolo">
+    <div class="an-texto">
+      <span class="rotulo">Bônus exclusivo</span>
+      <h2>Sua sala, <em>analisada</em></h2>
+      <p class="lead">Compre o guia, mande uma foto da sua sala como ela está hoje e receba <b>3 ajustes personalizados</b> para começar, com o que você já tem.</p>
+      <ol class="an-passos">
+        <li><span>🛒</span><p><b>Garanta o guia</b><br>e receba o acesso na hora</p></li>
+        <li><span>💬</span><p><b>Nossa equipe fala com você</b><br>pelo WhatsApp ou e-mail da compra</p></li>
+        <li><span>📸</span><p><b>Envie até 3 fotos e receba 3 ajustes</b><br>revisados pela Patrícia, em até 48h</p></li>
+      </ol>
+      <div class="cta">
+        <a class="btn" href="#comprar" data-cta="analise" data-ir-oferta>Quero o guia + a análise da minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
+      </div>
+      <p class="an-nota">A análise é feita com apoio de inteligência artificial, seguindo o método do guia, e revisada pela Patrícia Souza antes de chegar até você.</p>
+    </div>
+    <figure class="an-exemplo">
+      <span class="an-etq">Exemplo de análise</span>
+      <div class="an-foto">
+        <img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" width="750" height="1000" alt="Exemplo de foto de sala enviada para análise, marcada com três números" loading="lazy">
+        <i style="--x:12%;--y:43%">1</i><i style="--x:32%;--y:48%">2</i><i style="--x:60%;--y:61%">3</i>
+      </div>
+      <figcaption>
+        <ol class="an-ajustes">
+          <li><b>Estante baixa:</b> deixe só 3 ou 4 materiais por prateleira, para a criança enxergar e escolher.</li>
+          <li><b>Tapete e poltrona:</b> traga os livros para perto do tapete. O canto vira leitura sem nada novo. <em>Comece por aqui.</em></li>
+          <li><b>Mesa da frente:</b> mude a proposta da mesa a partir do que você observou nas crianças na semana.</li>
+        </ol>
+        <p class="an-trava">🔒 A pergunta para fazer a este canto está no guia</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
 <!-- 7. Oferta -->
 <section class="oferta faixa" id="oferta" data-secao="oferta">
   <div class="miolo">
@@ -884,15 +974,16 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
-          <li class="bonus" id="bonus-oferta"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
-          <li class="bonus-hoje js-bonus-hoje"><img src="/assets/guia-sala-referencia/ebook-documentacao.webp" width="240" height="429" alt="Capa do e-book Documentação Pedagógica" loading="lazy"><span class="bh-txt"><span class="tag-hoje">Só hoje · 18/11</span><span>Ganhe também o <b>E-book Documentação Pedagógica</b> de bônus</span></span></li>
+          <li class="bonus-analise" id="bonus-oferta"><span class="ba-foto" aria-hidden="true"><img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="" loading="lazy"><i style="--x:18%;--y:42%">1</i><i style="--x:40%;--y:52%">2</i><i style="--x:66%;--y:64%">3</i></span><span class="ba-txt"><span class="tag-excl">⭐ Bônus exclusivo</span><span class="ba-tit">Análise da sua sala</span><span>Envie uma foto e receba <b>3 ajustes personalizados</b>, revisados pela Patrícia, em até 48h</span></span></li>
+          <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
+          <li class="bonus bonus-hoje js-bonus-hoje"><span class="tag-bonus tag-hoje">Só hoje · 18/11</span><span><b>E-book Documentação Pedagógica</b></span></li>
         </ul>
         <p class="de js-de" id="preco-de">De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
         <div class="preco">
           <div class="valor"><sup>R$</sup><span class="js-valor">67</span></div>
           <div class="obs">à vista, ou <b class="js-parc">12x de R$ 6,93</b><span class="js-pag"><br>R$ 1 por página de percurso prático</span></div>
         </div>
-        <a class="btn btn-verde" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn btn-verde" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o guia + a análise da minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
       </div>
     </div>
@@ -946,6 +1037,7 @@
     <div class="centro"><span class="rotulo">Dúvidas</span><h2>Perguntas frequentes</h2></div>
     <div class="perguntas">
       <details><summary>Em que formato é o guia?</summary><p>É um PDF de 67 páginas. Você lê no celular ou no computador e pode imprimir as fichas para usar no planejamento. O acesso chega no seu e-mail logo após a confirmação do pagamento.</p></details>
+      <details><summary>Como funciona a análise da minha sala?</summary><p>Depois da compra, nossa equipe entra em contato pelo WhatsApp ou e-mail que você informou. Você envia até 3 fotos da sua sala como ela está hoje, sem crianças, e em até 48h recebe a sua foto marcada com 3 ajustes para começar, seguindo o método do guia e usando o que você já tem. A análise é feita com apoio de inteligência artificial e revisada pela Patrícia Souza. As fotos são apagadas depois da entrega.</p></details>
       <details><summary>Preciso comprar materiais novos?</summary><p>Não. O percurso começa pelo inventário do que já existe na sua sala e ajuda você a reconhecer as possibilidades de cada material.</p></details>
       <details><summary>Serve para berçário?</summary><p>Sim. O guia trata da educação infantil como um todo e se apoia em referências sobre bebês e crianças bem pequenas, como Goldschmied, Jackson e a abordagem Pikler.</p></details>
       <details><summary>Nunca trabalhei com Zonas Circunscritas. Consigo acompanhar?</summary><p>Consegue. O guia explica o conceito desde o início e propõe começar por uma única zona antes de planejar a sala inteira.</p></details>
@@ -979,7 +1071,7 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia com desconto</a>
+  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia + análise da minha sala</a>
 </div>
 
 <script>
@@ -1111,11 +1203,11 @@
       if(faltam === 0){
         tit.innerHTML = 'Sua sala já tem <em>a base</em> de uma sala referência.';
         txt.innerHTML = 'Mas ter os cantos não basta. O que faz uma sala referência é a intenção por trás de cada um. <b>No guia, você descobre a pergunta que transforma esses cantos</b> e o que observar nas crianças a partir dela.';
-        btxt.textContent = 'Desbloquear o próximo passo da minha sala';
+        btxt.textContent = 'Quero o guia + a análise da minha sala';
       } else {
         tit.innerHTML = 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' decisão' : ' decisões') + '</em> de virar uma sala referência.';
         txt.innerHTML = 'A boa notícia: ' + (faltam === 1 ? 'ela não exige' : 'nenhuma delas exige') + ' comprar nada. <b>No guia, você descobre a pergunta que transforma a sua sala</b> e o passo a passo para chegar lá, com o que você já tem.';
-        btxt.textContent = 'Desbloquear o que falta na minha sala';
+        btxt.textContent = 'Quero o guia + a análise da minha sala';
       }
       ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
     }
