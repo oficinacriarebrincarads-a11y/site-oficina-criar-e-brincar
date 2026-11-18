@@ -220,7 +220,7 @@
   .col.com li svg{color:var(--verde-esc)}
 
   /* Por dentro */
-  .dentro .topo-sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
+  .dentro .topo-sec{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
   .partes{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
   .partes li{border:1px solid var(--linha);border-radius:999px;padding:6px 14px;font:500 14px var(--f-texto);color:var(--cinza)}
   .galeria{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px}
@@ -553,8 +553,8 @@
   .cs-foto .ponto{transition:left .75s cubic-bezier(.65,0,.25,1),top .75s cubic-bezier(.65,0,.25,1),opacity .3s,background .2s}
   .cs-foto.zoom .ponto:not(.ativo){opacity:0;pointer-events:none}
   .cs-foto.zoom .ponto.ativo{box-shadow:0 0 0 6px rgba(252,194,24,.45),0 0 0 999px rgba(53,27,100,.0)}
-  .cs-mao{position:absolute;left:32%;top:calc(48% + 22px);z-index:3;pointer-events:none;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);opacity:0;animation:mao-entra .4s 1.2s forwards}
-  .cs-dedo{font-size:34px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.5));animation:mao-toca 1.4s 1.6s ease-in-out infinite;order:-1}
+  .cs-mao{position:absolute;left:32%;top:calc(48% + 22px);z-index:3;pointer-events:none;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);opacity:0;animation:mao-entra .4s .5s forwards}
+  .cs-dedo{font-size:34px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.5));animation:mao-toca 1.4s .9s ease-in-out infinite;order:-1}
   .cs-bolha{margin-top:4px;padding:5px 10px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:900 13px var(--f-texto);white-space:nowrap;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
   .cs-foto.usado .cs-mao{display:none}
   @keyframes mao-entra{to{opacity:1}}
@@ -662,6 +662,26 @@
   .itens .bonus-hoje b{color:var(--uva)}
   .itens .bonus-hoje .tag-hoje{background:var(--amarelo);color:var(--uva);padding:3px 8px;letter-spacing:.03em}
   @media (max-width:760px){.itens .bonus-hoje{font-size:14.5px}}
+
+  /* Capa: linha do bônus, demo e topo enxuto no celular */
+  .cs-bonus{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.12);border:1.5px solid rgba(252,194,24,.7);color:#fff;font:600 15px/1.3 var(--f-texto);text-decoration:none}
+  .cs-bonus b{color:var(--amarelo);font-weight:800}
+  .cs-bonus svg{width:16px;height:16px;flex:none;color:var(--amarelo);transform:rotate(90deg)}
+  .cs-foto.demo .cs-mao{display:none}
+  .cs-foto.var-janelas .cs-mao{left:80%;top:calc(56% + 22px)}
+  .qz-tit{text-align:center}
+  .qz-tit span{white-space:nowrap}
+  .cs-decisoes .quiz{display:block!important}
+  .cs-decisoes .quiz .qz-card{max-width:560px;margin:22px auto 0}
+  @media (max-width:760px){
+    .aviso{display:none}
+    .topo{padding:8px 16px}
+    .topo img{width:112px}
+    .topo a.mini{padding:7px 14px;font-size:14px}
+    .cs-bonus{display:flex;margin-top:10px;font-size:14px;padding:8px 12px}
+    .cs-bonus svg{margin-left:auto}
+    .qz-tit{font-size:min(6.2vw,30px)!important}
+  }
 </style>
 </head>
 <body>
@@ -707,6 +727,7 @@
   <div class="miolo">
     <div class="cs-texto">
       <h1>Por que as crianças se envolvem tanto <em>nessa sala?</em></h1>
+      <a class="cs-bonus" href="#analise" data-cta="capa_bonus_analise"><span aria-hidden="true">📸</span> <span><b>Bônus:</b> a Patrícia analisa a foto da <b>sua</b> sala</span> <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
 
     <figure class="cs-foto" id="cs-foto">
@@ -721,7 +742,7 @@
         <p class="cs-txt" data-txt="1" hidden><b>Materiais na altura das crianças.</b> Elas escolhem sozinhas, sem precisar pedir.</p>
         <p class="cs-txt" data-txt="2" hidden><b>Um canto para desacelerar.</b> Tapete e poltrona acolhem, mesmo numa sala estreita.</p>
         <p class="cs-txt" data-txt="3" hidden><b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.</p>
-        <p class="cs-fim" hidden><b>Você viu os 3 cantos.</b> E a sua sala, já tem esses três?</p>
+        <p class="cs-fim" hidden><b>Quer os 3 ajustes da SUA sala?</b> Com o guia, você manda uma foto e a Patrícia te diz por onde começar.</p>
         <div class="cs-nav">
           <span class="cs-prog" aria-label="Cantos vistos"><i></i><i></i><i></i><small>0 de 3</small></span>
           <button type="button" class="cs-prox" hidden>Próximo canto →</button>
@@ -741,7 +762,7 @@
 
   <div class="miolo cs-decisoes" id="planejada" data-secao="tres_decisoes">
     <div class="quiz" id="quiz">
-      <h2>Sua sala foi bem planejada? <em>Descubra agora.</em></h2>
+      <h2 class="qz-tit"><span>Sua sala foi bem planejada?</span><br><em>Descubra agora.</em></h2>
       <div class="qz-card">
         <div class="qz-topo"><span class="qz-passo">Pergunta <b>1</b> de 3</span><span class="qz-barra"><i></i></span></div>
         <div class="qz-p" data-q="1">
@@ -901,9 +922,6 @@
         <h2>Um guia para fazer, <em>não só para ler</em></h2>
         <p class="lead">Fichas, perguntas e roteiros que vão direto para o seu planejamento. Tudo liberado logo após a compra.</p>
       </div>
-      <ul class="partes" aria-label="Partes do guia">
-        <li>Mude o olhar</li><li>Sala, zona e contexto</li><li>Inventário da sala</li><li>Mapa das linguagens</li><li>A estética como convite</li><li>Planejamento das zonas</li><li>Planta-baixa</li><li>O que observar</li><li>Documentação</li><li>O papel do adulto</li><li>Seu dossiê</li>
-      </ul>
     </div>
     <div class="galeria">
       <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-38.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>5 perguntas norteadoras</b><span>Antes de organizar cada zona</span></figcaption></figure>
@@ -920,7 +938,7 @@
 
 
 <!-- 6b. Análise da sua sala (bônus) -->
-<section class="analise faixa" data-secao="analise">
+<section class="analise faixa" id="analise" data-secao="analise">
   <div class="miolo">
     <div class="an-texto">
       <span class="rotulo">Bônus exclusivo</span>
@@ -1113,8 +1131,8 @@
     var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({top: alvo.getBoundingClientRect().top + window.scrollY - 12, behavior: reduz ? 'auto' : 'smooth'});
   }
-  document.querySelectorAll('a[href="#planejada"], a[href="#decisoes"]').forEach(function(a){
-    a.addEventListener('click', function(ev){ ev.preventDefault(); rolaPara(a.getAttribute('href').slice(1)); });
+  document.querySelectorAll('a[href="#planejada"], a[href="#decisoes"], a[href="#analise"]').forEach(function(a){
+    a.addEventListener('click', function(ev){ ev.preventDefault(); rolaPara(a.getAttribute('href').slice(1)); if(a.classList.contains('cs-bonus')){ ga('clique_bonus_analise', {origem:'topo'}); clarityEvento('clique_bonus_analise'); } });
   });
   // Capa: pontos tocáveis com zoom guiado em cada canto
   (function(){
@@ -1124,28 +1142,61 @@
     var prox = foto.querySelector('.cs-prox'), fechar = foto.querySelector('.cs-fechar');
     var bolinhas = foto.querySelectorAll('.cs-prog i'), contador = foto.querySelector('.cs-prog small');
     var POS = {1:[12,43], 2:[32,48], 3:[60,61]}, ZOOM = 2.1, vistos = {}, atual = 0, todos = false;
+    // Variação por anúncio: quem chega do criativo da sala com janelas vê essa sala no hero
+    var VARIANTES = {
+      janelas: {
+        src: '/assets/guia-sala-referencia/fotos/sala-janelas.jpg',
+        alt: 'Sala de educação infantil com janelas grandes, móbile de elementos naturais, estante baixa com caixas verdes, sofá com almofadas e duas mesas com propostas',
+        pos: {1:[24,58], 2:[80,56], 3:[18,72]},
+        txt: {1:'<b>Materiais em caixas, na altura das crianças.</b> Elas enxergam, escolhem e guardam sozinhas.',
+              2:'<b>Um canto para desacelerar.</b> Sofá baixo, almofadas e livros ao alcance.',
+              3:'<b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.'}
+      }
+    };
+    var qs = new URLSearchParams(location.search), utm = (qs.get('utm_content') || '').toLowerCase();
+    var chave = qs.get('sala') || (/janelas|criativo18/.test(utm) ? 'janelas' : '');
+    var v = VARIANTES[chave];
+    if(v){
+      var im = cena.querySelector('img'); im.src = v.src; im.alt = v.alt; im.removeAttribute('width'); im.removeAttribute('height');
+      POS = v.pos;
+      pontos.forEach(function(b){ var n = b.getAttribute('data-ponto'); b.style.setProperty('--x', v.pos[n][0] + '%'); b.style.setProperty('--y', v.pos[n][1] + '%'); });
+      txts.forEach(function(t){ t.innerHTML = v.txt[t.getAttribute('data-txt')]; });
+      foto.classList.add('var-' + chave);
+      if(window.clarity) clarity('set', 'hero_foto', chave);
+    }
     function total(){ return Object.keys(vistos).length; }
     function mostra(el){ [dica, fim].concat([].slice.call(txts)).forEach(function(e){ e.hidden = e !== el; }); }
     function marcaProgresso(){
       bolinhas.forEach(function(i, k){ i.classList.toggle('ok', !!vistos[k+1]); });
       contador.textContent = total() + ' de 3';
     }
-    function abre(n){
+    var demoTimer = null, tocou = false;
+    function abre(n, demo){
       atual = n;
-      foto.classList.add('usado');
+      if(!demo){ tocou = true; clearTimeout(demoTimer); foto.classList.remove('demo'); foto.classList.add('usado'); }
       var W = foto.clientWidth, H = foto.clientHeight, px = POS[n][0]/100*W, py = POS[n][1]/100*H;
       var tx = Math.min(0, Math.max(W - W*ZOOM, W*.5 - px*ZOOM));
       var ty = Math.min(0, Math.max(H - H*ZOOM, H*.38 - py*ZOOM));
       cena.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + ZOOM + ')';
-      foto.classList.add('zoom', 'usado');
+      foto.classList.add('zoom'); if(!demo) foto.classList.add('usado');
       pontos.forEach(function(b){
         var eu = b.getAttribute('data-ponto') == n;
         b.classList.toggle('ativo', eu);
         b.style.left = eu ? (tx + px*ZOOM) + 'px' : '';
         b.style.top  = eu ? (ty + py*ZOOM) + 'px' : '';
       });
+      if(demo){ foto.classList.add('demo'); mostra(foto.querySelector('.cs-txt[data-txt="' + n + '"]')); return; }
       fechar.hidden = false;
       depois(n);
+    }
+    // Se a pessoa não tocar em 4 s, a foto mostra sozinha o canto 1 e volta
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      demoTimer = setTimeout(function(){
+        var r = foto.getBoundingClientRect();
+        if(tocou || r.bottom < 0 || r.top > innerHeight) return;
+        abre(1, true);
+        demoTimer = setTimeout(function(){ if(!tocou){ volta(); foto.classList.remove('demo'); } }, 2600);
+      }, 4000);
     }
     function depois(n){
       mostra(foto.querySelector('.cs-txt[data-txt="' + n + '"]'));
@@ -1162,7 +1213,7 @@
       pontos.forEach(function(b){ b.classList.remove('ativo'); b.style.left = ''; b.style.top = ''; });
       fechar.hidden = true;
       if(total() === 3){
-        mostra(fim); prox.hidden = false; prox.textContent = 'Comparar com a minha sala ↓';
+        mostra(fim); prox.hidden = false; prox.textContent = 'Quero a análise ↓';
         if(!todos){ todos = true; ga('viu_3_cantos'); clarityEvento('viu_3_cantos'); }
       } else { mostra(dica); prox.hidden = true; }
     }
@@ -1176,8 +1227,8 @@
     prox.addEventListener('click', function(){
       if(atual && atual < 3) return abre(atual + 1);
       if(atual === 3) return volta();
-      ga('clique_ver_planejada', {origem:'foto'}); clarityEvento('clique_ver_planejada');
-      rolaPara('planejada');
+      ga('clique_bonus_analise', {origem:'foto'}); clarityEvento('clique_bonus_analise');
+      rolaPara('analise');
     });
     window.addEventListener('resize', function(){ if(atual) abre(atual); });
     var ver = document.querySelector('.cs-btn');
@@ -1202,11 +1253,12 @@
       var tit = res.querySelector('.qz-res-tit'), txt = res.querySelector('.qz-res-txt');
       if(faltam === 0){
         tit.innerHTML = 'Sua sala já tem <em>a base</em> de uma sala referência.';
+        txt.hidden = false;
         txt.innerHTML = 'Mas ter os cantos não basta. O que faz uma sala referência é a intenção por trás de cada um. <b>No guia, você descobre a pergunta que transforma esses cantos</b> e o que observar nas crianças a partir dela.';
         btxt.textContent = 'Quero o guia + a análise da minha sala';
       } else {
         tit.innerHTML = 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' decisão' : ' decisões') + '</em> de virar uma sala referência.';
-        txt.innerHTML = 'A boa notícia: ' + (faltam === 1 ? 'ela não exige' : 'nenhuma delas exige') + ' comprar nada. <b>No guia, você descobre a pergunta que transforma a sua sala</b> e o passo a passo para chegar lá, com o que você já tem.';
+        txt.innerHTML = ''; txt.hidden = true;
         btxt.textContent = 'Quero o guia + a análise da minha sala';
       }
       ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
