@@ -284,6 +284,7 @@
   .corpo h3{font:800 26px/1.2 var(--f-titulo);letter-spacing:-.02em}
   .itens{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
   .itens li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:var(--cinza)}
+  .itens li[hidden]{display:none}
   .itens li svg{flex:none;width:18px;height:18px;color:var(--verde-esc);margin-top:3px}
   .itens b{font-weight:700;color:var(--uva)}
   .itens .bonus{align-items:center;margin-top:4px;padding:12px 14px;border-radius:12px;background:var(--sol)}
@@ -778,6 +779,34 @@
   /* Botão do hero: só no computador (no celular fica a barra flutuante) */
   .capa-sala .cs-btn svg{transform:none}
   @media (max-width:760px){.capa-sala .cs-btn{display:none!important}}
+
+  /* Barra flutuante: depois de ver a oferta, vai direto ao checkout */
+  .fixa .btn[hidden]{display:none}
+  /* Resultado do diagnóstico com checkout direto */
+  .cs-res-oferta{display:flex;flex-direction:column;gap:2px;margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--sol)}
+  .cs-res-prod{font:800 14px var(--f-texto);color:var(--uva)}
+  .cs-res-preco{font-size:13.5px;color:var(--cinza)}
+  .cs-res-preco b{color:var(--roxo);font-weight:900;font-size:16px}
+  .cs-legenda .cs-res-btn{margin-top:10px}
+  .cs-res-ver{display:block;margin-top:8px;text-align:center;font:700 13.5px var(--f-texto);color:var(--roxo)}
+  /* Oferta: itens recolhidos no celular */
+  .itens .it-mais{display:none}
+  @media (max-width:760px){
+    .itens:not(.aberto) .it-extra{display:none}
+    .itens:not(.aberto) .it-mais{display:block}
+    .it-mais-btn{border:0;background:none;padding:2px 0 2px 30px;color:var(--roxo);font:800 14.5px var(--f-texto);text-decoration:underline;cursor:pointer}
+  }
+  /* Identificação + comparativo juntos */
+  .ident .miolo{grid-template-columns:minmax(0,1fr)!important;max-width:920px}
+  .ident .tabela{margin-top:32px}
+  .ident .col.sem{background:var(--lavanda);border:1px solid var(--linha);color:var(--cinza)}
+  .ident .col.sem h3{color:var(--uva)}
+  .ident .col.sem li{border-top-color:var(--linha)}
+  .ident .col.com{background:var(--uva);color:#fff}
+  .ident .col.com h3{color:var(--amarelo)}
+  .ident .col.com li{border-top-color:rgba(255,255,255,.14)}
+  .ident .col.com li svg{color:var(--amarelo)}
+  .ident .cta{margin-top:28px}
 </style>
 </head>
 <body>
@@ -846,7 +875,9 @@
         <div class="cs-res" hidden>
           <p class="cs-res-tit"></p>
           <p class="cs-res-txt">No <b>Guia Prático Sala Referência</b>, a Patrícia Souza mostra como planejar cada um desses detalhes na sua sala da educação infantil, <b>com o que você já tem.</b></p>
-          <a class="btn cs-res-btn" href="#comprar" data-cta="diagnostico_foto" data-ir-oferta>Quero planejar a minha sala →</a>
+          <div class="cs-res-oferta"><span class="cs-res-prod">Guia Prático Sala Referência + Workshop de 1h</span><span class="cs-res-preco">De <s>R$ 147</s> por <b>R$ 67</b> · 7 dias de garantia</span></div>
+          <a class="btn btn-verde cs-res-btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="diagnostico_checkout" data-checkout>Quero planejar a minha sala →</a>
+          <a class="cs-res-ver" href="#comprar" data-cta="diagnostico_ver_oferta" data-ir-oferta>ver tudo o que está incluso ↓</a>
           <button type="button" class="cs-refaz">Refazer</button>
         </div>
         <span class="cs-prog" aria-label="Cantos respondidos"><i></i><i></i><i></i><small>0 de 3</small></span>
@@ -898,30 +929,32 @@
         <li>O espaço entra no planejamento só como aquilo que precisa ser arrumado.</li>
       </ul>
       <p class="virada-frase">A organização da sala não começa na decoração. <b>Ela começa na intencionalidade.</b></p>
+      <div class="tabela">
+        <div class="col sem">
+          <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-x"/></svg>A sala de Pinterest</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-x"/></svg>Pede que você compre mais coisas</li>
+            <li><svg aria-hidden="true"><use href="#i-x"/></svg>Funciona em outra realidade</li>
+            <li><svg aria-hidden="true"><use href="#i-x"/></svg>Fica bonita na foto e parada no dia a dia</li>
+            <li><svg aria-hidden="true"><use href="#i-x"/></svg>É montada uma vez e esquecida</li>
+          </ul>
+        </div>
+        <div class="col com">
+          <img class="col-foto" src="/assets/guia-sala-referencia/fotos/estante.jpg" alt="Sala com estante de madeira, materiais à altura das crianças e registros na parede" loading="lazy">
+          <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-check"/></svg>A sua Sala Referência</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parte do que já existe na sua sala</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Nasce das suas crianças</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vira parte do planejamento pedagógico</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Muda junto com o que elas revelam</li>
+          </ul>
+        </div>
+      </div>
       <div class="cta">
         <a class="btn" href="#comprar" data-cta="identificacao" data-ir-oferta>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
-    <div class="foto"><img src="/assets/guia-sala-referencia/sala-mesa.jpg" width="900" height="1598" alt="Sala da Oficina Criar e Brincar com mesa de madeira, cadeiras baixas e estantes com materiais" loading="lazy" style="aspect-ratio:4/5"></div>
-  </div>
-</section>
-
-<!-- O que muda na prática -->
-<section class="muda faixa" data-secao="o_que_muda">
-  <div class="miolo">
-    <div class="centro">
-      <span class="rotulo">O que muda na sua prática</span>
-      <h2>Com o guia, você vai <em>planejar a sala com intenção</em></h2>
-    </div>
-    <ul class="mudancas">
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira coloridos ao lado de uma caixa" loading="lazy"><i><svg aria-hidden="true"><use href="#i-casa"/></svg></i></div><b>Partir do que já existe</b> na sua sala, sem comprar nada novo</li>
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"><i><svg aria-hidden="true"><use href="#i-lampada"/></svg></i></div><b>Começar por uma única zona</b> antes de planejar a sala inteira</li>
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas, sementes e pratos preparados para investigação" loading="lazy"><i><svg aria-hidden="true"><use href="#i-girar"/></svg></i></div><b>Olhar para os materiais</b> com critérios para escolher o que oferecer</li>
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/sala-ampla.jpg" alt="Sala ampla com mesas de madeira e paredes verdes" loading="lazy"><i><svg aria-hidden="true"><use href="#i-doc"/></svg></i></div><b>Desenhar a planta-baixa</b> da sala atual e da sala planejada</li>
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/instrumentos.jpg" alt="Instrumentos e objetos naturais sobre um tecido colorido" loading="lazy"><i><svg aria-hidden="true"><use href="#i-pessoas"/></svg></i></div><b>Observar e documentar</b> o que as crianças revelam no espaço</li>
-      <li><div class="quadro"><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"><i><svg aria-hidden="true"><use href="#i-check"/></svg></i></div><b>Reunir 12 produções</b> no seu dossiê para o Processo Documental</li>
-    </ul>
   </div>
 </section>
 
@@ -942,41 +975,6 @@
     <div class="cta centro">
       <a class="btn" href="#comprar" data-cta="perguntas" data-ir-oferta>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 4. Comparativo -->
-<section class="compara faixa escuro" data-secao="comparativo">
-  <div class="estreito">
-    <div class="centro">
-      <span class="rotulo" style="color:var(--amarelo)">A diferença</span>
-      <h2>Copiar uma sala <em>ou construir a sua?</em></h2>
-    </div>
-    <div class="tabela">
-      <div class="col sem">
-        <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-x"/></svg>A sala de Pinterest</h3>
-        <ul>
-          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Pede que você compre mais coisas</li>
-          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Funciona em outra realidade</li>
-          <li><svg aria-hidden="true"><use href="#i-x"/></svg>Fica bonita na foto e parada no dia a dia</li>
-          <li><svg aria-hidden="true"><use href="#i-x"/></svg>É montada uma vez e esquecida</li>
-        </ul>
-      </div>
-      <div class="col com">
-        <img class="col-foto" src="/assets/guia-sala-referencia/fotos/estante.jpg" alt="Sala com estante de madeira, materiais à altura das crianças e registros na parede" loading="lazy">
-        <h3><svg width="24" height="24" aria-hidden="true"><use href="#i-check"/></svg>A sua Sala Referência</h3>
-        <ul>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parte do que já existe na sua sala</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Nasce das suas crianças</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vira parte do planejamento pedagógico</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Muda junto com o que elas revelam</li>
-        </ul>
-      </div>
-    </div>
-    <div class="cta centro">
-      <a class="btn" href="#comprar" data-cta="comparativo" data-ir-oferta>Quero construir a minha <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-      <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>Se não fizer sentido, devolvemos o valor</span></div>
     </div>
   </div>
 </section>
@@ -1031,9 +1029,10 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Percurso completo</b>, do olhar para a sala às próximas apostas</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Fichas de planejamento e de reflexão</b> para as Zonas Circunscritas</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>5 perguntas norteadoras</b> e critérios para olhar os materiais</span></li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
+          <li class="it-extra"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Planta-baixa</b> da sala atual e da sala planejada</span></li>
+          <li class="it-extra"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
+          <li class="it-extra"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
+          <li class="it-mais"><button type="button" class="it-mais-btn">ver tudo o que está incluso (+3)</button></li>
           <li class="bonus-analise" id="bonus-oferta"><span class="ba-foto" aria-hidden="true"><img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="" loading="lazy"><i style="--x:18%;--y:42%">1</i><i style="--x:40%;--y:52%">2</i><i style="--x:66%;--y:64%">3</i></span><span class="ba-txt"><span class="tag-excl">⭐ Bônus exclusivo</span><span class="ba-tit">Análise da sua sala</span><span>Envie uma foto e receba <b>3 ajustes personalizados</b>, revisados pela Patrícia, em até 48h</span></span></li>
           <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
           <li class="bonus bonus-hoje js-bonus-hoje"><span class="tag-bonus tag-hoje">Só hoje · 18/11</span><span><b>E-book Documentação Pedagógica</b></span></li>
@@ -1153,7 +1152,8 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia + análise da minha sala</a>
+  <a class="btn fixa-ir" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia + análise da minha sala</a>
+  <a class="btn fixa-check" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="barra_fixa_checkout" data-checkout hidden>Garantir meu guia · R$ 67</a>
 </div>
 
 <script>
@@ -1308,6 +1308,23 @@
     document.querySelector('.dp-prox').addEventListener('click', function(){ vai(1); });
     t.addEventListener('scroll', function(){ marca(); if(!visto){ visto = true; ga('depoimentos_rolou'); clarityEvento('depoimentos_rolou'); } }, {passive:true});
     marca();
+  })();
+
+  // Oferta: "ver tudo o que está incluso"
+  (function(){
+    var b = document.querySelector('.it-mais-btn'); if(!b) return;
+    b.addEventListener('click', function(){ b.closest('.itens').classList.add('aberto'); ga('oferta_ver_itens'); });
+  })();
+
+  // Barra flutuante: depois que a pessoa vê o card de preço, o botão vai direto ao checkout
+  (function(){
+    var fi = document.querySelector('.fixa-ir'), fc = document.querySelector('.fixa-check'), card = document.getElementById('comprar');
+    if(!fi || !fc || !card) return;
+    function checa(){
+      var r = card.getBoundingClientRect();
+      if(r.top < innerHeight * .6 && r.bottom > 0){ fi.hidden = true; fc.hidden = false; removeEventListener('scroll', checa); }
+    }
+    addEventListener('scroll', checa, {passive:true}); checa();
   })();
   function secaoDe(el){ var sec = el.closest('[data-secao]'); return sec ? sec.getAttribute('data-secao') : (el.closest('.fixa') ? 'barra_fixa' : 'topo'); }
 
