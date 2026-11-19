@@ -796,43 +796,9 @@
     </div>
   </div>
 </section>
-<svg class="onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#FFF4D1" d="M0 48C240 8 480 8 720 40s480 40 720 0v40H0z"/></svg>
+<svg class="onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 48C240 8 480 8 720 40s480 40 720 0v40H0z"/></svg>
 
-<!-- 6b. Análise da sua sala (bônus) -->
-<section class="analise faixa" id="analise" data-secao="analise">
-  <div class="miolo">
-    <div class="an-texto">
-      <span class="rotulo">Bônus exclusivo</span>
-      <h2>Sua sala, <em>analisada</em></h2>
-      <p class="lead">Compre o guia, mande uma foto da sua sala como ela está hoje e receba <b>3 ajustes personalizados</b> para começar, com o que você já tem.</p>
-      <ol class="an-passos">
-        <li><span>🛒</span><p><b>Garanta o guia</b><br>e receba o acesso na hora</p></li>
-        <li><span>💬</span><p><b>Nossa equipe fala com você</b><br>pelo WhatsApp ou e-mail da compra</p></li>
-        <li><span>📸</span><p><b>Envie até 3 fotos e receba 3 ajustes</b><br>revisados pela Patrícia, em até 48h</p></li>
-      </ol>
-      <div class="cta">
-        <a class="btn" href="#comprar" data-cta="analise" data-ir-oferta>Quero o guia + a análise da minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-        <div class="micro"><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
-      </div>
-      <p class="an-nota">A análise é feita com apoio de inteligência artificial, seguindo o método do guia, e revisada pela Patrícia Souza antes de chegar até você.</p>
-    </div>
-    <figure class="an-exemplo">
-      <span class="an-etq">Exemplo de análise</span>
-      <div class="an-foto">
-        <img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" width="750" height="1000" alt="Exemplo de foto de sala enviada para análise, marcada com três números" loading="lazy">
-        <i style="--x:12%;--y:43%">1</i><i style="--x:32%;--y:48%">2</i><i style="--x:60%;--y:61%">3</i>
-      </div>
-      <figcaption>
-        <ol class="an-ajustes">
-          <li><b>Estante baixa:</b> deixe só 3 ou 4 materiais por prateleira, para a criança enxergar e escolher.</li>
-          <li><b>Tapete e poltrona:</b> traga os livros para perto do tapete. O canto vira leitura sem nada novo. <em>Comece por aqui.</em></li>
-          <li><b>Mesa da frente:</b> mude a proposta da mesa a partir do que você observou nas crianças na semana.</li>
-        </ol>
-        <p class="an-trava">🔒 A pergunta para fazer a este canto está no guia</p>
-      </figcaption>
-    </figure>
-  </div>
-</section>
+
 
 <!-- 2. Identificação -->
 <section class="ident faixa" data-secao="identificacao">
@@ -1229,7 +1195,7 @@
       if(atual && atual < 3) return abre(atual + 1);
       if(atual === 3) return volta();
       ga('clique_bonus_analise', {origem:'foto'}); clarityEvento('clique_bonus_analise');
-      rolaPara('analise');
+      rolaPara('bonus-oferta');
     });
     window.addEventListener('resize', function(){ if(atual) abre(atual); });
     var ver = document.querySelector('.cs-btn');
