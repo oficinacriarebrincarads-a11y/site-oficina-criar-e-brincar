@@ -682,6 +682,98 @@
     .cs-bonus svg{margin-left:auto}
     .qz-tit{font-size:min(6.2vw,30px)!important}
   }
+
+  .cs-sub{margin-top:10px;color:#E4DCF0;font-size:17px;line-height:1.4}
+  @media (max-width:760px){.cs-sub{font-size:15px;margin-top:8px}}
+
+  /* Capa: diagnóstico dentro da foto */
+  .cs-perg{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .cs-perg[hidden],.cs-res[hidden],.cs-prog[hidden]{display:none}
+  .cs-perg span{flex:1 0 100%;font:800 14px var(--f-texto);color:var(--roxo)}
+  .cs-r{flex:1;border:2px solid #E3DAF0;border-radius:12px;background:#FBF8FF;color:var(--uva);font:800 15px var(--f-texto);padding:11px 10px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s,transform .1s}
+  .cs-r:active,.cs-r.esc{border-color:var(--roxo);background:#F1E6FD;transform:scale(.98)}
+  .cs-legenda .cs-prog{display:inline-flex;margin-top:8px}
+  .cs-legenda .cs-prog[hidden]{display:none}
+  .cs-res-tit{margin:0;font:800 19px/1.25 var(--f-titulo);color:var(--uva)}
+  .cs-res-tit em{font-style:normal;color:var(--roxo)}
+  .cs-res-txt{margin:8px 0 0!important;font-size:14px;line-height:1.4;color:#4A3A66}
+  .cs-res-txt b{color:var(--uva)}
+  .cs-res-btn{display:flex!important;width:100%;margin-top:12px;padding:14px 12px;font-size:15.5px;animation:qz-pulso 2s ease-in-out infinite}
+  .cs-refaz{display:block;margin:8px auto 0;border:0;background:none;color:#7A6A93;font:700 13px var(--f-texto);text-decoration:underline;cursor:pointer}
+  .cs-foto.com-res .ponto{opacity:.0;pointer-events:none}
+
+  /* Capa: bloco de autoridade da Patrícia */
+  .capa-sala .cs-autora{display:block;margin-top:22px;padding:18px;border-radius:20px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(4px)}
+  .ca-topo{display:flex;align-items:center;gap:16px}
+  .capa-sala .cs-autora .ca-topo img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:3px solid var(--amarelo);flex:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.7)}
+  .cs-autora .ca-rot{display:block;font:800 11.5px var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:var(--amarelo)}
+  .cs-autora .ca-nome{margin:2px 0 0;font:900 24px/1.1 var(--f-titulo);color:#fff}
+  .cs-autora .ca-cargo{margin:6px 0 0;font-size:13.5px;line-height:1.4;color:#D9CDEB}
+  .ca-nums{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .ca-nums li{padding:12px 8px;border-radius:14px;background:rgba(255,255,255,.1);text-align:center}
+  .ca-nums b{display:block;font:900 26px/1 var(--f-titulo);color:var(--amarelo)}
+  .cs-autora .ca-nums span{display:block;margin-top:6px;font-size:12.5px;line-height:1.3;color:#E4DCF0;font-weight:600}
+  @media (max-width:760px){
+    .capa-sala .cs-autora{padding:16px}
+    .capa-sala .cs-autora .ca-topo img{width:72px;height:72px}
+    .cs-autora .ca-nome{font-size:22px}
+    .ca-nums b{font-size:23px}
+    .cs-autora .ca-nums span{font-size:12px}
+  }
+
+  /* Seguidores abaixo da foto da Patrícia */
+  .ca-foto{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}
+  .ca-seg{padding:3px 9px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:700 11.5px var(--f-texto);white-space:nowrap}
+  .cs-autora .ca-seg{color:var(--uva)}
+  .cs-autora .ca-seg b{color:var(--uva);font-weight:900}
+  /* Carrossel de depoimentos */
+  .depos{background:var(--lavanda)}
+  .depos h2 em{color:var(--roxo)}
+  .dp-wrap{position:relative;margin-top:36px}
+  .dp-trilho{display:flex;align-items:flex-start;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .dp-trilho::-webkit-scrollbar{display:none}
+  .dp-card{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;margin:0;padding:16px;border-radius:20px;background:#fff;box-shadow:0 18px 40px -26px rgba(53,27,100,.55);display:flex;flex-direction:column;gap:12px}
+  .dp-tit{margin:0;font:800 17px/1.3 var(--f-titulo);color:var(--uva)}
+  .dp-card img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linha)}
+  .dp-card figcaption{font-size:13px;color:var(--cinza)}
+  .dp-seta{position:absolute;top:45%;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--roxo);color:#fff;font:900 26px/1 var(--f-texto);cursor:pointer;box-shadow:0 10px 20px -8px rgba(133,18,223,.7)}
+  .dp-ant{left:-14px}.dp-prox{right:-14px}
+  .dp-pontos{display:flex;justify-content:center;gap:8px;margin-top:6px}
+  .dp-pontos i{width:9px;height:9px;border-radius:50%;background:#D6C6EE;transition:background .2s,width .2s}
+  .dp-pontos i.on{background:var(--roxo);width:22px;border-radius:99px}
+  .dp-fonte{margin-top:14px;text-align:center;font-size:12.5px;color:var(--cinza)}
+  @media (max-width:960px){.dp-card{flex-basis:calc((100% - 18px)/2)}}
+  @media (max-width:760px){
+    .dp-trilho{margin:0 -20px;padding:6px 20px 18px;scroll-padding:0 20px}
+    .dp-card{flex-basis:84%}
+    .dp-seta{display:none}
+  }
+
+  /* Quem te guia: @ e números no estilo do perfil do Instagram */
+  .ca-arroba{display:inline-flex;align-items:center;gap:4px;font:700 11px var(--f-texto);color:#fff;white-space:nowrap}
+  .cs-autora .ca-arroba svg{width:13px;height:13px;flex:none}
+  .cs-autora .ca-ig{list-style:none;margin:10px 0 0;padding:0;display:flex;gap:22px}
+  .cs-autora .ca-ig li{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+  .cs-autora .ca-ig b{font:800 18px var(--f-texto);color:#fff;letter-spacing:-.01em}
+  .cs-autora .ca-ig span{font:500 13px var(--f-texto);color:#E4DCF0}
+  .cs-autora .ca-cargo{margin:14px 0 0;font-size:13.5px;line-height:1.45;color:#D9CDEB}
+  /* Depoimentos: todos os quadros do mesmo tamanho */
+  .dp-trilho{align-items:stretch}
+  .dp-card{height:auto}
+  .dp-tit{min-height:2.6em}
+  .dp-card img{height:340px;object-fit:cover;object-position:top;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent);mask-image:linear-gradient(to bottom,#000 82%,transparent)}
+  .dp-card figcaption{margin-top:auto}
+  @media (max-width:760px){.dp-card img{height:330px}}
+
+  /* Por dentro: salas montadas */
+  .dentro-salas{margin-top:64px;text-align:center;font:800 clamp(22px,2.4vw,30px)/1.2 var(--f-titulo);color:var(--uva)}
+  .dentro-salas em{font-style:normal;color:var(--roxo)}
+  .dentro .mural{margin-top:24px}
+  @media (max-width:760px){.dentro-salas{margin-top:44px}}
+
+  /* Legenda da foto só aparece depois do primeiro toque num número */
+  .cs-foto:not(.usado) .cs-legenda{opacity:0;visibility:hidden;transform:translateY(8px)}
+  .cs-foto .cs-legenda{transition:opacity .3s,transform .3s,visibility .3s}
 </style>
 </head>
 <body>
@@ -726,7 +818,8 @@
 <section class="capa capa-sala" data-secao="capa">
   <div class="miolo">
     <div class="cs-texto">
-      <h1>Por que as crianças se envolvem tanto <em>nessa sala?</em></h1>
+      <h1><em>3 detalhes</em> fazem desta <span class="cs-h1-sala">sala estreita</span> uma sala referência</h1>
+      <p class="cs-sub">Toque nos números e compare com a sua sala 👇</p>
     </div>
 
     <figure class="cs-foto" id="cs-foto">
@@ -737,64 +830,52 @@
       <div class="cs-mao" aria-hidden="true"><span class="cs-bolha">toque aqui</span><span class="cs-dedo">👆</span></div>
       <button type="button" class="cs-fechar" hidden>✕ sala inteira</button>
       <figcaption class="cs-legenda" aria-live="polite">
-        <p class="cs-dica"><b>Toque nos números</b> e veja cada canto de perto</p>
+        <p class="cs-dica"><b>Toque nos números:</b> a sua sala tem esses 3 detalhes?</p>
         <p class="cs-txt" data-txt="1" hidden><b>Materiais na altura das crianças.</b> Elas escolhem sozinhas, sem precisar pedir.</p>
         <p class="cs-txt" data-txt="2" hidden><b>Um canto para desacelerar.</b> Tapete e poltrona acolhem, mesmo numa sala estreita.</p>
         <p class="cs-txt" data-txt="3" hidden><b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.</p>
-        <p class="cs-fim" hidden><b>Quer os 3 ajustes da SUA sala?</b> Com o guia, você manda uma foto e a Patrícia te diz por onde começar.</p>
-        <div class="cs-nav">
-          <span class="cs-prog" aria-label="Cantos vistos"><i></i><i></i><i></i><small>0 de 3</small></span>
-          <button type="button" class="cs-prox" hidden>Próximo canto →</button>
+        <div class="cs-perg" hidden>
+          <span>E na sua sala?</span>
+          <button type="button" class="cs-r" data-falta="0">Já tenho</button>
+          <button type="button" class="cs-r" data-falta="1">Ainda não</button>
         </div>
+        <div class="cs-res" hidden>
+          <p class="cs-res-tit"></p>
+          <p class="cs-res-txt">No <b>Guia Prático Sala Referência</b>, a Patrícia Souza mostra como planejar cada um desses detalhes na sua sala da educação infantil, <b>com o que você já tem.</b></p>
+          <a class="btn cs-res-btn" href="#comprar" data-cta="diagnostico_foto" data-ir-oferta>Quero planejar a minha sala →</a>
+          <button type="button" class="cs-refaz">Refazer</button>
+        </div>
+        <span class="cs-prog" aria-label="Cantos respondidos"><i></i><i></i><i></i><small>0 de 3</small></span>
       </figcaption>
     </figure>
 
     <div class="cs-resto">
-      <p class="lead">Não é o tamanho nem o material. <b>É como o espaço foi planejado.</b> E dá para fazer o mesmo na sua sala, com o que você já tem.</p>
       <div class="cs-autora">
-        <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="" loading="lazy">
-        <p><b>Patrícia Souza</b> · há 20 anos na educação infantil<br><span>+4000 educadores formados</span></p>
+        <div class="ca-topo">
+          <div class="ca-foto">
+            <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" loading="lazy">
+            <span class="ca-arroba"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>@oficinacriarebrincar</span>
+          </div>
+          <div>
+            <span class="ca-rot">Quem te guia</span>
+            <p class="ca-nome">Patrícia Souza</p>
+            <ul class="ca-ig" aria-label="Perfil no Instagram">
+              <li><b class="js-ig-posts">6.937</b><span>posts</span></li>
+              <li><b>73 mil</b><span>seguidores</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="ca-cargo">Fundadora da Escola Oficina Criar e Brincar · pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação</p>
+        <ul class="ca-nums">
+          <li><b>20</b><span>anos de educação infantil</span></li>
+          <li><b>11</b><span>anos de escola própria</span></li>
+          <li><b>+4000</b><span>educadores formados</span></li>
+        </ul>
       </div>
-      <a class="btn cs-btn" href="#planejada" data-cta="capa_ver">Comparar com a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn cs-btn" href="#cs-foto" data-cta="capa_ver">Comparar com a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 
-  <div class="miolo cs-decisoes" id="planejada" data-secao="tres_decisoes">
-    <div class="quiz" id="quiz">
-      <h2 class="qz-tit"><span>Sua sala foi bem planejada?</span><br><em>Descubra agora.</em></h2>
-      <div class="qz-card">
-        <div class="qz-topo"><span class="qz-passo">Pergunta <b>1</b> de 3</span><span class="qz-barra"><i></i></span></div>
-        <div class="qz-p" data-q="1">
-          <p class="qz-perg">Onde ficam os materiais na sua sala?</p>
-          <button type="button" class="qz-op" data-falta="1">No alto ou guardados</button>
-          <button type="button" class="qz-op" data-falta="0">Na altura das crianças</button>
-        </div>
-        <div class="qz-p" data-q="2" hidden>
-          <p class="qz-perg">Quando as crianças chegam, o que encontram?</p>
-          <button type="button" class="qz-op" data-falta="1">Esperam a atividade do dia</button>
-          <button type="button" class="qz-op" data-falta="0">Uma proposta já posta</button>
-        </div>
-        <div class="qz-p" data-q="3" hidden>
-          <p class="qz-perg">Sua sala tem um canto para desacelerar?</p>
-          <button type="button" class="qz-op" data-falta="1">Ainda não</button>
-          <button type="button" class="qz-op" data-falta="0">Tem sim</button>
-        </div>
-        <div class="qz-res" hidden aria-live="polite">
-          <p class="qz-res-tit"></p>
-          <ul class="qz-res-lista">
-            <li data-r="1">Materiais na altura das crianças</li>
-            <li data-r="2">Uma proposta já posta ao chegar</li>
-            <li data-r="3">Um canto para desacelerar</li>
-            <li class="trava">A pergunta que transforma a sua sala <small>está no guia</small></li>
-          </ul>
-          <p class="qz-res-txt"></p>
-          <div class="qz-analise"><span class="qz-an-ic" aria-hidden="true">📸</span><p><b>Quer saber exatamente o que mudar na SUA sala?</b> Com o guia, você envia uma foto e recebe <b>3 ajustes personalizados</b>, revisados pela Patrícia, em até 48h.</p></div>
-          <a class="btn qz-btn" href="#comprar" data-cta="diagnostico" data-ir-oferta><span class="qz-btn-txt">Quero o guia + a análise da minha sala</span> <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
-          <button type="button" class="qz-refaz">Refazer</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 <svg class="onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 48C240 8 480 8 720 40s480 40 720 0v40H0z"/></svg>
 
@@ -896,24 +977,6 @@
   </div>
 </section>
 
-<!-- Ambientes -->
-<section class="ambientes faixa" data-secao="ambientes">
-  <div class="miolo">
-    <div class="centro">
-      <span class="rotulo">Salas de verdade</span>
-      <h2>Do planejamento <em>para a sala real</em></h2>
-      <p class="lead">Estas são algumas das imagens do guia: ambientes reais, com móveis simples e materiais que contam uma intenção.</p>
-    </div>
-    <ul class="mural">
-      <li class="grande"><img src="/assets/guia-sala-referencia/fotos/sala-ampla.jpg" alt="Sala ampla com mesas de madeira, cadeiras baixas e paredes verdes" loading="lazy"></li>
-      <li><img src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas, sementes e pratos preparados para investigação" loading="lazy"></li>
-      <li><img src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira coloridos ao lado de uma caixa" loading="lazy"></li>
-      <li><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"></li>
-      <li><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"></li>
-    </ul>
-  </div>
-</section>
-
 <!-- 5. Por dentro -->
 <section class="dentro faixa" data-secao="por_dentro">
   <div class="miolo">
@@ -921,7 +984,7 @@
       <div>
         <span class="rotulo">Veja por dentro</span>
         <h2>Um guia para fazer, <em>não só para ler</em></h2>
-        <p class="lead">Fichas, perguntas e roteiros que vão direto para o seu planejamento. Tudo liberado logo após a compra.</p>
+        <p class="lead">Fichas, perguntas, roteiros e fotos de salas reais, montadas com móveis simples. Tudo liberado logo após a compra.</p>
       </div>
     </div>
     <div class="galeria">
@@ -930,6 +993,14 @@
       <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-45.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Leitura da planta</b><span>Da sala atual para a sala planejada</span></figcaption></figure>
       <figure class="pag"><div class="tranca"><img src="/assets/guia-sala-referencia/previa-26.jpg" width="318" height="450" alt="" loading="lazy"><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Conteúdo do guia</span></div><figcaption><b>Olhar para os materiais</b><span>Critérios para escolher o que oferecer</span></figcaption></figure>
     </div>
+    <h3 class="dentro-salas">As salas montadas <em>que estão no guia</em></h3>
+    <ul class="mural">
+      <li class="grande"><img src="/assets/guia-sala-referencia/fotos/sala-ampla.jpg" alt="Sala ampla com mesas de madeira, cadeiras baixas e paredes verdes" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/mesa-conchas.jpg" alt="Mesa com conchas, sementes e pratos preparados para investigação" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/blocos.jpg" alt="Blocos de madeira coloridos ao lado de uma caixa" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/canto-colorido.jpg" alt="Canto com tecido xadrez colorido, panelas e quadros" loading="lazy"></li>
+      <li><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"></li>
+    </ul>
     <div class="cta centro">
       <a class="btn" href="#comprar" data-cta="por_dentro" data-ir-oferta>Quero todas as ferramentas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>PDF de 67 páginas, acesso imediato</span></div>
@@ -972,6 +1043,28 @@
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 7b. Depoimentos -->
+<section class="depos faixa" data-secao="depoimentos">
+  <div class="miolo">
+    <div class="centro">
+      <h2>Educadoras que já aprenderam <em>com a Patrícia</em></h2>
+    </div>
+    <div class="dp-wrap">
+      <button type="button" class="dp-seta dp-ant" aria-label="Depoimento anterior">‹</button>
+      <div class="dp-trilho" id="dp-trilho" tabindex="0" aria-label="Depoimentos">
+        <figure class="dp-card"><p class="dp-tit">“Foi possível enxergar o cuidado e a intenção nos detalhes”</p><img src="/assets/guia-sala-referencia/depoimentos/depo-3.webp" width="738" height="630" alt="Print de depoimento: Foi possível enxergar o cuidado e a intenção nos detalhes" loading="lazy"><figcaption>Educadora que acompanha o trabalho da Oficina</figcaption></figure>
+        <figure class="dp-card"><p class="dp-tit">“Saio desse curso com um novo olhar”</p><img src="/assets/guia-sala-referencia/depoimentos/depo-1.webp" width="698" height="692" alt="Print de depoimento: Saio desse curso com um novo olhar" loading="lazy"><figcaption>Coordenadora, após formação com a Patrícia</figcaption></figure>
+        <figure class="dp-card"><p class="dp-tit">“Já fiz 3 cursos com você”</p><img src="/assets/guia-sala-referencia/depoimentos/depo-2.webp" width="604" height="700" alt="Print de depoimento: Já fiz 3 cursos com você" loading="lazy"><figcaption>Educadora que acompanha a Oficina</figcaption></figure>
+        <figure class="dp-card"><p class="dp-tit">“Que formação!!”</p><img src="/assets/guia-sala-referencia/depoimentos/depo-4.webp" width="638" height="598" alt="Print de depoimento: Que formação!!" loading="lazy"><figcaption>Equipe de educadoras, após formação presencial</figcaption></figure>
+        <figure class="dp-card"><p class="dp-tit">“Aqui no CEI temos um projeto assim, inspiração de vocês”</p><img src="/assets/guia-sala-referencia/depoimentos/depo-5.webp" width="584" height="672" alt="Print de depoimento: Aqui no CEI temos um projeto assim, inspiração de vocês" loading="lazy"><figcaption>Equipe de um CEI</figcaption></figure>
+      </div>
+      <button type="button" class="dp-seta dp-prox" aria-label="Próximo depoimento">›</button>
+    </div>
+    <div class="dp-pontos" aria-hidden="true"></div>
+    <p class="dp-fonte">Prints do destaque “Depoimentos” do Instagram @oficinacriarebrincar.</p>
   </div>
 </section>
 
@@ -1101,18 +1194,17 @@
   document.querySelectorAll('a[href="#planejada"], a[href="#decisoes"], a[href="#analise"]').forEach(function(a){
     a.addEventListener('click', function(ev){ ev.preventDefault(); rolaPara(a.getAttribute('href').slice(1)); if(a.classList.contains('cs-bonus')){ ga('clique_bonus_analise', {origem:'topo'}); clarityEvento('clique_bonus_analise'); } });
   });
-  // Capa: pontos tocáveis com zoom guiado em cada canto
+  // Capa: foto interativa que é também o diagnóstico (3 cantos, "E na sua sala?")
   (function(){
     var foto = document.getElementById('cs-foto'); if(!foto) return;
     var cena = foto.querySelector('.cs-cena'), pontos = foto.querySelectorAll('.ponto');
-    var dica = foto.querySelector('.cs-dica'), fim = foto.querySelector('.cs-fim'), txts = foto.querySelectorAll('.cs-txt');
-    var prox = foto.querySelector('.cs-prox'), fechar = foto.querySelector('.cs-fechar');
-    var bolinhas = foto.querySelectorAll('.cs-prog i'), contador = foto.querySelector('.cs-prog small');
-    var POS = {1:[12,43], 2:[32,48], 3:[60,61]}, ZOOM = 2.1, vistos = {}, atual = 0, todos = false;
-    // Variação por anúncio: quem chega do criativo da sala com janelas vê essa sala no hero
+    var dica = foto.querySelector('.cs-dica'), txts = foto.querySelectorAll('.cs-txt'), perg = foto.querySelector('.cs-perg');
+    var res = foto.querySelector('.cs-res'), fechar = foto.querySelector('.cs-fechar');
+    var bolinhas = foto.querySelectorAll('.cs-prog i'), contador = foto.querySelector('.cs-prog small'), prog = foto.querySelector('.cs-prog');
+    var POS = {1:[12,43], 2:[32,48], 3:[60,61]}, ZOOM = 2.1, resp = {}, atual = 0, tocou = false, demoTimer = null, comecou = false;
     var VARIANTES = {
       janelas: {
-        src: '/assets/guia-sala-referencia/fotos/sala-janelas.jpg',
+        src: '/assets/guia-sala-referencia/fotos/sala-janelas.jpg', h1: 'sala',
         alt: 'Sala de educação infantil com janelas grandes, móbile de elementos naturais, estante baixa com caixas verdes, sofá com almofadas e duas mesas com propostas',
         pos: {1:[24,58], 2:[80,56], 3:[18,72]},
         txt: {1:'<b>Materiais em caixas, na altura das crianças.</b> Elas enxergam, escolhem e guardam sozinhas.',
@@ -1121,125 +1213,105 @@
       }
     };
     var qs = new URLSearchParams(location.search), utm = (qs.get('utm_content') || '').toLowerCase();
-    var chave = qs.get('sala') || (/janelas|criativo18/.test(utm) ? 'janelas' : '');
-    var v = VARIANTES[chave];
+    var chave = qs.get('sala') || (/janelas|criativo18/.test(utm) ? 'janelas' : ''), v = VARIANTES[chave];
     if(v){
       var im = cena.querySelector('img'); im.src = v.src; im.alt = v.alt; im.removeAttribute('width'); im.removeAttribute('height');
       POS = v.pos;
       pontos.forEach(function(b){ var n = b.getAttribute('data-ponto'); b.style.setProperty('--x', v.pos[n][0] + '%'); b.style.setProperty('--y', v.pos[n][1] + '%'); });
       txts.forEach(function(t){ t.innerHTML = v.txt[t.getAttribute('data-txt')]; });
       foto.classList.add('var-' + chave);
+      var h1s = document.querySelector('.cs-h1-sala'); if(h1s && v.h1) h1s.textContent = v.h1;
       if(window.clarity) clarity('set', 'hero_foto', chave);
     }
-    function total(){ return Object.keys(vistos).length; }
-    function mostra(el){ [dica, fim].concat([].slice.call(txts)).forEach(function(e){ e.hidden = e !== el; }); }
-    function marcaProgresso(){
-      bolinhas.forEach(function(i, k){ i.classList.toggle('ok', !!vistos[k+1]); });
-      contador.textContent = total() + ' de 3';
-    }
-    var demoTimer = null, tocou = false;
-    function abre(n, demo){
-      atual = n;
-      if(!demo){ tocou = true; clearTimeout(demoTimer); foto.classList.remove('demo'); foto.classList.add('usado'); }
+    function total(){ return Object.keys(resp).length; }
+    function mostra(lista){ [dica, perg, res].concat([].slice.call(txts)).forEach(function(e){ e.hidden = lista.indexOf(e) === -1; }); }
+    function progresso(){ bolinhas.forEach(function(i, k){ i.classList.toggle('ok', (k+1) in resp); }); contador.textContent = total() + ' de 3'; }
+    function zoom(n){
       var W = foto.clientWidth, H = foto.clientHeight, px = POS[n][0]/100*W, py = POS[n][1]/100*H;
-      var tx = Math.min(0, Math.max(W - W*ZOOM, W*.5 - px*ZOOM));
-      var ty = Math.min(0, Math.max(H - H*ZOOM, H*.38 - py*ZOOM));
+      var tx = Math.min(0, Math.max(W - W*ZOOM, W*.5 - px*ZOOM)), ty = Math.min(0, Math.max(H - H*ZOOM, H*.34 - py*ZOOM));
       cena.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + ZOOM + ')';
-      foto.classList.add('zoom'); if(!demo) foto.classList.add('usado');
+      foto.classList.add('zoom');
       pontos.forEach(function(b){
         var eu = b.getAttribute('data-ponto') == n;
         b.classList.toggle('ativo', eu);
-        b.style.left = eu ? (tx + px*ZOOM) + 'px' : '';
-        b.style.top  = eu ? (ty + py*ZOOM) + 'px' : '';
+        b.style.left = eu ? (tx + px*ZOOM) + 'px' : ''; b.style.top = eu ? (ty + py*ZOOM) + 'px' : '';
       });
-      if(demo){ foto.classList.add('demo'); mostra(foto.querySelector('.cs-txt[data-txt="' + n + '"]')); return; }
-      fechar.hidden = false;
-      depois(n);
     }
-    // Se a pessoa não tocar em 4 s, a foto mostra sozinha o canto 1 e volta
+    function abre(n, demo){
+      atual = n; zoom(n);
+      if(demo){ foto.classList.add('demo'); mostra([foto.querySelector('.cs-txt[data-txt="' + n + '"]')]); return; }
+      tocou = true; clearTimeout(demoTimer); foto.classList.remove('demo'); foto.classList.add('usado');
+      mostra([foto.querySelector('.cs-txt[data-txt="' + n + '"]'), perg]);
+      perg.querySelectorAll('.cs-r').forEach(function(b){ b.classList.toggle('esc', resp[n] === +b.getAttribute('data-falta')); });
+      fechar.hidden = false; prog.hidden = false;
+      ga('tocou_ponto', {ponto: String(n)});
+    }
+    function volta(){
+      atual = 0; cena.style.transform = ''; foto.classList.remove('zoom', 'demo');
+      pontos.forEach(function(b){ b.classList.remove('ativo'); b.style.left = ''; b.style.top = ''; });
+      fechar.hidden = true;
+      if(total() === 3) resultado(); else { mostra([dica]); prog.hidden = false; }
+    }
+    function resultado(){
+      var faltam = 0; for(var k in resp) faltam += resp[k];
+      var tit = res.querySelector('.cs-res-tit');
+      tit.innerHTML = faltam === 0 ? 'Sua sala já tem <em>os 3 detalhes.</em> Agora é dar intenção a cada um.'
+        : 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' detalhe' : ' detalhes') + '</em> de virar uma sala referência.';
+      mostra([res]); prog.hidden = true; foto.classList.add('com-res');
+      var vb = document.querySelector('.cs-btn'); if(vb) vb.style.display = 'none';
+      ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
+    }
+    perg.querySelectorAll('.cs-r').forEach(function(b){
+      b.addEventListener('click', function(){
+        if(!atual) return;
+        resp[atual] = +b.getAttribute('data-falta'); b.classList.add('esc');
+        foto.querySelector('.ponto[data-ponto="' + atual + '"]').classList.add('visto');
+        if(!comecou){ comecou = true; ga('respondeu_diagnostico'); clarityEvento('respondeu_diagnostico'); }
+        progresso();
+        setTimeout(function(){
+          var prox = [1,2,3].filter(function(k){ return !(k in resp); })[0];
+          if(prox) abre(prox); else volta();
+        }, 280);
+      });
+    });
+    pontos.forEach(function(b){ b.addEventListener('click', function(){ var n = +b.getAttribute('data-ponto'); if(atual === n && tocou) volta(); else abre(n); }); });
+    fechar.addEventListener('click', volta);
+    foto.querySelector('.cs-refaz').addEventListener('click', function(){
+      resp = {}; progresso(); foto.classList.remove('com-res'); var vb2 = document.querySelector('.cs-btn'); if(vb2) vb2.style.display = ''; pontos.forEach(function(b){ b.classList.remove('visto'); }); abre(1);
+    });
+    foto.querySelector('.cs-res-btn').addEventListener('click', function(){ ga('clique_diagnostico_oferta'); clarityEvento('clique_diagnostico_oferta'); });
+    window.addEventListener('resize', function(){ if(atual) zoom(atual); });
+    // Demonstração: se ninguém tocar em 4 s, mostra o canto 1 e volta
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       demoTimer = setTimeout(function(){
         var r = foto.getBoundingClientRect();
         if(tocou || r.bottom < 0 || r.top > innerHeight) return;
         abre(1, true);
-        demoTimer = setTimeout(function(){ if(!tocou){ volta(); foto.classList.remove('demo'); } }, 2600);
+        demoTimer = setTimeout(function(){ if(!tocou) volta(); }, 2600);
       }, 4000);
     }
-    function depois(n){
-      mostra(foto.querySelector('.cs-txt[data-txt="' + n + '"]'));
-      if(!vistos[n]){ vistos[n] = true; ga('tocou_ponto', {ponto: String(n)}); clarityEvento('tocou_ponto'); }
-      foto.querySelector('.ponto[data-ponto="' + n + '"]').classList.add('visto');
-      marcaProgresso();
-      prox.hidden = false;
-      prox.textContent = n < 3 ? 'Próximo canto →' : 'Ver a sala inteira';
-    }
-    function volta(){
-      atual = 0;
-      cena.style.transform = '';
-      foto.classList.remove('zoom');
-      pontos.forEach(function(b){ b.classList.remove('ativo'); b.style.left = ''; b.style.top = ''; });
-      fechar.hidden = true;
-      if(total() === 3){
-        mostra(fim); prox.hidden = false; prox.textContent = 'Quero a análise ↓';
-        if(!todos){ todos = true; ga('viu_3_cantos'); clarityEvento('viu_3_cantos'); }
-      } else { mostra(dica); prox.hidden = true; }
-    }
-    pontos.forEach(function(b){
-      b.addEventListener('click', function(){
-        var n = +b.getAttribute('data-ponto');
-        if(atual === n) volta(); else abre(n);
-      });
-    });
-    fechar.addEventListener('click', volta);
-    prox.addEventListener('click', function(){
-      if(atual && atual < 3) return abre(atual + 1);
-      if(atual === 3) return volta();
-      ga('clique_bonus_analise', {origem:'foto'}); clarityEvento('clique_bonus_analise');
-      rolaPara('bonus-oferta');
-    });
-    window.addEventListener('resize', function(){ if(atual) abre(atual); });
+    // Botão "Comparar com a minha sala": sobe até a foto e começa pelo canto 1
     var ver = document.querySelector('.cs-btn');
-    if(ver) ver.addEventListener('click', function(){ ga('clique_ver_planejada', {origem:'botao'}); clarityEvento('clique_ver_planejada'); });
+    if(ver) ver.addEventListener('click', function(ev){
+      ev.preventDefault(); ga('clique_comparar'); clarityEvento('clique_comparar');
+      window.scrollTo({top: foto.getBoundingClientRect().top + scrollY - 12, behavior: 'smooth'});
+      setTimeout(function(){ if(!total()) abre(1); }, 450);
+    });
   })();
 
-  // Mini diagnóstico: E a sua sala?
+  // Carrossel de depoimentos
   (function(){
-    var q = document.getElementById('quiz'); if(!q) return;
-    var ps = q.querySelectorAll('.qz-p'), res = q.querySelector('.qz-res'), barra = q.querySelector('.qz-barra i'), passo = q.querySelector('.qz-passo b'), topo = q.querySelector('.qz-topo');
-    var resp = {}, comecou = false;
-    function vai(n){
-      ps.forEach(function(p){ p.hidden = +p.getAttribute('data-q') !== n; });
-      res.hidden = true; topo.hidden = false;
-      passo.textContent = n; barra.style.width = (n/3*100) + '%';
-    }
-    function resultado(){
-      var faltam = 0; [1,2,3].forEach(function(k){ faltam += resp[k]; });
-      ps.forEach(function(p){ p.hidden = true; }); topo.hidden = true; res.hidden = false;
-      q.querySelectorAll('.qz-res-lista li[data-r]').forEach(function(li){ var f = resp[li.getAttribute('data-r')]; li.className = f ? 'falta' : 'tem'; });
-      var btxt = res.querySelector('.qz-btn-txt');
-      var tit = res.querySelector('.qz-res-tit'), txt = res.querySelector('.qz-res-txt');
-      if(faltam === 0){
-        tit.innerHTML = 'Sua sala já tem <em>a base</em> de uma sala referência.';
-        txt.hidden = false;
-        txt.innerHTML = 'Mas ter os cantos não basta. O que faz uma sala referência é a intenção por trás de cada um. <b>No guia, você descobre a pergunta que transforma esses cantos</b> e o que observar nas crianças a partir dela.';
-        btxt.textContent = 'Quero o guia + a análise da minha sala';
-      } else {
-        tit.innerHTML = 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' decisão' : ' decisões') + '</em> de virar uma sala referência.';
-        txt.innerHTML = ''; txt.hidden = true;
-        btxt.textContent = 'Quero o guia + a análise da minha sala';
-      }
-      ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
-    }
-    q.querySelectorAll('.qz-op').forEach(function(b){
-      b.addEventListener('click', function(){
-        var p = b.closest('.qz-p'), n = +p.getAttribute('data-q');
-        resp[n] = +b.getAttribute('data-falta'); b.classList.add('esc');
-        if(!comecou){ comecou = true; ga('respondeu_diagnostico'); clarityEvento('respondeu_diagnostico'); }
-        setTimeout(function(){ b.classList.remove('esc'); if(n < 3) vai(n + 1); else resultado(); }, 220);
-      });
-    });
-    q.querySelector('.qz-refaz').addEventListener('click', function(){ resp = {}; vai(1); });
-    q.querySelector('.qz-btn').addEventListener('click', function(){ ga('clique_diagnostico_oferta', {faltam: String(Object.keys(resp).reduce(function(t,k){ return t + resp[k]; }, 0))}); clarityEvento('clique_diagnostico_oferta'); });
+    var t = document.getElementById('dp-trilho'); if(!t) return;
+    var cards = t.querySelectorAll('.dp-card'), pontos = document.querySelector('.dp-pontos'), visto = false;
+    cards.forEach(function(){ pontos.appendChild(document.createElement('i')); });
+    var bol = pontos.querySelectorAll('i');
+    function atual(){ var x = t.scrollLeft, best = 0, d = 1e9; cards.forEach(function(c, i){ var dd = Math.abs(c.offsetLeft - t.offsetLeft - x - parseFloat(getComputedStyle(t).paddingLeft || 0)); if(dd < d){ d = dd; best = i; } }); return best; }
+    function marca(){ var a = atual(); bol.forEach(function(b, i){ b.classList.toggle('on', i === a); }); }
+    function vai(dir){ var a = Math.max(0, Math.min(cards.length - 1, atual() + dir)); t.scrollTo({left: cards[a].offsetLeft - t.offsetLeft - parseFloat(getComputedStyle(t).paddingLeft || 0), behavior:'smooth'}); }
+    document.querySelector('.dp-ant').addEventListener('click', function(){ vai(-1); });
+    document.querySelector('.dp-prox').addEventListener('click', function(){ vai(1); });
+    t.addEventListener('scroll', function(){ marca(); if(!visto){ visto = true; ga('depoimentos_rolou'); clarityEvento('depoimentos_rolou'); } }, {passive:true});
+    marca();
   })();
   function secaoDe(el){ var sec = el.closest('[data-secao]'); return sec ? sec.getAttribute('data-secao') : (el.closest('.fixa') ? 'barra_fixa' : 'topo'); }
 
