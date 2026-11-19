@@ -774,6 +774,10 @@
   /* Legenda da foto só aparece depois do primeiro toque num número */
   .cs-foto:not(.usado) .cs-legenda{opacity:0;visibility:hidden;transform:translateY(8px)}
   .cs-foto .cs-legenda{transition:opacity .3s,transform .3s,visibility .3s}
+
+  /* Botão do hero: só no computador (no celular fica a barra flutuante) */
+  .capa-sala .cs-btn svg{transform:none}
+  @media (max-width:760px){.capa-sala .cs-btn{display:none!important}}
 </style>
 </head>
 <body>
@@ -872,7 +876,7 @@
           <li><b>+4000</b><span>educadores formados</span></li>
         </ul>
       </div>
-      <a class="btn cs-btn" href="#cs-foto" data-cta="capa_ver">Comparar com a minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn cs-btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o Guia Sala Referência <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 
@@ -1258,7 +1262,6 @@
       tit.innerHTML = faltam === 0 ? 'Sua sala já tem <em>os 3 detalhes.</em> Agora é dar intenção a cada um.'
         : 'Sua sala está a <em>' + faltam + (faltam === 1 ? ' detalhe' : ' detalhes') + '</em> de virar uma sala referência.';
       mostra([res]); prog.hidden = true; foto.classList.add('com-res');
-      var vb = document.querySelector('.cs-btn'); if(vb) vb.style.display = 'none';
       ga('resultado_diagnostico', {faltam: String(faltam)}); clarityEvento('resultado_diagnostico_' + faltam);
     }
     perg.querySelectorAll('.cs-r').forEach(function(b){
@@ -1277,7 +1280,7 @@
     pontos.forEach(function(b){ b.addEventListener('click', function(){ var n = +b.getAttribute('data-ponto'); if(atual === n && tocou) volta(); else abre(n); }); });
     fechar.addEventListener('click', volta);
     foto.querySelector('.cs-refaz').addEventListener('click', function(){
-      resp = {}; progresso(); foto.classList.remove('com-res'); var vb2 = document.querySelector('.cs-btn'); if(vb2) vb2.style.display = ''; pontos.forEach(function(b){ b.classList.remove('visto'); }); abre(1);
+      resp = {}; progresso(); foto.classList.remove('com-res'); pontos.forEach(function(b){ b.classList.remove('visto'); }); abre(1);
     });
     foto.querySelector('.cs-res-btn').addEventListener('click', function(){ ga('clique_diagnostico_oferta'); clarityEvento('clique_diagnostico_oferta'); });
     window.addEventListener('resize', function(){ if(atual) zoom(atual); });
@@ -1290,13 +1293,6 @@
         demoTimer = setTimeout(function(){ if(!tocou) volta(); }, 2600);
       }, 4000);
     }
-    // Botão "Comparar com a minha sala": sobe até a foto e começa pelo canto 1
-    var ver = document.querySelector('.cs-btn');
-    if(ver) ver.addEventListener('click', function(ev){
-      ev.preventDefault(); ga('clique_comparar'); clarityEvento('clique_comparar');
-      window.scrollTo({top: foto.getBoundingClientRect().top + scrollY - 12, behavior: 'smooth'});
-      setTimeout(function(){ if(!total()) abre(1); }, 450);
-    });
   })();
 
   // Carrossel de depoimentos
