@@ -669,7 +669,8 @@
   .cs-bonus b{color:var(--amarelo);font-weight:800}
   .cs-bonus svg{width:16px;height:16px;flex:none;color:var(--amarelo);transform:rotate(90deg)}
   .cs-foto.demo .cs-mao{display:none}
-  .cs-foto.var-janelas .cs-mao{left:80%;top:calc(56% + 22px)}
+  .cs-foto .cs-mao{left:19%;top:calc(44% + 22px)}
+  .cs-foto.var-corredor .cs-mao{left:32%;top:calc(48% + 22px)}
   .qz-tit{text-align:center}
   .qz-tit span{white-space:nowrap}
   .cs-decisoes .quiz{display:block!important}
@@ -812,6 +813,70 @@
   .col-foto-wrap{position:relative}
   .col-foto-cinza{opacity:.8}
   .col-ilustra{position:absolute;right:8px;bottom:28px;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.85);color:#7A6A93;font:700 10px var(--f-texto);letter-spacing:.06em;text-transform:uppercase}
+
+  /* Hero: ângulo de carreira */
+  .capa-sala h1 em{color:var(--amarelo);font-style:normal}
+  .cs-lead{margin-top:12px;color:#E4DCF0;font-size:18px;line-height:1.45;max-width:46ch}
+  .cs-lead b{color:#fff}
+  .cs-ganhos{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+  .cs-ganhos li{position:relative;padding-left:30px;color:#E4DCF0;font-size:15.5px;line-height:1.4}
+  .cs-ganhos li::before{content:"✓";position:absolute;left:0;top:-1px;width:22px;height:22px;border-radius:50%;background:var(--amarelo);color:var(--uva);display:grid;place-items:center;font:900 13px var(--f-texto)}
+  .cs-ganhos b{color:#fff}
+  .cs-cita{margin:18px 0 0;padding:14px 16px;border-left:4px solid var(--amarelo);border-radius:0 14px 14px 0;background:rgba(255,255,255,.07)}
+  .cs-cita p{margin:0;color:#fff;font-size:15.5px;line-height:1.45;font-style:italic}
+  .cs-cita cite{display:block;margin-top:6px;font-style:normal;font-size:12.5px;color:var(--amarelo);font-weight:700}
+  @media (max-width:760px){
+    .cs-lead{font-size:15.5px;margin-top:8px}
+    .capa-sala .cs-sub{margin-top:8px}
+  }
+
+  /* Hero: título e frase principal em destaque */
+  .capa-sala h1{font-size:clamp(40px,4.6vw,64px);line-height:1.02;letter-spacing:-.025em}
+  .cs-destaque{margin-top:14px;font:800 clamp(20px,1.9vw,26px)/1.3 var(--f-titulo);color:#fff;max-width:30ch}
+  .cs-lead{margin-top:10px}
+  @media (max-width:760px){
+    .capa-sala{padding-top:14px}
+    .capa-sala h1{font-size:clamp(36px,10.2vw,42px)}
+    .cs-destaque{font-size:19px;margin-top:10px}
+    .cs-lead{font-size:14.5px;margin-top:8px}
+  }
+
+  /* Oferta: destaque da aula prática */
+  .aula{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center;margin:36px 0 8px;padding:clamp(18px,2.5vw,28px);border-radius:24px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18)}
+  .aula-video{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 0 0 4px var(--amarelo),0 24px 50px -24px rgba(0,0,0,.8)}
+  .aula-video img{display:block;width:100%;height:auto}
+  .aula-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--roxo);display:grid;place-items:center;font-size:24px;padding-left:4px;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
+  .aula-dur{position:absolute;right:10px;bottom:10px;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.72);color:#fff;font:800 13px var(--f-texto)}
+  .aula-tag{position:absolute;left:10px;top:10px;padding:5px 11px;border-radius:999px;background:var(--amarelo);color:var(--uva);font:800 12px var(--f-texto)}
+  .aula-rot{display:block;font:800 12px var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:var(--amarelo)}
+  .aula-info h3{margin:6px 0 0;color:#fff;font:800 clamp(22px,2.4vw,28px)/1.2 var(--f-titulo)}
+  .aula-info p{margin-top:10px;color:#E4DCF0;font-size:15.5px;line-height:1.5}
+  .aula-info ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+  .aula-info li{position:relative;padding-left:26px;color:#E4DCF0;font-size:15px;line-height:1.4}
+  .aula-info li::before{content:"✓";position:absolute;left:0;color:var(--amarelo);font-weight:900}
+  .aula-info li b{color:#fff}
+  .aula-slides{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+  .aula-slides img{width:100%;height:auto;border-radius:8px;border:2px solid rgba(255,255,255,.25)}
+  @media (max-width:760px){.aula{grid-template-columns:minmax(0,1fr);margin-top:24px}}
+
+  /* Oferta: workshop em primeiro */
+  .aula-video img{aspect-ratio:auto}
+  .itens .it-destaque{padding:10px 12px;border-radius:12px;background:#F1E6FD}
+  .itens .it-destaque b{color:var(--roxo)}
+
+  /* Card da oferta: workshop resumido */
+  .itens .it-workshop{display:flex;align-items:center;gap:12px;padding:10px;border-radius:14px;background:#F1E6FD;border:2px solid var(--roxo)}
+  .itens .it-workshop img{flex:none;width:118px;height:auto;border-radius:8px;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+  .iw-txt{display:flex;flex-direction:column;gap:5px;font-size:14.5px;line-height:1.4;color:var(--cinza)}
+  .iw-tag{align-self:flex-start;padding:3px 9px;border-radius:999px;background:var(--roxo);color:#fff;font:800 11px var(--f-texto);letter-spacing:.05em;text-transform:uppercase}
+  .iw-txt b{color:var(--roxo)}
+  @media (max-width:760px){.itens .it-workshop{flex-direction:column;align-items:stretch}.itens .it-workshop img{width:100%}}
+
+  /* Hero com o mesmo roxo da oferta */
+  .capa.capa-sala{background:var(--roxo);background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.07) 1px,transparent 0);background-size:22px 22px}
+
+  /* Destaque da frase "as escolas procuram e poucas professoras dominam" */
+  .cs-destaque mark{background:var(--amarelo);color:var(--uva);padding:1px 7px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:1.55}
 </style>
 </head>
 <body>
@@ -856,22 +921,24 @@
 <section class="capa capa-sala" data-secao="capa">
   <div class="miolo">
     <div class="cs-texto">
-      <h1><em>3 detalhes</em> fazem desta <span class="cs-h1-sala">sala estreita</span> uma sala referência</h1>
-      <p class="cs-sub">Toque nos números e compare com a sua sala 👇</p>
+      <h1>A sala que <em>abre portas</em> na sua carreira</h1>
+      <p class="cs-destaque">Aprenda o planejamento de sala que <mark>as escolas procuram e poucas professoras dominam.</mark></p>
+      <p class="cs-lead">Com os móveis que você já tem. No final, você tem um <b>portfólio pronto para mostrar o seu trabalho</b>.</p>
+      <p class="cs-sub">Toque nos números e veja o que esta sala tem de diferente 👇</p>
     </div>
 
     <figure class="cs-foto" id="cs-foto">
-      <div class="cs-cena"><img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" width="750" height="1000" alt="Sala real e estreita de educação infantil, com mesas e cadeiras simples de madeira, estante baixa e um tapete laranja ao fundo" fetchpriority="high"></div>
-      <button type="button" class="ponto" style="--x:12%;--y:43%" data-ponto="1" aria-label="Ver de perto o canto 1: estante baixa">1</button>
-      <button type="button" class="ponto" style="--x:32%;--y:48%" data-ponto="2" aria-label="Ver de perto o canto 2: tapete e poltrona">2</button>
-      <button type="button" class="ponto" style="--x:60%;--y:61%" data-ponto="3" aria-label="Ver de perto o canto 3: mesa da frente">3</button>
+      <div class="cs-cena"><img src="/assets/guia-sala-referencia/fotos/sala-cabana.webp" width="1080" height="1350" alt="Sala de educação infantil com cabana de tecido, tapete redondo colorido, cozinha de faz de conta, blocos de madeira e fotos das famílias na parede" fetchpriority="high"></div>
+      <button type="button" class="ponto" style="--x:66%;--y:39%" data-ponto="1" aria-label="Ver de perto o canto 1: prateleiras baixas">1</button>
+      <button type="button" class="ponto" style="--x:19%;--y:44%" data-ponto="2" aria-label="Ver de perto o canto 2: cabana">2</button>
+      <button type="button" class="ponto" style="--x:87%;--y:56%" data-ponto="3" aria-label="Ver de perto o canto 3: blocos de construção">3</button>
       <div class="cs-mao" aria-hidden="true"><span class="cs-bolha">toque aqui</span><span class="cs-dedo">👆</span></div>
       <button type="button" class="cs-fechar" hidden>✕ sala inteira</button>
       <figcaption class="cs-legenda" aria-live="polite">
         <p class="cs-dica"><b>Toque nos números:</b> a sua sala tem esses 3 detalhes?</p>
-        <p class="cs-txt" data-txt="1" hidden><b>Materiais na altura das crianças.</b> Elas escolhem sozinhas, sem precisar pedir.</p>
-        <p class="cs-txt" data-txt="2" hidden><b>Um canto para desacelerar.</b> Tapete e poltrona acolhem, mesmo numa sala estreita.</p>
-        <p class="cs-txt" data-txt="3" hidden><b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.</p>
+        <p class="cs-txt" data-txt="1" hidden><b>Materiais em caixas, na altura das crianças.</b> Elas enxergam, escolhem e guardam sozinhas.</p>
+        <p class="cs-txt" data-txt="2" hidden><b>Um canto para desacelerar.</b> A cabana acolhe quem precisa de uma pausa.</p>
+        <p class="cs-txt" data-txt="3" hidden><b>Uma proposta já posta.</b> Os blocos convidam a construir assim que as crianças chegam.</p>
         <div class="cs-perg" hidden>
           <span>E na sua sala?</span>
           <button type="button" class="cs-r" data-falta="0">Já tenho</button>
@@ -881,7 +948,7 @@
           <p class="cs-res-tit"></p>
           <p class="cs-res-txt">No <b>Guia Prático Sala Referência</b>, a Patrícia Souza mostra como planejar cada um desses detalhes na sua sala da educação infantil, <b>com o que você já tem.</b></p>
           <div class="cs-res-oferta"><span class="cs-res-prod">Guia Prático Sala Referência + Workshop de 1h</span><span class="cs-res-preco">De <s>R$ 147</s> por <b>R$ 67</b> · 7 dias de garantia</span></div>
-          <a class="btn btn-verde cs-res-btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="diagnostico_checkout" data-checkout>Quero planejar a minha sala →</a>
+          <a class="btn btn-verde cs-res-btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="diagnostico_checkout" data-checkout>Quero que a minha sala seja referência →</a>
           <a class="cs-res-ver" href="#comprar" data-cta="diagnostico_ver_oferta" data-ir-oferta>ver tudo o que está incluso ↓</a>
           <button type="button" class="cs-refaz">Refazer</button>
         </div>
@@ -890,6 +957,13 @@
     </figure>
 
     <div class="cs-resto">
+      <ul class="cs-ganhos">
+        <li><b>A habilidade que as escolas procuram</b> e não encontram nas professoras</li>
+        <li><b>Portfólio pronto:</b> planta da sala, zonas planejadas e registros do seu trabalho</li>
+        <li><b>Reconhecimento</b> da coordenação e das famílias</li>
+        <li><b>Com os móveis que você já tem</b>, mesmo numa sala pequena</li>
+      </ul>
+      <blockquote class="cs-cita"><p>“Hoje as escolas não conseguem contratar uma educadora pronta nas pedagogias participativas. A gente vai formando.”</p><cite>Patrícia Souza, fundadora e gestora da Oficina Criar e Brincar</cite></blockquote>
       <div class="cs-autora">
         <div class="ca-topo">
           <div class="ca-foto">
@@ -912,7 +986,7 @@
           <li><b>+4000</b><span>educadores formados</span></li>
         </ul>
       </div>
-      <a class="btn cs-btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero o Guia Sala Referência <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn cs-btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero ser referência na minha escola <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 
@@ -957,7 +1031,7 @@
         </div>
       </div>
       <div class="cta">
-        <a class="btn" href="#comprar" data-cta="identificacao" data-ir-oferta>Quero dar sentido à minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="identificacao" data-ir-oferta>Quero que a minha sala seja a referência da escola <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Comece hoje mesmo</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
       </div>
     </div>
@@ -979,7 +1053,7 @@
       <div class="virar"><img class="card-foto" src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="Sala com mesas de madeira, estantes e móbiles" loading="lazy"><span class="quando">Ao voltar para a sala</span><span class="q velha">“O que eu preciso arrumar?”</span><span class="acao"><svg aria-hidden="true"><use href="#i-cadeado"/></svg>A nova pergunta está no guia</span></div>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#comprar" data-cta="perguntas" data-ir-oferta>Quero descobrir as novas perguntas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="perguntas" data-ir-oferta>Quero ser a professora que as outras procuram <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
     </div>
   </div>
@@ -1010,7 +1084,7 @@
       <li><img src="/assets/guia-sala-referencia/fotos/tapete-almofadas.jpg" alt="Tapete redondo com almofadas e cartões" loading="lazy"></li>
     </ul>
     <div class="cta centro">
-      <a class="btn" href="#comprar" data-cta="por_dentro" data-ir-oferta>Quero todas as ferramentas <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="por_dentro" data-ir-oferta>Quero a sala que a coordenação leva para conhecer <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>PDF de 67 páginas, acesso imediato</span></div>
     </div>
   </div>
@@ -1023,15 +1097,16 @@
 <!-- 7. Oferta -->
 <section class="oferta faixa" id="oferta" data-secao="oferta">
   <div class="miolo">
-    <h2>Tudo o que você precisa para <em>construir a sua Sala Referência</em></h2>
+    <h2>Veja o método aplicado <em>em uma sala real</em></h2>
     <div class="caixa" id="comprar">
       <div class="lado-capa">
         <img src="/assets/guia-sala-referencia/livro-guia-v2.webp" width="1200" height="989" alt="Ilustração do Guia Prático Sala Referência" loading="lazy">
         <p>Guia digital em PDF<br>67 páginas</p>
       </div>
       <div class="corpo">
-        <h3>Guia Prático Sala Referência</h3>
+        <h3>Workshop + Guia Prático Sala Referência</h3>
         <ul class="itens">
+          <li class="it-workshop" id="bonus-oferta"><img src="/assets/guia-sala-referencia/aula/aula-meet.webp" width="1400" height="800" alt="Tela do workshop ao vivo da Patrícia Souza no Google Meet" loading="lazy"><span class="iw-txt"><span class="iw-tag">Workshop gravado ao vivo · 1h12</span><span><b>Workshop Sala Referência:</b> a Patrícia abre o planejamento real de uma sala da Oficina, zona por zona, e responde dúvidas de educadoras</span></span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Percurso completo</b>, do olhar para a sala às próximas apostas</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Fichas de planejamento e de reflexão</b> para as Zonas Circunscritas</span></li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>5 perguntas norteadoras</b> e critérios para olhar os materiais</span></li>
@@ -1039,8 +1114,6 @@
           <li class="it-extra"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Roteiro de observação e documentação</b></span></li>
           <li class="it-extra"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Seu dossiê</b> com 12 produções para o Processo Documental</span></li>
           <li class="it-mais"><button type="button" class="it-mais-btn">ver tudo o que está incluso (+3)</button></li>
-          <li class="bonus-analise" id="bonus-oferta"><span class="ba-foto" aria-hidden="true"><img src="/assets/guia-sala-referencia/fotos/sala-corredor.jpg" alt="" loading="lazy"><i style="--x:18%;--y:42%">1</i><i style="--x:40%;--y:52%">2</i><i style="--x:66%;--y:64%">3</i></span><span class="ba-txt"><span class="tag-excl">⭐ Bônus exclusivo</span><span class="ba-tit">Análise da sua sala</span><span>Envie uma foto e receba <b>3 ajustes personalizados</b>, revisados pela Patrícia, em até 48h</span></span></li>
-          <li class="bonus"><span class="tag-bonus">Bônus</span><span><b>Workshop Sala Referência</b></span></li>
           <li class="bonus bonus-hoje js-bonus-hoje"><span class="tag-bonus tag-hoje">Só hoje · 18/11</span><span><b>E-book Documentação Pedagógica</b></span></li>
         </ul>
         <p class="de js-de" id="preco-de">De <s>R$ 147</s> por: <span class="off">54% OFF</span></p>
@@ -1048,7 +1121,7 @@
           <div class="valor"><sup>R$</sup><span class="js-valor">67</span></div>
           <div class="obs">à vista, ou <b class="js-parc">12x de R$ 6,93</b><span class="js-pag"><br>R$ 1 por página de percurso prático</span></div>
         </div>
-        <a class="btn btn-verde" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o guia + a análise da minha sala <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn btn-verde" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="oferta" data-checkout>Quero o meu guia agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
         <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-cadeado"/></svg>Pagamento seguro pela Eduzz</span></div>
       </div>
     </div>
@@ -1112,7 +1185,7 @@
       </div>
       <p class="bases">Inspirado em <b>Reggio Emilia, Pikler e no brincar heurístico</b>, em diálogo com Horn, Goldschmied, Hoyuelos e Carla Rinaldi.</p>
       <div class="cta">
-        <a class="btn" href="#comprar" data-cta="autora" data-ir-oferta>Quero aprender com a Patrícia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        <a class="btn" href="#comprar" data-cta="autora" data-ir-oferta>Quero aprender com quem forma educadoras <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       </div>
     </div>
   </div>
@@ -1124,14 +1197,13 @@
     <div class="centro"><span class="rotulo">Dúvidas</span><h2>Perguntas frequentes</h2></div>
     <div class="perguntas">
       <details><summary>Em que formato é o guia?</summary><p>É um PDF de 67 páginas. Você lê no celular ou no computador e pode imprimir as fichas para usar no planejamento. O acesso chega no seu e-mail logo após a confirmação do pagamento.</p></details>
-      <details><summary>Como funciona a análise da minha sala?</summary><p>Depois da compra, nossa equipe entra em contato pelo WhatsApp ou e-mail que você informou. Você envia até 3 fotos da sua sala como ela está hoje, sem crianças, e em até 48h recebe a sua foto marcada com 3 ajustes para começar, seguindo o método do guia e usando o que você já tem. A análise é feita com apoio de inteligência artificial e revisada pela Patrícia Souza. As fotos são apagadas depois da entrega.</p></details>
       <details><summary>Preciso comprar materiais novos?</summary><p>Não. O percurso começa pelo inventário do que já existe na sua sala e ajuda você a reconhecer as possibilidades de cada material.</p></details>
       <details><summary>Serve para berçário?</summary><p>Sim. O guia trata da educação infantil como um todo e se apoia em referências sobre bebês e crianças bem pequenas, como Goldschmied, Jackson e a abordagem Pikler.</p></details>
       <details><summary>Nunca trabalhei com Zonas Circunscritas. Consigo acompanhar?</summary><p>Consegue. O guia explica o conceito desde o início e propõe começar por uma única zona antes de planejar a sala inteira.</p></details>
       <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Basta pedir o reembolso pela Eduzz dentro desse prazo.</p></details>
     </div>
     <div class="cta centro">
-      <a class="btn" href="#comprar" data-cta="faq" data-ir-oferta>Quero o guia <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="faq" data-ir-oferta>Quero abrir portas na minha carreira <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
     </div>
   </div>
 </section>
@@ -1142,7 +1214,7 @@
     <p class="antes">Pare de perguntar <s>“O que eu preciso arrumar?”</s></p>
     <h2>e descubra a pergunta que <em>transforma a sua sala</em></h2>
     <div class="cta centro">
-      <a class="btn" href="#comprar" data-cta="fechamento" data-ir-oferta>Começar meu planejamento agora <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      <a class="btn" href="#comprar" data-cta="fechamento" data-ir-oferta>Quero começar a minha sala referência hoje <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
       <div class="micro"><span><svg aria-hidden="true"><use href="#i-raio"/></svg>Acesso imediato</span><span><svg aria-hidden="true"><use href="#i-escudo"/></svg>7 dias de garantia</span></div>
     </div>
   </div>
@@ -1158,8 +1230,8 @@
 <div class="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <div class="fixa" id="fixa">
-  <a class="btn fixa-ir" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero o guia + análise da minha sala</a>
-  <a class="btn fixa-check" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="barra_fixa_checkout" data-checkout hidden>Garantir meu guia · R$ 67</a>
+  <a class="btn fixa-ir" href="#comprar" data-cta="barra_fixa" data-ir-oferta>Quero ser referência na minha escola</a>
+  <a class="btn fixa-check" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="barra_fixa_checkout" data-checkout hidden>Garantir meu acesso</a>
 </div>
 
 <script>
@@ -1211,19 +1283,20 @@
     var dica = foto.querySelector('.cs-dica'), txts = foto.querySelectorAll('.cs-txt'), perg = foto.querySelector('.cs-perg');
     var res = foto.querySelector('.cs-res'), fechar = foto.querySelector('.cs-fechar');
     var bolinhas = foto.querySelectorAll('.cs-prog i'), contador = foto.querySelector('.cs-prog small'), prog = foto.querySelector('.cs-prog');
-    var POS = {1:[12,43], 2:[32,48], 3:[60,61]}, ZOOM = 2.1, resp = {}, atual = 0, tocou = false, demoTimer = null, comecou = false;
+    var ZOOM = 2.1, resp = {}, atual = 0, tocou = false, demoTimer = null, comecou = false;
+    var POS = {1:[66,39], 2:[19,44], 3:[87,56]};
     var VARIANTES = {
-      janelas: {
-        src: '/assets/guia-sala-referencia/fotos/sala-janelas.jpg', h1: 'sala',
-        alt: 'Sala de educação infantil com janelas grandes, móbile de elementos naturais, estante baixa com caixas verdes, sofá com almofadas e duas mesas com propostas',
-        pos: {1:[24,58], 2:[80,56], 3:[18,72]},
-        txt: {1:'<b>Materiais em caixas, na altura das crianças.</b> Elas enxergam, escolhem e guardam sozinhas.',
-              2:'<b>Um canto para desacelerar.</b> Sofá baixo, almofadas e livros ao alcance.',
+      corredor: {
+        src: '/assets/guia-sala-referencia/fotos/sala-corredor.jpg',
+        alt: 'Sala real e estreita de educação infantil, com mesas e cadeiras simples de madeira, estante baixa e um tapete laranja ao fundo',
+        pos: {1:[12,43], 2:[32,48], 3:[60,61]},
+        txt: {1:'<b>Materiais na altura das crianças.</b> Elas escolhem sozinhas, sem precisar pedir.',
+              2:'<b>Um canto para desacelerar.</b> Tapete e poltrona acolhem, mesmo numa sala estreita.',
               3:'<b>Uma proposta já posta na mesa.</b> As crianças chegam e começam a investigar.'}
       }
     };
     var qs = new URLSearchParams(location.search), utm = (qs.get('utm_content') || '').toLowerCase();
-    var chave = qs.get('sala') || (/janelas|criativo18/.test(utm) ? 'janelas' : ''), v = VARIANTES[chave];
+    var chave = qs.get('sala') || (/corredor|criativo5\b/.test(utm) ? 'corredor' : ''), v = VARIANTES[chave];
     if(v){
       var im = cena.querySelector('img'); im.src = v.src; im.alt = v.alt; im.removeAttribute('width'); im.removeAttribute('height');
       POS = v.pos;
