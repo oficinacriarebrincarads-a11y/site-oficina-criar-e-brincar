@@ -877,6 +877,38 @@
 
   /* Destaque da frase "as escolas procuram e poucas professoras dominam" */
   .cs-destaque mark{background:var(--amarelo);color:var(--uva);padding:1px 7px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:1.55}
+
+  /* Resultado do diagnóstico: oferta e botão em uma linha no celular */
+  .cs-res-prod{white-space:nowrap;letter-spacing:-.01em}
+  .cs-res-off{display:inline-block;padding:1px 7px;border-radius:6px;background:var(--uva);color:var(--amarelo);font:900 12px var(--f-texto);vertical-align:1px}
+  .cs-legenda .cs-res-btn{white-space:nowrap}
+  @media (max-width:760px){
+    .cs-res-prod{font-size:13px}
+    .cs-res-preco{font-size:12.5px}
+    .cs-legenda .cs-res-btn{font-size:15px;padding:13px 10px}
+  }
+  @media (max-width:360px){.cs-res-prod{font-size:12px}.cs-legenda .cs-res-btn{font-size:14px}}
+  .cs-res-preco{white-space:nowrap}
+  .cs-res-gar{font-size:12px;color:#7A6A93}
+  .cs-res-parc{font:700 12.5px var(--f-texto);color:#2C6514;white-space:nowrap}
+
+  /* Resultado do diagnóstico: guia + workshop no lugar do subtítulo */
+  .cs-res-imgs{display:grid;grid-template-columns:.85fr 1.15fr;gap:8px;align-items:center;margin-top:10px}
+  .cs-res-imgs img{width:100%;height:auto;display:block}
+  .cs-res-imgs img+img{border-radius:8px;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+
+  /* Resultado: o quadro cresce junto com o conteúdo, sem cortar em telas pequenas */
+  .cs-foto.com-res{aspect-ratio:auto}
+  .cs-foto.com-res .cs-legenda{position:relative;left:auto;right:auto;bottom:auto;margin:10px}
+
+  /* Quem te guia: faixa de largura total no computador */
+  .capa-sala .cs-autora-faixa{display:block;margin-top:56px}
+  @media (min-width:761px){
+    .cs-autora-faixa .cs-autora{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:36px;margin:0;padding:24px 28px}
+    .cs-autora-faixa .ca-cargo{margin:0;font-size:15px;max-width:44ch}
+    .cs-autora-faixa .ca-nums{margin:0;grid-template-columns:repeat(3,120px)}
+  }
+  @media (max-width:760px){.capa-sala .cs-autora-faixa{margin-top:22px}}
 </style>
 </head>
 <body>
@@ -896,18 +928,6 @@
   <symbol id="i-girar" viewBox="0 0 24 24"><path d="M20 12a8 8 0 01-13.7 5.6M4 12A8 8 0 0117.7 6.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M18 2.5v4h-4M6 21.5v-4h4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<!-- Faixa superior -->
-<div class="aviso">
-  <a href="#comprar" data-cta="faixa_topo" data-ir-oferta aria-label="Guia Prático Sala Referência: acesso imediato, com 7 dias de garantia">
-    <div class="trilho" aria-hidden="true">
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-      <span>Guia Prático <b>Sala Referência</b></span><span>Acesso imediato</span><span>7 dias de garantia</span>
-    </div>
-  </a>
-</div>
-
 <header class="topo">
   <div class="miolo">
     <img src="/assets/logo-horizontal.jpg" width="499" height="264" alt="Escola Oficina Criar e Brincar">
@@ -923,7 +943,6 @@
     <div class="cs-texto">
       <h1>A sala que <em>abre portas</em> na sua carreira</h1>
       <p class="cs-destaque">Aprenda o planejamento de sala que <mark>as escolas procuram e poucas professoras dominam.</mark></p>
-      <p class="cs-lead">Com os móveis que você já tem. No final, você tem um <b>portfólio pronto para mostrar o seu trabalho</b>.</p>
       <p class="cs-sub">Toque nos números e veja o que esta sala tem de diferente 👇</p>
     </div>
 
@@ -946,9 +965,12 @@
         </div>
         <div class="cs-res" hidden>
           <p class="cs-res-tit"></p>
-          <p class="cs-res-txt">No <b>Guia Prático Sala Referência</b>, a Patrícia Souza mostra como planejar cada um desses detalhes na sua sala da educação infantil, <b>com o que você já tem.</b></p>
-          <div class="cs-res-oferta"><span class="cs-res-prod">Guia Prático Sala Referência + Workshop de 1h</span><span class="cs-res-preco">De <s>R$ 147</s> por <b>R$ 67</b> · 7 dias de garantia</span></div>
-          <a class="btn btn-verde cs-res-btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="diagnostico_checkout" data-checkout>Quero que a minha sala seja referência →</a>
+          <div class="cs-res-imgs" aria-hidden="true">
+            <img src="/assets/guia-sala-referencia/livro-guia-v2.webp" width="1200" height="989" alt="" loading="lazy">
+            <img src="/assets/guia-sala-referencia/aula/aula-meet.webp" width="1400" height="800" alt="" loading="lazy">
+          </div>
+          <div class="cs-res-oferta"><span class="cs-res-prod">Guia Prático Sala Referência + Workshop</span><span class="cs-res-preco">De <s>R$ 147</s> por <b>R$ 67</b> <span class="cs-res-off">54% OFF</span></span><span class="cs-res-parc">ou 12x de R$ 6,93 no cartão</span><span class="cs-res-gar">Acesso imediato · 7 dias de garantia</span></div>
+          <a class="btn btn-verde cs-res-btn" href="https://chk.eduzz.com/39ZRQ6QEWE" data-cta="diagnostico_checkout" data-checkout>Quero minha sala referência →</a>
           <a class="cs-res-ver" href="#comprar" data-cta="diagnostico_ver_oferta" data-ir-oferta>ver tudo o que está incluso ↓</a>
           <button type="button" class="cs-refaz">Refazer</button>
         </div>
@@ -959,34 +981,36 @@
     <div class="cs-resto">
       <ul class="cs-ganhos">
         <li><b>A habilidade que as escolas procuram</b> e não encontram nas professoras</li>
-        <li><b>Portfólio pronto:</b> planta da sala, zonas planejadas e registros do seu trabalho</li>
         <li><b>Reconhecimento</b> da coordenação e das famílias</li>
+        <li><b>Portfólio pronto:</b> planta da sala, zonas planejadas e registros do seu trabalho</li>
         <li><b>Com os móveis que você já tem</b>, mesmo numa sala pequena</li>
       </ul>
       <blockquote class="cs-cita"><p>“Hoje as escolas não conseguem contratar uma educadora pronta nas pedagogias participativas. A gente vai formando.”</p><cite>Patrícia Souza, fundadora e gestora da Oficina Criar e Brincar</cite></blockquote>
-      <div class="cs-autora">
-        <div class="ca-topo">
-          <div class="ca-foto">
-            <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" loading="lazy">
-            <span class="ca-arroba"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>@oficinacriarebrincar</span>
-          </div>
-          <div>
-            <span class="ca-rot">Quem te guia</span>
-            <p class="ca-nome">Patrícia Souza</p>
-            <ul class="ca-ig" aria-label="Perfil no Instagram">
-              <li><b class="js-ig-posts">6.937</b><span>posts</span></li>
-              <li><b>73 mil</b><span>seguidores</span></li>
-            </ul>
-          </div>
-        </div>
-        <p class="ca-cargo">Fundadora da Escola Oficina Criar e Brincar · pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação</p>
-        <ul class="ca-nums">
-          <li><b>20</b><span>anos de educação infantil</span></li>
-          <li><b>11</b><span>anos de escola própria</span></li>
-          <li><b>+4000</b><span>educadores formados</span></li>
-        </ul>
-      </div>
       <a class="btn cs-btn" href="#comprar" data-cta="capa" data-ir-oferta>Quero ser referência na minha escola <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+    </div>
+  </div>
+  <div class="miolo cs-autora-faixa">
+    <div class="cs-autora">
+      <div class="ca-topo">
+        <div class="ca-foto">
+          <img src="/assets/guia-sala-referencia/patricia-hero.jpg" width="688" height="848" alt="Patrícia Souza, autora do guia" loading="lazy">
+          <span class="ca-arroba"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>@oficinacriarebrincar</span>
+        </div>
+        <div>
+          <span class="ca-rot">Quem te guia</span>
+          <p class="ca-nome">Patrícia Souza</p>
+          <ul class="ca-ig" aria-label="Perfil no Instagram">
+            <li><b class="js-ig-posts">6.937</b><span>posts</span></li>
+            <li><b>73 mil</b><span>seguidores</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="ca-cargo">Fundadora da Escola Oficina Criar e Brincar · pedagoga, psicopedagoga e especialista em Neurociência Aplicada à Educação</p>
+      <ul class="ca-nums">
+        <li><b>20</b><span>anos de educação infantil</span></li>
+        <li><b>11</b><span>anos de escola própria</span></li>
+        <li><b>+4000</b><span>educadores formados</span></li>
+      </ul>
     </div>
   </div>
 
